@@ -3,8 +3,6 @@
 
 branch="$(git rev-parse --abbrev-ref HEAD)"
 
-CI=true
-
 if [ "$branch" = "main" -a "$CI" != "true" ]; then
   echo "You can't push directly to main branch"
   exit 1
