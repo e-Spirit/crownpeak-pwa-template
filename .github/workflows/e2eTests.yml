@@ -8,7 +8,7 @@ env:
   BASE_URL: ${{ secrets.BASE_URL }}
 
 jobs:
-  validation:
+  e2etests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
