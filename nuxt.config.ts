@@ -22,10 +22,10 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      baseUrl: process.env.BASE_URL,
+      baseUrl: process.env["BASE_URL"],
     },
     private: {
-      fsxaApiKey: process.env.FSXA_API_KEY,
+      fsxaApiKey: process.env["FSXA_API_KEY"],
     },
   },
 });
