@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 env:
-  CI: ${{secrets.CI}}
+  CI: ${{ secrets.CI }}
 
 jobs:
   release:
@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v3

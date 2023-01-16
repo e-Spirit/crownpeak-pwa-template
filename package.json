@@ -3,7 +3,10 @@
   "private": true,
   "description": "Demo PWA built with Nuxt 3 and FSXA",
   "license": "Apache-2.0",
-  "repositoryUrl": "https://github.com/Wimadev/fsxa-nuxt3-pwa",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wimadev/fsxa-nuxt3-pwa.git"
+  },
   "scripts": {
     "build": "nuxt build",
     "commit": "npm run lint && git-cz",
