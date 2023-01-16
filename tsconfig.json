@@ -9,7 +9,15 @@
     "alwaysStrict": true,
     "strictPropertyInitialization": true,
     "moduleResolution": "node",
-    "types": ["jest"]
+    "types": ["jest"],
+    "allowUnreachableCode": false,
+    "noImplicitThis": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
   },
   "exclude": ["**/*.spec.ts"]
 }
