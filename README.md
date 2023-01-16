@@ -1,0 +1,1 @@
+# fsxa-nuxt3-pwa

@@ -1,0 +1,15 @@
+{
+  // https://v3.nuxtjs.org/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "jsx": "preserve",
+    "strict": true,
+    "noImplicitAny": true,
+    "alwaysStrict": true,
+    "strictPropertyInitialization": true,
+    "moduleResolution": "node",
+    "types": ["jest"]
+  },
+  "exclude": ["**/*.spec.ts"]
+}

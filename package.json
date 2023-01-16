@@ -1,0 +1,63 @@
+{
+  "name": "fsxa-nuxt3-pwa",
+  "private": true,
+  "description": "Demo PWA built with Nuxt 3 and FSXA",
+  "license": "Apache-2.0",
+  "repositoryUrl": "https://github.com/Wimadev/fsxa-nuxt3-pwa",
+  "scripts": {
+    "build": "nuxt build",
+    "commit": "npm run lint && git-cz",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue,.ts,.tsx --ignore-path .gitignore .",
+    "postinstall": "husky install",
+    "preview": "nuxt preview",
+    "semantic-release": "semantic-release",
+    "semantic-release:dry-run": "semantic-release --dry-run",
+    "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
+    "start": "node ./.output/server/index.mjs",
+    "test": "jest --verbose ./tests"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "@nuxt/test-utils": "^3.0.0",
+    "@nuxtjs/eslint-config-typescript": "^10.0.0",
+    "autoprefixer": "^10.4.8",
+    "commitizen": "^4.2.5",
+    "cypress": "^12.1.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.21.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-nuxt": "^3.2.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.3.0",
+    "husky": "^8.0.1",
+    "jest": "^29.3.1",
+    "nuxt": "^3.0.0",
+    "postcss": "^8.4.14",
+    "prettier": "^2.7.1",
+    "semantic-release": "^19.0.3",
+    "tailwindcss": "^3.1.7",
+    "typescript": "^4.7.4",
+    "vite-plugin-eslint": "^1.7.0",
+    "vue-tsc": "^0.40.13"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  }
+}
