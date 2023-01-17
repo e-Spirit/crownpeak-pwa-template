@@ -16,3 +16,15 @@ To Run the PWA in production mode run:
 
 1. Build the project `npm run build`
 2. Run the PWA `npm run start`
+
+### Docker
+
+Before you can run the docker image, make sure that you have created a `.env` file at root level and pasted your environment variables according to `.env.template`.
+
+To build the docker image run:
+
+`docker build -t fsxa-nuxt3-pwa .`
+
+To run the docker image run:
+
+`docker run --env-file .env -p 3000:3000 fsxa-nuxt3-pwa`
