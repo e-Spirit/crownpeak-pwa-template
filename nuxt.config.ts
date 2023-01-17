@@ -16,6 +16,18 @@ export default defineNuxtConfig({
   },
   vite: {
     plugins: [eslintPlugin()],
+    resolve: {
+      alias: {
+        util: "rollup-plugin-node-polyfills/polyfills/util",
+      },
+    },
+    optimizeDeps: {
+      esbuildOptions: {
+        define: {
+          global: "globalThis",
+        },
+      },
+    },
   },
   typescript: {
     typeCheck: true,
