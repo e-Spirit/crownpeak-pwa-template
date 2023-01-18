@@ -23,7 +23,7 @@ Before you can run the docker image, make sure that you have created a `.env` fi
 
 To build the docker image run:
 
-`docker build -t fsxa-nuxt3-pwa .`
+`docker build -t fsxa-nuxt3-pwa -f Dockerfile.template .`
 
 To run the docker image run:
 
