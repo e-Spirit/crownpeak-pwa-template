@@ -3,52 +3,28 @@ import { FSXARemoteApi, FSXAContentMode } from "fsxa-api";
 let remoteApi: FSXARemoteApi;
 
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event);
-  const { endpoint } = event.context["params"];
-
   if (!remoteApi) {
-    const {
-      private: {
-        fsxaApiKey,
-        fsxaMode,
-        fsxaProjectId,
-        fsxaNavigationService,
-        fsxaRemotes,
-        fsxaCaas,
-        fsxaTenantId,
-        fsxaMaxReferenceDepth,
-      },
-    } = useRuntimeConfig();
-
-    const defaultOptions = {
-      maxReferenceDepth: 20,
-      logLevel: 0,
-    };
-    const options = defaultOptions;
-
-    //   const serverAccessControlConfig = {
-    //     navigationItemFilter: () => {},
-    //     caasItemFilter: () => {},
-    //   };
-
+    const runtimeConfig = useRuntimeConfig();
+    const { fsxaConfig } = useFSXAConfig();
     remoteApi = new FSXARemoteApi({
-      apikey: fsxaApiKey,
-      caasURL: fsxaCaas,
-      navigationServiceURL: fsxaNavigationService,
-      tenantID: fsxaTenantId,
-      maxReferenceDepth:
-        Number(fsxaMaxReferenceDepth) || options.maxReferenceDepth,
-      projectID: fsxaProjectId,
-      remotes: JSON.parse(fsxaRemotes) || {},
-      contentMode: fsxaMode as FSXAContentMode,
+      apikey: runtimeConfig.private.fsxaApiKey,
+      caasURL: runtimeConfig.private.fsxaCaas,
+      navigationServiceURL: runtimeConfig.private.fsxaNavigationService,
+      tenantID: runtimeConfig.private.fsxaTenantId,
+      maxReferenceDepth: fsxaConfig.value.maxReferenceDepth,
+      projectID: runtimeConfig.private.fsxaProjectId,
+      remotes: JSON.parse(runtimeConfig.private.fsxaRemotes) || {},
+      contentMode: runtimeConfig.private.fsxaMode as FSXAContentMode,
+      // TODO:
       // filterOptions: {
       //   navigationItemFilter: serverAccessControlConfig?.navigationItemFilter,
       //   caasItemFilter: serverAccessControlConfig?.caasItemFilter,
       // },
-      logLevel: options.logLevel,
+      logLevel: fsxaConfig.value.logLevel,
     });
   }
-
+  const body = await readBody(event);
+  const { endpoint } = event.context["params"];
   switch (endpoint) {
     case "elements":
       return await remoteApi.fetchElement(body);
