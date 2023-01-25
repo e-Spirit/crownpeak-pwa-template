@@ -6,6 +6,12 @@ on:
 
 env:
   BASE_URL: ${{ secrets.BASE_URL }}
+  FSXA_MODE: ${{ secrets.FSXA_MODE }}
+  FSXA_API_KEY: ${{ secrets.FSXA_API_KEY }}
+  FSXA_NAVIGATION_SERVICE: ${{ secrets.FSXA_NAVIGATION_SERVICE }}
+  FSXA_CAAS: ${{ secrets.FSXA_CAAS }}
+  FSXA_PROJECT_ID: ${{ secrets.FSXA_PROJECT_ID }}
+  FSXA_TENANT_ID: ${{ secrets.FSXA_TENANT_ID }}
 
 jobs:
   e2etests:
