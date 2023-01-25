@@ -36,4 +36,4 @@ jobs:
           build: npm run build
           start: npm run start
         env:
-          CYPRESS_cyBaseUrl: ${{ secrets.CY_BASE_URL }}
+          CYPRESS_cyBaseURL: ${{ secrets.CY_BASE_URL }}
