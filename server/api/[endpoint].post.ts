@@ -1,7 +1,5 @@
 import { FSXAApiSingleton } from "fsxa-api";
-// @ts-ignore
-import { FSXAProxyRoutes, FSXAApiErrors } from "fsxa-api/dist/lib/enums";
-import { ServerErrors } from "~/types";
+import { ServerErrors, FSXAProxyRoutes, FSXAApiErrors } from "~/types";
 
 export default defineEventHandler(async (event) => {
   const remoteApi = FSXAApiSingleton.instance; // throws error if undefined

@@ -1,7 +1,5 @@
-// @ts-ignore
-import { FSXAProxyRoutes, FSXAApiErrors } from "fsxa-api/dist/lib/enums";
 import { ComparisonQueryOperatorEnum } from "fsxa-api";
-import { ServerErrors } from "~/types";
+import { ServerErrors, FSXAProxyRoutes, FSXAApiErrors } from "~/types";
 
 const baseURL = Cypress.env("cyBaseURL");
 

@@ -1,15 +1,12 @@
-import { FSXAApiSingleton } from "fsxa-api";
-// @ts-ignore
-import { FSXAProxyRoutes } from "fsxa-api/dist/lib/enums";
-// @ts-ignore
-import { eventStreamHandler } from "fsxa-api/dist/lib/modules";
-import { ServerErrors } from "~/types";
+// import { FSXAApiSingleton } from "fsxa-api";
+
+import { ServerErrors, FSXAProxyRoutes } from "~/types";
 
 export default defineEventHandler((event) => {
-  const remoteApi = FSXAApiSingleton.instance; // throws error if undefined
+  // const remoteApi = FSXAApiSingleton.instance; // throws error if undefined
   const { endpoint } = event.context["params"];
   if (`/${endpoint}` === FSXAProxyRoutes.STREAM_CHANGE_EVENTS_ROUTE) {
-    eventStreamHandler(remoteApi);
+    // TODO: eventStream handler not exported: eventStreamHandler(remoteApi);
     return true;
   } else {
     throw createError({
