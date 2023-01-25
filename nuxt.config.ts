@@ -34,7 +34,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      baseUrl: process.env["BASE_URL"],
+      baseURL: process.env["BASE_URL"],
       fsxaLogLevel: process.env["FSXA_LOG_LEVEL"],
     },
     private: {

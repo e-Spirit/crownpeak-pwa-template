@@ -1,13 +1,11 @@
 import { FSXAProxyApi } from "fsxa-api";
 
 export default defineNuxtPlugin(() => {
-  const {
-    public: { baseUrl },
-  } = useRuntimeConfig();
-  const { fsxaConfig } = useFSXAConfig();
+  const runtimeConfig = useRuntimeConfig();
+  const appConfig = useAppConfig();
   const fsxaApi = new FSXAProxyApi(
-    `${baseUrl}/api`,
-    fsxaConfig.value.logLevel
+    `${runtimeConfig.public.baseURL}/api`,
+    appConfig.logLevel
     // TODO: client access config
   );
   return {
