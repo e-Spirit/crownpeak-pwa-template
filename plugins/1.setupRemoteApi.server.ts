@@ -10,22 +10,23 @@ export default defineNuxtPlugin(() => {
   const appConfig = useAppConfig(); // app.config.ts
 
   const remoteApiConfig: FSXARemoteApiConfig = {
-    apikey: runtimeConfig.private.fsxaApiKey,
-    caasURL: runtimeConfig.private.fsxaCaas,
-    navigationServiceURL: runtimeConfig.private.fsxaNavigationService,
-    tenantID: runtimeConfig.private.fsxaTenantId,
-    maxReferenceDepth: appConfig.maxReferenceDepth,
-    projectID: runtimeConfig.private.fsxaProjectId,
-    remotes: runtimeConfig.private.fsxaRemotes
-      ? JSON.parse(runtimeConfig.private.fsxaRemotes)
+    apikey: runtimeConfig.private.apiKey,
+    caasURL: runtimeConfig.private.caas,
+    navigationServiceURL: runtimeConfig.private.navigationService,
+    tenantID: runtimeConfig.private.tenantId,
+    maxReferenceDepth:
+      runtimeConfig.private["maxReferenceDepth"] || appConfig.maxReferenceDepth,
+    projectID: runtimeConfig.private.projectId,
+    remotes: runtimeConfig.private.remotes
+      ? JSON.parse(runtimeConfig.private.remotes)
       : {},
-    contentMode: runtimeConfig.private.fsxaMode as FSXAContentMode,
+    contentMode: runtimeConfig.private.mode as FSXAContentMode,
     // TODO:
     // filterOptions: {
     //   navigationItemFilter: serverAccessControlConfig?.navigationItemFilter,
     //   caasItemFilter: serverAccessControlConfig?.caasItemFilter,
     // },
-    logLevel: appConfig.logLevel,
+    logLevel: runtimeConfig.public["logLevel"] || appConfig.logLevel,
   };
 
   FSXAApiSingleton.init(new FSXARemoteApi(remoteApiConfig));

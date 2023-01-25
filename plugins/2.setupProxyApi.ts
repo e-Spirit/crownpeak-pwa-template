@@ -5,7 +5,7 @@ export default defineNuxtPlugin(() => {
   const appConfig = useAppConfig();
   const fsxaApi = new FSXAProxyApi(
     `${runtimeConfig.public.baseURL}/api`,
-    appConfig.logLevel
+    runtimeConfig.public["logLevel"] || appConfig.logLevel
     // TODO: client access config
   );
   return {

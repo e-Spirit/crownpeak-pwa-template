@@ -2,7 +2,7 @@ import { LogLevel } from "fsxa-api";
 import { FSXAConfig } from "./types";
 
 const fsxaConfig: FSXAConfig = {
-  logLevel: LogLevel.DEBUG,
+  logLevel: LogLevel.NONE,
   devMode: false,
   defaultLocale: "de_DE",
   enableEventStream: false,
