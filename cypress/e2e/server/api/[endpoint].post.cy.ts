@@ -227,3 +227,15 @@ it("Unknown route", () => {
     expect(response.body.message).to.eq(ServerErrors.UNKNOWN_ROUTE);
   });
 });
+
+it(`get /api${FSXAProxyRoutes.STREAM_CHANGE_EVENTS_ROUTE} => return 200`, () => {
+  cy.visit(baseURL);
+  cy.request({
+    method: "GET",
+    url: `${baseURL}/api${FSXAProxyRoutes.STREAM_CHANGE_EVENTS_ROUTE}`,
+    body: {},
+    failOnStatusCode: false,
+  }).should((response) => {
+    expect(response.status).to.eq(200);
+  });
+});
