@@ -43,7 +43,7 @@ export default defineNuxtConfig({
       fsxaCaas: process.env["FSXA_CAAS"],
       fsxaProjectId: process.env["FSXA_PROJECT_ID"],
       fsxaTenantId: process.env["FSXA_TENANT_ID"],
-      fsxaRemotes: process.env["FSXA_REMOTES"],
+      fsxaRemotes: process.env["FSXA_REMOTES"] ?? {},
       fsxaMaxReferenceDepth: process.env["MAX_REFERENCE_DEPTH"],
       fsxaMode: process.env["FSXA_MODE"],
       fsxaDevMode: process.env["FSXA_DEV_MODE"],

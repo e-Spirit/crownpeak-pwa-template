@@ -1,11 +1,20 @@
-import { FSXARemoteApi, FSXAContentMode } from "fsxa-api";
+import { FSXARemoteApi, FSXAContentMode, LogLevel } from "fsxa-api";
+import { FSXAConfig } from "~~/types";
 
 let remoteApi: FSXARemoteApi;
 
 export default defineEventHandler(async (event) => {
   if (!remoteApi) {
     const runtimeConfig = useRuntimeConfig();
-    const { fsxaConfig } = useFSXAConfig();
+    const fsxaConfig: { value: FSXAConfig } = {
+      value: {
+        logLevel: LogLevel.NONE,
+        devMode: false,
+        enableEventStream: false,
+        defaultLocale: "de_DE",
+      },
+    };
+
     remoteApi = new FSXARemoteApi({
       apikey: runtimeConfig.private.fsxaApiKey,
       caasURL: runtimeConfig.private.fsxaCaas,
@@ -13,7 +22,6 @@ export default defineEventHandler(async (event) => {
       tenantID: runtimeConfig.private.fsxaTenantId,
       maxReferenceDepth: fsxaConfig.value.maxReferenceDepth,
       projectID: runtimeConfig.private.fsxaProjectId,
-      remotes: JSON.parse(runtimeConfig.private.fsxaRemotes) || {},
       contentMode: runtimeConfig.private.fsxaMode as FSXAContentMode,
       // TODO:
       // filterOptions: {
@@ -25,15 +33,16 @@ export default defineEventHandler(async (event) => {
   }
   const body = await readBody(event);
   const { endpoint } = event.context["params"];
+
   switch (endpoint) {
     case "elements":
-      return await remoteApi.fetchElement(body);
+      return remoteApi.fetchElement(body);
     case "filter":
       return await remoteApi.fetchByFilter(body);
     case "navigation":
-      return await remoteApi.fetchNavigation(body);
+      return remoteApi.fetchNavigation(body);
     case "properties":
-      return await remoteApi.fetchProjectProperties(body);
+      return remoteApi.fetchProjectProperties(body);
     default:
       throw new Error("Unknown endpoint");
   }
