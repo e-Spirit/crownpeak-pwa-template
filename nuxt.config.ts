@@ -16,16 +16,38 @@ export default defineNuxtConfig({
   },
   vite: {
     plugins: [eslintPlugin()],
+    resolve: {
+      alias: {
+        util: "rollup-plugin-node-polyfills/polyfills/util",
+      },
+    },
+    optimizeDeps: {
+      esbuildOptions: {
+        define: {
+          global: "globalThis",
+        },
+      },
+    },
   },
   typescript: {
     typeCheck: true,
   },
   runtimeConfig: {
     public: {
-      baseUrl: process.env["BASE_URL"],
+      baseURL: process.env["BASE_URL"] || "http://localhost:3000",
+      logLevel: process.env["FSXA_LOG_LEVEL"],
     },
     private: {
-      fsxaApiKey: process.env["FSXA_API_KEY"],
+      apiKey: process.env["FSXA_API_KEY"],
+      navigationService: process.env["FSXA_NAVIGATION_SERVICE"],
+      caas: process.env["FSXA_CAAS"],
+      projectId: process.env["FSXA_PROJECT_ID"],
+      tenantId: process.env["FSXA_TENANT_ID"],
+      remotes: process.env["FSXA_REMOTES"],
+      maxReferenceDepth: process.env["MAX_REFERENCE_DEPTH"],
+      mode: process.env["FSXA_MODE"],
+      devMode: process.env["FSXA_DEV_MODE"],
+      snapUrl: process.env["FSXA_SNAP_URL"],
     },
   },
 });

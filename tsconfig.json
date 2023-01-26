@@ -9,7 +9,6 @@
     "alwaysStrict": true,
     "strictPropertyInitialization": true,
     "moduleResolution": "node",
-    "types": ["jest"],
     "allowUnreachableCode": false,
     "noImplicitThis": true,
     "noPropertyAccessFromIndexSignature": true,
