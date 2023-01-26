@@ -18,8 +18,13 @@ export default defineEventHandler(async (event) => {
       default:
         throw new Error(ServerErrors.UNKNOWN_ROUTE);
     }
-  } catch (err: any) {
-    if (
+  } catch (err) {
+    if (!(err instanceof Error)) {
+      throw createError({
+        statusCode: 500,
+        message: ServerErrors.UNKNOWN,
+      });
+    } else if (
       err.message === FSXAApiErrors.NOT_FOUND ||
       err.message === FSXAApiErrors.UNKNOWN_REMOTE
     ) {

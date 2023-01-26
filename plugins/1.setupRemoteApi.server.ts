@@ -3,6 +3,7 @@ import {
   FSXARemoteApi,
   FSXARemoteApiConfig,
   FSXAContentMode,
+  LogLevel,
 } from "fsxa-api";
 
 export default defineNuxtPlugin(() => {
@@ -26,7 +27,10 @@ export default defineNuxtPlugin(() => {
     //   navigationItemFilter: serverAccessControlConfig?.navigationItemFilter,
     //   caasItemFilter: serverAccessControlConfig?.caasItemFilter,
     // },
-    logLevel: runtimeConfig.public["logLevel"] || appConfig.logLevel,
+    logLevel:
+      Number.parseInt(runtimeConfig.public["logLevel"]) ||
+      appConfig.logLevel ||
+      LogLevel.NONE,
   };
 
   FSXAApiSingleton.init(new FSXARemoteApi(remoteApiConfig));

@@ -1,11 +1,14 @@
-import { FSXAProxyApi } from "fsxa-api";
+import { FSXAProxyApi, LogLevel } from "fsxa-api";
 
 export default defineNuxtPlugin(() => {
   const runtimeConfig = useRuntimeConfig();
   const appConfig = useAppConfig();
+  const url = new URL("/api", runtimeConfig.public["baseURL"]).href;
   const fsxaApi = new FSXAProxyApi(
-    `${runtimeConfig.public.baseURL}/api`,
-    runtimeConfig.public["logLevel"] || appConfig.logLevel
+    url,
+    Number.parseInt(runtimeConfig.public["logLevel"]) ||
+      appConfig.logLevel ||
+      LogLevel.NONE
     // TODO: client access config
   );
   return {
