@@ -1,0 +1,15 @@
+{
+  "public": {
+    "baseURL": "http://localhost:3000",
+    "logLevel": 0
+  },
+  "private": {
+    "apiKey": "testkey",
+    "navigationService": "http://testnavservice.de",
+    "caas": "http://testcaas.de",
+    "projectId": "testprojectid",
+    "tenantId": "testtenantid",
+    "mode": "preview",
+    "snapUrl": "http://testsnapurl.de"
+  }
+}

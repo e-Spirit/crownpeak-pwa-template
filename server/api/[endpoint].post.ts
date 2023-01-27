@@ -1,49 +1,47 @@
-import { FSXARemoteApi, FSXAContentMode, LogLevel } from "fsxa-api";
-import { FSXAConfig } from "~~/types";
-
-let remoteApi: FSXARemoteApi;
+import { FSXAApiSingleton } from "fsxa-api";
+import { ServerErrors, FSXAProxyRoutes, FSXAApiErrors } from "~/types";
 
 export default defineEventHandler(async (event) => {
-  if (!remoteApi) {
-    const runtimeConfig = useRuntimeConfig();
-    const fsxaConfig: { value: FSXAConfig } = {
-      value: {
-        logLevel: LogLevel.NONE,
-        devMode: false,
-        enableEventStream: false,
-        defaultLocale: "de_DE",
-      },
-    };
-
-    remoteApi = new FSXARemoteApi({
-      apikey: runtimeConfig.private.fsxaApiKey,
-      caasURL: runtimeConfig.private.fsxaCaas,
-      navigationServiceURL: runtimeConfig.private.fsxaNavigationService,
-      tenantID: runtimeConfig.private.fsxaTenantId,
-      maxReferenceDepth: fsxaConfig.value.maxReferenceDepth,
-      projectID: runtimeConfig.private.fsxaProjectId,
-      contentMode: runtimeConfig.private.fsxaMode as FSXAContentMode,
-      // TODO:
-      // filterOptions: {
-      //   navigationItemFilter: serverAccessControlConfig?.navigationItemFilter,
-      //   caasItemFilter: serverAccessControlConfig?.caasItemFilter,
-      // },
-      logLevel: fsxaConfig.value.logLevel,
-    });
-  }
+  const remoteApi = FSXAApiSingleton.instance; // throws error if undefined
   const body = await readBody(event);
   const { endpoint } = event.context["params"];
-
-  switch (endpoint) {
-    case "elements":
-      return remoteApi.fetchElement(body);
-    case "filter":
-      return await remoteApi.fetchByFilter(body);
-    case "navigation":
-      return remoteApi.fetchNavigation(body);
-    case "properties":
-      return remoteApi.fetchProjectProperties(body);
-    default:
-      throw new Error("Unknown endpoint");
+  try {
+    switch (`/${endpoint}`) {
+      case FSXAProxyRoutes.FETCH_ELEMENT_ROUTE:
+        return await remoteApi.fetchElement(body);
+      case FSXAProxyRoutes.FETCH_BY_FILTER_ROUTE:
+        return await remoteApi.fetchByFilter(body);
+      case FSXAProxyRoutes.FETCH_NAVIGATION_ROUTE:
+        return await remoteApi.fetchNavigation(body);
+      case FSXAProxyRoutes.FETCH_PROPERTIES_ROUTE:
+        return await remoteApi.fetchProjectProperties(body);
+      default:
+        throw new Error(ServerErrors.UNKNOWN_ROUTE);
+    }
+  } catch (err) {
+    if (!(err instanceof Error)) {
+      throw createError({
+        statusCode: 500,
+        message: ServerErrors.UNKNOWN,
+      });
+    } else if (
+      err.message === FSXAApiErrors.NOT_FOUND ||
+      err.message === FSXAApiErrors.UNKNOWN_REMOTE
+    ) {
+      throw createError({
+        statusCode: 404,
+        message: err.message,
+      });
+    } else if (FSXAApiErrors.NOT_AUTHORIZED === err.message) {
+      throw createError({
+        statusCode: 401,
+        message: err.message,
+      });
+    } else {
+      throw createError({
+        statusCode: 500,
+        message: err.message || ServerErrors.UNKNOWN,
+      });
+    }
   }
 });

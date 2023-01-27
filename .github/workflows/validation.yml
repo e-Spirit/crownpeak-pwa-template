@@ -30,6 +30,9 @@ jobs:
       - name: Install packages
         run: npm ci
 
+      - name: Build nuxt app
+        run: npm run build
+
       - name: Run tests
         run: npm run test
         env:
