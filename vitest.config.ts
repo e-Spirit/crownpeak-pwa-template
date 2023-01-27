@@ -11,6 +11,8 @@ export default defineConfig({
             "defineNuxtPlugin",
             "useRuntimeConfig",
             "useAppConfig",
+            "useState",
+            "useNuxtApp",
           ],
         },
       ],
