@@ -1,9 +1,15 @@
 <template>
-  <div>
-    <div class="font-bold border p-4 bg-teal-100">
-      Teaser
-      <button @click="showData = !showData">Show Data</button>
-      <pre v-if="showData">{{ JSON.stringify(data, null, 2) }}</pre>
+  <div class="border p-4 bg-teal-100 grid grid-cols-2 gap-4">
+    <div class="col-span-2 font-bold">Teaser</div>
+
+    <div class="border p-4 flex flex-col space-y-4">
+      <h3>{{ data.st_kicker }}</h3>
+      <h2><ElementsRichText :richtext="data.st_headline" /></h2>
+      <p><ElementsRichText :richtext="data.st_text" /></p>
+    </div>
+
+    <div class="border p-4">
+      <ElementsImage v-if="data.st_picture" :image="data.st_picture" />
     </div>
   </div>
 </template>
@@ -27,8 +33,6 @@ interface Teaser {
     };
   } | null;
 }
-
-const showData = ref(false);
 
 defineProps<{ data: Teaser }>();
 </script>

@@ -5,6 +5,8 @@
       <div class="flex ml-auto">
         <AppLayoutNavigation class="hidden md:block" />
         <AppLayoutMobileNavigation v-if="mobileNavigationVisible" />
+
+        <AppLayoutLanguageSwitch />
         <button
           class="md:hidden"
           @click="mobileNavigationVisible = !mobileNavigationVisible"
