@@ -1,42 +1,29 @@
 type LocaleConfig = {
-  activeLocale: string | undefined;
+  activeLocale: string | undefined; // undefined if the user has not selected a locale yet or we have not extracted the locale from the deeplink
   defaultLocale: string;
   allLocales: string[];
 };
 
+// TODO: Implement this function however you want
+// You might want to use the CaaS to get all available locales
+const getAllLocales = () => ["de_DE", "en_GB"];
+
 const defaultConfig: LocaleConfig = {
   activeLocale: undefined,
   defaultLocale: "de_DE",
-  allLocales: ["de_DE", "en_GB"],
+  allLocales: getAllLocales(),
 };
 
 export function useLocale() {
   const config = useState<LocaleConfig>("localeConfig", () => defaultConfig);
 
-  const { $fsxaApi } = useNuxtApp();
-
   return {
     config,
+    // This gets called when:
+    // 1. the user changes the locale or
+    // 2. the user opens a deeplink and we extract the locale from the navigation data
     setLocale: (activeLocale: string) => {
       config.value = { ...config.value, activeLocale };
-    },
-    getLocaleFromPath: async (path: string) => {
-      const data = await $fsxaApi.fetchNavigation({
-        initialPath: path,
-        locale: "",
-      });
-      if (!data) return;
-
-      const firstIdMapEntry = Object.values(data.idMap)[0];
-      if (!firstIdMapEntry) return;
-
-      const contentRefLocale = firstIdMapEntry.contentReference
-        ?.split(".")
-        .pop();
-
-      if (!contentRefLocale) return;
-
-      config.value = { ...config.value, activeLocale: contentRefLocale };
     },
   };
 }

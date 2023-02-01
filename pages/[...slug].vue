@@ -1,18 +1,9 @@
 <template>
   <div>
-    <div>seo-route = {{ initialPath }}</div>
+    <pre>{{ JSON.stringify(page, undefined, 2) }}</pre>
   </div>
 </template>
 
 <script setup lang="ts">
-// get the slug from the route
-const {
-  params: { slug },
-} = useRoute();
-
-const initialPath = slug
-  ? Array.isArray(slug)
-    ? `/${slug.join("/")}`
-    : slug
-  : "/";
+const { data: page } = useContent();
 </script>
