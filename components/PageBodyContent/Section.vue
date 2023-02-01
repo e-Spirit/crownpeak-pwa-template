@@ -1,5 +1,5 @@
 <template>
-  <component :is="sectionComponent" :content="content" />
+  <component :is="sectionComponent" :data="content.data" />
 </template>
 
 <script setup lang="ts">
@@ -14,6 +14,10 @@ const sectionComponent = computed(() => {
       return resolveComponent("SectionTeaser");
     case "slider":
       return resolveComponent("SectionSlider");
+    case "products.category_products":
+      return resolveComponent("SectionProductCategory");
+    case "products.product":
+      return resolveComponent("SectionProduct");
     default:
       return resolveComponent("Unknown");
   }

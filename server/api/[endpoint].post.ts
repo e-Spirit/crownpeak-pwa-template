@@ -5,6 +5,9 @@ export default defineEventHandler(async (event) => {
   const remoteApi = FSXAApiSingleton.instance; // throws error if undefined
   const body = await readBody(event);
   const { endpoint } = event.context["params"];
+
+  body.filters = body.filter;
+
   try {
     switch (`/${endpoint}`) {
       case FSXAProxyRoutes.FETCH_ELEMENT_ROUTE:

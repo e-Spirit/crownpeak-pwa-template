@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <div class="font-bold border p-4 bg-red-100">Slider</div>
-  </div>
+  <div class="font-bold border p-4 bg-orange-200">Product Category</div>
 </template>
 
 <script setup lang="ts">

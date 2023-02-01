@@ -1,5 +1,5 @@
 <template>
-  <div class="border-b py-2">
+  <div class="sticky top-0 bg-white border-b py-2">
     <div class="flex items-center container mx-auto">
       <NuxtLink to="/"><img src="/logo.png" /></NuxtLink>
       <div class="flex ml-auto">
