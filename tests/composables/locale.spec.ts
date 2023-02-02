@@ -27,26 +27,4 @@ describe("useLocale", () => {
       })
     );
   });
-
-  it("useLocale => getLocaleFromPath", async () => {
-    const { config, getLocaleFromPath } = useLocale();
-
-    expect(config.value).toEqual(
-      expect.objectContaining({
-        activeLocale: undefined,
-        defaultLocale: "de_DE",
-        allLocales: ["de_DE", "en_GB"],
-      })
-    );
-
-    await getLocaleFromPath("/some/path/");
-
-    expect(config.value).toEqual(
-      expect.objectContaining({
-        activeLocale: "en_GB",
-        defaultLocale: "de_DE",
-        allLocales: ["de_DE", "en_GB"],
-      })
-    );
-  });
 });

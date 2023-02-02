@@ -1,0 +1,115 @@
+{
+  "type": "Page",
+  "id": "29387141-8be5-4bf2-af16-415595ce2f78",
+  "refId": "b1362730-4ee2-4473-bc02-529e47b08e95",
+  "previewId": "b1362730-4ee2-4473-bc02-529e47b08e95.de_DE",
+  "name": "product_detail",
+  "layout": "standard",
+  "children": [
+    {
+      "type": "PageBody",
+      "name": "content",
+      "previewId": "7c6cf010-4bbc-4b51-94fa-4f165333c9ea.de_DE",
+      "children": [
+        {
+          "previewId": ".de_DE",
+          "type": "Section",
+          "data": {
+            "entityType": "product",
+            "filterParams": {},
+            "maxPageCount": 0,
+            "ordering": [
+              {
+                "attribute": "fs_id",
+                "ascending": false
+              }
+            ],
+            "query": null,
+            "recordCountPerPage": 1,
+            "schema": "products"
+          },
+          "sectionType": "products.product",
+          "children": []
+        }
+      ]
+    }
+  ],
+  "data": {
+    "pt_add_sections": true,
+    "pt_create_section": {
+      "fsType": "FS_BUTTON",
+      "name": "pt_create_section",
+      "value": {}
+    },
+    "pt_permissions": {
+      "type": "Permission",
+      "fsType": "CMS_INPUT_PERMISSION",
+      "name": "pt_permissions",
+      "value": [
+        {
+          "allowed": [],
+          "forbidden": []
+        }
+      ]
+    },
+    "pt_picture": {
+      "type": "Image",
+      "id": "f475bcca-127d-440a-9236-3cc0f1e6a7ec",
+      "previewId": "f475bcca-127d-440a-9236-3cc0f1e6a7ec.de_DE",
+      "meta": {},
+      "description": null,
+      "resolutions": {
+        "ORIGINAL": {
+          "fileSize": 25040,
+          "extension": "jpg",
+          "mimeType": "image/jpeg",
+          "width": 433,
+          "height": 265,
+          "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Smarthome-Panel.jpg?rev=14233",
+          "seoRoute": "/Images/Content/Smarthome-Panel.jpg"
+        },
+        "banner_slider": {
+          "fileSize": 178703,
+          "extension": "jpg",
+          "mimeType": "image/jpeg",
+          "width": 1920,
+          "height": 1080,
+          "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Smarthome-Panel_banner_slider.jpg?rev=14233",
+          "seoRoute": "/Images/Content/Smarthome-Panel_banner_slider.jpg"
+        },
+        "landscape": {
+          "fileSize": 65116,
+          "extension": "jpg",
+          "mimeType": "image/jpeg",
+          "width": 1170,
+          "height": 400,
+          "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Smarthome-Panel_landscape.jpg?rev=14233",
+          "seoRoute": "/Images/Content/Smarthome-Panel_landscape.jpg"
+        },
+        "portrait": {
+          "fileSize": 56812,
+          "extension": "jpg",
+          "mimeType": "image/jpeg",
+          "width": 800,
+          "height": 500,
+          "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Smarthome-Panel_portrait.jpg?rev=14233",
+          "seoRoute": "/Images/Content/Smarthome-Panel_portrait.jpg"
+        },
+        "product_teaser": {
+          "fileSize": 53056,
+          "extension": "jpg",
+          "mimeType": "image/jpeg",
+          "width": 360,
+          "height": 560,
+          "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Smarthome-Panel_product_teaser.jpg?rev=14233",
+          "seoRoute": "/Images/Content/Smarthome-Panel_product_teaser.jpg"
+        }
+      }
+    },
+    "pt_show_chat": false,
+    "pt_text": "Produkte",
+    "pt_title": "Produkte"
+  },
+  "meta": {},
+  "metaPageRef": {}
+}

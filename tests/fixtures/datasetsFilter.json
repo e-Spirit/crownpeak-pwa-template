@@ -1,0 +1,119 @@
+{
+  "page": 1,
+  "pagesize": 1,
+  "items": [
+    {
+      "type": "Dataset",
+      "id": "9266a682-aa19-4723-8761-1c9136945dd4",
+      "previewId": "9266a682-aa19-4723-8761-1c9136945dd4.de_DE",
+      "schema": "products",
+      "entityType": "product",
+      "data": {
+        "tt_abstract": null,
+        "tt_categories": [
+          {
+            "type": "Option",
+            "key": "9db24560-90b4-46c4-8564-0aac1f39ed4b",
+            "value": "Türschlösser"
+          }
+        ],
+        "tt_compatibility": [
+          {
+            "type": "Option",
+            "key": "8f40cfed-f266-4c9f-a544-9c0a020341e8",
+            "value": "Philips Hue"
+          }
+        ],
+        "tt_delivery": [],
+        "tt_installation": [],
+        "tt_media": [],
+        "tt_mode": null,
+        "tt_name": null,
+        "tt_permissions": {
+          "type": "Permission",
+          "fsType": "CMS_INPUT_PERMISSION",
+          "name": "tt_permissions",
+          "value": [{ "allowed": [], "forbidden": [] }]
+        },
+        "tt_price": null,
+        "tt_publish_at": null,
+        "tt_relatedproducts": [],
+        "tt_showrelatedproducts": null,
+        "tt_teaser_image": {
+          "type": "Image",
+          "id": "49661ea9-50dd-41c8-a393-03b1b579590f",
+          "previewId": "49661ea9-50dd-41c8-a393-03b1b579590f.de_DE",
+          "meta": {},
+          "description": null,
+          "resolutions": {
+            "ORIGINAL": {
+              "fileSize": 1012017,
+              "extension": "jpg",
+              "mimeType": "image/jpeg",
+              "width": 3816,
+              "height": 5096,
+              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Vacuum-cleaner-robot-black.jpg?rev=11645",
+              "seoRoute": "/Images/Product-Images/Vacuum-cleaner-robot-black.jpg"
+            },
+            "banner_slider": {
+              "fileSize": 116578,
+              "extension": "jpg",
+              "mimeType": "image/jpeg",
+              "width": 1920,
+              "height": 1080,
+              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Vacuum-cleaner-robot-black_banner_slider.jpg?rev=11645",
+              "seoRoute": "/Images/Product-Images/Vacuum-cleaner-robot-black_banner_slider.jpg"
+            },
+            "landscape": {
+              "fileSize": 38841,
+              "extension": "jpg",
+              "mimeType": "image/jpeg",
+              "width": 1170,
+              "height": 400,
+              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Vacuum-cleaner-robot-black_landscape.jpg?rev=11645",
+              "seoRoute": "/Images/Product-Images/Vacuum-cleaner-robot-black_landscape.jpg"
+            },
+            "portrait": {
+              "fileSize": 33620,
+              "extension": "jpg",
+              "mimeType": "image/jpeg",
+              "width": 800,
+              "height": 500,
+              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Vacuum-cleaner-robot-black_portrait.jpg?rev=11645",
+              "seoRoute": "/Images/Product-Images/Vacuum-cleaner-robot-black_portrait.jpg"
+            },
+            "product_teaser": {
+              "fileSize": 30355,
+              "extension": "jpg",
+              "mimeType": "image/jpeg",
+              "width": 360,
+              "height": 560,
+              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Vacuum-cleaner-robot-black_product_teaser.jpg?rev=11645",
+              "seoRoute": "/Images/Product-Images/Vacuum-cleaner-robot-black_product_teaser.jpg"
+            }
+          }
+        },
+        "tt_teaser_image_alt": null,
+        "tt_teaser_text": null
+      },
+      "route": "/Produkte/Produktdetail_578.html",
+      "routes": [
+        {
+          "pageRef": "b1362730-4ee2-4473-bc02-529e47b08e95",
+          "route": "/Produkte/Produktdetail_578.html"
+        },
+        {
+          "pageRef": "ae5cd33e-16c4-4f4b-8e05-0483c295951b",
+          "route": "/Produkte/other-products-details_578.html"
+        },
+        {
+          "pageRef": "19333a9e-6807-48ce-b1aa-f7014a295ebc",
+          "route": "/de_test/Produkt_578.html"
+        }
+      ],
+      "template": "products.product",
+      "children": [],
+      "locale": "de_DE"
+    }
+  ]
+}

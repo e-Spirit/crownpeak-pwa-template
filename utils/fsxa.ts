@@ -7,14 +7,14 @@ import {
   Page,
 } from "fsxa-api";
 
-const fetchDatasetBySeoRoute = async (
+export const fetchDatasetBySeoRoute = async (
   api: FSXAProxyApi,
   locale: string,
   route: string
 ) => {
   const data = await api.fetchByFilter({
     locale,
-    pagesize: 10,
+    pagesize: 1,
     filters: [
       {
         operator: LogicalQueryOperatorEnum.OR,
@@ -44,13 +44,17 @@ const fetchDatasetBySeoRoute = async (
   return bestMatch as Dataset | undefined;
 };
 
-const fetchContentById = (api: FSXAProxyApi, locale: string, id: string) =>
+export const fetchContentById = (
+  api: FSXAProxyApi,
+  locale: string,
+  id: string
+) =>
   api.fetchElement<Page>({
     id,
     locale,
   });
 
-const fetchContentBySeoRoute = async (
+export const fetchContentBySeoRoute = async (
   api: FSXAProxyApi,
   locale: string,
   route: string
@@ -103,24 +107,20 @@ export const fetchNavigationItemFromRoute = async (
 };
 
 export const getLocaleFromNavigationItem = (item: NavigationItem) => {
-  const locale = item.contentReference?.split(".").pop();
+  const splitted = item?.contentReference?.split(".");
+
+  if (!splitted || splitted.length < 2)
+    throw new Error("No valid contentReference found");
+
+  const locale = splitted?.pop();
 
   if (!locale) throw new Error("No locale found");
 
   return locale;
 };
 
-export const fetchTopLevelNavigation = (api: FSXAProxyApi, locale: string) =>
-  api.fetchNavigation({
+export const fetchTopLevelNavigation = (api: FSXAProxyApi, locale: string) => {
+  return api.fetchNavigation({
     locale,
   });
-
-export const fetchSubNavigation = (
-  api: FSXAProxyApi,
-  item: NavigationItem,
-  locale: string
-) =>
-  api.fetchNavigation({
-    locale,
-    initialPath: item.seoRoute,
-  });
+};
