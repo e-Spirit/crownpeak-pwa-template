@@ -1,5 +1,5 @@
 import AutoImport from "unplugin-auto-import/vite";
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   plugins: [
@@ -11,6 +11,11 @@ export default defineConfig({
             "defineNuxtPlugin",
             "useRuntimeConfig",
             "useAppConfig",
+            "useState",
+            "useNuxtApp",
+            "useLocale",
+            "useAsyncData",
+            "fetchTopLevelNavigation",
           ],
         },
       ],

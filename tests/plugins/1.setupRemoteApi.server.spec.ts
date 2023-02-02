@@ -4,7 +4,7 @@ import setupRemoteApi from "../../plugins/1.setupRemoteApi.server";
 import runtimeConfig from "../fixtures/runtimeConfig.json";
 import appConfig from "../fixtures/appConfig.json";
 
-it("setupRemoteApi => FSXAApiSingleton is initialized", () => {
+it("setupRemoteApi => initialize FSXAApiSingleton", () => {
   const initSingleton = vi.spyOn(FSXAApiSingleton, "init");
   setupRemoteApi();
   expect(initSingleton).toHaveBeenCalledTimes(1);

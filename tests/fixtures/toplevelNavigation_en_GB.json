@@ -1,0 +1,697 @@
+{
+  "idMap": {
+    "5a7cdf48-5031-4fcd-b6c7-99e802d0ce57": {
+      "id": "5a7cdf48-5031-4fcd-b6c7-99e802d0ce57",
+      "parentIds": [],
+      "label": "Home",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/c8a158a3-2ba3-427c-a7e4-7d41d9844464.en_GB",
+      "caasDocumentId": "c8a158a3-2ba3-427c-a7e4-7d41d9844464",
+      "seoRoute": "/Home/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "c8a158a3-2ba3-427c-a7e4-7d41d9844464": {
+      "id": "c8a158a3-2ba3-427c-a7e4-7d41d9844464",
+      "parentIds": ["5a7cdf48-5031-4fcd-b6c7-99e802d0ce57"],
+      "label": "Home",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/c8a158a3-2ba3-427c-a7e4-7d41d9844464.en_GB",
+      "caasDocumentId": "c8a158a3-2ba3-427c-a7e4-7d41d9844464",
+      "seoRoute": "/Home/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "aa684dc6-2220-4d71-b468-f3e056b0c4f0": {
+      "id": "aa684dc6-2220-4d71-b468-f3e056b0c4f0",
+      "parentIds": [],
+      "label": "Our Solutions",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/4bd4e5af-c55d-4b46-b335-58e284f2f4c6.en_GB",
+      "caasDocumentId": "4bd4e5af-c55d-4b46-b335-58e284f2f4c6",
+      "seoRoute": "/Our-Solutions/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["customer"],
+        "forbidden": ["anoym", "registered"]
+      }
+    },
+    "0fc7a456-3b3d-4fac-a89f-5a384a910648": {
+      "id": "0fc7a456-3b3d-4fac-a89f-5a384a910648",
+      "parentIds": ["aa684dc6-2220-4d71-b468-f3e056b0c4f0"],
+      "label": "tng-1112test",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/d93a749c-c1bc-4ebf-9bf3-ef1e0fd96b45.en_GB",
+      "caasDocumentId": "d93a749c-c1bc-4ebf-9bf3-ef1e0fd96b45",
+      "seoRoute": "/Our-Solutions/tng-1112test/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["customer"],
+        "forbidden": ["anoym", "registered"]
+      }
+    },
+    "d93a749c-c1bc-4ebf-9bf3-ef1e0fd96b45": {
+      "id": "d93a749c-c1bc-4ebf-9bf3-ef1e0fd96b45",
+      "parentIds": [
+        "aa684dc6-2220-4d71-b468-f3e056b0c4f0",
+        "0fc7a456-3b3d-4fac-a89f-5a384a910648"
+      ],
+      "label": "tng-1112test",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/d93a749c-c1bc-4ebf-9bf3-ef1e0fd96b45.en_GB",
+      "caasDocumentId": "d93a749c-c1bc-4ebf-9bf3-ef1e0fd96b45",
+      "seoRoute": "/Our-Solutions/tng-1112test/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["customer"],
+        "forbidden": ["anoym", "registered"]
+      }
+    },
+    "4bd4e5af-c55d-4b46-b335-58e284f2f4c6": {
+      "id": "4bd4e5af-c55d-4b46-b335-58e284f2f4c6",
+      "parentIds": ["aa684dc6-2220-4d71-b468-f3e056b0c4f0"],
+      "label": "Our Solutions!123",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/4bd4e5af-c55d-4b46-b335-58e284f2f4c6.en_GB",
+      "caasDocumentId": "4bd4e5af-c55d-4b46-b335-58e284f2f4c6",
+      "seoRoute": "/Our-Solutions/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer"],
+        "forbidden": ["registered"]
+      }
+    },
+    "742901ac-4486-4c61-b939-fc27363374ec": {
+      "id": "742901ac-4486-4c61-b939-fc27363374ec",
+      "parentIds": [],
+      "label": "Products",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/510e2b30-91af-42ba-8001-2ec7b3644c4d.en_GB",
+      "caasDocumentId": "510e2b30-91af-42ba-8001-2ec7b3644c4d",
+      "seoRoute": "/Productsss/Product-Overview.html",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "b1362730-4ee2-4473-bc02-529e47b08e95": {
+      "id": "b1362730-4ee2-4473-bc02-529e47b08e95",
+      "parentIds": ["742901ac-4486-4c61-b939-fc27363374ec"],
+      "label": "Product Detail",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/b1362730-4ee2-4473-bc02-529e47b08e95.en_GB",
+      "caasDocumentId": "b1362730-4ee2-4473-bc02-529e47b08e95",
+      "seoRoute": "/Productsss/TNG1227_3.html",
+      "seoRouteRegex": "^[\\/]?Productsss\\/[^\\s\\/]+$",
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "6db78d19-d1bf-4469-bbde-b4aeacfe61a0": {
+      "id": "6db78d19-d1bf-4469-bbde-b4aeacfe61a0",
+      "parentIds": ["742901ac-4486-4c61-b939-fc27363374ec"],
+      "label": "ProductFeed_ICE",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/6db78d19-d1bf-4469-bbde-b4aeacfe61a0.en_GB",
+      "caasDocumentId": "6db78d19-d1bf-4469-bbde-b4aeacfe61a0",
+      "seoRoute": "/Productsss/ProductFeed_ICE.json",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "14d1f9d2-2c5f-4aab-9035-9080f56eb9ad": {
+      "id": "14d1f9d2-2c5f-4aab-9035-9080f56eb9ad",
+      "parentIds": ["742901ac-4486-4c61-b939-fc27363374ec"],
+      "label": "Interior equipment",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/f32a8a77-b08a-42ff-bc66-95be0aebebbb.en_GB",
+      "caasDocumentId": "f32a8a77-b08a-42ff-bc66-95be0aebebbb",
+      "seoRoute": "/Productsss/Interior-equipment/Interior-Equipment-Overview.html",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "f32a8a77-b08a-42ff-bc66-95be0aebebbb": {
+      "id": "f32a8a77-b08a-42ff-bc66-95be0aebebbb",
+      "parentIds": [
+        "742901ac-4486-4c61-b939-fc27363374ec",
+        "14d1f9d2-2c5f-4aab-9035-9080f56eb9ad"
+      ],
+      "label": "Interior Equipment Overview",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/f32a8a77-b08a-42ff-bc66-95be0aebebbb.en_GB",
+      "caasDocumentId": "f32a8a77-b08a-42ff-bc66-95be0aebebbb",
+      "seoRoute": "/Productsss/Interior-equipment/Interior-Equipment-Overview.html",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "80fcf774-cc30-4061-b64f-15959881ab8b": {
+      "id": "80fcf774-cc30-4061-b64f-15959881ab8b",
+      "parentIds": ["742901ac-4486-4c61-b939-fc27363374ec"],
+      "label": "Indoor Cams",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/1d710cf5-7147-4d21-8b70-300801e853bb.en_GB",
+      "caasDocumentId": "1d710cf5-7147-4d21-8b70-300801e853bb",
+      "seoRoute": "/Productsss/Indoor-Cams/Indoor-Cams-Overview.html",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "1d710cf5-7147-4d21-8b70-300801e853bb": {
+      "id": "1d710cf5-7147-4d21-8b70-300801e853bb",
+      "parentIds": [
+        "742901ac-4486-4c61-b939-fc27363374ec",
+        "80fcf774-cc30-4061-b64f-15959881ab8b"
+      ],
+      "label": "Indoor Cams Overview",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/1d710cf5-7147-4d21-8b70-300801e853bb.en_GB",
+      "caasDocumentId": "1d710cf5-7147-4d21-8b70-300801e853bb",
+      "seoRoute": "/Productsss/Indoor-Cams/Indoor-Cams-Overview.html",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "3debddbc-a2f6-4d1e-b8e5-02b204d9d8f5": {
+      "id": "3debddbc-a2f6-4d1e-b8e5-02b204d9d8f5",
+      "parentIds": ["742901ac-4486-4c61-b939-fc27363374ec"],
+      "label": "Outdoor Cams",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/1b8b3c6f-d4c1-46bf-870e-ce553871a069.en_GB",
+      "caasDocumentId": "1b8b3c6f-d4c1-46bf-870e-ce553871a069",
+      "seoRoute": "/Productsss/Outdoor-Cams/Outdoor-Cams-Overview.html",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "1b8b3c6f-d4c1-46bf-870e-ce553871a069": {
+      "id": "1b8b3c6f-d4c1-46bf-870e-ce553871a069",
+      "parentIds": [
+        "742901ac-4486-4c61-b939-fc27363374ec",
+        "3debddbc-a2f6-4d1e-b8e5-02b204d9d8f5"
+      ],
+      "label": "Outdoor Cams Overview",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/1b8b3c6f-d4c1-46bf-870e-ce553871a069.en_GB",
+      "caasDocumentId": "1b8b3c6f-d4c1-46bf-870e-ce553871a069",
+      "seoRoute": "/Productsss/Outdoor-Cams/Outdoor-Cams-Overview.html",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "64d3af38-c24d-44d5-8732-69972354c7e5": {
+      "id": "64d3af38-c24d-44d5-8732-69972354c7e5",
+      "parentIds": ["742901ac-4486-4c61-b939-fc27363374ec"],
+      "label": "Thermostats",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/d8c8bd3f-3268-44aa-aa38-91c192b3ce8c.en_GB",
+      "caasDocumentId": "d8c8bd3f-3268-44aa-aa38-91c192b3ce8c",
+      "seoRoute": "/Productsss/Thermostats/Thermostats-Overview.html",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "d8c8bd3f-3268-44aa-aa38-91c192b3ce8c": {
+      "id": "d8c8bd3f-3268-44aa-aa38-91c192b3ce8c",
+      "parentIds": [
+        "742901ac-4486-4c61-b939-fc27363374ec",
+        "64d3af38-c24d-44d5-8732-69972354c7e5"
+      ],
+      "label": "Thermostats Overview",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/d8c8bd3f-3268-44aa-aa38-91c192b3ce8c.en_GB",
+      "caasDocumentId": "d8c8bd3f-3268-44aa-aa38-91c192b3ce8c",
+      "seoRoute": "/Productsss/Thermostats/Thermostats-Overview.html",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "84692900-62e5-4adf-84a8-948655845b11": {
+      "id": "84692900-62e5-4adf-84a8-948655845b11",
+      "parentIds": ["742901ac-4486-4c61-b939-fc27363374ec"],
+      "label": "Door Locks",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/8d35b2d1-bf7b-4420-bd00-bb5cd55f8418.en_GB",
+      "caasDocumentId": "8d35b2d1-bf7b-4420-bd00-bb5cd55f8418",
+      "seoRoute": "/Productsss/Door-Locks/Door-Locks-Overview.html",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "8d35b2d1-bf7b-4420-bd00-bb5cd55f8418": {
+      "id": "8d35b2d1-bf7b-4420-bd00-bb5cd55f8418",
+      "parentIds": [
+        "742901ac-4486-4c61-b939-fc27363374ec",
+        "84692900-62e5-4adf-84a8-948655845b11"
+      ],
+      "label": "Door Locks Overview",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/8d35b2d1-bf7b-4420-bd00-bb5cd55f8418.en_GB",
+      "caasDocumentId": "8d35b2d1-bf7b-4420-bd00-bb5cd55f8418",
+      "seoRoute": "/Productsss/Door-Locks/Door-Locks-Overview.html",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "510e2b30-91af-42ba-8001-2ec7b3644c4d": {
+      "id": "510e2b30-91af-42ba-8001-2ec7b3644c4d",
+      "parentIds": ["742901ac-4486-4c61-b939-fc27363374ec"],
+      "label": "Product Overview",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/510e2b30-91af-42ba-8001-2ec7b3644c4d.en_GB",
+      "caasDocumentId": "510e2b30-91af-42ba-8001-2ec7b3644c4d",
+      "seoRoute": "/Productsss/Product-Overview.html",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "ae5cd33e-16c4-4f4b-8e05-0483c295951b": {
+      "id": "ae5cd33e-16c4-4f4b-8e05-0483c295951b",
+      "parentIds": ["742901ac-4486-4c61-b939-fc27363374ec"],
+      "label": "other-products-details",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/ae5cd33e-16c4-4f4b-8e05-0483c295951b.en_GB",
+      "caasDocumentId": "ae5cd33e-16c4-4f4b-8e05-0483c295951b",
+      "seoRoute": "/Productsss/TNG1227_3.html",
+      "seoRouteRegex": "^[\\/]?Productsss\\/[^\\s\\/]+$",
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "d0ea398c-94e3-4911-87a0-e662ea87411e": {
+      "id": "d0ea398c-94e3-4911-87a0-e662ea87411e",
+      "parentIds": ["742901ac-4486-4c61-b939-fc27363374ec"],
+      "label": "Product Overview2",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/d0ea398c-94e3-4911-87a0-e662ea87411e.en_GB",
+      "caasDocumentId": "d0ea398c-94e3-4911-87a0-e662ea87411e",
+      "seoRoute": "/Productsss/Product-Overview2.html",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "d1fed166-afda-44c0-aecb-9221a8458bdf": {
+      "id": "d1fed166-afda-44c0-aecb-9221a8458bdf",
+      "parentIds": [],
+      "label": "Specialized Dealer",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/b5696e04-09d7-44ed-96a7-4236af9bf7e1.en_GB",
+      "caasDocumentId": "b5696e04-09d7-44ed-96a7-4236af9bf7e1",
+      "seoRoute": "/Specialized-Dealers/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "b5696e04-09d7-44ed-96a7-4236af9bf7e1": {
+      "id": "b5696e04-09d7-44ed-96a7-4236af9bf7e1",
+      "parentIds": ["d1fed166-afda-44c0-aecb-9221a8458bdf"],
+      "label": "Specialized Dealer",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/b5696e04-09d7-44ed-96a7-4236af9bf7e1.en_GB",
+      "caasDocumentId": "b5696e04-09d7-44ed-96a7-4236af9bf7e1",
+      "seoRoute": "/Specialized-Dealers/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "e8fcfe5e-7e27-4aa1-964a-9619e567b395": {
+      "id": "e8fcfe5e-7e27-4aa1-964a-9619e567b395",
+      "parentIds": ["d1fed166-afda-44c0-aecb-9221a8458bdf"],
+      "label": "Contact Your Dealer",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/84b85e69-2a7e-4aed-bb41-9e9f12e764fa.en_GB",
+      "caasDocumentId": "84b85e69-2a7e-4aed-bb41-9e9f12e764fa",
+      "seoRoute": "/Specialized-Dealers/Contact-Your-Dealer/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "84b85e69-2a7e-4aed-bb41-9e9f12e764fa": {
+      "id": "84b85e69-2a7e-4aed-bb41-9e9f12e764fa",
+      "parentIds": [
+        "d1fed166-afda-44c0-aecb-9221a8458bdf",
+        "e8fcfe5e-7e27-4aa1-964a-9619e567b395"
+      ],
+      "label": "Contact local dealer",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/84b85e69-2a7e-4aed-bb41-9e9f12e764fa.en_GB",
+      "caasDocumentId": "84b85e69-2a7e-4aed-bb41-9e9f12e764fa",
+      "seoRoute": "/Specialized-Dealers/Contact-Your-Dealer/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "7b2200f4-3862-4317-a3e9-9531575634b7": {
+      "id": "7b2200f4-3862-4317-a3e9-9531575634b7",
+      "parentIds": [],
+      "label": "About us",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/6eeb4e54-6cc4-46f8-b895-637a6dea7796.en_GB",
+      "caasDocumentId": "6eeb4e54-6cc4-46f8-b895-637a6dea7796",
+      "seoRoute": "/About-us/company/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "aab0fbe2-9fbf-4a3b-a45e-7b72165eaa3c": {
+      "id": "aab0fbe2-9fbf-4a3b-a45e-7b72165eaa3c",
+      "parentIds": ["7b2200f4-3862-4317-a3e9-9531575634b7"],
+      "label": "Services",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/0bc56bb7-a852-4603-a4bc-2e219634169f.en_GB",
+      "caasDocumentId": "0bc56bb7-a852-4603-a4bc-2e219634169f",
+      "seoRoute": "/About-us/services/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "0bc56bb7-a852-4603-a4bc-2e219634169f": {
+      "id": "0bc56bb7-a852-4603-a4bc-2e219634169f",
+      "parentIds": [
+        "7b2200f4-3862-4317-a3e9-9531575634b7",
+        "aab0fbe2-9fbf-4a3b-a45e-7b72165eaa3c"
+      ],
+      "label": "services!",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/0bc56bb7-a852-4603-a4bc-2e219634169f.en_GB",
+      "caasDocumentId": "0bc56bb7-a852-4603-a4bc-2e219634169f",
+      "seoRoute": "/About-us/services/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "c8288c2c-d9d2-498b-af06-2e76a9b3c3ab": {
+      "id": "c8288c2c-d9d2-498b-af06-2e76a9b3c3ab",
+      "parentIds": ["7b2200f4-3862-4317-a3e9-9531575634b7"],
+      "label": "Company",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/6eeb4e54-6cc4-46f8-b895-637a6dea7796.en_GB",
+      "caasDocumentId": "6eeb4e54-6cc4-46f8-b895-637a6dea7796",
+      "seoRoute": "/About-us/company/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "6eeb4e54-6cc4-46f8-b895-637a6dea7796": {
+      "id": "6eeb4e54-6cc4-46f8-b895-637a6dea7796",
+      "parentIds": [
+        "7b2200f4-3862-4317-a3e9-9531575634b7",
+        "c8288c2c-d9d2-498b-af06-2e76a9b3c3ab"
+      ],
+      "label": "company",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/6eeb4e54-6cc4-46f8-b895-637a6dea7796.en_GB",
+      "caasDocumentId": "6eeb4e54-6cc4-46f8-b895-637a6dea7796",
+      "seoRoute": "/About-us/company/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "cf897c23-c1b3-48af-972c-41aaf428070e": {
+      "id": "cf897c23-c1b3-48af-972c-41aaf428070e",
+      "parentIds": ["7b2200f4-3862-4317-a3e9-9531575634b7"],
+      "label": "TNG-1216-Test",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/2bab63d2-b0cf-48f5-93de-d61e38191b34.en_GB",
+      "caasDocumentId": "2bab63d2-b0cf-48f5-93de-d61e38191b34",
+      "seoRoute": "/About-us/TNG-1216-Test/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "2bab63d2-b0cf-48f5-93de-d61e38191b34": {
+      "id": "2bab63d2-b0cf-48f5-93de-d61e38191b34",
+      "parentIds": [
+        "7b2200f4-3862-4317-a3e9-9531575634b7",
+        "cf897c23-c1b3-48af-972c-41aaf428070e"
+      ],
+      "label": "TNG-1216-Test",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/2bab63d2-b0cf-48f5-93de-d61e38191b34.en_GB",
+      "caasDocumentId": "2bab63d2-b0cf-48f5-93de-d61e38191b34",
+      "seoRoute": "/About-us/TNG-1216-Test/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "2afd8369-da59-439e-98b2-a2020467bebe": {
+      "id": "2afd8369-da59-439e-98b2-a2020467bebe",
+      "parentIds": [],
+      "label": "Imprint",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/ef7eb160-9fc9-4970-8c65-2f1125b0086c.en_GB",
+      "caasDocumentId": "ef7eb160-9fc9-4970-8c65-2f1125b0086c",
+      "seoRoute": "/Imprint/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "ef7eb160-9fc9-4970-8c65-2f1125b0086c": {
+      "id": "ef7eb160-9fc9-4970-8c65-2f1125b0086c",
+      "parentIds": ["2afd8369-da59-439e-98b2-a2020467bebe"],
+      "label": "Imprint!",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/ef7eb160-9fc9-4970-8c65-2f1125b0086c.en_GB",
+      "caasDocumentId": "ef7eb160-9fc9-4970-8c65-2f1125b0086c",
+      "seoRoute": "/Imprint/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "bec2852d-7a32-4dc0-b96e-010f8257c066": {
+      "id": "bec2852d-7a32-4dc0-b96e-010f8257c066",
+      "parentIds": [],
+      "label": "Privacy Policy",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/6c1b322b-1be9-47f1-9a9f-f0c1d0eb159b.en_GB",
+      "caasDocumentId": "6c1b322b-1be9-47f1-9a9f-f0c1d0eb159b",
+      "seoRoute": "/Privacy-Policy/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "6c1b322b-1be9-47f1-9a9f-f0c1d0eb159b": {
+      "id": "6c1b322b-1be9-47f1-9a9f-f0c1d0eb159b",
+      "parentIds": ["bec2852d-7a32-4dc0-b96e-010f8257c066"],
+      "label": "privacy policy",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/6c1b322b-1be9-47f1-9a9f-f0c1d0eb159b.en_GB",
+      "caasDocumentId": "6c1b322b-1be9-47f1-9a9f-f0c1d0eb159b",
+      "seoRoute": "/Privacy-Policy/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "91a6a20a-3f57-4f2b-bfdf-0ae7493dcc66": {
+      "id": "91a6a20a-3f57-4f2b-bfdf-0ae7493dcc66",
+      "parentIds": [],
+      "label": "TranslationStudio Workspace",
+      "contentReference": null,
+      "caasDocumentId": null,
+      "seoRoute": null,
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "c04a3976-d04f-4e1c-b3a7-c20cf09e5e1c": {
+      "id": "c04a3976-d04f-4e1c-b3a7-c20cf09e5e1c",
+      "parentIds": [],
+      "label": "Landing Pages",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/abf4139f-8fb6-4dca-aef0-1b07f87c3728.en_GB",
+      "caasDocumentId": "abf4139f-8fb6-4dca-aef0-1b07f87c3728",
+      "seoRoute": "/Landing-Pages/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "abf4139f-8fb6-4dca-aef0-1b07f87c3728": {
+      "id": "abf4139f-8fb6-4dca-aef0-1b07f87c3728",
+      "parentIds": ["c04a3976-d04f-4e1c-b3a7-c20cf09e5e1c"],
+      "label": "DEMO: Security Landing Page",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/abf4139f-8fb6-4dca-aef0-1b07f87c3728.en_GB",
+      "caasDocumentId": "abf4139f-8fb6-4dca-aef0-1b07f87c3728",
+      "seoRoute": "/Landing-Pages/",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "f8f963bd-d5f9-4b02-bfa0-2988de699812": {
+      "id": "f8f963bd-d5f9-4b02-bfa0-2988de699812",
+      "parentIds": ["c04a3976-d04f-4e1c-b3a7-c20cf09e5e1c"],
+      "label": "Landing Page Blueprint",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/f8f963bd-d5f9-4b02-bfa0-2988de699812.en_GB",
+      "caasDocumentId": "f8f963bd-d5f9-4b02-bfa0-2988de699812",
+      "seoRoute": "/Landing-Pages/Landing-Page-Blueprint.html",
+      "seoRouteRegex": null,
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "10f4c365-c845-49b1-834c-80cef1d268ec": {
+      "id": "10f4c365-c845-49b1-834c-80cef1d268ec",
+      "parentIds": [],
+      "label": "testproj1",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/19333a9e-6807-48ce-b1aa-f7014a295ebc.en_GB",
+      "caasDocumentId": "19333a9e-6807-48ce-b1aa-f7014a295ebc",
+      "seoRoute": "/en_test/Product_578.html",
+      "seoRouteRegex": "^[\\/]?en_test\\/[^\\s\\/]+$",
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    },
+    "19333a9e-6807-48ce-b1aa-f7014a295ebc": {
+      "id": "19333a9e-6807-48ce-b1aa-f7014a295ebc",
+      "parentIds": ["10f4c365-c845-49b1-834c-80cef1d268ec"],
+      "label": "Product",
+      "contentReference": "https://enterprise-dev-caas-api.e-spirit.cloud/enterprise-dev/d8db6f24-0bf8-4f48-be47-5e41d8d427fc.preview.content/19333a9e-6807-48ce-b1aa-f7014a295ebc.en_GB",
+      "caasDocumentId": "19333a9e-6807-48ce-b1aa-f7014a295ebc",
+      "seoRoute": "/en_test/Product_578.html",
+      "seoRouteRegex": "^[\\/]?en_test\\/[^\\s\\/]+$",
+      "customData": null,
+      "permissions": {
+        "allowed": ["anoym", "customer", "registered"],
+        "forbidden": []
+      }
+    }
+  },
+  "seoRouteMap": {
+    "/Home/": "5a7cdf48-5031-4fcd-b6c7-99e802d0ce57",
+    "/Our-Solutions/": "aa684dc6-2220-4d71-b468-f3e056b0c4f0",
+    "/Our-Solutions/tng-1112test/": "0fc7a456-3b3d-4fac-a89f-5a384a910648",
+    "/Productsss/Product-Overview.html": "742901ac-4486-4c61-b939-fc27363374ec",
+    "/Productsss/TNG1227_3.html": "b1362730-4ee2-4473-bc02-529e47b08e95",
+    "/Productsss/ProductFeed_ICE.json": "6db78d19-d1bf-4469-bbde-b4aeacfe61a0",
+    "/Productsss/Interior-equipment/Interior-Equipment-Overview.html": "14d1f9d2-2c5f-4aab-9035-9080f56eb9ad",
+    "/Productsss/Indoor-Cams/Indoor-Cams-Overview.html": "80fcf774-cc30-4061-b64f-15959881ab8b",
+    "/Productsss/Outdoor-Cams/Outdoor-Cams-Overview.html": "3debddbc-a2f6-4d1e-b8e5-02b204d9d8f5",
+    "/Productsss/Thermostats/Thermostats-Overview.html": "64d3af38-c24d-44d5-8732-69972354c7e5",
+    "/Productsss/Door-Locks/Door-Locks-Overview.html": "84692900-62e5-4adf-84a8-948655845b11",
+    "/Productsss/Product-Overview2.html": "d0ea398c-94e3-4911-87a0-e662ea87411e",
+    "/Specialized-Dealers/": "d1fed166-afda-44c0-aecb-9221a8458bdf",
+    "/Specialized-Dealers/Contact-Your-Dealer/": "e8fcfe5e-7e27-4aa1-964a-9619e567b395",
+    "/About-us/company/": "7b2200f4-3862-4317-a3e9-9531575634b7",
+    "/About-us/services/": "aab0fbe2-9fbf-4a3b-a45e-7b72165eaa3c",
+    "/About-us/TNG-1216-Test/": "cf897c23-c1b3-48af-972c-41aaf428070e",
+    "/Imprint/": "2afd8369-da59-439e-98b2-a2020467bebe",
+    "/Privacy-Policy/": "bec2852d-7a32-4dc0-b96e-010f8257c066",
+    "/Landing-Pages/": "c04a3976-d04f-4e1c-b3a7-c20cf09e5e1c",
+    "/Landing-Pages/Landing-Page-Blueprint.html": "f8f963bd-d5f9-4b02-bfa0-2988de699812",
+    "/en_test/Product_578.html": "10f4c365-c845-49b1-834c-80cef1d268ec"
+  },
+  "structure": [
+    { "id": "5a7cdf48-5031-4fcd-b6c7-99e802d0ce57", "children": [] },
+    {
+      "id": "aa684dc6-2220-4d71-b468-f3e056b0c4f0",
+      "children": [
+        { "id": "0fc7a456-3b3d-4fac-a89f-5a384a910648", "children": [] }
+      ]
+    },
+    {
+      "id": "742901ac-4486-4c61-b939-fc27363374ec",
+      "children": [
+        { "id": "14d1f9d2-2c5f-4aab-9035-9080f56eb9ad", "children": [] },
+        { "id": "80fcf774-cc30-4061-b64f-15959881ab8b", "children": [] },
+        { "id": "3debddbc-a2f6-4d1e-b8e5-02b204d9d8f5", "children": [] },
+        { "id": "64d3af38-c24d-44d5-8732-69972354c7e5", "children": [] },
+        { "id": "84692900-62e5-4adf-84a8-948655845b11", "children": [] }
+      ]
+    },
+    { "id": "d1fed166-afda-44c0-aecb-9221a8458bdf", "children": [] },
+    {
+      "id": "7b2200f4-3862-4317-a3e9-9531575634b7",
+      "children": [
+        { "id": "aab0fbe2-9fbf-4a3b-a45e-7b72165eaa3c", "children": [] },
+        { "id": "c8288c2c-d9d2-498b-af06-2e76a9b3c3ab", "children": [] },
+        { "id": "cf897c23-c1b3-48af-972c-41aaf428070e", "children": [] }
+      ]
+    },
+    { "id": "10f4c365-c845-49b1-834c-80cef1d268ec", "children": [] }
+  ],
+  "pages": { "index": "/Home/" },
+  "meta": {
+    "identifier": {
+      "tenantId": "enterprise-dev-navigationservice",
+      "navigationId": "preview.d8db6f24-0bf8-4f48-be47-5e41d8d427fc",
+      "languageId": "en_GB"
+    }
+  }
+}
