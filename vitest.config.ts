@@ -9,7 +9,7 @@ export default defineConfig({
       imports: [
         "vue",
         {
-          "../../tests/testutils/nuxtMocks": [
+          "/tests/testutils/nuxtMocks": [
             "defineNuxtPlugin",
             "useRuntimeConfig",
             "useAppConfig",
