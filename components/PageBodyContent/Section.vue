@@ -1,9 +1,14 @@
 <template>
-  <component :is="sectionComponent" :data="content.data" />
+  <component
+    :is="sectionComponent"
+    :data-preview-id="content.previewId"
+    data-testid="section"
+    :data="content.data"
+  />
 </template>
 
 <script setup lang="ts">
-import { Section } from "fsxa-api/dist/types";
+import { Section } from "fsxa-api";
 const props = defineProps<{ content: Section }>();
 
 const sectionComponent = computed(() => {

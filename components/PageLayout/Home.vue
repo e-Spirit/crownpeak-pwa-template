@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :data-preview-id="page.previewId">
     <NuxtLayout name="default">
       <template #header>
         <SectionSlider :data="page.data['pt_slider']" />

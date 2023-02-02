@@ -20,6 +20,8 @@ const richtTextElementComponent = computed(() => {
       return resolveComponent("ElementsLink");
     case "block":
       return resolveComponent("ElementsRichText");
+    case "linebreak":
+      return resolveComponent("br");
     default:
       return resolveComponent("unknown");
   }

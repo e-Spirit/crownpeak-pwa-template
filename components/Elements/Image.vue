@@ -1,12 +1,10 @@
 <template>
-  <div>
-    <img :srcset="srcset" :sizes="sizes" />
-  </div>
+  <img :srcset="srcset" :sizes="sizes" :alt="alt" />
 </template>
 
 <script lang="ts" setup>
 import { Image } from "fsxa-api/dist/types";
-const props = defineProps<{ image: Image }>();
+const props = defineProps<{ image: Image; alt?: string }>();
 
 const srcset = computed(() => {
   return Object.values(props.image.resolutions)

@@ -9,7 +9,11 @@
     </div>
 
     <div class="border p-4">
-      <ElementsImage v-if="data.st_picture" :image="data.st_picture" />
+      <ElementsImage
+        v-if="data.st_picture"
+        :image="data.st_picture"
+        :alt="data.st_picture_alt"
+      />
     </div>
   </div>
 </template>
@@ -21,7 +25,7 @@ interface Teaser {
   st_jumbo_headline: string;
   st_kicker: string;
   st_picture?: Image;
-  st_picture_alt: string | null;
+  st_picture_alt?: string;
   st_text: RichTextElement[];
   st_button: {
     data: {

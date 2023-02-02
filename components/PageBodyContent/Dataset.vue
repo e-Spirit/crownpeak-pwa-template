@@ -1,5 +1,10 @@
 <template>
-  <component :is="sectionComponent" :content="content" />
+  <component
+    :is="sectionComponent"
+    :data-preview-id="content.previewId"
+    data-testid="dataset"
+    :content="content"
+  />
 </template>
 
 <script setup lang="ts">

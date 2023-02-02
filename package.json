@@ -26,8 +26,10 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
+    "@faker-js/faker": "^7.6.0",
     "@nuxt/webpack-builder": "^3.0.0",
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
+    "@testing-library/vue": "^6.6.1",
     "autoprefixer": "^10.4.8",
     "commitizen": "^4.2.5",
     "cypress": "^12.1.0",
@@ -39,6 +41,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.3.0",
     "husky": "^8.0.1",
+    "jsdom": "^21.1.0",
     "nuxt": "^3.0.0",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",

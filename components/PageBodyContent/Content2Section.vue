@@ -1,5 +1,5 @@
 <template>
-  <div>content2Section</div>
+  <div data-testid="content2section">content2Section</div>
 </template>
 
 <script setup lang="ts">

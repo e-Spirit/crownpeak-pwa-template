@@ -1,3 +1,38 @@
 <template>
-  <div class="p-4 font-bold bg-green-100">Interesting Facts</div>
+  <div class="p-4 realtive text-white py-20 grid grid-cols-2 gap-4">
+    <div class="absolute inset-0 bg-black bg-opacity-75" style="z-index: -1" />
+    <div class="absolute inset-0 z-0" style="z-index: -2">
+      <ElementsImage
+        class="h-full w-full object-cover"
+        :image="data.st_background_image"
+      />
+    </div>
+
+    <div>
+      <h3>{{ data.st_tagline }}</h3>
+      <h2>{{ data.st_headline }}</h2>
+      <p><ElementsRichText :richtext="data.st_text" /></p>
+    </div>
+
+    <div class="grid grid-cols-3">
+      <div v-for="counter in data.st_counters" :key="counter.id">
+        <div class="text-4xl">{{ counter.data.st_number }}</div>
+        <div>{{ counter.data.st_text }}</div>
+      </div>
+    </div>
+  </div>
 </template>
+
+<script setup lang="ts">
+import { Image, RichTextElement } from "fsxa-api/dist/types";
+
+interface InterestingFacts {
+  st_background_image: Image;
+  st_headline: string;
+  st_tagline: string;
+  st_text: RichTextElement[];
+  st_counters: { id: string; data: { st_number: Number; st_text: string } }[];
+}
+
+defineProps<{ data: InterestingFacts }>();
+</script>

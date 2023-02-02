@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :data-preview-id="page.previewId">
     <NuxtLayout name="default">
       <template #header> <SectionHeader /></template>
       <PageBody

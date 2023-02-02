@@ -1,10 +1,18 @@
 <template>
-  <div>
+  <div :data-preview-id="pageBody.previewId" data-testid="pageBody">
     <div
       v-for="(pageBodyContent, index) in pageBody.children"
       :key="pageBodyContent.type + index"
-      class="my-4"
+      class="my-4 relative group"
+      data-testid="pageBodyChild"
     >
+      <DevOnly>
+        <Dev
+          v-if="devMode"
+          class="hidden group-hover:block"
+          :content="pageBodyContent"
+        />
+      </DevOnly>
       <component
         :is="getComponentFromPageBodyContent(pageBodyContent)"
         :content="pageBodyContent"
@@ -14,7 +22,10 @@
 </template>
 <script setup lang="ts">
 import { PageBody, PageBodyContent } from "fsxa-api/dist/types";
+
 defineProps<{ pageBody: PageBody }>();
+
+const { devMode } = useAppConfig();
 
 function getComponentFromPageBodyContent(pageBodyContent: PageBodyContent) {
   switch (pageBodyContent.type) {
