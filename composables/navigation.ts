@@ -5,7 +5,9 @@ export function useNavigationData() {
 
   const { config: localeConfig, setLocale } = useLocale();
   const { $fsxaApi } = useNuxtApp();
-  const navigationItem = useState<NavigationItem | undefined>("currentPageId");
+  const activeNavigationItem = useState<NavigationItem | undefined>(
+    "activeNavigationItem"
+  );
 
   useAsyncData(
     async () => {
@@ -21,16 +23,16 @@ export function useNavigationData() {
   );
 
   return {
-    navigationItem,
+    activeNavigationItem,
     setActiveNavigationItem: (item: NavigationItem) => {
-      navigationItem.value = item;
+      activeNavigationItem.value = item;
     },
     getNavigationStateFromRoute: async (route: string) => {
       const item = await fetchNavigationItemFromRoute($fsxaApi, route);
       const locale = getLocaleFromNavigationItem(item);
 
       setLocale(locale);
-      navigationItem.value = item;
+      activeNavigationItem.value = item;
     },
     getIndexRoute: async () => {
       if (!navigationData.value) {
@@ -40,7 +42,7 @@ export function useNavigationData() {
         );
       }
 
-      return navigationData?.value?.pages?.index;
+      return navigationData.value?.pages?.index;
     },
     navigationData,
   };

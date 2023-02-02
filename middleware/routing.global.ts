@@ -6,17 +6,21 @@ export default defineNuxtRouteMiddleware(async (to) => {
   } = useLocale();
 
   const route = decodeURIComponent(to.path);
-  const { getNavigationStateFromRoute, navigationItem, getIndexRoute } =
+  const { getNavigationStateFromRoute, activeNavigationItem, getIndexRoute } =
     useNavigationData();
 
   // "/" does not exist in the navigation tree, so we first need to figure out the mapped route and then navigate to it.
   if (route === "/") {
-    return navigateTo(await getIndexRoute());
+    return navigateTo({
+      path: await getIndexRoute(),
+      hash: to.hash,
+      query: to.query,
+    });
   }
 
   try {
     // Deeplink usecase
-    if (!activeLocale || !navigationItem.value) {
+    if (!activeLocale || !activeNavigationItem.value) {
       await getNavigationStateFromRoute(route);
     }
   } catch (_error: unknown) {

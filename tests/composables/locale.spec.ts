@@ -14,7 +14,7 @@ describe("useLocale", () => {
     );
   });
 
-  it("useLocale => setLocale", () => {
+  it("setLocale => set activeLocale in config", () => {
     const { config, setLocale } = useLocale();
 
     setLocale("en_GB");

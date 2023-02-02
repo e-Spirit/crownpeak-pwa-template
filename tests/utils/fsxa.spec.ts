@@ -17,7 +17,7 @@ import content from "../fixtures/content.json";
 
 describe("fsxa utils", () => {
   describe("fetchTopLevelNavigation", () => {
-    it("should call fetchNavigation and pass down locale", async () => {
+    it("call with valid locale => get navigation data, call fsxaApi.fetchNavigation with locale", async () => {
       const {
         provide: { fsxaApi },
       } = setupProxyApi();
@@ -35,15 +35,15 @@ describe("fsxa utils", () => {
   });
 
   describe("getLocaleFromNavigationItem", () => {
-    it("should return the locale from the contentReference", () => {
+    it("call with contentReference => return the locale from the contentReference", () => {
       expect(getLocaleFromNavigationItem(navigationItem)).toBe("en_GB");
     });
 
-    it("should throw an error if no contentReference is present", () => {
+    it("call without contentReference => throw an error", () => {
       expect(() => getLocaleFromNavigationItem({} as any)).toThrow();
     });
 
-    it("should throw an error if no locale is present", () => {
+    it("call with contentReference without locale => throw an error", () => {
       expect(() =>
         getLocaleFromNavigationItem({ contentReference: "foo" } as any)
       ).toThrow();
@@ -51,7 +51,7 @@ describe("fsxa utils", () => {
   });
 
   describe("fetchContentById", () => {
-    it("should call fetchContentById and pass down locale and id", async () => {
+    it("call with valid locale and id => call fsxaApi.fetchElement with locale and id, return element", async () => {
       const {
         provide: { fsxaApi },
       } = setupProxyApi();
@@ -68,7 +68,7 @@ describe("fsxa utils", () => {
   });
 
   describe("fetchDatasetBySeoRoute", () => {
-    it("should call fetchByFilter", async () => {
+    it("call with valid params => call fsxaApi.fetchByFilter with same params, return filtered items", async () => {
       const {
         provide: { fsxaApi },
       } = setupProxyApi();
@@ -89,7 +89,7 @@ describe("fsxa utils", () => {
   });
 
   describe("fetchContentBySeoRoute", () => {
-    it("should return content", async () => {
+    it("call with locale and route => return content", async () => {
       const {
         provide: { fsxaApi },
       } = setupProxyApi();
@@ -107,7 +107,7 @@ describe("fsxa utils", () => {
   });
 
   describe("fetchContentFromNavigationItem", () => {
-    it("should not call fetchDatasetBySeoRoute if not projection", async () => {
+    it("call with data that is not projection => should not call fetchDatasetBySeoRoute (fetchByFilter)", async () => {
       const {
         provide: { fsxaApi },
       } = setupProxyApi();
@@ -122,7 +122,7 @@ describe("fsxa utils", () => {
       expect(fsxaApi.fetchElement).toHaveBeenCalled();
       expect(fsxaApi.fetchByFilter).not.toHaveBeenCalled();
     });
-    it("should call fetchDatasetBySeoRoute if projection", async () => {
+    it("call with projection => call fetchDatasetBySeoRoute", async () => {
       const {
         provide: { fsxaApi },
       } = setupProxyApi();
@@ -148,7 +148,7 @@ describe("fsxa utils", () => {
     });
   });
   describe("fetchNavigationItemFromRoute", () => {
-    it("should return the navigation item", async () => {
+    it("call with valid data => return the navigation item", async () => {
       const {
         provide: { fsxaApi },
       } = setupProxyApi();
@@ -160,7 +160,7 @@ describe("fsxa utils", () => {
       ).toStrictEqual(Object.values(navigationData.idMap)[0]);
     });
 
-    it("should return the index navigation item for /", async () => {
+    it("call with / => return the index navigation item", async () => {
       const {
         provide: { fsxaApi },
       } = setupProxyApi();
@@ -174,7 +174,7 @@ describe("fsxa utils", () => {
       );
     });
 
-    it("should throw if route does not exist", () => {
+    it("call with missing route => throw", () => {
       const {
         provide: { fsxaApi },
       } = setupProxyApi();

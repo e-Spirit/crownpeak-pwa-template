@@ -36,6 +36,4 @@ export function useAsyncData(fun: Function, _options: { watch: any[] }) {
   fun();
 }
 
-export { useLocale };
-
-export { fetchTopLevelNavigation };
+export { useLocale, fetchTopLevelNavigation };
