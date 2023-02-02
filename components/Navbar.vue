@@ -2,8 +2,24 @@
   <div class="border-b py-2">
     <div class="flex items-center container mx-auto">
       <img src="/logo.png" /><span>NAVBAR</span>
-      <ul v-for="navItem of topNavigation" :key="navItem?.id">
+      <ul
+        v-for="navItem of topNavigation"
+        :key="navItem?.id"
+        class="group relative"
+      >
         <InternalLink :nav-item="navItem" />
+
+        <div
+          v-if="getSubNavigation(navItem).length > 0"
+          class="hidden group-hover:block absolute bg-white top-10 left-0 p-2 border"
+        >
+          <ul
+            v-for="subNavItem of getSubNavigation(navItem)"
+            :key="subNavItem?.id"
+          >
+            <InternalLink :nav-item="subNavItem" />
+          </ul>
+        </div>
       </ul>
       <ul v-for="locale of config.allLocales" :key="locale">
         <button
@@ -17,11 +33,6 @@
         </button>
       </ul>
     </div>
-    <div class="flex flex-row container mx-auto items-center">
-      <ul v-for="navItem of subNavigation" :key="navItem?.id">
-        <InternalLink :nav-item="navItem" />
-      </ul>
-    </div>
   </div>
 </template>
 
@@ -29,7 +40,7 @@
 import { NavigationItem } from "fsxa-api";
 
 const { config, setLocale } = useLocale();
-const { navigationData, navigationItem } = useNavigationData();
+const { navigationData } = useNavigationData();
 
 // TODO: Make beautiful
 const topNavigation = computed(() => {
@@ -38,10 +49,10 @@ const topNavigation = computed(() => {
     .filter((e) => e !== undefined) as NavigationItem[];
 });
 // TODO: Make beautiful
-const subNavigation = computed(() => {
+function getSubNavigation(navItem: NavigationItem) {
   return (navigationData?.value?.structure ?? [])
-    .find((item) => item.id === navigationItem?.value?.id)
+    .find((item) => item.id === navItem?.id)
     ?.children?.map((item) => navigationData?.value?.idMap[item.id])
     .filter((e) => e !== undefined) as NavigationItem[];
-});
+}
 </script>
