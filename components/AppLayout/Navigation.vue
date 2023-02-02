@@ -1,15 +1,43 @@
 <template>
-  <div class="p-4 border space-x-4">
-    <nuxtLink to="/4bd4e5af-c55d-4b46-b335-58e284f2f4c6" class="hover:underline"
-      >Standard Page</nuxtLink
+  <div class="border-b py-2 flex">
+    <ul
+      v-for="navItem of topNavigation"
+      :key="navItem?.id"
+      class="group relative"
     >
+      <InternalLink :nav-item="navItem" />
 
-    <nuxtLink to="/510e2b30-91af-42ba-8001-2ec7b3644c4d" class="hover:underline"
-      >Product Category Page</nuxtLink
-    >
-
-    <nuxtLink to="/b1362730-4ee2-4473-bc02-529e47b08e95" class="hover:underline"
-      >Product Detail Page</nuxtLink
-    >
+      <div
+        v-if="getSubNavigation(navItem).length > 0"
+        class="hidden group-hover:block absolute bg-white top-10 left-0 p-2 border"
+      >
+        <ul
+          v-for="subNavItem of getSubNavigation(navItem)"
+          :key="subNavItem?.id"
+        >
+          <InternalLink :nav-item="subNavItem" />
+        </ul>
+      </div>
+    </ul>
   </div>
 </template>
+
+<script setup lang="ts">
+import { NavigationItem } from "fsxa-api";
+
+const { navigationData } = useNavigationData();
+
+// TODO: Make beautiful
+const topNavigation = computed(() => {
+  return (navigationData.value?.structure ?? [])
+    .map((item) => navigationData.value?.idMap[item.id])
+    .filter((e) => e !== undefined) as NavigationItem[];
+});
+// TODO: Make beautiful
+function getSubNavigation(navItem: NavigationItem) {
+  return (navigationData.value?.structure ?? [])
+    .find((item) => item.id === navItem.id)
+    ?.children?.map((item) => navigationData?.value?.idMap[item.id])
+    .filter((e) => e !== undefined) as NavigationItem[];
+}
+</script>

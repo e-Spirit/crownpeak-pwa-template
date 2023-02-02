@@ -1,8 +1,9 @@
 <template>
   <div>
     <div class="font-bold border p-4 bg-red-100">
-      {{ activeImage }} {{ data.data }}
-      <pre>{{ data }}</pre>
+      <!-- {{ activeImage }} {{ data.data }} -->
+      <!-- <pre>{{ data }}</pre> -->
+      Slider
     </div>
   </div>
 </template>
@@ -21,6 +22,4 @@ interface SliderSlide extends Section {
 }
 
 defineProps<{ data: SliderSlide[] }>();
-
-const activeImage = ref(0);
 </script>

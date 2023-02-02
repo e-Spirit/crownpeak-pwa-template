@@ -3,7 +3,7 @@
     <div class="flex items-center container mx-auto">
       <NuxtLink to="/"><img src="/logo.png" /></NuxtLink>
       <div class="flex ml-auto">
-        <AppLayoutNavigation class="hidden md:block" />
+        <AppLayoutNavigation class="hidden md:flex" />
         <AppLayoutMobileNavigation v-if="mobileNavigationVisible" />
 
         <AppLayoutLanguageSwitch />
