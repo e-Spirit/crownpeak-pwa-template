@@ -3,20 +3,10 @@
 </template>
 
 <script setup lang="ts">
-import { Page } from "fsxa-api/dist/types";
-
-const {
-  params: { slug },
-} = useRoute();
-const { $fsxaApi } = useNuxtApp();
-const id = Array.isArray(slug) ? slug.join("/") : slug;
-const page = await $fsxaApi.fetchElement<Page>({
-  locale: "de_DE",
-  id: id === "" ? "c8a158a3-2ba3-427c-a7e4-7d41d9844464" : id,
-});
+const { data: page } = useContent();
 
 const pageLayoutComponent = computed(() => {
-  switch (page.layout) {
+  switch (page.value?.layout) {
     case "homepage":
       return resolveComponent("PageLayoutHome");
     case "standard":
@@ -32,6 +22,6 @@ definePageMeta({
 
 // meta tags
 useHead({
-  title: page.data["pt_title"],
+  title: page.value?.data["pt_title"],
 });
 </script>

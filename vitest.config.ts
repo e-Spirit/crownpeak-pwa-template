@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 import AutoImport from "unplugin-auto-import/vite";
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import Vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
@@ -13,6 +13,11 @@ export default defineConfig({
             "defineNuxtPlugin",
             "useRuntimeConfig",
             "useAppConfig",
+            "useState",
+            "useNuxtApp",
+            "useLocale",
+            "useAsyncData",
+            "fetchTopLevelNavigation",
           ],
         },
       ],
