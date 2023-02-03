@@ -8,6 +8,7 @@ import Dataset from "../../components/PageBodyContent/Dataset.vue";
 import Content2Section from "../../components/PageBodyContent/Content2Section.vue";
 
 import Slider from "../../components/Section/Slider.vue";
+import Header from "../../components/Section/Header.vue";
 
 import Unknown from "../../components/Unknown.vue";
 import Dev from "../../components/Dev.vue";
@@ -25,6 +26,7 @@ export const renderConfig = {
       PageBodyContentContent2Section: Content2Section,
 
       SectionSlider: Slider,
+      SectionHeader: Header,
 
       Unknown,
       Dev,
