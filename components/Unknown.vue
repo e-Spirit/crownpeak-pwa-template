@@ -1,11 +1,18 @@
 <template>
-  <div class="bg-red-50 border text-red-500 font-bold p-4">
-    Unkown Component: {{ componentType }}
-  </div>
+  <DevOnly>
+    <div
+      class="bg-red-50 border text-red-500 font-bold p-4"
+      data-testid="unknown"
+    >
+      Unkown Component: {{ componentType }}
+    </div>
+  </DevOnly>
 </template>
 <script lang="ts" setup>
-import { Section, Dataset, Content2Section } from "fsxa-api/dist/types";
-const props = defineProps<{ content?: Section | Dataset | Content2Section }>();
+import { Section, Dataset, Content2Section, Page } from "fsxa-api/dist/types";
+const props = defineProps<{
+  content?: Section | Dataset | Content2Section | Page;
+}>();
 
 const componentType = computed(() => {
   switch (props.content?.type) {

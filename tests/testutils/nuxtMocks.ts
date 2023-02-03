@@ -3,6 +3,8 @@ import runtimeConfig from "../fixtures/runtimeConfig.json";
 import toplevelDE from "../fixtures/toplevelNavigation_de_DE.json";
 import toplevelEN from "../fixtures/toplevelNavigation_en_GB.json";
 import { useLocale } from "../../composables/locale";
+import { useContent } from "../../composables/content";
+import { useNavigationData } from "../../composables/navigation";
 import { fetchTopLevelNavigation } from "../../utils/fsxa";
 
 export function defineNuxtPlugin(fun: Function) {
@@ -36,4 +38,8 @@ export function useAsyncData(fun: Function, _options: { watch: any[] }) {
   fun();
 }
 
-export { useLocale, fetchTopLevelNavigation };
+export function definePageMeta() {}
+
+export function useHead() {}
+
+export { useLocale, fetchTopLevelNavigation, useContent, useNavigationData };

@@ -2,6 +2,9 @@
 import AutoImport from "unplugin-auto-import/vite";
 import { defineConfig } from "vitest/config";
 import Vue from "@vitejs/plugin-vue";
+import { configure } from "@testing-library/vue";
+
+configure({});
 
 export default defineConfig({
   plugins: [
@@ -14,7 +17,11 @@ export default defineConfig({
             "useRuntimeConfig",
             "useAppConfig",
             "useState",
+            "useContent",
+            "useNavigationData",
             "useNuxtApp",
+            "useHead",
+            "definePageMeta",
             "useLocale",
             "useAsyncData",
             "fetchTopLevelNavigation",

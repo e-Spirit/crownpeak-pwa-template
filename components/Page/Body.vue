@@ -6,13 +6,11 @@
       class="my-4 relative group"
       data-testid="pageBodyChild"
     >
-      <DevOnly>
-        <Dev
-          v-if="devMode"
-          class="hidden group-hover:block"
-          :content="pageBodyContent"
-        />
-      </DevOnly>
+      <Dev
+        v-if="devMode"
+        class="hidden group-hover:block"
+        :content="pageBodyContent"
+      />
       <component
         :is="getComponentFromPageBodyContent(pageBodyContent)"
         :content="pageBodyContent"
