@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div data-testid="sliderSection">
     <div class="font-bold border p-4 bg-red-100">
       <!-- {{ activeImage }} {{ data.data }} -->
       <!-- <pre>{{ data }}</pre> -->

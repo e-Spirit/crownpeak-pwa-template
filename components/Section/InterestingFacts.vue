@@ -1,7 +1,18 @@
 <template>
-  <div class="p-4 realtive text-white py-20 grid grid-cols-2 gap-4">
-    <div class="absolute inset-0 bg-black bg-opacity-75" style="z-index: -1" />
-    <div class="absolute inset-0 z-0" style="z-index: -2">
+  <div
+    class="p-4 realtive text-white py-20 grid grid-cols-2 gap-4"
+    data-testid="interestingFactsSection"
+  >
+    <div
+      v-if="data.st_background_image"
+      class="absolute inset-0 bg-black bg-opacity-75"
+      style="z-index: -1"
+    />
+    <div
+      v-if="data.st_background_image"
+      class="absolute inset-0 z-0"
+      style="z-index: -2"
+    >
       <ElementsImage
         class="h-full w-full object-cover"
         :image="data.st_background_image"
@@ -11,7 +22,7 @@
     <div>
       <h3>{{ data.st_tagline }}</h3>
       <h2>{{ data.st_headline }}</h2>
-      <p><ElementsRichText :richtext="data.st_text" /></p>
+      <p v-if="data.st_text"><ElementsRichText :richtext="data.st_text" /></p>
     </div>
 
     <div class="grid grid-cols-3">

@@ -1,10 +1,11 @@
 <template>
-  <component
-    :is="sectionComponent"
-    :data-preview-id="content.previewId"
-    data-testid="dataset"
-    :content="content"
-  />
+  <div data-testid="dataset">
+    <component
+      :is="sectionComponent"
+      :data-preview-id="content.previewId"
+      :content="content"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">

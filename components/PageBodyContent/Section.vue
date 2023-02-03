@@ -1,10 +1,11 @@
 <template>
-  <component
-    :is="sectionComponent"
-    :data-preview-id="content.previewId"
-    data-testid="section"
-    :data="content.data"
-  />
+  <div data-testid="section">
+    <component
+      :is="sectionComponent"
+      :data-preview-id="content.previewId"
+      :data="content.data"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -15,10 +16,6 @@ const sectionComponent = computed(() => {
   switch (props.content.sectionType) {
     case "interesting_facts":
       return resolveComponent("SectionInterestingFacts");
-    case "teaser":
-      return resolveComponent("SectionTeaser");
-    case "slider":
-      return resolveComponent("SectionSlider");
     case "products.category_products":
       return resolveComponent("SectionProductCategory");
     case "products.product":

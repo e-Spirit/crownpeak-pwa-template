@@ -2,14 +2,10 @@
  * @vitest-environment jsdom
  */
 import { it, describe, beforeEach, vi, expect } from "vitest";
-
 import { render, cleanup } from "@testing-library/vue";
-
 import SlugPage from "../../pages/[...slug].vue";
-
 import { createPage } from "../testutils/createPage";
 import { renderConfig } from "../testutils/renderConfig";
-
 import * as content from "../../composables/content";
 
 describe("slug page", () => {

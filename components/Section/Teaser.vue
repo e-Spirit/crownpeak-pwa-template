@@ -1,14 +1,19 @@
 <template>
-  <div class="border p-4 bg-teal-100 grid grid-cols-2 gap-4">
+  <div
+    class="border p-4 bg-teal-100 grid grid-cols-2 gap-4"
+    data-testid="teaserSection"
+  >
     <div class="col-span-2 font-bold">Teaser</div>
 
     <div class="border p-4 flex flex-col space-y-4">
       <h3>{{ data.st_kicker }}</h3>
-      <h2><ElementsRichText :richtext="data.st_headline" /></h2>
-      <p><ElementsRichText :richtext="data.st_text" /></p>
+      <h2 v-if="data.st_headline">
+        <ElementsRichText :richtext="data.st_headline" />
+      </h2>
+      <p v-if="data.st_text"><ElementsRichText :richtext="data.st_text" /></p>
     </div>
 
-    <div class="border p-4">
+    <div v-if="data.st_picture" class="border p-4">
       <ElementsImage
         v-if="data.st_picture"
         :image="data.st_picture"
