@@ -14,6 +14,6 @@
 </template>
 
 <script setup lang="ts">
-import { Page } from "fsxa-api/dist/types";
+import { Page } from "fsxa-api";
 defineProps<{ page: Page }>();
 </script>

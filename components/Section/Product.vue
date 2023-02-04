@@ -5,6 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import { DataEntries } from "fsxa-api/dist/types";
+import { DataEntries } from "fsxa-api";
 defineProps<{ data: DataEntries }>();
 </script>

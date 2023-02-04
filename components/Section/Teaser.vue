@@ -23,7 +23,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Image, RichTextElement } from "fsxa-api/dist/types";
+import { Image, RichTextElement } from "fsxa-api";
 
 interface Teaser {
   st_headline: RichTextElement[];

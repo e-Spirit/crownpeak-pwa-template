@@ -31,7 +31,7 @@ export default defineNuxtConfig({
     // TODO: remove this block if it works without
     // build: {
     //   rollupOptions: {
-    //     external: ["fsxa-api/dist/types"],
+    //     external: ["fsxa-api"],
     //   },
     // },
   },

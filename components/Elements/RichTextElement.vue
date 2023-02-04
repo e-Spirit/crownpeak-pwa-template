@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-import { RichTextElement } from "fsxa-api/dist/types";
+import { RichTextElement } from "fsxa-api";
 // TODO: remove all data any types
 const props = defineProps<{ richTextElement: RichTextElement }>();
 
