@@ -1,4 +1,4 @@
-import { LogLevel } from "fsxa-api/dist/types";
+import { LogLevel } from "fsxa-api";
 
 export interface FSXAFileConfig {
   defaultLocale: string;

@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { Image, RichTextElement, Section } from "fsxa-api/dist/types";
+import { Image, RichTextElement, Section } from "fsxa-api";
 
 interface SliderSlide extends Section {
   data: {

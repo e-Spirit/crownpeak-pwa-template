@@ -1,4 +1,4 @@
-import { PageBody } from "fsxa-api/dist/types";
+import { PageBody } from "fsxa-api";
 import { faker } from "@faker-js/faker";
 
 export function createPageBody(optionalPageBody?: Partial<PageBody>): PageBody {

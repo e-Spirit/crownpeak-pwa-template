@@ -1,4 +1,4 @@
-import { Dataset } from "fsxa-api/dist/types";
+import { Dataset } from "fsxa-api";
 import { faker } from "@faker-js/faker";
 
 export function createDataset(optionalDataset?: Partial<Dataset>): Dataset {

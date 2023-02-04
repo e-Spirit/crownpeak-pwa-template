@@ -5,14 +5,9 @@
   >
     <div
       v-if="data.st_background_image"
-      class="absolute inset-0 bg-black bg-opacity-75"
-      style="z-index: -1"
+      class="absolute inset-0 bg-black bg-opacity-75 -z-10"
     />
-    <div
-      v-if="data.st_background_image"
-      class="absolute inset-0 z-0"
-      style="z-index: -2"
-    >
+    <div v-if="data.st_background_image" class="absolute inset-0 -z-20">
       <ElementsImage
         class="h-full w-full object-cover"
         :image="data.st_background_image"
@@ -35,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { Image, RichTextElement } from "fsxa-api/dist/types";
+import { Image, RichTextElement } from "fsxa-api";
 
 interface InterestingFacts {
   st_background_image: Image;

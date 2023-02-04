@@ -1,5 +1,5 @@
 import { it, expect, describe, vi } from "vitest";
-import { NavigationItem } from "fsxa-api/dist/types";
+import { NavigationItem } from "fsxa-api";
 import setupProxyApi from "../../plugins/2.setupProxyApi";
 import {
   fetchTopLevelNavigation,

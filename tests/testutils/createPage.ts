@@ -1,4 +1,4 @@
-import { Page } from "fsxa-api/dist/types";
+import { Page } from "fsxa-api";
 import { faker } from "@faker-js/faker";
 
 export function createPage(optionalPage?: Partial<Page>): Page {

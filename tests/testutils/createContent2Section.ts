@@ -1,4 +1,4 @@
-import { Content2Section } from "fsxa-api/dist/types";
+import { Content2Section } from "fsxa-api";
 import { faker } from "@faker-js/faker";
 
 export function createContent2Section(

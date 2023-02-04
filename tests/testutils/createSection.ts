@@ -1,4 +1,4 @@
-import { Section } from "fsxa-api/dist/types";
+import { Section } from "fsxa-api";
 import { faker } from "@faker-js/faker";
 
 export function createSection(optionalSection?: Partial<Section>): Section {

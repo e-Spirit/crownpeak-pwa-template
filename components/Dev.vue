@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { PageBodyContent } from "fsxa-api/dist/types";
+import { PageBodyContent } from "fsxa-api";
 defineProps<{ content: PageBodyContent }>();
 
 const devComponentVisible = ref(false);

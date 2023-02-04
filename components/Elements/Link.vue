@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { RichTextElement, Link } from "fsxa-api/dist/types";
+import { RichTextElement, Link } from "fsxa-api";
 
 interface RichTextLink {
   type: "link";
