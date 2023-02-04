@@ -1,5 +1,5 @@
 <template>
-  <div class="border-b py-2 flex">
+  <div class="flex border-b py-2">
     <ul
       v-for="navItem of topNavigation"
       :key="navItem?.id"
@@ -9,7 +9,7 @@
 
       <div
         v-if="getSubNavigation(navItem).length > 0"
-        class="hidden group-hover:block absolute bg-white top-10 left-0 p-2 border"
+        class="absolute top-10 left-0 hidden border bg-white p-2 group-hover:block"
       >
         <ul
           v-for="subNavItem of getSubNavigation(navItem)"

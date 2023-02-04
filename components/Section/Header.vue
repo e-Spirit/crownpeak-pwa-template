@@ -1,5 +1,5 @@
 <template>
-  <div class="border p-4 font-bold bg-red-100" data-testid="headerSection">
+  <div class="border bg-red-100 p-4 font-bold" data-testid="headerSection">
     Page Header
   </div>
 </template>

@@ -3,7 +3,7 @@
     <div class="absolute">
       <div>
         <button
-          class="border p-2 bg-white hover:bg-blue-200"
+          class="border bg-white p-2 hover:bg-blue-200"
           @click="devComponentVisible = !devComponentVisible"
         >
           Show Dev
@@ -12,19 +12,19 @@
 
       <div
         v-if="devComponentVisible"
-        class="fixed h-96 top-10 w-full max-w-lg mx-auto border shadow z-20"
+        class="fixed top-10 z-20 mx-auto h-96 w-full max-w-lg border shadow"
       >
         <div class="bg-white p-4">
           <button @click="devComponentVisible = false">Close</button>
         </div>
-        <div class="bg-gray-800 text-white p-4 overflow-scroll h-96">
+        <div class="h-96 overflow-scroll bg-gray-800 p-4 text-white">
           <pre>{{ content }}</pre>
         </div>
       </div>
 
       <div
         v-if="devComponentVisible"
-        class="fixed inset-0 bg-black bg-opacity-50 z-10"
+        class="fixed inset-0 z-10 bg-black bg-opacity-50"
         @click="devComponentVisible = false"
       ></div>
 

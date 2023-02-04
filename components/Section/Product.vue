@@ -1,5 +1,5 @@
 <template>
-  <div class="font-bold border p-4 bg-teal-200" data-testid="productSection">
+  <div class="border bg-teal-200 p-4 font-bold" data-testid="productSection">
     Product Detail
   </div>
 </template>

@@ -1,11 +1,11 @@
 <template>
   <div
-    class="border p-4 bg-teal-100 grid grid-cols-2 gap-4"
+    class="grid grid-cols-2 gap-4 border bg-teal-100 p-4"
     data-testid="teaserSection"
   >
     <div class="col-span-2 font-bold">Teaser</div>
 
-    <div class="border p-4 flex flex-col space-y-4">
+    <div class="flex flex-col space-y-4 border p-4">
       <h3>{{ data.st_kicker }}</h3>
       <h2 v-if="data.st_headline">
         <ElementsRichText :richtext="data.st_headline" />

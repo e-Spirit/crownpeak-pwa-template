@@ -1,8 +1,8 @@
 <template>
-  <div class="sticky top-0 bg-white border-b py-2">
-    <div class="flex items-center container mx-auto">
+  <div class="sticky top-0 border-b bg-white py-2">
+    <div class="container mx-auto flex items-center">
       <NuxtLink to="/"><img src="/logo.png" /></NuxtLink>
-      <div class="flex ml-auto">
+      <div class="ml-auto flex">
         <AppLayoutNavigation class="hidden md:flex" />
         <AppLayoutMobileNavigation v-if="mobileNavigationVisible" />
 
@@ -17,7 +17,7 @@
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="w-6 h-6"
+            class="h-6 w-6"
           >
             <path
               stroke-linecap="round"
