@@ -20,6 +20,8 @@ const sectionComponent = computed(() => {
       return resolveComponent("SectionProductCategory");
     case "products.product":
       return resolveComponent("SectionProduct");
+    case "teaser":
+      return resolveComponent("SectionTeaser");
     default:
       return resolveComponent("Unknown");
   }
