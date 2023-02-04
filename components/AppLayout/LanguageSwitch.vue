@@ -1,12 +1,12 @@
 <template>
-  <div class="font-bold p-4 border flex">
+  <div class="flex border p-4 font-bold">
     <ul v-for="locale of config.allLocales" :key="locale">
       <button
         class="p-3"
         :class="locale === config.activeLocale ? 'bg-green-300' : 'bg-gray-50'"
         @click="setLocale(locale)"
       >
-        <span class="font-bold text-lg">{{ locale }}</span>
+        <span class="text-lg font-bold">{{ locale }}</span>
       </button>
     </ul>
   </div>

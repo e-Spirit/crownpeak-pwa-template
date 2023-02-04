@@ -1,11 +1,11 @@
 <template>
   <div
-    class="p-4 relative text-white py-20 grid grid-cols-2 gap-4"
+    class="realtive grid grid-cols-2 gap-4 p-4 py-20 text-white"
     data-testid="interestingFactsSection"
   >
     <div
       v-if="data.st_background_image"
-      class="absolute inset-0 bg-black bg-opacity-75 -z-10"
+      class="absolute inset-0 -z-10 bg-black bg-opacity-75"
     />
     <div v-if="data.st_background_image" class="absolute inset-0 -z-20">
       <ElementsImage

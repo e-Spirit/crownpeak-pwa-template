@@ -1,6 +1,6 @@
 <template>
   <div data-testid="sliderSection">
-    <div class="font-bold border p-4 bg-red-100">
+    <div class="border bg-red-100 p-4 font-bold">
       <!-- {{ activeImage }} {{ data.data }} -->
       <!-- <pre>{{ data }}</pre> -->
       Slider

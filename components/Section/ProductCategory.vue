@@ -1,6 +1,6 @@
 <template>
   <div
-    class="font-bold border p-4 bg-orange-200"
+    class="border bg-orange-200 p-4 font-bold"
     data-testid="productCategorySection"
   >
     Product Category

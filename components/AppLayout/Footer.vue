@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full border-t py-10 bg-blue-100">
+  <div class="w-full border-t bg-blue-100 py-10">
     <div class="container mx-auto">Footer</div>
   </div>
 </template>

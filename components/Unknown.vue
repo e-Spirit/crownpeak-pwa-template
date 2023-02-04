@@ -1,7 +1,7 @@
 <template>
   <DevOnly>
     <div
-      class="bg-red-50 border text-red-500 font-bold p-4"
+      class="border bg-red-50 p-4 font-bold text-red-500"
       data-testid="unknown"
     >
       Unkown Component: {{ componentType }}

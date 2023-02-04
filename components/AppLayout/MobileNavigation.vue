@@ -1,3 +1,3 @@
 <template>
-  <div class="font-bold border p-4">Mobile Navigation</div>
+  <div class="border p-4 font-bold">Mobile Navigation</div>
 </template>
