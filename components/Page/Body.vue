@@ -3,7 +3,7 @@
     <div
       v-for="(pageBodyContent, index) in pageBody.children"
       :key="pageBodyContent.type + index"
-      class="my-4 relative group"
+      class="my-4 group"
       data-testid="pageBodyChild"
     >
       <Dev
