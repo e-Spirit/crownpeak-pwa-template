@@ -1,3 +1,11 @@
+import DefaultLayout from "../../layouts/default.vue";
+
+import Footer from "../../components/AppLayout/Footer.vue";
+import LayoutHeader from "../../components/AppLayout/Header.vue";
+import LanguageSwitch from "../../components/AppLayout/LanguageSwitch.vue";
+import Navigation from "../../components/AppLayout/Navigation.vue";
+import MobileNavigation from "../../components/AppLayout/MobileNavigation.vue";
+
 import HomePageLayout from "../../components/PageLayout/Home.vue";
 import StandardPageLayout from "../../components/PageLayout/Standard.vue";
 
@@ -20,6 +28,8 @@ import RichTextElement from "../../components/Elements/RichTextElement.vue";
 import Button from "../../components/Elements/Button.vue";
 import Link from "../../components/Elements/Link.vue";
 import Text from "../../components/Elements/Text.vue";
+
+import InternalLink from "../../components/InternalLink.vue";
 
 import Unknown from "../../components/Unknown.vue";
 import Dev from "../../components/Dev.vue";
@@ -49,6 +59,16 @@ export const renderConfig = {
       ElementsButton: Button,
       ElementsLink: Link,
       ElementsText: Text,
+
+      NuxtLayout: DefaultLayout,
+
+      AppLayoutFooter: Footer,
+      AppLayoutHeader: LayoutHeader,
+      AppLayoutNavigation: Navigation,
+      AppLayoutMobileNavigation: MobileNavigation,
+      AppLayoutLanguageSwitch: LanguageSwitch,
+
+      InternalLink,
 
       Unknown,
       Dev,
