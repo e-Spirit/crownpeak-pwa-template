@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col min-h-screen">
+  <div class="flex min-h-screen flex-col">
     <Navbar />
     <div class="container mx-auto flex-grow">
       <slot />
