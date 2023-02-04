@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col min-h-screen">
-    <AppLayoutHeader />
+  <div class="flex min-h-screen flex-col">
+    <Navbar />
     <div class="container mx-auto flex-grow">
       <div>
         <slot name="header"> Default header content </slot>
