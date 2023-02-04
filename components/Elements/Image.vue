@@ -1,22 +1,21 @@
 <template>
-  <img :srcset="srcset" :sizes="sizes" :alt="alt" />
+  <img :srcset="srcSet" :sizes="sizes" :alt="alt" />
 </template>
 
 <script lang="ts" setup>
 import { Image } from "fsxa-api";
 const props = defineProps<{ image: Image; alt?: string }>();
 
-const srcset = computed(() => {
+const srcSet = computed(() => {
   return Object.values(props.image.resolutions)
-    .map((resoloution) => `${resoloution.url} ${resoloution.width}w`)
+    .map((resolution) => `${resolution.url} ${resolution.width}w`)
     .join(", ");
 });
 
 const sizes = computed(() => {
   return Object.values(props.image.resolutions)
     .map(
-      (resoloution) =>
-        `(max-width: ${resoloution.width}px) ${resoloution.width}w`
+      (resolution) => `(max-width: ${resolution.width}px) ${resolution.width}w`
     )
     .join(", ");
 });
