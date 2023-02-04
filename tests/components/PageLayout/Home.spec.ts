@@ -23,8 +23,6 @@ describe("HomePageLayout", () => {
       props: { page },
     });
 
-    // TODO: fix NuxtLayout
-
     expect(getByTestId("sliderSection")).toBeTruthy();
     expect(getByTestId("pageBody")).toBeTruthy();
 

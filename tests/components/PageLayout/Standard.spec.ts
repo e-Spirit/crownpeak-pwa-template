@@ -21,8 +21,6 @@ describe("StandardPageLayout", () => {
       props: { page },
     });
 
-    // TODO: fix NuxtLayout
-
     expect(getByTestId("headerSection")).toBeTruthy();
     expect(getByTestId("pageBody")).toBeTruthy();
     expect(getByTestId("layoutHeader")).toBeTruthy();
