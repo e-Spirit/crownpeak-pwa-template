@@ -1,5 +1,5 @@
 <template>
-  <div class="flex border-b py-2">
+  <div class="flex border-b py-2" data-testid="navigation">
     <ul
       v-for="navItem of topNavigation"
       :key="navItem?.id"

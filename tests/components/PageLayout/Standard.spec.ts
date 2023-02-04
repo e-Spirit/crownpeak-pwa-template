@@ -25,5 +25,9 @@ describe("StandardPageLayout", () => {
 
     expect(getByTestId("headerSection")).toBeTruthy();
     expect(getByTestId("pageBody")).toBeTruthy();
+    expect(getByTestId("layoutHeader")).toBeTruthy();
+    expect(getByTestId("footer")).toBeTruthy();
+    expect(getByTestId("navigation")).toBeTruthy();
+    expect(getByTestId("languageSwitch")).toBeTruthy();
   });
 });

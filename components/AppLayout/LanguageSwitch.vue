@@ -1,5 +1,5 @@
 <template>
-  <div class="flex border p-4 font-bold">
+  <div class="flex border p-4 font-bold" data-testid="languageSwitch">
     <ul v-for="locale of config.allLocales" :key="locale">
       <button
         class="p-3"
