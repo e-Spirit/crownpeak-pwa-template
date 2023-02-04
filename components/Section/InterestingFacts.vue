@@ -1,6 +1,6 @@
 <template>
   <div
-    class="realtive grid grid-cols-2 gap-4 p-4 py-20 text-white"
+    class="relative grid grid-cols-2 gap-4 p-4 py-20 text-white"
     data-testid="interestingFactsSection"
   >
     <div
