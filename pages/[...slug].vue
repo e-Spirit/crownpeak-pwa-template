@@ -1,7 +1,11 @@
 <template>
   <div>
     <component :is="pageLayoutComponent" :page="page" />
-    <Dev v-if="page" :content="page" />
+    <DevOnly>
+      <div class="fixed top-0 right-0 z-30">
+        <Dev v-if="page" :content="page" />
+      </div>
+    </DevOnly>
   </div>
 </template>
 
