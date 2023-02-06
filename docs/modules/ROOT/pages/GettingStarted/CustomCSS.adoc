@@ -1,0 +1,48 @@
+= Custom CSS
+
+There are a few ways to include your own CSS.
+In this chapter a short overview will be provided.
+
+. <<Using TailwindCSS>>
+. <<Global CSS>>
+. <<Using Style in SFC components>>
+
+== Using TailwindCSS
+
+https://tailwindcss.com/[TailwindCSS] is included by default in the FSXA-PWA.
+TailwindCSS is a utility-first framework to provide a lot of classes to design the website directly in the markup without the need to write additional classes.
+
+== Global CSS
+
+You can import one or more CSS files globally. These are then available in every component.
+To include a CSS file, follow the instructions from the official https://nuxt.com/docs/getting-started/assets/[Nuxt Documentation]
+
+
+== Using Style in SFC components
+
+When using vue single file components you simply add a style tag to your file and declare your CSS-Classes there. To make the classes only available within the scope of your component add the scoped keyword to the style tag. You can also define classes here that are made up from tailwinds utility classes.
+
+[source,xml]
+----
+<template>
+  <div>
+    <h1 class="headline">{{this.payload.st_title}}</h1>
+    <h2 class="tailwindHeadline">{{this.payload.st_title}}</h2>
+  </div>
+</template>
+<script>
+...
+</script>
+<style scoped>
+.headline {
+  font-size: 2rem;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: coral;
+}
+
+.tailwindHeadline {
+  @apply text-xl font-bold;
+}
+</style>
+----
