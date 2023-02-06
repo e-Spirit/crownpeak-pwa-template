@@ -1,5 +1,8 @@
 <template>
-  <component :is="pageLayoutComponent" :page="page" />
+  <div>
+    <component :is="pageLayoutComponent" :page="page" />
+    <Dev v-if="page" :content="page" />
+  </div>
 </template>
 
 <script setup lang="ts">

@@ -1,6 +1,7 @@
 <template>
   <div data-testid="sliderSection">
-    <div class="border bg-red-100 p-4 font-bold">
+    <div class="relative border bg-red-100 p-4 font-bold">
+      <Dev v-if="data" :content="data" />
       <!-- {{ activeImage }} {{ data.data }} -->
       <!-- <pre>{{ data }}</pre> -->
       Slider

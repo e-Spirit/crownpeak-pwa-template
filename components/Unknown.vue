@@ -1,9 +1,10 @@
 <template>
   <DevOnly>
     <div
-      class="border bg-red-50 p-4 font-bold text-red-500"
+      class="relative border bg-red-50 p-4 font-bold text-red-500"
       data-testid="unknown"
     >
+      <Dev v-if="content" :content="content" />
       Unkown Component: {{ componentType }}
     </div>
   </DevOnly>
