@@ -1,7 +1,7 @@
 <template>
   <div :data-preview-id="page.previewId" data-testid="standardPageLayout">
     <NuxtLayout name="default">
-      <template #header> <SectionHeader /></template>
+      <template #header> <SectionHeader :data="page.data" /></template>
       <PageBody
         v-for="pageBody in page.children"
         :key="pageBody.previewId"
