@@ -15,7 +15,7 @@
 
       <div
         v-if="devComponentVisible"
-        class="fixed top-1/2 left-1/2 z-20 h-[80%] w-full max-w-4xl -translate-y-1/2 -translate-x-1/2 transform border shadow"
+        class="fixed top-1/2 left-1/2 z-20 h-4/5 w-full max-w-4xl -translate-y-1/2 -translate-x-1/2 transform border shadow"
       >
         <div class="bg-white p-4">
           <button @click="devComponentVisible = false">Close</button>
