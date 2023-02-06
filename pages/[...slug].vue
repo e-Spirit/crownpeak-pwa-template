@@ -1,5 +1,12 @@
 <template>
-  <component :is="pageLayoutComponent" :page="page" />
+  <div>
+    <component :is="pageLayoutComponent" :page="page" />
+    <DevOnly>
+      <div class="fixed top-0 right-0 z-30">
+        <Dev v-if="page" :content="page" />
+      </div>
+    </DevOnly>
+  </div>
 </template>
 
 <script setup lang="ts">

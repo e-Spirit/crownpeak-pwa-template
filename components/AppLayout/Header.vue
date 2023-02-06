@@ -1,5 +1,8 @@
 <template>
-  <div class="sticky top-0 border-b bg-white py-2" data-testid="layoutHeader">
+  <div
+    class="sticky top-0 z-30 border-b bg-white py-2"
+    data-testid="layoutHeader"
+  >
     <div class="container mx-auto flex items-center">
       <NuxtLink to="/"><img src="/logo.png" /></NuxtLink>
       <div class="ml-auto flex">
