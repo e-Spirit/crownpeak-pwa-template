@@ -4,9 +4,6 @@ on:
   pull_request:
     branches: [main]
 
-env:
-  BASE_URL: ${{ secrets.BASE_URL }}
-
 jobs:
   validation:
     runs-on: ubuntu-latest
@@ -35,8 +32,6 @@ jobs:
 
       - name: Run tests
         run: npm run test
-        env:
-          CYPRESS_cyBaseUrl: ${{ secrets.CY_BASE_URL }}
 
       - name: Release Dry Run
         run: npm run semantic-release:dry-run
