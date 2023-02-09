@@ -28,7 +28,7 @@ Developer documentation for the FSXA-PWA's vue components is part of the link:ht
 .. xref:docs/modules/ROOT/pages/GettingStarted/UseExistingProject.adoc[Using an Existing Project With the FSXA PWA]
 . xref:docs/modules/ROOT/pages/Configuration.adoc[Configuration]
 .. xref:docs/modules/ROOT/pages/Configuration.adoc#env-file[.env File]
-.. xref:docs/modules/ROOT/pages/Configuration.adoc#fsxa-config[fsxa.config]
+.. xref:docs/modules/ROOT/pages/Configuration.adoc#app-config[app.config]
 . xref:docs/modules/ROOT/pages/VuexStore.adoc[The Vuex Store]
 . xref:docs/modules/ROOT/pages/DevMode.adoc[DevMode]
 . xref:docs/modules/ROOT/pages/Routing.adoc[Routing]

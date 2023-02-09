@@ -6,6 +6,7 @@ export interface FSXAFileConfig {
   devMode?: boolean;
   contentMode?: "preview" | "release";
   snapUrl?: string;
+  customSnapHooks?: boolean;
   maxReferenceDepth?: number;
   remotes?: Record<
     string,

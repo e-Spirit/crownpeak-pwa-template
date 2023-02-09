@@ -50,10 +50,11 @@ export default defineNuxtConfig({
       projectId: process.env["FSXA_PROJECT_ID"],
       tenantId: process.env["FSXA_TENANT_ID"],
       remotes: process.env["FSXA_REMOTES"],
-      maxReferenceDepth: process.env["MAX_REFERENCE_DEPTH"],
+      maxReferenceDepth: process.env["FSXA_MAX_REFERENCE_DEPTH"],
       mode: process.env["FSXA_MODE"],
       devMode: process.env["FSXA_DEV_MODE"],
       snapUrl: process.env["FSXA_SNAP_URL"],
+      enableEventStream: process.env["FSXA_ENABLE_EVENT_STREAM"],
     },
   },
 });
