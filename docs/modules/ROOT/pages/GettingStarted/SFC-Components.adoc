@@ -3,7 +3,7 @@
 :moduledir: ../..
 :imagesdir: {moduledir}/images
 
-In this section we will be exploring how to go about implementing a Teaser section using the classic vue single file components.
+In this section we will be exploring how to go about implementing a Teaser section using the classic Vue single file components.
 
 When you go to the home page in the development mode, you will see that one component is displayed as unknown.
 

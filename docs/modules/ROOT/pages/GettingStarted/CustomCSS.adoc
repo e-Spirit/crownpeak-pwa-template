@@ -1,48 +1,11 @@
 = Custom CSS
 
-There are a few ways to include your own CSS.
-In this chapter a short overview will be provided.
+This example project is using https://tailwindcss.com/[TailwindCSS]. TailwindCSS is a utility-first framework to provide a lot of utility classes to design the website directly in the markup without the need to write additional classes. For more information on how to use tailwind please refer to the offical documentation linked above.
 
-. <<Using TailwindCSS>>
-. <<Global CSS>>
-. <<Using Style in SFC components>>
+Using TailwindCSS is strongly optinonated and if you don't want to use it you can of course just remove the library. Just undo the steps listed in the offical https://tailwindcss.com/docs/guides/nuxtjs[installation guide for Nuxt.js]. Keep in mind that you also have to update all components and CSS files where Tailwind utilities have been used.
 
-== Using TailwindCSS
+Other than that the FSXA-PWA does not provide any special styling functionalities besides what the underlying frameworks Nuxt.js and Vue.js provide. Please refer to the respective documentations for detailed information on how to get the most out of the styling capabilities.
 
-https://tailwindcss.com/[TailwindCSS] is included by default in the FSXA-PWA.
-TailwindCSS is a utility-first framework to provide a lot of classes to design the website directly in the markup without the need to write additional classes.
-
-== Global CSS
-
-You can import one or more CSS files globally. These are then available in every component.
-To include a CSS file, follow the instructions from the official https://nuxt.com/docs/getting-started/assets/[Nuxt Documentation]
-
-
-== Using Style in SFC components
-
-When using vue single file components you simply add a style tag to your file and declare your CSS-Classes there. To make the classes only available within the scope of your component add the scoped keyword to the style tag. You can also define classes here that are made up from tailwinds utility classes.
-
-[source,xml]
-----
-<template>
-  <div>
-    <h1 class="headline">{{this.payload.st_title}}</h1>
-    <h2 class="tailwindHeadline">{{this.payload.st_title}}</h2>
-  </div>
-</template>
-<script>
-...
-</script>
-<style scoped>
-.headline {
-  font-size: 2rem;
-  font-family: sans-serif;
-  font-weight: bold;
-  color: coral;
-}
-
-.tailwindHeadline {
-  @apply text-xl font-bold;
-}
-</style>
-----
+* Global styling, affecting every component, page and layout: https://nuxt.com/docs/getting-started/assets/[Nuxt specific global styling]
+* Component scoped styling, affecting only the component: https://vuejs.org/api/sfc-css-features.html[Style features of single file components]
+* Styling specific elements in markup: https://vuejs.org/guide/essentials/class-and-style.html[Vue class and style bindings in markup]

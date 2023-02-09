@@ -1,0 +1,108 @@
+= Working with RichText
+
+:moduledir: ..
+:imagesdir: {moduledir}/images
+
+RichText allows you to display information in the FirstSpirit context using great and customisable formatting. This brings with it a certain complexity.
+
+In order to extend the richtext functionality with custom components, you must add a corresponding component to the pwa project. In our example we placed all richtext elements inside the `~/components/Elements` folder. Additionally if you add a new RichtextElement you also have to adjust the `RichTextElement.vue` file and include your custom component like shown below.
+
+CustomRichtextComponent.vue
+
+[source,xml]
+----
+<template>
+  <div>
+    Custom Richtext component data: {{ richTextElement }}
+  </div>
+</template>
+
+<script setup lang="ts">
+interface CustomRichtextComponent {
+  // implement your custom structure here
+}
+
+defineProps<{ richTextElement: CustomRichtextComponent }>();
+</script>
+----
+
+
+RichtextElement.vue
+
+[source,xml]
+----
+<template>
+  <component
+    :is="richtTextElementComponent"
+    class=""
+    :rich-text-element="richTextElement"
+    :richtext="richTextElement.content"
+  />
+</template>
+
+<script setup lang="ts">
+const props = defineProps<{ richTextElement: RichTextElement }>();
+
+const richtTextElementComponent = computed(() => {
+  switch (props.richTextElement.type) {
+    // add this case
+    case "customRichtextElement":
+      return resolveComponent("ElementsCustomRichtextComponent");
+    default:
+      return resolveComponent("unknown");
+  }
+});
+// ...
+</script>
+
+----
+
+In our fsxa-pwa sample project we have already included some sample components, which you can of course use, adapt or extend. 
+
+In the course of time, however, it may happen that you use formatting that does not yet have a frontend component as a counterpart or that you adapt existing formatting.
+
+If the xref:DevMode.adoc[DevMode] is activated, useful information about RichText components that are still missing is displayed.
+
+// TODO
+
+image:RichText/MissingRichText.png[Missing RichText]
+
+Clicking on it will show you further information about the missing component.
+
+// TODO
+
+image:RichText/RichTextInfoWindow.png[RichText Info Window]
+
+And finally, clicking the content tab in the info window will reveal all of the data that will be passed into your component.
+
+[source,json]
+----
+[
+  {
+    "data": {
+      "data-fs-style": "format.standard"
+    },
+    "content": [
+      {
+        "type": "text",
+        "content": "Life made ",
+        "data": {}
+      },
+      {
+        "data": {
+          "data.fs-style": "format.span_yellow_text"
+        },
+        "content": [
+          {
+            "type": "text",
+            "content": "easier",
+            "data": {}
+          }
+        ],
+        "type": "paragraph"
+      }
+    ],
+    "type": "paragraph"
+  }
+]
+----

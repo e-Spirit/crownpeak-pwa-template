@@ -1,8 +1,9 @@
 = Routing
 
 . <<FirstSpirit Navigation Service>>
-. <<Basic Routing Principles>>
-. <<The triggerRouteChange Function>>
+. <<Internal Linking>>
+. <<Trigger route changes programatically>>
+. <<Middleware>>
 
 == FirstSpirit Navigation Service
 
@@ -36,9 +37,11 @@ The FSXA-PWA directly maps the navigation structure of the underlying FirstSpiri
 
 It contains labels and contentReferences which you can use to fill a navigation menu or sitemap.
 
-== Basic Routing Principles
+== Internal Linking
 
-Nuxt.js provides https://nuxt.com/docs/guide/directory-structure/pages[file based routing] via convention. Usually you can link to any pages you may have created in the `pages` folder using the `NuxtLink` component. It has a prop called `to` that takes a route as parameter. If you have subfolders in the `pages` folder you can add them to the route as well. You can also use this feature to override pages defined by the navigation service by adding a page with the same pageId as an existing page.
+Nuxt.js provides https://nuxt.com/docs/guide/directory-structure/pages[file based routing] conventions. We assume you are familiar with how routing works in Nuxt.js. If not please make sure to checkout the documentation linked above.
+
+Since routing is slightly more complex in the context of the FSXA-PWA, you also have the possibility to use the example `<InternalLink />` component. Using this component you can easily link to pages in the navigation structure by providing a `NavigationItem` as a property instead of a route.
 
 SFC Example
 
@@ -46,122 +49,42 @@ SFC Example
 ----
 <template>
   <div>
-    <NuxtLink to="/">Home page</NuxtLink>
-    <NuxtLink to="/myPage">Links to MyPage.vue in the pages folder </NuxtLink>
-    <NuxtLink to="/aboutPages/myAboutPage">Links to MyAboutPage.vue in the pages/aboutPages folder.</NuxtLink>
+    <InternalLink :nav-item="navItem">Link to internal page</InternalLink>
   </div>
 </template>
-----
 
-However since routing is slightly more complex in the context of the FSXA-PWA, we recommend using the <InternalLink /> component which accepts a `navigation-item` as a prop for internal links or a simple `<a>` tag for any other links. Using this component, you can still define your own pages and override existing ones. With the added advantage of being able to link to pages in the navigation structure.
-
-### Dynamic Pages
-
-You can also define pages that use an unknown subroute like for example `/books/:title` where title can be anything.
-To do so, you need to name the file `[title].vue`. So for the example mentioned above the directory structure would be the following
-
-----
-/pages
-|__/books
-   |__ _slug.(vue/tsx)
-----
-
-In the `_slug.(vue/tsx)` file you can access the unknown route parameter like this
-
-SFC Example
-
-[source,xml]
-----
-<template>
-  <h1>{{ this.book }} / {{ this.slug }}</h1>
-</template>
-
-<script>
-  export default {
-    async asyncData({ params }) {
-      return {
-        book : params.book
-        slug : params.slug
-      }
-    }
-  }
+<script setup lang=ts>
+import { NavigationItem } from 'fsxa-api'
+const navItem:NavigationItem = ...
 </script>
 ----
 
-TSX Example
 
-[source,javascript]
-----
-import { Component as TsxComponent } from 'vue-tsx-support'
-import Component from 'vue-class-component'
+== Trigger route changes programatically
 
-@Component({
-  name: 'MySlugPage',
-  asyncData: async ( { params } ) => {
-    return { 
-      book: params.book
-      slug: params.slug 
-    }
-  }
-})
-class MySlugPage extends TsxComponent<{}>{
-  slug: string = ""
-
-  render(){
-    return (
-      <h1>{this.book} / {this.slug}</h1>
-    )
-  }
-}
-export default MySlugPage
-----
-
-== The triggerRouteChange Function
-
-When you implement a component that extends xref:components/FSXABaseComponent.adoc[FSXABaseComponent] (or one of its derived classes)you get access to the `triggerRouteChange` function. You can either pass it a FirstSpirit `pageId`, a `route` (like in the `<NuxtLink>` component) or a `locale`. If you pass it a locale it will cause your app to stay on the same page but change the language.
+You can also trigger a route change to an item in the navigation structure by using the `setActiveNavigationItem` function from the `navigation` composable.
 
 SFC Example
 
 [source,xml]
 ----
 <template>
-  <a href="#"
-    v-on:click="handleClick($event, '/')"
-  >Home Page</a>
+  <button @click="triggerRouteChange">
+    Change page
+  </button>
 </template>
-----
 
-In your script tag where you define your component props, data and methods you will have to define the handleClick method like this.
+<script setup lang="ts">
+const { setActiveNavigationItem } = useNavigation()
+function triggerRouteChange(){
+  setActiveNavigationItem(...) // provide the navigation item to navigate to
 
-[source,javascript]
-----
-//...
-methods: {
-  handleClick(event, route) {
-    event.preventDefault()
-    this.triggerRouteChange({
-      route
-    })
-  }
 }
+
+</script>
 ----
 
-TSX Example
 
-[source,javascript]
-----
-render(){
-  return(
-    <a href="#"
-      onclick={(event) => {
-        event.preventDefault()
-        this.triggerRouteChange({
-          {
-            route: "/"
-          }
-        })
-      }}
-    >Home Page</a>
-  )
-}
-----
+== Middleware
+
+// TODO

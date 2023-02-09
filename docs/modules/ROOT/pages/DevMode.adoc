@@ -6,9 +6,8 @@
 . <<Introduction>>
 . <<Missing Components>>
 . <<Info Box>>
-* <<Data/Payload>>
+* <<Data and Payload>>
 * <<Meta>>
-* <<Slots>>
 . <<Errors>>
 
 == Introduction
@@ -35,7 +34,7 @@ image:DevMode/QuestionMark.png[QuestionMark]
 
 Clicking on this question mark will provide you with more information about which component is being displayed and what data is available.
 
-=== Data/Payload
+=== Data and Payload
 
 This tab shows you all of the data that is available in the scope of this component. The data is defined by the FirstSpirit Template used to describe the current section or layout.
 
