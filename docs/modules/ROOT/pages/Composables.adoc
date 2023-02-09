@@ -1,0 +1,16 @@
+= Composables
+
+In Vue 3 applications link:https://vuejs.org/guide/reusability/composables.html[composables] are used to encapsulate and reuse stateful logic. We use composables here to handle
+
+* localization settings
+* navigation data
+* content
+
+
+For in depth information on how to use composables in your Nuxt project check out the official link:https://nuxt.com/docs/guide/directory-structure/composables[Nuxt documentation on composables].
+
+== Locale
+
+== Navigation Data
+
+== Content
