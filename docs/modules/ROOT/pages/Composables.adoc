@@ -63,4 +63,6 @@ Project properties are accessed by using the `useProjectProperties` (`~/composab
 [source, javascript]
 const { projectProperties } = useProjectProperties();
 
-The content changes automatically on route locale changes and is reactive.
+The content changes automatically on route locale changes and is reactive. 
+
+For more information about what project properties are and how to work with them read xref:docs/modules/ROOT/pages/ProjectProperties.adoc[this short guide].
