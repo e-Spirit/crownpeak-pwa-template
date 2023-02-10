@@ -6,11 +6,10 @@
       class="group relative my-4"
       data-testid="pageBodyChild"
     >
-      <Dev
-        v-if="devMode"
-        class="hidden group-hover:block"
-        :content="pageBodyContent"
-      />
+      <DevOnly v-if="appDevMode || envDevMode">
+        <Dev :content="pageBodyContent" class="hidden group-hover:block" />
+      </DevOnly>
+
       <component
         :is="getComponentFromPageBodyContent(pageBodyContent)"
         :content="pageBodyContent"
@@ -23,7 +22,8 @@ import { PageBody, PageBodyContent } from "fsxa-api";
 
 defineProps<{ pageBody: PageBody }>();
 
-const { devMode } = useAppConfig();
+const { devMode: appDevMode } = useAppConfig();
+const { devMode: envDevMode } = useRuntimeConfig();
 
 function getComponentFromPageBodyContent(pageBodyContent: PageBodyContent) {
   switch (pageBodyContent.type) {
