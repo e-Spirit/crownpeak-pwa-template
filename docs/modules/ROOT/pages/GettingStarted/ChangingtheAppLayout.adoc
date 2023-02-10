@@ -1,0 +1,38 @@
+= Changing the Layout
+
+== Changing the App Layout
+
+The app layout contains elements that appear on multiple pages for example the navigation or footer components. You can modify our default app layout example by editing the `~/layouts/default.vue` file. We assume that you are familiar with the way layouts work in Nuxt. If not, please read the official https://nuxt.com/docs/guide/directory-structure/layouts[Nuxt documentation on layouts] first. 
+
+Of course you can also define multiple app layouts and use them across your pages.
+
+
+== Changing the Page Layout
+
+Additionally each page itself has a `layout`. This page layout can be seen as another layer in between app layout and the page content for reusing components across pages. Also inside this page layout we define which app layout is used to render the page. In this example we have a `Home` and `Standard` page layout which can be found in the `~/components/PageLayout` directory.
+
+To define a custom page layout add a new component `MyCustomPageLayout.vue` to the `~/components/PageLayout` folder. In our example we pass a `page` property that you can use to render the page content. Use our `PageBody`component to display sections and datasets.
+
+[source,xml]
+----
+<template>
+  <div :data-preview-id="page.previewId" data-testid="myCustomPageLayout">
+    <NuxtLayout name="default">
+      <div>Here is some content that gets reused on every page that shares this layout</div>      
+      <PageBody
+        v-for="pageBody in page.children"
+        :key="pageBody.previewId"
+        :page-body="pageBody"
+      />
+    </NuxtLayout>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { Page } from "fsxa-api";
+defineProps<{ page: Page }>();
+</script>
+----
+If `name` attribute of `NuxtLayout` is set to `default` the `default.vue` app layout will be used. You can of course add your own custom app layouts and use them by changing the name accordingly.
+
+

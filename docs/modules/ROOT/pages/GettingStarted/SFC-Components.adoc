@@ -1,0 +1,117 @@
+= Writing Single File Components
+
+:moduledir: ../..
+:imagesdir: {moduledir}/images
+
+In this section we will be exploring how to go about implementing a Teaser section using the classic Vue single file components.
+
+When you go to the home page in the development mode, you will see that one component is displayed as unknown.
+
+// TODO
+
+image:WritingComponents/MissingSection.png[MissingSection]
+
+By clicking on the question mark on the unknown component the dev info tells us that there should be a component of type `Section`. We can also see that the sectionType of this missing section is called `teaser`.
+
+Our section components are located in `~/components/Section/`. That’s where you want to create a new file for the component.
+
+We name our new file `Teaser.vue` and add a template tag to the file so we can see something when we fire up the dev server:
+
+[source,xml]
+----
+<template>
+  <div>
+    <h1>Teaser Component</h1>
+  </div>
+</template>
+----
+
+Now we need to reference our newly created teaser component inside the general `Section.vue` component which can be found in the `~/components/PageBodyContent/` directory. 
+
+Simply add a `teaser` case to the computed `sectionComponent` property. Make sure to name the case after the respective `sectionType` and name the component that is going to be resolved according to the path where it is located. In this case `Section/Teaser.vue` becomes `SectionTeaser`. As of now, the component name needs to be a hardcoded string. Variable component resolving is not yet possible in Nuxt 3.
+
+[source,ts]
+----
+...
+const sectionComponent = computed(() => {
+  switch (props.content.sectionType) {
+    case "teaser":
+      return resolveComponent("SectionTeaser");
+    default:
+      return resolveComponent("Unknown");
+  }
+});
+...
+----
+
+
+When we go back to the browser, instead of the unknown component we should see our component.
+
+// TODO
+
+image:WritingComponents/HelloComponent.png[Hello Component]
+
+Our component is recognized correctly. But we still do not display the data from the https://docs.e-spirit.com/module/caas/CaaS_FSM_Documentation_EN.html[CaaS] in our component.
+For that we hover over our component and click on the appearing question mark on the right side again.
+
+// TODO
+
+image:WritingComponents/AvailableProperties.png[Available Properties]
+
+This shows us the data available to display.
+For the first example we want to display the `st_jumbo_headline`. Your section has access to a `data` property that gets passed to your component. You can make this property typesafe by adding a custom interface. Modify the `Teaser.vue` component like this:
+
+[source,xml]
+----
+<template>
+  <div>
+    <h1>Teaser Component: {{ data.st_jumbo_headline }}</h1>
+  </div>
+</template>
+
+<script setup lang=ts>
+interface Teaser {
+  st_jumbo_headline:string
+}
+defineProps<{ data: Teaser }>();
+<script>
+----
+
+The result should look like this:
+
+// TODO
+image:WritingComponents/DisplayedHeadline.png[Displayed Headline]
+
+To render richtext, image or button elements you can use the `RichText.vue`, `Image.vue` and `Button.vue` components which can be found under the `~/components/Elements/` folder. Use them like this in your teaser component:
+
+[source,xml]
+----
+<template>
+  <div>
+    <h1>Teaser Component: {{ data.st_jumbo_headline }}</h1>
+    <ElementsRichText :richtext="data.st_headline" />
+    <ElementsImage :image="data.st_picture" :alt="data.st_picture_alt" />
+    <ElementsButton :button="data.st_button" @button-click="clickHandler" />
+  </div>
+</template>
+
+<script setup lang=ts>
+import { Image, RichTextElement } from "fsxa-api";
+
+interface Teaser {
+  st_jumbo_headline:string
+  st_headline: RichTextElement[];
+  st_picture?: Image;
+  st_picture_alt?: string;
+  st_button: MyCustomButtonInterface
+}
+defineProps<{ data: Teaser }>();
+
+
+function clickHandler(){
+  // do sth.
+}
+<script>
+----
+
+Of course you can modify all components and adjust them according to your specific requirements. In our implementation example `ElementsButton` emits a `buttonClick` event which can be hooked into with `@button-click`. Simply define your click handler function inside the script tag as shown above. 

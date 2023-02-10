@@ -31,6 +31,10 @@ export default defineNuxtPlugin(() => {
       Number.parseInt(runtimeConfig.public["logLevel"]) ||
       appConfig.logLevel ||
       LogLevel.NONE,
+    enableEventStream:
+      runtimeConfig.private["enableEventStream"] ||
+      appConfig.enableEventStream ||
+      false,
   };
 
   FSXAApiSingleton.init(new FSXARemoteApi(remoteApiConfig));
