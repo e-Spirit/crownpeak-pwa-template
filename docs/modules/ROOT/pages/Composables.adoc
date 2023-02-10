@@ -14,3 +14,5 @@ For in depth information on how to use composables in your Nuxt project check ou
 == Navigation Data
 
 == Content
+
+== Project Properties
