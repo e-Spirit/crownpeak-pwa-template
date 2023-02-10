@@ -1,0 +1,90 @@
+= Routing
+
+. <<FirstSpirit Navigation Service>>
+. <<Internal Linking>>
+. <<Trigger route changes programatically>>
+. <<Middleware>>
+
+== FirstSpirit Navigation Service
+
+The FSXA-PWA directly maps the navigation structure of the underlying FirstSpirit project into the predefined navigation component. This is achieved using the navigation service which maps all of the routes as defined in FirstSpirit to CaaS URLs. The data is fetched by the https://github.com/e-Spirit/fsxa-api[FSXA-API]. Here is an example of navigation data.
+
+[source,json]
+----
+  "c8a158a3-2ba3-427c-a7e4-7d41d9844464": {
+      "id": "c8a158a3-2ba3-427c-a7e4-7d41d9844464",
+      "parentIds": [
+          "5a7cdf48-5031-4fcd-b6c7-99e802d0ce57"
+      ],
+      "label": "Home",
+      "contentReference": "https://url.to.your.content",
+      "caasDocumentId": "c8a158a3-2ba3-427c-a7e4-7d41d9844464",
+      "seoRoute": "/Home/",
+      "seoRouteRegex": null,
+      "customData": null
+  },
+  "aa684dc6-2220-4d71-b468-f3e056b0c4f0": {
+      "id": "aa684dc6-2220-4d71-b468-f3e056b0c4f0",
+      "parentIds": [],
+      "label": "Our Solutions",
+      "contentReference": "https://url.to.your.content",
+      "caasDocumentId": "4bd4e5af-c55d-4b46-b335-58e284f2f4c6",
+      "seoRoute": "/Our-Solutions/",
+      "seoRouteRegex": null,
+      "customData": null
+  },
+----
+
+It contains labels and contentReferences which you can use to fill a navigation menu or sitemap.
+
+== Internal Linking
+
+Nuxt.js provides https://nuxt.com/docs/guide/directory-structure/pages[file based routing] conventions. We assume you are familiar with how routing works in Nuxt.js. If not please make sure to checkout the documentation linked above.
+
+Since routing is slightly more complex in the context of the FSXA-PWA, you also have the possibility to use the example `<InternalLink />` component. Using this component you can easily link to pages in the navigation structure by providing a `NavigationItem` as a property instead of a route.
+
+SFC Example
+
+[source,xml]
+----
+<template>
+  <div>
+    <InternalLink :nav-item="navItem">Link to internal page</InternalLink>
+  </div>
+</template>
+
+<script setup lang=ts>
+import { NavigationItem } from 'fsxa-api'
+const navItem:NavigationItem = ...
+</script>
+----
+
+
+== Trigger route changes programatically
+
+You can also trigger a route change to an item in the navigation structure by using the `setActiveNavigationItem` function from the `navigation` composable.
+
+SFC Example
+
+[source,xml]
+----
+<template>
+  <button @click="triggerRouteChange">
+    Change page
+  </button>
+</template>
+
+<script setup lang="ts">
+const { setActiveNavigationItem } = useNavigation()
+function triggerRouteChange(){
+  setActiveNavigationItem(...) // provide the navigation item to navigate to
+
+}
+
+</script>
+----
+
+
+== Middleware
+
+The middleware (`~/middleware/routing.global.ts`) handles the use case of deep links and redirects the index page to the corresponding route (e.g. `/` to `/Home/`). It is executed before a page renders, and if the route is set programatically or by an internal link, the middleware will not do anything. If a user opens a deep link, the middleware will figure out the corresponding locale and navigation item. After setting the locale and navigation item, the middleware is finished and the flow is the same as if the user had navigated to the page via an internal link. In most cases, you do need to change anything in the middleware.

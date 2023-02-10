@@ -1,0 +1,73 @@
+= FSXA-PWA
+
+The FSXA-PWA is an example project and can be used as basis for developing your own PWA
+in the context of the FirstSpirit Experience Accelerator.
+
+== About the FSXA
+
+The FirstSpirit Experience Accelerator (FSXA) is the hybrid solution of a digital
+experience platform, combining a headless approach with enterprise capabilities.
+
+== Documentation
+
+If you are interested in the FSXA check this link:https://docs.e-spirit.com/module/fsxa/overview/benefits-hybrid/index.html[Overview].
+
+=== Table of contents
+
+. xref:docs/modules/ROOT/pages/Introduction.adoc[Introduction]
+.. xref:docs/modules/ROOT/pages/Introduction.adoc#general[General]
+.. xref:docs/modules/ROOT/pages/Introduction.adoc#projects-used[Projects used]
+.. xref:docs/modules/ROOT/pages/Introduction.adoc#architecture[Architecture]
+.. xref:docs/modules/ROOT/pages/Introduction.adoc#deployment[Deployment]
+. xref:docs/modules/ROOT/pages/GettingStarted.adoc[Getting Started]
+.. xref:docs/modules/ROOT/pages/GettingStarted/MyFirstTemplate.adoc[My First Template]
+.. xref:docs/modules/ROOT/pages/GettingStarted/CustomCSS.adoc[Adding CSS]
+.. xref:docs/modules/ROOT/pages/GettingStarted/ChangingtheAppLayout.adoc[Changing the App Layout]
+.. xref:docs/modules/ROOT/pages/GettingStarted/UseExistingProject.adoc[Using an Existing Project With the FSXA PWA]
+. xref:docs/modules/ROOT/pages/Configuration.adoc[Configuration]
+.. xref:docs/modules/ROOT/pages/Configuration.adoc#env-file[.env file]
+.. xref:docs/modules/ROOT/pages/Configuration.adoc#app-config[app.config.ts file]
+. xref:docs/modules/ROOT/pages/Composables.adoc[Composables]
+.. xref:docs/modules/ROOT/pages/Composables.adoc#locale[Locale]
+.. xref:docs/modules/ROOT/pages/Composables.adoc#navigation-data[Navigation Data]
+.. xref:docs/modules/ROOT/pages/Composables.adoc#content[Content]
+.. xref:docs/modules/ROOT/pages/Composables.adoc#project-properties[Project Properties]
+. xref:docs/modules/ROOT/pages/DevMode.adoc[DevMode]
+.. xref:docs/modules/ROOT/pages/DevMode.adoc#introduction[Introduction]
+.. xref:docs/modules/ROOT/pages/DevMode.adoc#missing-components[Missing components]
+.. xref:docs/modules/ROOT/pages/DevMode.adoc#info-box[Info Box]
+.. xref:docs/modules/ROOT/pages/DevMode.adoc#data-and-payload[Data and Payload]
+.. xref:docs/modules/ROOT/pages/DevMode.adoc#meta[Meta]
+.. xref:docs/modules/ROOT/pages/DevMode.adoc#errors[Errors]
+. xref:docs/modules/ROOT/pages/Routing.adoc[Routing]
+.. xref:docs/modules/ROOT/pages/Routing.adoc#firstspirit-navigation-service[FirstSpirit Navigation Service]
+.. xref:docs/modules/ROOT/pages/Routing.adoc#internal-linking[Internal Linking]
+.. xref:docs/modules/ROOT/pages/Routing.adoc#trigger-route-change-programatically[Trigger route changes programatically]
+.. xref:docs/modules/ROOT/pages/Routing.adoc#middleware[Middleware]
+. xref:docs/modules/ROOT/pages/Richtext.adoc[Working with Richtext]
+. xref:docs/modules/ROOT/pages/ProjectProperties.adoc[ProjectProperties]
+. xref:docs/modules/ROOT/pages/WorkingWithImages.adoc[Working with Images]
+.. xref:docs/modules/ROOT/pages/WorkingWithImages.adoc#introduction[Introduction]
+.. xref:docs/modules/ROOT/pages/WorkingWithImages.adoc#working-with-caas[Working with CaaS]
+.. xref:docs/modules/ROOT/pages/WorkingWithImages.adoc#resolutions-in-firstspirit[Resolutions in FirstSpirit]
+.. xref:docs/modules/ROOT/pages/WorkingWithImages.adoc#responsiveness[Responsiveness]
+.. xref:docs/modules/ROOT/pages/WorkingWithImages.adoc#lazy-loading[Lazy Loading]
+
+
+== Legal Notices
+
+FSXA-PWA is a product of http://www.e-spirit.com[Crownpeak Technology GmbH], Dortmund, Germany.
+The FSXA-PWA is subject to the Apache-2.0 license.
+
+== Disclaimer
+
+This document is provided for information purposes only.
+Crownpeak Technology may change the contents hereof without notice.
+This document is not warranted to be error-free, nor subject to any
+other warranties or conditions, whether expressed orally or
+implied in law, including implied warranties and conditions of
+merchantability or fitness for a particular purpose. Crownpeak Technology
+specifically disclaims any liability with respect to this document
+and no contractual obligations are formed either directly or
+indirectly by this document. The technologies, functionality, services,
+and processes described herein are subject to change without notice.
