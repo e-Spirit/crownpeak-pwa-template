@@ -69,9 +69,11 @@
     "branches": [
       {
         "name": "main",
-        "prerelease": true
+        "prerelease": true,
+        "channel": "alpha"
       }
-    ]
+    ],
+    "tagFormat": "v${version}-alpha"
   },
   "dependencies": {
     "fsxa-api": "^10.7.0"
