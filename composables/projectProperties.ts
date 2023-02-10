@@ -1,7 +1,7 @@
-import { ProjectProperties } from "fsxa-api/dist/types";
+import { ProjectProperties } from "fsxa-api";
 
 export function useProjectProperties() {
-  const projectProperties = useState<ProjectProperties | undefined>(
+  const projectProperties = useState<ProjectProperties | null>(
     "projectProperties"
   );
 

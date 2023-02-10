@@ -1,6 +1,6 @@
 <template>
   <div>
-    <component :is="pageLayoutComponent" :page="page" />
+    <component :is="pageLayoutComponent" v-if="page" :page="page" />
     <DevOnly>
       <div class="fixed top-0 right-0 z-30">
         <Dev v-if="page" :content="page" />
@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: page } = useContent();
+const { content: page } = useContent();
 
 const pageLayoutComponent = computed(() => {
   switch (page.value?.layout) {
