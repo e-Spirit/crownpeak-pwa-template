@@ -16,7 +16,11 @@ import {
   getLocaleFromNavigationItem,
 } from "../../utils/fsxa";
 
-const mockedState: any = {};
+let mockedState: any = {};
+
+export function clearMockedState() {
+  mockedState = {};
+}
 
 export function defineNuxtPlugin(fun: Function) {
   return fun;
