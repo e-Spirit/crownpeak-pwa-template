@@ -16,7 +16,7 @@ describe("slug page", () => {
 
   it("render with homepage layout prop => render homepage layout component", () => {
     vi.spyOn(content, "useContent").mockReturnValue({
-      data: { value: createPage({ layout: "homepage" }) },
+      content: { value: createPage({ layout: "homepage" }) },
     });
     const { getByTestId } = render(SlugPage, { global: renderConfig.global });
     expect(getByTestId("homePageLayout")).toBeTruthy();
@@ -24,7 +24,7 @@ describe("slug page", () => {
 
   it("render with standard layout prop => render standard layout component", () => {
     vi.spyOn(content, "useContent").mockReturnValue({
-      data: { value: createPage({ layout: "standard" }) },
+      content: { value: createPage({ layout: "standard" }) },
     });
     const { getByTestId } = render(SlugPage, { global: renderConfig.global });
     expect(getByTestId("standardPageLayout")).toBeTruthy();
@@ -32,7 +32,7 @@ describe("slug page", () => {
 
   it("render with unkown layout prop => render unknown component", () => {
     vi.spyOn(content, "useContent").mockReturnValue({
-      data: { value: createPage({ layout: "unkown" }) },
+      content: { value: createPage({ layout: "unkown" }) },
     });
     const { getByTestId } = render(SlugPage, { global: renderConfig.global });
     expect(getByTestId("unknown")).toBeTruthy();

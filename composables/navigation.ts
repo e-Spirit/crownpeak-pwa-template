@@ -9,19 +9,6 @@ export function useNavigationData() {
     "activeNavigationItem"
   );
 
-  // useAsyncData(
-  //   async () => {
-  //     if (!localeConfig.value.activeLocale) return;
-
-  //     const data = await fetchTopLevelNavigation(
-  //       $fsxaApi,
-  //       localeConfig.value.activeLocale
-  //     );
-  //     if (data) navigationData.value = data;
-  //   },
-  //   { watch: [localeConfig] }
-  // );
-
   return {
     activeNavigationItem,
     setActiveNavigationItem: (item: NavigationItem) => {

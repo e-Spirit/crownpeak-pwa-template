@@ -42,7 +42,6 @@ export default defineNuxtPlugin(async () => {
     async () => {
       // This state should not be possible.
       // The middleware should have figured out both the locale and our current navigation item
-
       if (!activeNavigationItem.value || !localeConfig.value.activeLocale)
         throw new Error("No navigation item found");
       content.value = await fetchContentFromNavigationItem(

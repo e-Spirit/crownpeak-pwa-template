@@ -20,7 +20,11 @@ export default defineNuxtRouteMiddleware(async (to) => {
 
   try {
     // Deeplink usecase
-    if (!activeLocale || !activeNavigationItem.value) {
+    if (
+      !activeLocale ||
+      !activeNavigationItem.value ||
+      activeNavigationItem.value.seoRoute !== route
+    ) {
       await getNavigationStateFromRoute(route);
     }
   } catch (_error: unknown) {

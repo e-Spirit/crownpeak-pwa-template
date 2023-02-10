@@ -1,0 +1,195 @@
+{
+  "type": "ProjectProperties",
+  "data": {
+    "ps_background": "#f6f7f8",
+    "ps_banneropacity": "0.701",
+    "ps_button": "#000",
+    "ps_contentopacity": "0.8",
+    "ps_dealer_contact_detailpage": {
+      "type": "Reference",
+      "referenceId": "84b85e69-2a7e-4aed-bb41-9e9f12e764fa",
+      "referenceType": "PageRef"
+    },
+    "ps_enable_ICE": true,
+    "ps_footer": {
+      "gc_copyright": "Smart Living",
+      "gc_linklist": [
+        {
+          "id": "8dcc25bf-629b-4f65-956f-315418519232",
+          "type": "Section",
+          "sectionType": "internal_link",
+          "previewId": "8dcc25bf-629b-4f65-956f-315418519232.de_DE",
+          "data": {
+            "lt_link": {
+              "type": "Reference",
+              "referenceId": "ef7eb160-9fc9-4970-8c65-2f1125b0086c",
+              "referenceType": "PageRef"
+            },
+            "lt_text": "Impressum"
+          },
+          "children": []
+        },
+        {
+          "id": "6c2cf125-0a5b-439b-81c8-2e0ded05f1b0",
+          "type": "Section",
+          "sectionType": "internal_link",
+          "previewId": "6c2cf125-0a5b-439b-81c8-2e0ded05f1b0.de_DE",
+          "data": {
+            "lt_link": {
+              "type": "Reference",
+              "referenceId": "6c1b322b-1be9-47f1-9a9f-f0c1d0eb159b",
+              "referenceType": "PageRef"
+            },
+            "lt_text": "Datenschutzbestimmungen"
+          },
+          "children": []
+        }
+      ],
+      "gs_logo": {
+        "type": "Image",
+        "id": "5a31d025-dd75-48e2-abbd-dfc59cba116b",
+        "previewId": "5a31d025-dd75-48e2-abbd-dfc59cba116b.de_DE",
+        "meta": {},
+        "description": null,
+        "resolutions": {
+          "ORIGINAL": {
+            "fileSize": 11137,
+            "extension": "png",
+            "mimeType": "image/png",
+            "width": 140,
+            "height": 41,
+            "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Layout/Logo/Logo-Caps.png?rev=1713",
+            "seoRoute": "/Layout/Logo/Logo-Caps.png"
+          },
+          "banner_slider": {
+            "fileSize": 510063,
+            "extension": "png",
+            "mimeType": "image/png",
+            "width": 1920,
+            "height": 1080,
+            "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Layout/Logo/Logo-Caps_banner_slider.png?rev=1713",
+            "seoRoute": "/Layout/Logo/Logo-Caps_banner_slider.png"
+          },
+          "landscape": {
+            "fileSize": 135198,
+            "extension": "png",
+            "mimeType": "image/png",
+            "width": 1170,
+            "height": 400,
+            "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Layout/Logo/Logo-Caps_landscape.png?rev=1713",
+            "seoRoute": "/Layout/Logo/Logo-Caps_landscape.png"
+          },
+          "portrait": {
+            "fileSize": 118375,
+            "extension": "png",
+            "mimeType": "image/png",
+            "width": 800,
+            "height": 500,
+            "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Layout/Logo/Logo-Caps_portrait.png?rev=1713",
+            "seoRoute": "/Layout/Logo/Logo-Caps_portrait.png"
+          },
+          "product_teaser": {
+            "fileSize": 68349,
+            "extension": "png",
+            "mimeType": "image/png",
+            "width": 360,
+            "height": 560,
+            "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Layout/Logo/Logo-Caps_product_teaser.png?rev=1713",
+            "seoRoute": "/Layout/Logo/Logo-Caps_product_teaser.png"
+          }
+        }
+      }
+    },
+    "ps_footercolor": "#f6f7f8",
+    "ps_global_slider_autoslide": false,
+    "ps_global_slider_delay": "14000",
+    "ps_homepage": {
+      "type": "Reference",
+      "referenceId": "c8a158a3-2ba3-427c-a7e4-7d41d9844464",
+      "referenceType": "PageRef"
+    },
+    "ps_logo": {
+      "type": "Image",
+      "id": "5a31d025-dd75-48e2-abbd-dfc59cba116b",
+      "previewId": "5a31d025-dd75-48e2-abbd-dfc59cba116b.de_DE",
+      "meta": {},
+      "description": null,
+      "resolutions": {
+        "ORIGINAL": {
+          "fileSize": 11137,
+          "extension": "png",
+          "mimeType": "image/png",
+          "width": 140,
+          "height": 41,
+          "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Layout/Logo/Logo-Caps.png?rev=1713",
+          "seoRoute": "/Layout/Logo/Logo-Caps.png"
+        },
+        "banner_slider": {
+          "fileSize": 510063,
+          "extension": "png",
+          "mimeType": "image/png",
+          "width": 1920,
+          "height": 1080,
+          "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Layout/Logo/Logo-Caps_banner_slider.png?rev=1713",
+          "seoRoute": "/Layout/Logo/Logo-Caps_banner_slider.png"
+        },
+        "landscape": {
+          "fileSize": 135198,
+          "extension": "png",
+          "mimeType": "image/png",
+          "width": 1170,
+          "height": 400,
+          "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Layout/Logo/Logo-Caps_landscape.png?rev=1713",
+          "seoRoute": "/Layout/Logo/Logo-Caps_landscape.png"
+        },
+        "portrait": {
+          "fileSize": 118375,
+          "extension": "png",
+          "mimeType": "image/png",
+          "width": 800,
+          "height": 500,
+          "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Layout/Logo/Logo-Caps_portrait.png?rev=1713",
+          "seoRoute": "/Layout/Logo/Logo-Caps_portrait.png"
+        },
+        "product_teaser": {
+          "fileSize": 68349,
+          "extension": "png",
+          "mimeType": "image/png",
+          "width": 360,
+          "height": 560,
+          "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Layout/Logo/Logo-Caps_product_teaser.png?rev=1713",
+          "seoRoute": "/Layout/Logo/Logo-Caps_product_teaser.png"
+        }
+      }
+    },
+    "ps_product_detailpage": {
+      "type": "Reference",
+      "referenceId": "b1362730-4ee2-4473-bc02-529e47b08e95",
+      "referenceType": "PageRef"
+    },
+    "ps_special_dealer_page": {
+      "type": "Reference",
+      "referenceId": "b5696e04-09d7-44ed-96a7-4236af9bf7e1",
+      "referenceType": "PageRef"
+    },
+    "ps_testref": {
+      "type": "Dataset",
+      "id": "38172aff-b7af-4fec-81be-c6f4ae63ea3f",
+      "previewId": "38172aff-b7af-4fec-81be-c6f4ae63ea3f.de_DE",
+      "schema": "tests",
+      "entityType": "tng-1230",
+      "data": { "tt_datasetref": [], "tt_payload": null },
+      "route": "",
+      "routes": [],
+      "template": "tests.tng_1230",
+      "children": [],
+      "locale": "de_DE"
+    },
+    "ps_text_highlighting": "#D5DD02"
+  },
+  "layout": "project_settings",
+  "meta": {},
+  "name": "ProjectProperties",
+  "previewId": "ec121aab-e29a-4e35-b97a-3dc33bb50d25.de_DE",
+  "id": "ec121aab-e29a-4e35-b97a-3dc33bb50d25"
+}

@@ -6,7 +6,7 @@
     <div class="container mx-auto flex items-center">
       <NuxtLink to="/"
         ><ElementsImage
-          v-if="projectProperties?.data['ps_logo']"
+          v-if="projectProperties?.data && projectProperties?.data['ps_logo']"
           class="w-30 h-12 object-contain"
           :image="projectProperties?.data['ps_logo']"
       /></NuxtLink>
