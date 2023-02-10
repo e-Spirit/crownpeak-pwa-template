@@ -87,4 +87,4 @@ function triggerRouteChange(){
 
 == Middleware
 
-// TODO
+The middleware (`~/middleware/routing.global.ts`) handles the use case of deep links and redirects the index page to the corresponding route (e.g. `/` to `/Home/`). It is executed before a page renders, and if the route is set programatically or by an internal link, the middleware will not do anything. If a user opens a deep link, the middleware will figure out the corresponding locale and navigation item. After setting the locale and navigation item, the middleware is finished and the flow is the same as if the user had navigated to the page via an internal link. In most cases, you do need to change anything in the middleware.
