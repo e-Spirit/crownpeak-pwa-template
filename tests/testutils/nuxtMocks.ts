@@ -63,6 +63,15 @@ export function definePageMeta() {}
 
 export function useHead() {}
 
+export function navigateTo(_args: unknown) {}
+
+export function createError(err: {
+  statusCode: number;
+  statusMessage: string;
+}) {
+  return new Error(err.statusMessage);
+}
+
 export function useRoute() {
   return {
     fullPath: "/?testquery#teshash",

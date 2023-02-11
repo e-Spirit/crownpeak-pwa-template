@@ -1,5 +1,5 @@
 import { it, expect, describe } from "vitest";
-import setupDataFetching from "../../plugins/3.setupDataFetching";
+import setupDataFetching from "../../plugins/4.setupDataFetching";
 import { useLocale } from "../../composables/locale";
 import { useNavigationData } from "../../composables/navigation";
 import { useContent } from "../../composables/content";
@@ -9,32 +9,24 @@ import page from "../fixtures/page.json";
 import projectPropertiesFixture from "../fixtures/projectProperties.json";
 
 describe("setupDataFetching", () => {
-  it("invoke without activeLocale and activNavItem => navdata, project props, content get fetched", async () => {
-    const { config: localeConfig } = useLocale();
-    const { activeNavigationItem, navigationData } = useNavigationData();
+  it("setupDataFetching => navdata, project props, content get fetched", async () => {
+    const { setLocale } = useLocale();
+    const { navigationData, setActiveNavigationItem } = useNavigationData();
     const { content } = useContent();
     const { projectProperties } = useProjectProperties();
-    expect(localeConfig.value.activeLocale).toBeUndefined();
-    expect(activeNavigationItem.value).toBeUndefined();
+    setLocale("en_GB");
+
+    // TODO:
+    // type mismatch: NavigationData type expects 'denied' attribute
+    // in permissions while in data from navigation service the attribute is
+    // called 'forbidden'
+    setActiveNavigationItem(
+      toplevelENnavData.idMap["5a7cdf48-5031-4fcd-b6c7-99e802d0ce57"]
+    );
     await setupDataFetching();
 
-    expect(localeConfig.value.activeLocale).toBe("en_GB");
-    expect(activeNavigationItem.value).toBe(
-      toplevelENnavData.idMap["5a7cdf48-5031-4fcd-b6c7-99e802d0ce57"] // home page nav item
-    );
     expect(navigationData.value).toBe(toplevelENnavData);
     expect(content.value).toBe(page);
     expect(projectProperties.value).toBe(projectPropertiesFixture);
   });
 });
-
-// setup watcher
-// fetch content when watcher triggers
-
-// Navigation state gets set
-// activeLocale exists
-// activeNavigationItem exists
-
-// navdata exists
-// pp exists
-// content exists

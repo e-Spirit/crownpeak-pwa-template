@@ -1,16 +1,8 @@
 export default defineNuxtPlugin(async () => {
   const { $fsxaApi } = useNuxtApp();
   const { config: localeConfig } = useLocale();
-  const { navigationData, activeNavigationItem, getNavigationStateFromRoute } =
-    useNavigationData();
+  const { navigationData, activeNavigationItem } = useNavigationData();
   const { projectProperties } = useProjectProperties();
-
-  const route = decodeURIComponent(useRoute().path);
-
-  // fetch navigation state
-  if (!localeConfig.value.activeLocale || !activeNavigationItem.value) {
-    await getNavigationStateFromRoute(route);
-  }
 
   // fetch project properties
   await useAsyncData(

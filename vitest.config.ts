@@ -23,6 +23,8 @@ export default defineConfig({
             "useRoute",
             "useNuxtApp",
             "useHead",
+            "navigateTo",
+            "createError",
             "definePageMeta",
             "useLocale",
             "useAsyncData",

@@ -1,4 +1,4 @@
-import { it, expect, describe, beforeAll, beforeEach } from "vitest";
+import { it, expect, describe, beforeEach } from "vitest";
 import { useNavigationData } from "../../composables/navigation";
 import navigationItemFixture from "../fixtures/navigationItem.json";
 import { clearMockedState } from "../testutils/nuxtMocks";
