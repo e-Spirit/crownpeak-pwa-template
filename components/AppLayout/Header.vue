@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sticky top-0 z-30 border-b bg-white py-2 px-2"
+    class="sticky top-0 z-30 border-b bg-white p-2"
     data-testid="layoutHeader"
   >
     <div class="container mx-auto flex items-center">
