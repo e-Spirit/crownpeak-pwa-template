@@ -37,8 +37,6 @@ const richTextElementClasses = computed(() => {
   const fsStyle = (props.richTextElement.data as Record<string, unknown>)[
     "data-fs-style"
   ];
-  console.log(fsStyle);
-
   switch (fsStyle) {
     case "format.span_yellow_text":
       return "text-yellow-500";
