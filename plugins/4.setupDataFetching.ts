@@ -24,6 +24,23 @@ export default defineNuxtPlugin(async () => {
         $fsxaApi,
         localeConfig.value.activeLocale
       );
+
+      // Redirect to new route if language changed (e.g. from /Startseite/ to /Home/)
+      const activeNavigationItemId = activeNavigationItem.value?.id;
+      if (!activeNavigationItemId) return;
+
+      const router = useRouter();
+      const seoRoute =
+        navigationData.value?.idMap[activeNavigationItemId]?.seoRoute;
+
+      if (!seoRoute) {
+        router.push(navigationData.value?.pages.index ?? "/");
+        return;
+      }
+
+      if (router.currentRoute.value.path !== seoRoute) {
+        router.push(seoRoute);
+      }
     },
     { watch: [localeConfig] }
   );
