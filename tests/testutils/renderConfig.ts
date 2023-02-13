@@ -27,7 +27,6 @@ import RichText from "../../components/Elements/RichText.vue";
 import RichTextElement from "../../components/Elements/RichTextElement.vue";
 import Button from "../../components/Elements/Button.vue";
 import Link from "../../components/Elements/Link.vue";
-import Text from "../../components/Elements/Text.vue";
 
 import InternalLink from "../../components/InternalLink.vue";
 
@@ -58,7 +57,6 @@ export const renderConfig = {
       ElementsRichTextElement: RichTextElement,
       ElementsButton: Button,
       ElementsLink: Link,
-      ElementsText: Text,
 
       NuxtLayout: DefaultLayout,
 
