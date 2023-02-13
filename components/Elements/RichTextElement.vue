@@ -1,5 +1,5 @@
 <template>
-  <span class="border bg-red-800 bg-opacity-20">
+  <span :class="richTextElementClasses">
     <component
       :is="richtTextElementComponent"
       v-if="Array.isArray(richTextElement.content)"
@@ -14,6 +14,7 @@
 
 <script lang="ts" setup>
 import { RichTextElement } from "fsxa-api";
+
 // TODO: remove all data any types
 const props = defineProps<{ richTextElement: RichTextElement }>();
 
@@ -29,6 +30,22 @@ const richtTextElementComponent = computed(() => {
       return resolveComponent("ElementsLinebreak");
     default:
       return resolveComponent("ElementsUnknownRichtextElement");
+  }
+});
+
+const richTextElementClasses = computed(() => {
+  const fsStyle = (props.richTextElement.data as Record<string, unknown>)[
+    "data-fs-style"
+  ];
+  console.log(fsStyle);
+
+  switch (fsStyle) {
+    case "format.span_yellow_text":
+      return "text-yellow-500";
+    case "format.standard":
+      return "";
+    default:
+      return "";
   }
 });
 </script>

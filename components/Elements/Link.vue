@@ -1,5 +1,5 @@
 <template>
-  <span class="bg-green-700 bg-opacity-30">
+  <span>
     <NuxtLink
       v-if="richTextElement.data.template === 'internal_link'"
       class="underline"
