@@ -7,3 +7,8 @@ if [ "$branch" = "main" -a "$CI" != "true" ]; then
   echo "You can't push directly to main branch"
   exit 1
 fi
+
+if [ "$branch" = "alpha" -a "$CI" != "true" ]; then
+  echo "You can't push directly to alpha branch"
+  exit 1
+fi
