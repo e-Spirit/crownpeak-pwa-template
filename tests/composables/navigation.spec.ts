@@ -1,8 +1,11 @@
-import { it, expect, describe } from "vitest";
+import { it, expect, describe, beforeEach } from "vitest";
 import { useNavigationData } from "../../composables/navigation";
 import navigationItemFixture from "../fixtures/navigationItem.json";
-
+import { clearMockedState } from "../testutils/nuxtMocks";
 describe("useNavigationData", () => {
+  beforeEach(() => {
+    clearMockedState();
+  });
   it("useNavigationData => provide undefined default navigationData", () => {
     const { navigationData } = useNavigationData();
 

@@ -1,10 +1,13 @@
 <template>
   <DevOnly>
     <div
-      class="relative border bg-red-50 p-4 font-bold text-red-500"
+      class="group relative border bg-red-50 p-4 font-bold text-red-500"
       data-testid="unknown"
     >
-      <Dev v-if="content" :content="content" />
+      <DevOnly v-if="devMode">
+        <Dev :content="content" class="hidden group-hover:block" />
+      </DevOnly>
+
       Unkown Component: {{ componentType }}
     </div>
   </DevOnly>
@@ -14,6 +17,8 @@ import { Section, Dataset, Content2Section, Page } from "fsxa-api";
 const props = defineProps<{
   content?: Section | Dataset | Content2Section | Page;
 }>();
+
+const { devMode } = useAppConfig();
 
 const componentType = computed(() => {
   switch (props.content?.type) {

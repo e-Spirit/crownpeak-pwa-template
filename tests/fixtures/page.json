@@ -1,0 +1,2005 @@
+{
+  "type": "Page",
+  "id": "c2f85ffc-cdbe-47c1-a7de-b75947810b56",
+  "refId": "c8a158a3-2ba3-427c-a7e4-7d41d9844464",
+  "previewId": "c8a158a3-2ba3-427c-a7e4-7d41d9844464.de_DE",
+  "name": "index",
+  "layout": "homepage",
+  "children": [
+    {
+      "type": "PageBody",
+      "name": "content",
+      "previewId": "7e8e32b8-f243-4cee-a4e2-f980b7a8f2ef.de_DE",
+      "children": [
+        {
+          "id": "6e3136a1-6201-4fb7-9d0d-a589a2f778d5",
+          "type": "Section",
+          "sectionType": "teaser",
+          "previewId": "6e3136a1-6201-4fb7-9d0d-a589a2f778d5.de_DE",
+          "data": {
+            "st_button": null,
+            "st_headline": [
+              {
+                "data": { "data-fs-style": "format.standard" },
+                "content": [
+                  { "type": "text", "content": "IHR ", "data": {} },
+                  {
+                    "data": { "data-fs-style": "format.span_yellow_text" },
+                    "content": [
+                      { "type": "text", "content": "INDIVIDUELLES", "data": {} }
+                    ],
+                    "type": "block"
+                  },
+                  { "type": "text", "content": " ZUHAUSE.", "data": {} }
+                ],
+                "type": "block"
+              }
+            ],
+            "st_jumbo_headline": "Smart Living",
+            "st_kicker": "Willkommen",
+            "st_picture": {
+              "type": "Image",
+              "id": "d1b27751-1a60-4f1d-8d50-6746536f7b94",
+              "previewId": "d1b27751-1a60-4f1d-8d50-6746536f7b94.de_DE",
+              "meta": {},
+              "description": null,
+              "resolutions": {
+                "ORIGINAL": {
+                  "fileSize": 3870232,
+                  "extension": "jpeg",
+                  "mimeType": "image/jpeg",
+                  "width": 4288,
+                  "height": 2848,
+                  "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Thermostat-Black.jpeg?rev=1713",
+                  "seoRoute": "/Images/Product-Images/Thermostat-Black.jpeg"
+                },
+                "banner_slider": {
+                  "fileSize": 443422,
+                  "extension": "jpg",
+                  "mimeType": "image/jpeg",
+                  "width": 1920,
+                  "height": 1080,
+                  "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Thermostat-Black_banner_slider.jpg?rev=1713",
+                  "seoRoute": "/Images/Product-Images/Thermostat-Black_banner_slider.jpg"
+                },
+                "landscape": {
+                  "fileSize": 117349,
+                  "extension": "jpg",
+                  "mimeType": "image/jpeg",
+                  "width": 1170,
+                  "height": 400,
+                  "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Thermostat-Black_landscape.jpg?rev=1713",
+                  "seoRoute": "/Images/Product-Images/Thermostat-Black_landscape.jpg"
+                },
+                "portrait": {
+                  "fileSize": 100482,
+                  "extension": "jpg",
+                  "mimeType": "image/jpeg",
+                  "width": 800,
+                  "height": 500,
+                  "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Thermostat-Black_portrait.jpg?rev=1713",
+                  "seoRoute": "/Images/Product-Images/Thermostat-Black_portrait.jpg"
+                },
+                "product_teaser": {
+                  "fileSize": 49107,
+                  "extension": "jpg",
+                  "mimeType": "image/jpeg",
+                  "width": 360,
+                  "height": 560,
+                  "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Thermostat-Black_product_teaser.jpg?rev=1713",
+                  "seoRoute": "/Images/Product-Images/Thermostat-Black_product_teaser.jpg"
+                }
+              }
+            },
+            "st_picture_alt": "Touching Surfaces",
+            "st_text": [
+              {
+                "data": { "data-fs-style": "format.standard" },
+                "content": [
+                  {
+                    "type": "text",
+                    "content": "Mit einfachen Funktionen und Werkzeugen können unsere ",
+                    "data": {}
+                  },
+                  {
+                    "data": {
+                      "type": "Link",
+                      "template": "internal_link",
+                      "data": {
+                        "lt_link": {
+                          "type": "Reference",
+                          "referenceId": "0bc56bb7-a852-4603-a4bc-2e219634169f",
+                          "referenceType": "PageRef"
+                        },
+                        "lt_text": "Smart"
+                      },
+                      "meta": {}
+                    },
+                    "content": [
+                      { "type": "text", "content": "Smart", "data": {} }
+                    ],
+                    "type": "link"
+                  },
+                  {
+                    "type": "text",
+                    "content": " Living-Kunden ihr individuelles Zuhause schaffen. Von der Steuerung des Lichts über eine zentrale ",
+                    "data": {}
+                  },
+                  {
+                    "data": {
+                      "type": "Link",
+                      "template": "external_link",
+                      "data": {
+                        "lt_link_behavior": {
+                          "type": "Option",
+                          "key": "_blank",
+                          "value": "Im neuen Tab/Fenster öffnen",
+                          "fsType": "Option",
+                          "label": "Im neuen Tab/Fenster öffnen",
+                          "identifier": "_blank"
+                        },
+                        "lt_text": "Mediensteuerung",
+                        "lt_url": "https://www.google.de"
+                      },
+                      "meta": {}
+                    },
+                    "content": [
+                      {
+                        "type": "text",
+                        "content": "Mediensteuerung",
+                        "data": {}
+                      }
+                    ],
+                    "type": "link"
+                  },
+                  { "type": "text", "content": ".", "data": {} }
+                ],
+                "type": "block"
+              }
+            ]
+          },
+          "children": []
+        },
+        {
+          "id": "01f87555-9eb2-4630-8b2d-1720ccb19aa2",
+          "type": "Section",
+          "sectionType": "interesting_facts",
+          "previewId": "01f87555-9eb2-4630-8b2d-1720ccb19aa2.de_DE",
+          "data": {
+            "st_background_image": {
+              "type": "Image",
+              "id": "bf276a8b-9102-4ad6-b278-6e585ab1de9d",
+              "previewId": "bf276a8b-9102-4ad6-b278-6e585ab1de9d.de_DE",
+              "meta": {},
+              "description": null,
+              "resolutions": {
+                "ORIGINAL": {
+                  "fileSize": 8380040,
+                  "extension": "jpeg",
+                  "mimeType": "image/jpeg",
+                  "width": 5998,
+                  "height": 3998,
+                  "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Smarthome-panel-left.jpeg?rev=1713",
+                  "seoRoute": "/Images/Content/Smarthome-panel-left.jpeg"
+                },
+                "banner_slider": {
+                  "fileSize": 483994,
+                  "extension": "jpg",
+                  "mimeType": "image/jpeg",
+                  "width": 1920,
+                  "height": 1080,
+                  "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Smarthome-panel-left_banner_slider.jpg?rev=1713",
+                  "seoRoute": "/Images/Content/Smarthome-panel-left_banner_slider.jpg"
+                },
+                "landscape": {
+                  "fileSize": 109827,
+                  "extension": "jpg",
+                  "mimeType": "image/jpeg",
+                  "width": 1170,
+                  "height": 400,
+                  "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Smarthome-panel-left_landscape.jpg?rev=1713",
+                  "seoRoute": "/Images/Content/Smarthome-panel-left_landscape.jpg"
+                },
+                "portrait": {
+                  "fileSize": 96252,
+                  "extension": "jpg",
+                  "mimeType": "image/jpeg",
+                  "width": 800,
+                  "height": 500,
+                  "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Smarthome-panel-left_portrait.jpg?rev=1713",
+                  "seoRoute": "/Images/Content/Smarthome-panel-left_portrait.jpg"
+                },
+                "product_teaser": {
+                  "fileSize": 58449,
+                  "extension": "jpg",
+                  "mimeType": "image/jpeg",
+                  "width": 360,
+                  "height": 560,
+                  "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Smarthome-panel-left_product_teaser.jpg?rev=1713",
+                  "seoRoute": "/Images/Content/Smarthome-panel-left_product_teaser.jpg"
+                }
+              }
+            },
+            "st_counters": [
+              {
+                "id": "70b14ca5-84aa-4bc8-9769-f38d7ecd50c7",
+                "type": "Section",
+                "sectionType": "counter",
+                "previewId": "70b14ca5-84aa-4bc8-9769-f38d7ecd50c7.de_DE",
+                "data": { "st_number": 11, "st_text": "Individuelle Produkte" },
+                "children": []
+              },
+              {
+                "id": "574f0440-3060-4ed8-9167-622cdf7d626a",
+                "type": "Section",
+                "sectionType": "counter",
+                "previewId": "574f0440-3060-4ed8-9167-622cdf7d626a.de_DE",
+                "data": { "st_number": 180, "st_text": "Mitarbeiter" },
+                "children": []
+              },
+              {
+                "id": "5640dc8a-f612-47c9-b7ab-9ce9bc0b7029",
+                "type": "Section",
+                "sectionType": "counter",
+                "previewId": "5640dc8a-f612-47c9-b7ab-9ce9bc0b7029.de_DE",
+                "data": { "st_number": 3200, "st_text": "Fachhändler" },
+                "children": []
+              }
+            ],
+            "st_headline": "Smart Living",
+            "st_tagline": "WER WIR SIND",
+            "st_text": [
+              {
+                "data": { "data-fs-style": "format.standard" },
+                "content": [
+                  {
+                    "data": { "format": "bold" },
+                    "content": [
+                      { "type": "text", "content": "SMART LIVING", "data": {} }
+                    ],
+                    "type": "text"
+                  },
+                  {
+                    "type": "text",
+                    "content": " ist ein weltweit führender Anbieter für Smart Home Lösungen sowohl für private Haushalte als auch für umfassende Unternehmenslösungen. Seit 2014 haben wir viele smarte Projekte mit namenhaften Partnern im nationalen und internationalen Bereich durchgeführt.",
+                    "data": {}
+                  }
+                ],
+                "type": "block"
+              }
+            ]
+          },
+          "children": []
+        }
+      ]
+    }
+  ],
+  "data": {
+    "pt_create_section": {
+      "fsType": "FS_BUTTON",
+      "name": "pt_create_section",
+      "value": {}
+    },
+    "pt_create_section2": {
+      "fsType": "FS_BUTTON",
+      "name": "pt_create_section2",
+      "value": {}
+    },
+    "pt_date": "2022-03-22T13:25:07.000Z",
+    "pt_permissions": {
+      "type": "Permission",
+      "fsType": "CMS_INPUT_PERMISSION",
+      "name": "pt_permissions",
+      "value": [{ "allowed": [], "forbidden": [] }]
+    },
+    "pt_show_chat": false,
+    "pt_slider": [
+      {
+        "id": "a840ed44-21dc-4430-9665-bc96a305e150",
+        "type": "Section",
+        "sectionType": "single_slide",
+        "previewId": "a840ed44-21dc-4430-9665-bc96a305e150.de_DE",
+        "data": {
+          "st_button": {
+            "type": "Link",
+            "template": "slide_button_with_link",
+            "data": {
+              "lt_button_text": "mehr",
+              "lt_internal": null,
+              "lt_link_toggle": {
+                "type": "Option",
+                "key": "product",
+                "value": "Produkt Link"
+              },
+              "lt_product_link": {
+                "type": "Dataset",
+                "id": "8517c8b2-f06b-4174-a3d4-84109547cb30",
+                "previewId": "8517c8b2-f06b-4174-a3d4-84109547cb30.de_DE",
+                "schema": "products",
+                "entityType": "product",
+                "data": {
+                  "tt_abstract": "Den gesamten Stromverbrauch zu sehen und steuern zu können, ist mittlerweile keine Zukunftsmusik mehr. Durch smarte Steckdosen ist dies möglich und darüber hinaus noch einiges mehr. Smarte Steckdosen messen automatisch den Stromverbrauch aller durch sie angeschlossenen Geräte und übermitteln diesen an Ihr Smart Home System und demnach auch an Ihr Smartphone. Zudem fällt der Verbrauch im Standby Modus weg, da die Steckdosen beim Abschalten alle Elektrogeräte durch Kontaktunterbrechung ebenfalls vom Strom nehmen.",
+                  "tt_categories": [
+                    {
+                      "type": "Option",
+                      "key": "a3b87bbd-9f89-409c-8ace-9135a8e230ff",
+                      "value": "Inneneinrichtung"
+                    }
+                  ],
+                  "tt_compatibility": [
+                    {
+                      "type": "Option",
+                      "key": "badf6d89-6b21-42e1-ba6d-a1a09a2c1dc0",
+                      "value": "Amazon Alexa"
+                    }
+                  ],
+                  "tt_delivery": [
+                    {
+                      "data": {},
+                      "content": [
+                        {
+                          "data": {
+                            "data-fs-style": "0",
+                            "data-fs-property-orderedStyle": "outlineNone",
+                            "data-fs-property-sorted": "0",
+                            "data-fs-property-style": "0",
+                            "data-fs-property-unorderedStyle": "styled"
+                          },
+                          "content": [
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "WLAN-Steckdose (EU-Stecker, Schuko-Steckdose)",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            },
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "Kurzanleitung",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            }
+                          ],
+                          "type": "list"
+                        }
+                      ],
+                      "type": "paragraph"
+                    }
+                  ],
+                  "tt_installation": [
+                    {
+                      "data": {},
+                      "content": [
+                        {
+                          "data": {
+                            "data-fs-style": "0",
+                            "data-fs-property-orderedStyle": "outlineNone",
+                            "data-fs-property-sorted": "0",
+                            "data-fs-property-style": "0",
+                            "data-fs-property-unorderedStyle": "styled"
+                          },
+                          "content": [
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "Die Batterien ordnungsgemäß in die Fernbedienung einsetzen.",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            },
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "Funkstecker in die Steckdose stecken.",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            },
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "Halten Sie die Taste für ca. 5 Sekunden gedrückt.",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            },
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "Verbinden Sie ihr Smartphone mit der Steckdose.",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            }
+                          ],
+                          "type": "list"
+                        }
+                      ],
+                      "type": "paragraph"
+                    }
+                  ],
+                  "tt_media": [
+                    {
+                      "id": "98a37b30-afe4-4ecb-b5ce-0c861022ee6f",
+                      "type": "Section",
+                      "sectionType": "product_pictures",
+                      "previewId": "98a37b30-afe4-4ecb-b5ce-0c861022ee6f.de_DE",
+                      "data": {
+                        "st_media": {
+                          "type": "Image",
+                          "id": "de2eaa41-7f3c-4c35-a872-93f957bc85ad",
+                          "previewId": "de2eaa41-7f3c-4c35-a872-93f957bc85ad.de_DE",
+                          "meta": {},
+                          "description": null,
+                          "resolutions": {
+                            "ORIGINAL": {
+                              "fileSize": 1511224,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 6205,
+                              "height": 4912,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/WLAN-powerplug.jpg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/WLAN-powerplug.jpg"
+                            },
+                            "banner_slider": {
+                              "fileSize": 82326,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 1920,
+                              "height": 1080,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/WLAN-powerplug_banner_slider.jpg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/WLAN-powerplug_banner_slider.jpg"
+                            },
+                            "landscape": {
+                              "fileSize": 28781,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 1170,
+                              "height": 400,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/WLAN-powerplug_landscape.jpg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/WLAN-powerplug_landscape.jpg"
+                            },
+                            "portrait": {
+                              "fileSize": 25570,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 800,
+                              "height": 500,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/WLAN-powerplug_portrait.jpg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/WLAN-powerplug_portrait.jpg"
+                            },
+                            "product_teaser": {
+                              "fileSize": 16288,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 360,
+                              "height": 560,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/WLAN-powerplug_product_teaser.jpg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/WLAN-powerplug_product_teaser.jpg"
+                            }
+                          }
+                        },
+                        "st_media_alt_text": "WLAN Powerplug"
+                      },
+                      "children": []
+                    }
+                  ],
+                  "tt_mode": {
+                    "type": "Option",
+                    "key": "249deec1-39bd-4622-81a1-30e8ec66cf1d",
+                    "value": "Netzbetrieb"
+                  },
+                  "tt_name": "Kabellose Smart Steckdose NX-17",
+                  "tt_permissions": {
+                    "type": "Permission",
+                    "fsType": "CMS_INPUT_PERMISSION",
+                    "name": "tt_permissions",
+                    "value": [
+                      {
+                        "allowed": [
+                          {
+                            "groupId": "anoym",
+                            "groupName": "Anonyme Besucher",
+                            "groupPath": "/GroupsFile/anoym"
+                          }
+                        ],
+                        "forbidden": []
+                      }
+                    ]
+                  },
+                  "tt_price": "29,95€",
+                  "tt_publish_at": null,
+                  "tt_relatedproducts": [],
+                  "tt_showrelatedproducts": {
+                    "type": "Option",
+                    "key": "no",
+                    "value": "Keine Produktempfehlungen anzeigen",
+                    "fsType": "Option",
+                    "label": "Keine Produktempfehlungen anzeigen",
+                    "identifier": "no"
+                  },
+                  "tt_teaser_image": {
+                    "type": "Image",
+                    "id": "de2eaa41-7f3c-4c35-a872-93f957bc85ad",
+                    "previewId": "de2eaa41-7f3c-4c35-a872-93f957bc85ad.de_DE",
+                    "meta": {},
+                    "description": null,
+                    "resolutions": {
+                      "ORIGINAL": {
+                        "fileSize": 1511224,
+                        "extension": "jpg",
+                        "mimeType": "image/jpeg",
+                        "width": 6205,
+                        "height": 4912,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/WLAN-powerplug.jpg?rev=1713",
+                        "seoRoute": "/Images/Product-Images/WLAN-powerplug.jpg"
+                      },
+                      "banner_slider": {
+                        "fileSize": 82326,
+                        "extension": "jpg",
+                        "mimeType": "image/jpeg",
+                        "width": 1920,
+                        "height": 1080,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/WLAN-powerplug_banner_slider.jpg?rev=1713",
+                        "seoRoute": "/Images/Product-Images/WLAN-powerplug_banner_slider.jpg"
+                      },
+                      "landscape": {
+                        "fileSize": 28781,
+                        "extension": "jpg",
+                        "mimeType": "image/jpeg",
+                        "width": 1170,
+                        "height": 400,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/WLAN-powerplug_landscape.jpg?rev=1713",
+                        "seoRoute": "/Images/Product-Images/WLAN-powerplug_landscape.jpg"
+                      },
+                      "portrait": {
+                        "fileSize": 25570,
+                        "extension": "jpg",
+                        "mimeType": "image/jpeg",
+                        "width": 800,
+                        "height": 500,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/WLAN-powerplug_portrait.jpg?rev=1713",
+                        "seoRoute": "/Images/Product-Images/WLAN-powerplug_portrait.jpg"
+                      },
+                      "product_teaser": {
+                        "fileSize": 16288,
+                        "extension": "jpg",
+                        "mimeType": "image/jpeg",
+                        "width": 360,
+                        "height": 560,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/WLAN-powerplug_product_teaser.jpg?rev=1713",
+                        "seoRoute": "/Images/Product-Images/WLAN-powerplug_product_teaser.jpg"
+                      }
+                    }
+                  },
+                  "tt_teaser_image_alt": null,
+                  "tt_teaser_text": "Den gesamten Stromverbrauch zu sehen und steuern zu können, ist mittlerweile keine Zukunftsmusik mehr. Durch smarte Steckdosen ist dies möglich und darüber hinaus noch einiges mehr."
+                },
+                "route": "/Produkte/Kabellose-Smart-Steckdose-NX-17.html",
+                "routes": [
+                  {
+                    "pageRef": "b1362730-4ee2-4473-bc02-529e47b08e95",
+                    "route": "/Produkte/Kabellose-Smart-Steckdose-NX-17.html"
+                  },
+                  {
+                    "pageRef": "ae5cd33e-16c4-4f4b-8e05-0483c295951b",
+                    "route": "/Produkte/Kabellose-Smart-Steckdose-NX-17-2.html"
+                  }
+                ],
+                "template": "products.product",
+                "children": [],
+                "locale": "de_DE"
+              },
+              "lt_url": null
+            },
+            "meta": {}
+          },
+          "st_description": "Das vernetzte, „intelligente“ Heim sorgt für mehr Sicherheit, spart wertvolle Zeit und senkt Energiekosten.",
+          "st_picture": {
+            "type": "Image",
+            "id": "f475bcca-127d-440a-9236-3cc0f1e6a7ec",
+            "previewId": "f475bcca-127d-440a-9236-3cc0f1e6a7ec.de_DE",
+            "meta": {},
+            "description": null,
+            "resolutions": {
+              "ORIGINAL": {
+                "fileSize": 25040,
+                "extension": "jpg",
+                "mimeType": "image/jpeg",
+                "width": 433,
+                "height": 265,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Smarthome-Panel.jpg?rev=14233",
+                "seoRoute": "/Images/Content/Smarthome-Panel.jpg"
+              },
+              "banner_slider": {
+                "fileSize": 178703,
+                "extension": "jpg",
+                "mimeType": "image/jpeg",
+                "width": 1920,
+                "height": 1080,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Smarthome-Panel_banner_slider.jpg?rev=14233",
+                "seoRoute": "/Images/Content/Smarthome-Panel_banner_slider.jpg"
+              },
+              "landscape": {
+                "fileSize": 65116,
+                "extension": "jpg",
+                "mimeType": "image/jpeg",
+                "width": 1170,
+                "height": 400,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Smarthome-Panel_landscape.jpg?rev=14233",
+                "seoRoute": "/Images/Content/Smarthome-Panel_landscape.jpg"
+              },
+              "portrait": {
+                "fileSize": 56812,
+                "extension": "jpg",
+                "mimeType": "image/jpeg",
+                "width": 800,
+                "height": 500,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Smarthome-Panel_portrait.jpg?rev=14233",
+                "seoRoute": "/Images/Content/Smarthome-Panel_portrait.jpg"
+              },
+              "product_teaser": {
+                "fileSize": 53056,
+                "extension": "jpg",
+                "mimeType": "image/jpeg",
+                "width": 360,
+                "height": 560,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Smarthome-Panel_product_teaser.jpg?rev=14233",
+                "seoRoute": "/Images/Content/Smarthome-Panel_product_teaser.jpg"
+              }
+            }
+          },
+          "st_picture_alt": null,
+          "st_title": [
+            {
+              "data": { "data-fs-style": "format.standard" },
+              "content": [
+                { "type": "text", "content": "DAS ", "data": {} },
+                {
+                  "data": { "data-fs-style": "format.span_yellow_text" },
+                  "content": [
+                    { "type": "text", "content": "CLEVERE", "data": {} }
+                  ],
+                  "type": "block"
+                },
+                { "type": "text", "content": " HAUS ", "data": {} }
+              ],
+              "type": "block"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "id": "e4b8762b-3499-4e69-a41e-b6bd81014a01",
+        "type": "Section",
+        "sectionType": "single_slide",
+        "previewId": "e4b8762b-3499-4e69-a41e-b6bd81014a01.de_DE",
+        "data": {
+          "st_button": {
+            "type": "Link",
+            "template": "slide_button_with_link",
+            "data": {
+              "lt_button_text": "mehr",
+              "lt_internal": null,
+              "lt_link_toggle": {
+                "type": "Option",
+                "key": "product",
+                "value": "Produkt Link"
+              },
+              "lt_product_link": {
+                "type": "Dataset",
+                "id": "b81acb4e-80a2-419e-9709-9c56467e1445",
+                "previewId": "b81acb4e-80a2-419e-9709-9c56467e1445.de_DE",
+                "schema": "products",
+                "entityType": "product",
+                "data": {
+                  "tt_abstract": "Das Smarte Door Lock SRT-456 ist eine mechanische Verriegelung, welche mithilfe eines PIN Codes entriegelt werden kann. Zusätzlich lässt sich das smarte Türschloss nur mit dem passenden Gesicht öffnen!",
+                  "tt_categories": [
+                    {
+                      "type": "Option",
+                      "key": "9db24560-90b4-46c4-8564-0aac1f39ed4b",
+                      "value": "Türschlösser"
+                    }
+                  ],
+                  "tt_compatibility": [
+                    {
+                      "type": "Option",
+                      "key": "badf6d89-6b21-42e1-ba6d-a1a09a2c1dc0",
+                      "value": "Amazon Alexa"
+                    },
+                    {
+                      "type": "Option",
+                      "key": "72f224dd-b4e5-452f-8a29-087b5dc3c105",
+                      "value": "Bosch Smart Home"
+                    },
+                    {
+                      "type": "Option",
+                      "key": "e69d335f-bb08-44db-8ee5-5921e3eb066f",
+                      "value": "Google Home"
+                    }
+                  ],
+                  "tt_delivery": [
+                    {
+                      "data": {},
+                      "content": [
+                        {
+                          "data": {
+                            "data-fs-style": "0",
+                            "data-fs-property-orderedStyle": "outlineNone",
+                            "data-fs-property-sorted": "0",
+                            "data-fs-property-style": "0",
+                            "data-fs-property-unorderedStyle": "checked"
+                          },
+                          "content": [
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "Mechanische Verriegelung",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            },
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "Kamera mit Gesichtserkennung",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            },
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "Wireless Tastenfeld",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            },
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "Montagehalterung",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            },
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "Bedienungsanleitung",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            }
+                          ],
+                          "type": "list"
+                        },
+                        { "data": {}, "content": [], "type": "linebreak" }
+                      ],
+                      "type": "paragraph"
+                    }
+                  ],
+                  "tt_installation": [
+                    {
+                      "data": {},
+                      "content": [
+                        {
+                          "type": "text",
+                          "content": "Dranschrauben an die Tür. Fertig",
+                          "data": {}
+                        }
+                      ],
+                      "type": "paragraph"
+                    }
+                  ],
+                  "tt_media": [
+                    {
+                      "id": "0ef336d8-a479-4253-b460-55d86b24964e",
+                      "type": "Section",
+                      "sectionType": "product_pictures",
+                      "previewId": "0ef336d8-a479-4253-b460-55d86b24964e.de_DE",
+                      "data": {
+                        "st_media": {
+                          "type": "Image",
+                          "id": "e057921d-567f-4bc0-a51e-36d792e5893b",
+                          "previewId": "e057921d-567f-4bc0-a51e-36d792e5893b.de_DE",
+                          "meta": {},
+                          "description": null,
+                          "resolutions": {
+                            "ORIGINAL": {
+                              "fileSize": 1726923,
+                              "extension": "jpeg",
+                              "mimeType": "image/jpeg",
+                              "width": 4096,
+                              "height": 5120,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Smart-door-lock-round.jpeg?rev=11637",
+                              "seoRoute": "/Images/Product-Images/Smart-door-lock-round.jpeg"
+                            },
+                            "banner_slider": {
+                              "fileSize": 145266,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 1920,
+                              "height": 1080,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Smart-door-lock-round_banner_slider.jpg?rev=11637",
+                              "seoRoute": "/Images/Product-Images/Smart-door-lock-round_banner_slider.jpg"
+                            },
+                            "landscape": {
+                              "fileSize": 55119,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 1170,
+                              "height": 400,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Smart-door-lock-round_landscape.jpg?rev=11637",
+                              "seoRoute": "/Images/Product-Images/Smart-door-lock-round_landscape.jpg"
+                            },
+                            "portrait": {
+                              "fileSize": 42244,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 800,
+                              "height": 500,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Smart-door-lock-round_portrait.jpg?rev=11637",
+                              "seoRoute": "/Images/Product-Images/Smart-door-lock-round_portrait.jpg"
+                            },
+                            "product_teaser": {
+                              "fileSize": 26078,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 360,
+                              "height": 560,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Smart-door-lock-round_product_teaser.jpg?rev=11637",
+                              "seoRoute": "/Images/Product-Images/Smart-door-lock-round_product_teaser.jpg"
+                            }
+                          }
+                        },
+                        "st_media_alt_text": "Smart Door Lock Round"
+                      },
+                      "children": []
+                    }
+                  ],
+                  "tt_mode": {
+                    "type": "Option",
+                    "key": "9a01a771-0270-4e91-a12f-a6fa2d9cac40",
+                    "value": "Akkubetrieb"
+                  },
+                  "tt_name": "Smart Door Lock SRT-456",
+                  "tt_permissions": {
+                    "type": "Permission",
+                    "fsType": "CMS_INPUT_PERMISSION",
+                    "name": "tt_permissions",
+                    "value": [{ "allowed": [], "forbidden": [] }]
+                  },
+                  "tt_price": "237 €",
+                  "tt_publish_at": null,
+                  "tt_relatedproducts": [],
+                  "tt_showrelatedproducts": {
+                    "type": "Option",
+                    "key": "ice",
+                    "value": "KI basierte Empfehlungen anzeigen",
+                    "fsType": "Option",
+                    "label": "KI basierte Empfehlungen anzeigen",
+                    "identifier": "ice"
+                  },
+                  "tt_teaser_image": {
+                    "type": "Image",
+                    "id": "e057921d-567f-4bc0-a51e-36d792e5893b",
+                    "previewId": "e057921d-567f-4bc0-a51e-36d792e5893b.de_DE",
+                    "meta": {},
+                    "description": null,
+                    "resolutions": {
+                      "ORIGINAL": {
+                        "fileSize": 1726923,
+                        "extension": "jpeg",
+                        "mimeType": "image/jpeg",
+                        "width": 4096,
+                        "height": 5120,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Smart-door-lock-round.jpeg?rev=11637",
+                        "seoRoute": "/Images/Product-Images/Smart-door-lock-round.jpeg"
+                      },
+                      "banner_slider": {
+                        "fileSize": 145266,
+                        "extension": "jpg",
+                        "mimeType": "image/jpeg",
+                        "width": 1920,
+                        "height": 1080,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Smart-door-lock-round_banner_slider.jpg?rev=11637",
+                        "seoRoute": "/Images/Product-Images/Smart-door-lock-round_banner_slider.jpg"
+                      },
+                      "landscape": {
+                        "fileSize": 55119,
+                        "extension": "jpg",
+                        "mimeType": "image/jpeg",
+                        "width": 1170,
+                        "height": 400,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Smart-door-lock-round_landscape.jpg?rev=11637",
+                        "seoRoute": "/Images/Product-Images/Smart-door-lock-round_landscape.jpg"
+                      },
+                      "portrait": {
+                        "fileSize": 42244,
+                        "extension": "jpg",
+                        "mimeType": "image/jpeg",
+                        "width": 800,
+                        "height": 500,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Smart-door-lock-round_portrait.jpg?rev=11637",
+                        "seoRoute": "/Images/Product-Images/Smart-door-lock-round_portrait.jpg"
+                      },
+                      "product_teaser": {
+                        "fileSize": 26078,
+                        "extension": "jpg",
+                        "mimeType": "image/jpeg",
+                        "width": 360,
+                        "height": 560,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Smart-door-lock-round_product_teaser.jpg?rev=11637",
+                        "seoRoute": "/Images/Product-Images/Smart-door-lock-round_product_teaser.jpg"
+                      }
+                    }
+                  },
+                  "tt_teaser_image_alt": null,
+                  "tt_teaser_text": "Das Smart Door Lock SRT-456 ist eine mechanische Verriegelung, welche mithilfe eines PIN Codes oder ihres Smartphone entriegelt werden kann. Zusätzlich lässt sich das smarte Türschloss mit dem passenden Gesicht öffnen!"
+                },
+                "route": "/Produkte/Smart-Door-Lock-SRT-456.html",
+                "routes": [
+                  {
+                    "pageRef": "b1362730-4ee2-4473-bc02-529e47b08e95",
+                    "route": "/Produkte/Smart-Door-Lock-SRT-456.html"
+                  },
+                  {
+                    "pageRef": "19333a9e-6807-48ce-b1aa-f7014a295ebc",
+                    "route": "/testproj1/Produkt_36.html"
+                  },
+                  {
+                    "pageRef": "ae5cd33e-16c4-4f4b-8e05-0483c295951b",
+                    "route": "/Produkte/Smart-Door-Lock-SRT-456-2.html"
+                  }
+                ],
+                "template": "products.product",
+                "children": [],
+                "locale": "de_DE"
+              },
+              "lt_url": null
+            },
+            "meta": {}
+          },
+          "st_description": "Erfahren Sie alles über unsere Produkte, die Ihre Sicherheit zu Hause erhöhen.",
+          "st_picture": {
+            "type": "Image",
+            "id": "bbfc359a-e881-4ece-be63-a0b69e83d4ab",
+            "previewId": "bbfc359a-e881-4ece-be63-a0b69e83d4ab.de_DE",
+            "meta": {},
+            "description": null,
+            "resolutions": {
+              "ORIGINAL": {
+                "fileSize": 7355156,
+                "extension": "jpeg",
+                "mimeType": "image/jpeg",
+                "width": 6476,
+                "height": 4318,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Overview-of-the-security-cameras.jpeg?rev=1713",
+                "seoRoute": "/Images/Content/Overview-of-the-security-cameras.jpeg"
+              },
+              "banner_slider": {
+                "fileSize": 267892,
+                "extension": "jpg",
+                "mimeType": "image/jpeg",
+                "width": 1920,
+                "height": 1080,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Overview-of-the-security-cameras_banner_slider.jpg?rev=1713",
+                "seoRoute": "/Images/Content/Overview-of-the-security-cameras_banner_slider.jpg"
+              },
+              "landscape": {
+                "fileSize": 83026,
+                "extension": "jpg",
+                "mimeType": "image/jpeg",
+                "width": 1170,
+                "height": 400,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Overview-of-the-security-cameras_landscape.jpg?rev=1713",
+                "seoRoute": "/Images/Content/Overview-of-the-security-cameras_landscape.jpg"
+              },
+              "portrait": {
+                "fileSize": 74025,
+                "extension": "jpg",
+                "mimeType": "image/jpeg",
+                "width": 800,
+                "height": 500,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Overview-of-the-security-cameras_portrait.jpg?rev=1713",
+                "seoRoute": "/Images/Content/Overview-of-the-security-cameras_portrait.jpg"
+              },
+              "product_teaser": {
+                "fileSize": 49291,
+                "extension": "jpg",
+                "mimeType": "image/jpeg",
+                "width": 360,
+                "height": 560,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Overview-of-the-security-cameras_product_teaser.jpg?rev=1713",
+                "seoRoute": "/Images/Content/Overview-of-the-security-cameras_product_teaser.jpg"
+              }
+            }
+          },
+          "st_picture_alt": null,
+          "st_title": [
+            {
+              "data": { "data-fs-style": "format.standard" },
+              "content": [
+                {
+                  "data": { "data-fs-style": "format.span_yellow_text" },
+                  "content": [
+                    { "type": "text", "content": "Home", "data": {} }
+                  ],
+                  "type": "block"
+                },
+                { "type": "text", "content": " Security", "data": {} }
+              ],
+              "type": "block"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "id": "85f00354-6e22-4c97-a1b9-05261717ac8a",
+        "type": "Section",
+        "sectionType": "single_slide",
+        "previewId": "85f00354-6e22-4c97-a1b9-05261717ac8a.de_DE",
+        "data": {
+          "st_button": {
+            "type": "Link",
+            "template": "slide_button_with_link",
+            "data": {
+              "lt_button_text": "Sicherheit geht vor",
+              "lt_internal": null,
+              "lt_link_toggle": {
+                "type": "Option",
+                "key": "product",
+                "value": "Produkt Link"
+              },
+              "lt_product_link": {
+                "type": "Dataset",
+                "id": "2e253537-fd5a-4243-ae5c-50606a67590a",
+                "previewId": "2e253537-fd5a-4243-ae5c-50606a67590a.de_DE",
+                "schema": "products",
+                "entityType": "product",
+                "data": {
+                  "tt_abstract": "Fernüberwachung für Haus und Wohnung. Nie wieder verpassen, was zu Hause vor sich geht. Livebilder können direkt auf Ihr Smartphone oder die Steuereinheit übertragen werden. Mit smarter Videoüberwachung machen Sie Ihr Smarthome ein Stück weit sicherer. Wenn man seine Hausüberwachung einrichtet, muss bei der Planung berücksichtigt werden, ob es eine reine Innen- oder Außenüberwachung beziehungsweise eine Kombination aus beidem werden soll. Dementsprechend sollte die Auswahl der zu installierenden Kameras getätigt werden. Hier gibt es Modelle für innen, außen und beide Anwendungsfälle. ",
+                  "tt_categories": [
+                    {
+                      "type": "Option",
+                      "key": "7087e769-3ee0-4ecb-bbab-dfb37bccce70",
+                      "value": "Kameras für den Außenbereich"
+                    }
+                  ],
+                  "tt_compatibility": [
+                    {
+                      "type": "Option",
+                      "key": "e69d335f-bb08-44db-8ee5-5921e3eb066f",
+                      "value": "Google Home"
+                    }
+                  ],
+                  "tt_delivery": [
+                    {
+                      "data": {},
+                      "content": [
+                        {
+                          "data": {
+                            "data-fs-style": "0",
+                            "data-fs-property-orderedStyle": "outlineNone",
+                            "data-fs-property-sorted": "0",
+                            "data-fs-property-style": "0",
+                            "data-fs-property-unorderedStyle": "styled"
+                          },
+                          "content": [
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "Kamera",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            },
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "Befestigungsrahmen",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            },
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "8 Befestigungsschrauben",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            }
+                          ],
+                          "type": "list"
+                        }
+                      ],
+                      "type": "paragraph"
+                    }
+                  ],
+                  "tt_installation": [
+                    {
+                      "data": {},
+                      "content": [
+                        {
+                          "type": "text",
+                          "content": "Weiterhin stellt sich die Frage der Installation. Diese kann für die Stromversorgung per Kabel oder über Akkus laufen. Die Daten können entweder intern mit einer SD Karte oder extern per WLAN in der Cloud gespeichert werden. Zu den jeweiligen Vor- und Nachteile beraten wir Sie gerne.",
+                          "data": {}
+                        }
+                      ],
+                      "type": "paragraph"
+                    },
+                    { "data": {}, "content": [], "type": "paragraph" }
+                  ],
+                  "tt_media": [
+                    {
+                      "id": "a8bb21d2-c88c-4c84-a514-2f8fd1a6281c",
+                      "type": "Section",
+                      "sectionType": "product_pictures",
+                      "previewId": "a8bb21d2-c88c-4c84-a514-2f8fd1a6281c.de_DE",
+                      "data": {
+                        "st_media": {
+                          "type": "Image",
+                          "id": "2888b2ec-983d-476b-afac-4f48da1a205d",
+                          "previewId": "2888b2ec-983d-476b-afac-4f48da1a205d.de_DE",
+                          "meta": {},
+                          "description": null,
+                          "resolutions": {
+                            "ORIGINAL": {
+                              "fileSize": 1891588,
+                              "extension": "jpeg",
+                              "mimeType": "image/jpeg",
+                              "width": 6000,
+                              "height": 4002,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Outdoor-camera.jpeg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/Outdoor-camera.jpeg"
+                            },
+                            "banner_slider": {
+                              "fileSize": 114525,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 1920,
+                              "height": 1080,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Outdoor-camera_banner_slider.jpg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/Outdoor-camera_banner_slider.jpg"
+                            },
+                            "landscape": {
+                              "fileSize": 33940,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 1170,
+                              "height": 400,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Outdoor-camera_landscape.jpg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/Outdoor-camera_landscape.jpg"
+                            },
+                            "portrait": {
+                              "fileSize": 29585,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 800,
+                              "height": 500,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Outdoor-camera_portrait.jpg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/Outdoor-camera_portrait.jpg"
+                            },
+                            "product_teaser": {
+                              "fileSize": 23876,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 360,
+                              "height": 560,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Outdoor-camera_product_teaser.jpg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/Outdoor-camera_product_teaser.jpg"
+                            }
+                          }
+                        },
+                        "st_media_alt_text": "Outdoor Camera"
+                      },
+                      "children": []
+                    },
+                    {
+                      "id": "f862c8ca-d097-4bae-a009-ae9dd37f36eb",
+                      "type": "Section",
+                      "sectionType": "product_pictures",
+                      "previewId": "f862c8ca-d097-4bae-a009-ae9dd37f36eb.de_DE",
+                      "data": {
+                        "st_media": {
+                          "type": "Image",
+                          "id": "c8f05603-fdcd-4071-8e79-a30af677facb",
+                          "previewId": "c8f05603-fdcd-4071-8e79-a30af677facb.de_DE",
+                          "meta": {},
+                          "description": null,
+                          "resolutions": {
+                            "ORIGINAL": {
+                              "fileSize": 18408,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 500,
+                              "height": 734,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Doorbell.jpg?rev=11641",
+                              "seoRoute": "/Images/Product-Images/Doorbell.jpg"
+                            },
+                            "banner_slider": {
+                              "fileSize": 102732,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 1920,
+                              "height": 1080,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Doorbell_banner_slider-2.jpg?rev=11641",
+                              "seoRoute": "/Images/Product-Images/Doorbell_banner_slider-2.jpg"
+                            },
+                            "landscape": {
+                              "fileSize": 33835,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 1170,
+                              "height": 400,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Doorbell_landscape-2.jpg?rev=11641",
+                              "seoRoute": "/Images/Product-Images/Doorbell_landscape-2.jpg"
+                            },
+                            "portrait": {
+                              "fileSize": 31155,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 800,
+                              "height": 500,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Doorbell_portrait-2.jpg?rev=11641",
+                              "seoRoute": "/Images/Product-Images/Doorbell_portrait-2.jpg"
+                            },
+                            "product_teaser": {
+                              "fileSize": 19165,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 360,
+                              "height": 560,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Doorbell_product_teaser.jpg?rev=11641",
+                              "seoRoute": "/Images/Product-Images/Doorbell_product_teaser.jpg"
+                            }
+                          }
+                        },
+                        "st_media_alt_text": "Doorbell"
+                      },
+                      "children": []
+                    }
+                  ],
+                  "tt_mode": {
+                    "type": "Option",
+                    "key": "249deec1-39bd-4622-81a1-30e8ec66cf1d",
+                    "value": "Netzbetrieb"
+                  },
+                  "tt_name": "Sicherheitskamera H-3710-N",
+                  "tt_permissions": {
+                    "type": "Permission",
+                    "fsType": "CMS_INPUT_PERMISSION",
+                    "name": "tt_permissions",
+                    "value": [{ "allowed": [], "forbidden": [] }]
+                  },
+                  "tt_price": "1221€",
+                  "tt_publish_at": null,
+                  "tt_relatedproducts": [],
+                  "tt_showrelatedproducts": {
+                    "type": "Option",
+                    "key": "no",
+                    "value": "Keine Produktempfehlungen anzeigen",
+                    "fsType": "Option",
+                    "label": "Keine Produktempfehlungen anzeigen",
+                    "identifier": "no"
+                  },
+                  "tt_teaser_image": {
+                    "type": "Image",
+                    "id": "2888b2ec-983d-476b-afac-4f48da1a205d",
+                    "previewId": "2888b2ec-983d-476b-afac-4f48da1a205d.de_DE",
+                    "meta": {},
+                    "description": null,
+                    "resolutions": {
+                      "ORIGINAL": {
+                        "fileSize": 1891588,
+                        "extension": "jpeg",
+                        "mimeType": "image/jpeg",
+                        "width": 6000,
+                        "height": 4002,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Outdoor-camera.jpeg?rev=1713",
+                        "seoRoute": "/Images/Product-Images/Outdoor-camera.jpeg"
+                      },
+                      "banner_slider": {
+                        "fileSize": 114525,
+                        "extension": "jpg",
+                        "mimeType": "image/jpeg",
+                        "width": 1920,
+                        "height": 1080,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Outdoor-camera_banner_slider.jpg?rev=1713",
+                        "seoRoute": "/Images/Product-Images/Outdoor-camera_banner_slider.jpg"
+                      },
+                      "landscape": {
+                        "fileSize": 33940,
+                        "extension": "jpg",
+                        "mimeType": "image/jpeg",
+                        "width": 1170,
+                        "height": 400,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Outdoor-camera_landscape.jpg?rev=1713",
+                        "seoRoute": "/Images/Product-Images/Outdoor-camera_landscape.jpg"
+                      },
+                      "portrait": {
+                        "fileSize": 29585,
+                        "extension": "jpg",
+                        "mimeType": "image/jpeg",
+                        "width": 800,
+                        "height": 500,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Outdoor-camera_portrait.jpg?rev=1713",
+                        "seoRoute": "/Images/Product-Images/Outdoor-camera_portrait.jpg"
+                      },
+                      "product_teaser": {
+                        "fileSize": 23876,
+                        "extension": "jpg",
+                        "mimeType": "image/jpeg",
+                        "width": 360,
+                        "height": 560,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Outdoor-camera_product_teaser.jpg?rev=1713",
+                        "seoRoute": "/Images/Product-Images/Outdoor-camera_product_teaser.jpg"
+                      }
+                    }
+                  },
+                  "tt_teaser_image_alt": null,
+                  "tt_teaser_text": "Der H-3710-N hilft Ihnen, Ihr Haus vor dem Bösen zu schützen. Eingebaute Bewegungsmelder alarmieren Sie durch Push-up-Nachrichten auf Ihren mobilen Geräten. Sie können auch den Live-Feed der Kamera einsehen, wo immer Sie wollen."
+                },
+                "route": "/Produkte/Sicherheitskamera-H-3710-N.html",
+                "routes": [
+                  {
+                    "pageRef": "b1362730-4ee2-4473-bc02-529e47b08e95",
+                    "route": "/Produkte/Sicherheitskamera-H-3710-N.html"
+                  },
+                  {
+                    "pageRef": "ae5cd33e-16c4-4f4b-8e05-0483c295951b",
+                    "route": "/Produkte/Sicherheitskamera-H-3710-N-2.html"
+                  }
+                ],
+                "template": "products.product",
+                "children": [],
+                "locale": "de_DE"
+              },
+              "lt_url": null
+            },
+            "meta": {}
+          },
+          "st_description": "Auf der diesjährigen CES wurden wieder viele Neuerungen vorgestellt. ",
+          "st_picture": {
+            "type": "Image",
+            "id": "ae20f60a-6181-4f7e-aa15-84c6db2ba511",
+            "previewId": "ae20f60a-6181-4f7e-aa15-84c6db2ba511.de_DE",
+            "meta": {},
+            "description": null,
+            "resolutions": {
+              "ORIGINAL": {
+                "fileSize": 5977128,
+                "extension": "jpeg",
+                "mimeType": "image/jpeg",
+                "width": 5616,
+                "height": 3424,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Backyard-with-a-swimming-pool.jpeg?rev=1713",
+                "seoRoute": "/Images/Content/Backyard-with-a-swimming-pool.jpeg"
+              },
+              "banner_slider": {
+                "fileSize": 384565,
+                "extension": "jpg",
+                "mimeType": "image/jpeg",
+                "width": 1920,
+                "height": 1080,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Backyard-with-a-swimming-pool_banner_slider.jpg?rev=1713",
+                "seoRoute": "/Images/Content/Backyard-with-a-swimming-pool_banner_slider.jpg"
+              },
+              "landscape": {
+                "fileSize": 104138,
+                "extension": "jpg",
+                "mimeType": "image/jpeg",
+                "width": 1170,
+                "height": 400,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Backyard-with-a-swimming-pool_landscape.jpg?rev=1713",
+                "seoRoute": "/Images/Content/Backyard-with-a-swimming-pool_landscape.jpg"
+              },
+              "portrait": {
+                "fileSize": 90251,
+                "extension": "jpg",
+                "mimeType": "image/jpeg",
+                "width": 800,
+                "height": 500,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Backyard-with-a-swimming-pool_portrait.jpg?rev=1713",
+                "seoRoute": "/Images/Content/Backyard-with-a-swimming-pool_portrait.jpg"
+              },
+              "product_teaser": {
+                "fileSize": 45101,
+                "extension": "jpg",
+                "mimeType": "image/jpeg",
+                "width": 360,
+                "height": 560,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Content/Backyard-with-a-swimming-pool_product_teaser.jpg?rev=1713",
+                "seoRoute": "/Images/Content/Backyard-with-a-swimming-pool_product_teaser.jpg"
+              }
+            }
+          },
+          "st_picture_alt": null,
+          "st_title": [
+            {
+              "data": { "data-fs-style": "format.standard" },
+              "content": [
+                {
+                  "data": { "data-fs-style": "format.span_yellow_text" },
+                  "content": [
+                    { "type": "text", "content": "CES ", "data": {} }
+                  ],
+                  "type": "block"
+                },
+                { "type": "text", "content": "REPORT", "data": {} }
+              ],
+              "type": "block"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "id": "030bbc23-0455-42b0-940a-60b7d90e1d33",
+        "type": "Section",
+        "sectionType": "single_slide",
+        "previewId": "030bbc23-0455-42b0-940a-60b7d90e1d33.de_DE",
+        "data": {
+          "st_button": {
+            "type": "Link",
+            "template": "slide_button_with_link",
+            "data": {
+              "lt_button_text": "Goomazon Oklexa SP93",
+              "lt_internal": null,
+              "lt_link_toggle": {
+                "type": "Option",
+                "key": "product",
+                "value": "Produkt Link"
+              },
+              "lt_product_link": {
+                "type": "Dataset",
+                "id": "fae0687b-c365-4851-919e-566f4d587201",
+                "previewId": "fae0687b-c365-4851-919e-566f4d587201.de_DE",
+                "schema": "products",
+                "entityType": "product",
+                "data": {
+                  "tt_abstract": "Die Oklexa SP93! hebt das Konzept der intelligenten Lautsprecher auf eine ganz neue Ebene. Indem Sie einfach Oklexa, handle! sagen, wird sie (im Rahmen ihrer Möglichkeiten) genau das tun, was Sie von ihr erwarten. Durch die Analyse der Lautstärke und der Tonhöhe Ihrer Stimme unter Berücksichtigung visueller Daten (sie ist mit allen Kameras in Ihrem Haus verbunden) liest sie buchstäblich Ihre Gedanken.",
+                  "tt_categories": [
+                    {
+                      "type": "Option",
+                      "key": "a3b87bbd-9f89-409c-8ace-9135a8e230ff",
+                      "value": "Inneneinrichtung"
+                    }
+                  ],
+                  "tt_compatibility": [
+                    {
+                      "type": "Option",
+                      "key": "4db1d3ef-2840-4090-8aaa-716616cd5ed6",
+                      "value": "Apple HomeKit"
+                    },
+                    {
+                      "type": "Option",
+                      "key": "badf6d89-6b21-42e1-ba6d-a1a09a2c1dc0",
+                      "value": "Amazon Alexa"
+                    },
+                    {
+                      "type": "Option",
+                      "key": "e69d335f-bb08-44db-8ee5-5921e3eb066f",
+                      "value": "Google Home"
+                    }
+                  ],
+                  "tt_delivery": [
+                    {
+                      "data": {},
+                      "content": [
+                        {
+                          "type": "text",
+                          "content": "Die Lieferung besteht aus einem Goomazon-Karton mit folgendem Inhalt:",
+                          "data": {}
+                        },
+                        { "data": {}, "content": [], "type": "linebreak" },
+                        {
+                          "data": {
+                            "data-fs-style": "0",
+                            "data-fs-property-style": "0"
+                          },
+                          "content": [
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "smart Lautsprecher SP93",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            },
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "Ladekabel",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            },
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "Aufladestation und Ersatzakku",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            },
+                            {
+                              "data": {},
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "content": "Wandhalterung",
+                                  "data": {}
+                                }
+                              ],
+                              "type": "listitem"
+                            }
+                          ],
+                          "type": "list"
+                        }
+                      ],
+                      "type": "paragraph"
+                    }
+                  ],
+                  "tt_installation": [
+                    {
+                      "data": {},
+                      "content": [
+                        {
+                          "type": "text",
+                          "content": "Bringen Sie den Lautsprecher an der gewünschten Stelle in Ihrem Smart Home an. Anschließend registrieren und konfigurieren Sie ihn. Wichtig ist, Zugriff auf alle Ihre Kameras zu ermöglichen, um eine einwandfreie Funktion zu gewährleisten. Für ein besseres Kundenerlebnis werden alle Daten sicher in der Goomazo Cloud gespeichert und verarbeitet.",
+                          "data": {}
+                        }
+                      ],
+                      "type": "paragraph"
+                    }
+                  ],
+                  "tt_media": [
+                    {
+                      "id": "bd449fd0-62be-4244-a35a-bbd32462749f",
+                      "type": "Section",
+                      "sectionType": "product_pictures",
+                      "previewId": "bd449fd0-62be-4244-a35a-bbd32462749f.de_DE",
+                      "data": {
+                        "st_media": {
+                          "type": "Image",
+                          "id": "08dc995f-daa4-41a5-bc4d-c5c3839d958e",
+                          "previewId": "08dc995f-daa4-41a5-bc4d-c5c3839d958e.de_DE",
+                          "meta": {},
+                          "description": null,
+                          "resolutions": {
+                            "ORIGINAL": {
+                              "fileSize": 137455,
+                              "extension": "jpeg",
+                              "mimeType": "image/jpeg",
+                              "width": 2520,
+                              "height": 1417,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-white.jpeg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/Speaker-white.jpeg"
+                            },
+                            "banner_slider": {
+                              "fileSize": 191041,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 1920,
+                              "height": 1080,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-white_banner_slider.jpg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/Speaker-white_banner_slider.jpg"
+                            },
+                            "landscape": {
+                              "fileSize": 44578,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 1170,
+                              "height": 400,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-white_landscape.jpg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/Speaker-white_landscape.jpg"
+                            },
+                            "portrait": {
+                              "fileSize": 38479,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 800,
+                              "height": 500,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-white_portrait.jpg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/Speaker-white_portrait.jpg"
+                            },
+                            "product_teaser": {
+                              "fileSize": 22213,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 360,
+                              "height": 560,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-white_product_teaser.jpg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/Speaker-white_product_teaser.jpg"
+                            }
+                          }
+                        },
+                        "st_media_alt_text": "Speaker white"
+                      },
+                      "children": []
+                    },
+                    {
+                      "id": "85785c89-a4c5-47e6-a417-8cb839f0dac6",
+                      "type": "Section",
+                      "sectionType": "product_pictures",
+                      "previewId": "85785c89-a4c5-47e6-a417-8cb839f0dac6.de_DE",
+                      "data": {
+                        "st_media": {
+                          "type": "Image",
+                          "id": "eaf61bf2-4422-4393-8181-a5d4c20da30a",
+                          "previewId": "eaf61bf2-4422-4393-8181-a5d4c20da30a.de_DE",
+                          "meta": {},
+                          "description": null,
+                          "resolutions": {
+                            "ORIGINAL": {
+                              "fileSize": 147678,
+                              "extension": "jpeg",
+                              "mimeType": "image/jpeg",
+                              "width": 2250,
+                              "height": 1500,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-flat-white.jpeg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/Speaker-flat-white.jpeg"
+                            },
+                            "banner_slider": {
+                              "fileSize": 195234,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 1920,
+                              "height": 1080,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-flat-white_banner_slider.jpg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/Speaker-flat-white_banner_slider.jpg"
+                            },
+                            "landscape": {
+                              "fileSize": 56218,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 1170,
+                              "height": 400,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-flat-white_landscape.jpg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/Speaker-flat-white_landscape.jpg"
+                            },
+                            "portrait": {
+                              "fileSize": 50867,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 800,
+                              "height": 500,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-flat-white_portrait.jpg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/Speaker-flat-white_portrait.jpg"
+                            },
+                            "product_teaser": {
+                              "fileSize": 32608,
+                              "extension": "jpg",
+                              "mimeType": "image/jpeg",
+                              "width": 360,
+                              "height": 560,
+                              "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-flat-white_product_teaser.jpg?rev=1713",
+                              "seoRoute": "/Images/Product-Images/Speaker-flat-white_product_teaser.jpg"
+                            }
+                          }
+                        },
+                        "st_media_alt_text": "Speaker flat white"
+                      },
+                      "children": []
+                    }
+                  ],
+                  "tt_mode": {
+                    "type": "Option",
+                    "key": "9a01a771-0270-4e91-a12f-a6fa2d9cac40",
+                    "value": "Akkubetrieb"
+                  },
+                  "tt_name": "Goomazon Oklexa SP93",
+                  "tt_permissions": {
+                    "type": "Permission",
+                    "fsType": "CMS_INPUT_PERMISSION",
+                    "name": "tt_permissions",
+                    "value": [{ "allowed": [], "forbidden": [] }]
+                  },
+                  "tt_price": "249,99",
+                  "tt_publish_at": "2022-03-24T23:00:00.000Z",
+                  "tt_relatedproducts": [],
+                  "tt_showrelatedproducts": {
+                    "type": "Option",
+                    "key": "no",
+                    "value": "Keine Produktempfehlungen anzeigen",
+                    "fsType": "Option",
+                    "label": "Keine Produktempfehlungen anzeigen",
+                    "identifier": "no"
+                  },
+                  "tt_teaser_image": {
+                    "type": "Image",
+                    "id": "eaf61bf2-4422-4393-8181-a5d4c20da30a",
+                    "previewId": "eaf61bf2-4422-4393-8181-a5d4c20da30a.de_DE",
+                    "meta": {},
+                    "description": null,
+                    "resolutions": {
+                      "ORIGINAL": {
+                        "fileSize": 147678,
+                        "extension": "jpeg",
+                        "mimeType": "image/jpeg",
+                        "width": 2250,
+                        "height": 1500,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-flat-white.jpeg?rev=1713",
+                        "seoRoute": "/Images/Product-Images/Speaker-flat-white.jpeg"
+                      },
+                      "banner_slider": {
+                        "fileSize": 195234,
+                        "extension": "jpg",
+                        "mimeType": "image/jpeg",
+                        "width": 1920,
+                        "height": 1080,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-flat-white_banner_slider.jpg?rev=1713",
+                        "seoRoute": "/Images/Product-Images/Speaker-flat-white_banner_slider.jpg"
+                      },
+                      "landscape": {
+                        "fileSize": 56218,
+                        "extension": "jpg",
+                        "mimeType": "image/jpeg",
+                        "width": 1170,
+                        "height": 400,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-flat-white_landscape.jpg?rev=1713",
+                        "seoRoute": "/Images/Product-Images/Speaker-flat-white_landscape.jpg"
+                      },
+                      "portrait": {
+                        "fileSize": 50867,
+                        "extension": "jpg",
+                        "mimeType": "image/jpeg",
+                        "width": 800,
+                        "height": 500,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-flat-white_portrait.jpg?rev=1713",
+                        "seoRoute": "/Images/Product-Images/Speaker-flat-white_portrait.jpg"
+                      },
+                      "product_teaser": {
+                        "fileSize": 32608,
+                        "extension": "jpg",
+                        "mimeType": "image/jpeg",
+                        "width": 360,
+                        "height": 560,
+                        "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-flat-white_product_teaser.jpg?rev=1713",
+                        "seoRoute": "/Images/Product-Images/Speaker-flat-white_product_teaser.jpg"
+                      }
+                    }
+                  },
+                  "tt_teaser_image_alt": "Goomazon Oklexa SP93",
+                  "tt_teaser_text": "Die Oklexa SP93 hebt das Konzept der intelligenten Lautsprecher auf eine ganz neue Ebene."
+                },
+                "route": "/Produkte/Goomazon-Oklexa-SP93.html",
+                "routes": [
+                  {
+                    "pageRef": "b1362730-4ee2-4473-bc02-529e47b08e95",
+                    "route": "/Produkte/Goomazon-Oklexa-SP93.html"
+                  },
+                  {
+                    "pageRef": "19333a9e-6807-48ce-b1aa-f7014a295ebc",
+                    "route": "/testproj1/Produkt_27.html"
+                  },
+                  {
+                    "pageRef": "ae5cd33e-16c4-4f4b-8e05-0483c295951b",
+                    "route": "/Produkte/Goomazon-Oklexa-SP93-2.html"
+                  }
+                ],
+                "template": "products.product",
+                "children": [],
+                "locale": "de_DE"
+              },
+              "lt_url": null
+            },
+            "meta": {}
+          },
+          "st_description": "Smart-Lautsprecher können ihr Leben verändern. Bei richtiger Anwendung werden diese intelligenten Geräte alltäglichen Aufgaben vereinfachen.",
+          "st_picture": {
+            "type": "Image",
+            "id": "eaf61bf2-4422-4393-8181-a5d4c20da30a",
+            "previewId": "eaf61bf2-4422-4393-8181-a5d4c20da30a.de_DE",
+            "meta": {},
+            "description": null,
+            "resolutions": {
+              "ORIGINAL": {
+                "fileSize": 147678,
+                "extension": "jpeg",
+                "mimeType": "image/jpeg",
+                "width": 2250,
+                "height": 1500,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-flat-white.jpeg?rev=1713",
+                "seoRoute": "/Images/Product-Images/Speaker-flat-white.jpeg"
+              },
+              "banner_slider": {
+                "fileSize": 195234,
+                "extension": "jpg",
+                "mimeType": "image/jpeg",
+                "width": 1920,
+                "height": 1080,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-flat-white_banner_slider.jpg?rev=1713",
+                "seoRoute": "/Images/Product-Images/Speaker-flat-white_banner_slider.jpg"
+              },
+              "landscape": {
+                "fileSize": 56218,
+                "extension": "jpg",
+                "mimeType": "image/jpeg",
+                "width": 1170,
+                "height": 400,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-flat-white_landscape.jpg?rev=1713",
+                "seoRoute": "/Images/Product-Images/Speaker-flat-white_landscape.jpg"
+              },
+              "portrait": {
+                "fileSize": 50867,
+                "extension": "jpg",
+                "mimeType": "image/jpeg",
+                "width": 800,
+                "height": 500,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-flat-white_portrait.jpg?rev=1713",
+                "seoRoute": "/Images/Product-Images/Speaker-flat-white_portrait.jpg"
+              },
+              "product_teaser": {
+                "fileSize": 32608,
+                "extension": "jpg",
+                "mimeType": "image/jpeg",
+                "width": 360,
+                "height": 560,
+                "url": "https://enterprisedev-media.e-spirit.cloud/d8db6f24-0bf8-4f48-be47-5e41d8d427fc/preview/Images/Product-Images/Speaker-flat-white_product_teaser.jpg?rev=1713",
+                "seoRoute": "/Images/Product-Images/Speaker-flat-white_product_teaser.jpg"
+              }
+            }
+          },
+          "st_picture_alt": null,
+          "st_title": [
+            {
+              "data": { "data-fs-style": "format.standard" },
+              "content": [
+                {
+                  "data": { "data-fs-style": "format.span_yellow_text" },
+                  "content": [
+                    { "type": "text", "content": "Leichter", "data": {} }
+                  ],
+                  "type": "block"
+                },
+                { "type": "text", "content": " leben", "data": {} }
+              ],
+              "type": "block"
+            }
+          ]
+        },
+        "children": []
+      }
+    ],
+    "pt_title": "Startseite"
+  },
+  "meta": {
+    "md_alt_text": null,
+    "md_author": null,
+    "md_description": null,
+    "md_fts_do_not_translate_element": false,
+    "md_fts_exclude_from_translation": [],
+    "md_fts_ref_mappings": null,
+    "md_fts_ref_worfklow_on_import": null,
+    "md_keywords": null,
+    "md_permissions": {
+      "type": "Permission",
+      "fsType": "CMS_INPUT_PERMISSION",
+      "name": "md_permissions",
+      "value": [
+        {
+          "allowed": [
+            {
+              "groupId": "anoym",
+              "groupName": "Anonyme Besucher",
+              "groupPath": "/GroupsFile/anoym"
+            }
+          ],
+          "forbidden": [
+            {
+              "groupId": "customer",
+              "groupName": "Kunden",
+              "groupPath": "/GroupsFile/customer"
+            },
+            {
+              "groupId": "registered",
+              "groupName": "Registrierte Mitglieder",
+              "groupPath": "/GroupsFile/registered"
+            }
+          ]
+        }
+      ]
+    },
+    "md_robot": null,
+    "md_use_blog_js": false
+  },
+  "metaPageRef": {
+    "md_alt_text": null,
+    "md_author": "Author",
+    "md_description": null,
+    "md_fts_do_not_translate_element": false,
+    "md_fts_exclude_from_translation": [],
+    "md_fts_ref_mappings": null,
+    "md_fts_ref_worfklow_on_import": null,
+    "md_keywords": "test",
+    "md_permissions": {
+      "type": "Permission",
+      "fsType": "CMS_INPUT_PERMISSION",
+      "name": "md_permissions",
+      "value": [
+        {
+          "allowed": [
+            {
+              "groupId": "anoym",
+              "groupName": "Anonyme Besucher",
+              "groupPath": "/GroupsFile/anoym"
+            },
+            {
+              "groupId": "customer",
+              "groupName": "Kunden",
+              "groupPath": "/GroupsFile/customer"
+            },
+            {
+              "groupId": "registered",
+              "groupName": "Registrierte Mitglieder",
+              "groupPath": "/GroupsFile/registered"
+            }
+          ],
+          "forbidden": []
+        }
+      ]
+    },
+    "md_robot": null,
+    "md_use_blog_js": false
+  }
+}

@@ -1,10 +1,16 @@
 <template>
   <div
-    class="sticky top-0 z-30 border-b bg-white py-2"
+    class="sticky top-0 z-30 border-b bg-white p-2"
     data-testid="layoutHeader"
   >
     <div class="container mx-auto flex items-center">
-      <NuxtLink to="/"><img src="/logo.png" /></NuxtLink>
+      <NuxtLink to="/"
+        ><ElementsImage
+          v-if="projectProperties?.data && projectProperties?.data['ps_logo']"
+          class="w-30 h-12 object-contain"
+          :image="projectProperties?.data['ps_logo']"
+      /></NuxtLink>
+
       <div class="ml-auto flex">
         <AppLayoutNavigation class="hidden md:flex" />
         <AppLayoutMobileNavigation v-if="mobileNavigationVisible" />
@@ -36,4 +42,5 @@
 
 <script setup lang="ts">
 const mobileNavigationVisible = ref(false);
+const { projectProperties } = useProjectProperties();
 </script>
