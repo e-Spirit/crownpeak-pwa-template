@@ -1,37 +1,27 @@
-export default defineNuxtRouteMiddleware(async (to) => {
-  const {
-    config: {
-      value: { activeLocale },
-    },
-  } = useLocale();
-
-  const route = decodeURIComponent(to.path);
+export default defineNuxtPlugin(async () => {
+  const route = useRoute();
+  const path = decodeURIComponent(route.path);
   const { getNavigationStateFromRoute, activeNavigationItem, getIndexRoute } =
     useNavigationData();
-
+  const { config: localeConfig } = useLocale();
   // "/" does not exist in the navigation tree, so we first need to figure out the mapped route and then navigate to it.
-  if (route === "/") {
-    return navigateTo({
+  if (path === "/") {
+    navigateTo({
       path: await getIndexRoute(),
-      hash: to.hash,
-      query: to.query,
+      hash: route.hash,
+      query: route.query,
     });
+    return;
   }
 
   try {
     // Deeplink usecase
-    if (
-      !activeLocale ||
-      !activeNavigationItem.value ||
-      activeNavigationItem.value.seoRoute !== route
-    ) {
-      await getNavigationStateFromRoute(route);
+    if (!localeConfig.value.activeLocale || !activeNavigationItem.value) {
+      await getNavigationStateFromRoute(path);
     }
   } catch (_error: unknown) {
     // Theoretically this does not have to mean that the page does not exist.
     // It could also be a 500 server error or something completely different...
     throw createError({ statusCode: 404, statusMessage: "Page not found" });
   }
-
-  return true;
 });

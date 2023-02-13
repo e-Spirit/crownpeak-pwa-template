@@ -2,9 +2,10 @@
 
 In Vue 3 applications link:https://vuejs.org/guide/reusability/composables.html[composables] are used to encapsulate and reuse stateful logic. We use composables here to handle
 
-* localization settings
-* navigation data
-* content
+* localization settings,
+* navigation data,
+* page content,
+* and project properties.
 
 
 For in depth information on how to use composables in your Nuxt project check out the official link:https://nuxt.com/docs/guide/directory-structure/composables[Nuxt documentation on composables].
@@ -57,3 +58,11 @@ The `content` is of type `Page` and contains everything that is required to rend
 The content changes automatically on route changes and is reactive.
 
 == Project Properties
+Project properties are accessed by using the `useProjectProperties` (`~/composables/projectProperties.ts`) composable.
+
+[source, javascript]
+const { projectProperties } = useProjectProperties();
+
+The content changes automatically on route locale changes and is reactive. 
+
+For more information about what project properties are and how to work with them read xref:docs/modules/ROOT/pages/ProjectProperties.adoc[this short guide].

@@ -1,10 +1,13 @@
 <template>
   <div data-testid="sliderSection">
-    <div class="relative border bg-red-100 p-4 font-bold">
-      <Dev v-if="data" :content="data" />
+    <div class="group relative border bg-red-100 p-4">
+      <DevOnly v-if="appDevMode || envDevMode">
+        <Dev :content="data" class="hidden group-hover:block" />
+      </DevOnly>
+
       <!-- {{ activeImage }} {{ data.data }} -->
       <!-- <pre>{{ data }}</pre> -->
-      Slider
+      <span class="font-bold">Slider</span>
     </div>
   </div>
 </template>
@@ -21,6 +24,9 @@ interface SliderSlide extends Section {
     st_title: RichTextElement[];
   };
 }
+
+const { devMode: appDevMode } = useAppConfig();
+const { devMode: envDevMode } = useRuntimeConfig();
 
 defineProps<{ data: SliderSlide[] }>();
 </script>
