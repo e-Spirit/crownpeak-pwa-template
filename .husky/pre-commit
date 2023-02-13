@@ -8,4 +8,8 @@ if [ "$branch" = "main" -a "$CI" != "true" ]; then
   exit 1
 fi
 
+if [ "$branch" = "alpha" -a "$CI" != "true" ]; then
+  echo "You can't commit directly to alpha branch"
+  exit 1
+fi
 
