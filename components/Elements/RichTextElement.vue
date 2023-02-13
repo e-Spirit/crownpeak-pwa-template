@@ -16,14 +16,14 @@ const richtTextElementComponent = computed(() => {
   switch (props.richTextElement.type) {
     case "text":
       return resolveComponent("ElementsText");
-    case "link":
-      return resolveComponent("ElementsLink");
+    // case "link":
+    //   return resolveComponent("ElementsLink");
     case "block":
       return resolveComponent("ElementsRichText");
     case "linebreak":
-      return resolveComponent("br");
+      return resolveComponent("ElementsLinebreak");
     default:
-      return resolveComponent("unknown");
+      return resolveComponent("ElementsUnknownRichtextElement");
   }
 });
 </script>

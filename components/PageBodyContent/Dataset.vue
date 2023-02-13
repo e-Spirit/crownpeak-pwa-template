@@ -1,7 +1,10 @@
 <template>
   <div data-testid="dataset">
+    <DevOnly v-if="!datasetComponent">
+      <Unknown :content="content" />
+    </DevOnly>
     <component
-      :is="sectionComponent"
+      :is="datasetComponent"
       :data-preview-id="content.previewId"
       :content="content"
     />
@@ -12,11 +15,11 @@
 import { Dataset } from "fsxa-api";
 const props = defineProps<{ content: Dataset }>();
 
-const sectionComponent = computed(() => {
+const datasetComponent = computed(() => {
   switch (props.content.template) {
     // TODO
     default:
-      return resolveComponent("Unknown");
+      return undefined;
   }
 });
 </script>
