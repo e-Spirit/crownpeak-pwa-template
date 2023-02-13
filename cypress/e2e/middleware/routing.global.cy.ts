@@ -34,7 +34,7 @@ describe(`routing.global.ts`, () => {
     cy.get("body").should("contain", "Startseite");
   });
 
-  it.only("navigate to non-existing page => show error page", () => {
+  it("navigate to non-existing page => show error page", () => {
     cy.intercept({
       method: "GET",
       url: `${baseURL}/*`,
