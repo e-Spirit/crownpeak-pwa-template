@@ -21,3 +21,5 @@ describe(`slug page`, () => {
     cy.get("@fetchContent").should("eq", null);
   });
 });
+
+export {};

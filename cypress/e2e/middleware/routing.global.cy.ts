@@ -41,6 +41,7 @@ describe(`routing.global.ts`, () => {
     }).as("visit");
     cy.visit(`${baseURL}/thisdoesnotexist`, { failOnStatusCode: false });
     cy.wait("@visit").then(({ response }) => {
+      if (!response) throw new Error("response should exist");
       expect(response.statusCode).to.eq(404);
     });
     // page should contain 404 somewhere
