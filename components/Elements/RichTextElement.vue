@@ -8,14 +8,11 @@
       :richtext="richTextElement.content"
     />
     <span v-else>{{ richTextElement.content }}</span>
-    <!--  -->
   </span>
 </template>
 
 <script lang="ts" setup>
 import { RichTextElement } from "fsxa-api";
-
-// TODO: remove all data any types
 const props = defineProps<{ richTextElement: RichTextElement }>();
 
 const richtTextElementComponent = computed(() => {
