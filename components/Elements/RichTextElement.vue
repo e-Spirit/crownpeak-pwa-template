@@ -1,10 +1,15 @@
 <template>
-  <component
-    :is="richtTextElementComponent"
-    class=""
-    :rich-text-element="richTextElement"
-    :richtext="richTextElement.content"
-  />
+  <span class="border bg-red-800 bg-opacity-20">
+    <component
+      :is="richtTextElementComponent"
+      v-if="Array.isArray(richTextElement.content)"
+      class=""
+      :rich-text-element="richTextElement"
+      :richtext="richTextElement.content"
+    />
+    <span v-else>{{ richTextElement.content }}</span>
+    <!--  -->
+  </span>
 </template>
 
 <script lang="ts" setup>
@@ -15,7 +20,7 @@ const props = defineProps<{ richTextElement: RichTextElement }>();
 const richtTextElementComponent = computed(() => {
   switch (props.richTextElement.type) {
     case "text":
-      return resolveComponent("ElementsText");
+      return resolveComponent("ElementsRichText");
     case "link":
       return resolveComponent("ElementsLink");
     case "block":
