@@ -1,4 +1,5 @@
 {
+  "version": "0.0.0",
   "name": "fsxa-nuxt3-pwa",
   "private": true,
   "description": "Demo PWA built with Nuxt 3 and FSXA",
@@ -67,13 +68,8 @@
   },
   "release": {
     "branches": [
-      {
-        "name": "main",
-        "prerelease": true,
-        "channel": "alpha"
-      }
-    ],
-    "tagFormat": "v${version}-alpha"
+      "main"
+    ]
   },
   "dependencies": {
     "fsxa-api": "^10.7.0"
