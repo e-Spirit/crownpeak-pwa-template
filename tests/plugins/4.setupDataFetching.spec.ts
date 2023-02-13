@@ -7,12 +7,14 @@ import { useProjectProperties } from "../../composables/projectProperties";
 import toplevelENnavData from "../fixtures/toplevelNavigation_en_GB.json";
 import page from "../fixtures/page.json";
 import projectPropertiesFixture from "../fixtures/projectProperties.json";
+import { createNavigationItem } from "../testutils/createNavigationItem";
+import { createPage } from "../testutils/createPage";
 
 describe("setupDataFetching", () => {
   it("setupDataFetching => navdata, project props, content get fetched", async () => {
     const { setLocale } = useLocale();
     const { navigationData, setActiveNavigationItem } = useNavigationData();
-    const { content } = useContent();
+    const { currentPage } = useContent();
     const { projectProperties } = useProjectProperties();
     setLocale("en_GB");
 
@@ -26,7 +28,22 @@ describe("setupDataFetching", () => {
     await setupDataFetching();
 
     expect(navigationData.value).toBe(toplevelENnavData);
-    expect(content.value).toBe(page);
+    expect(currentPage.value).toBe(page);
     expect(projectProperties.value).toBe(projectPropertiesFixture);
+  });
+
+  it("content is cached => fetch content from cache", async () => {
+    const { setLocale } = useLocale();
+    const { setActiveNavigationItem } = useNavigationData();
+    const { currentPage, cachedPages } = useContent();
+    const navItem = createNavigationItem();
+    const cachedPage = createPage();
+    cachedPages.value[navItem.caasDocumentId] = cachedPage;
+    setLocale("en_GB");
+    setActiveNavigationItem(navItem);
+
+    await setupDataFetching();
+
+    expect(currentPage.value).toBe(cachedPage);
   });
 });
