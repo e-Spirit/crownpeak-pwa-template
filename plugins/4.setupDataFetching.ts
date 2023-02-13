@@ -28,7 +28,7 @@ export default defineNuxtPlugin(async () => {
     { watch: [localeConfig] }
   );
 
-  const { content } = useContent();
+  const { currentPage, addToCache, findCachedPageByCaaSId } = useContent();
   // fetch page content
   await useAsyncData(
     async () => {
@@ -36,11 +36,23 @@ export default defineNuxtPlugin(async () => {
       // The middleware should have figured out both the locale and our current navigation item
       if (!activeNavigationItem.value || !localeConfig.value.activeLocale)
         throw new Error("No navigation item found");
-      content.value = await fetchContentFromNavigationItem(
-        $fsxaApi,
-        activeNavigationItem.value,
-        localeConfig.value.activeLocale
+
+      const cachedContent = findCachedPageByCaaSId(
+        activeNavigationItem.value.caasDocumentId
       );
+      if (cachedContent) {
+        currentPage.value = cachedContent;
+      } else {
+        currentPage.value = await fetchContentFromNavigationItem(
+          $fsxaApi,
+          activeNavigationItem.value,
+          localeConfig.value.activeLocale
+        );
+        addToCache(
+          activeNavigationItem.value.caasDocumentId,
+          currentPage.value
+        );
+      }
     },
     // automatically refetch when the navigation item changes
     { watch: [activeNavigationItem, localeConfig] }
