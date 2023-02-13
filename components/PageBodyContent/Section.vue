@@ -1,7 +1,11 @@
 <template>
   <div data-testid="section">
+    <DevOnly v-if="!sectionComponent">
+      <Unknown :content="content" />
+    </DevOnly>
     <component
       :is="sectionComponent"
+      v-else
       :data-preview-id="content.previewId"
       :data="content.data"
     />
@@ -23,7 +27,7 @@ const sectionComponent = computed(() => {
     case "teaser":
       return resolveComponent("SectionTeaser");
     default:
-      return resolveComponent("Unknown");
+      return undefined;
   }
 });
 </script>

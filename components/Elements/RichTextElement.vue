@@ -21,9 +21,9 @@ const richtTextElementComponent = computed(() => {
     case "block":
       return resolveComponent("ElementsRichText");
     case "linebreak":
-      return resolveComponent("br");
+      return resolveComponent("ElementsLinebreak");
     default:
-      return resolveComponent("unknown");
+      return resolveComponent("ElementsUnknownRichtextElement");
   }
 });
 </script>

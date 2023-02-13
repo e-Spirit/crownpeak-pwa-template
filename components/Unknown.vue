@@ -1,24 +1,17 @@
 <template>
-  <DevOnly>
-    <div
-      class="group relative border bg-red-50 p-4 font-bold text-red-500"
-      data-testid="unknown"
-    >
-      <DevOnly v-if="devMode">
-        <Dev :content="content" class="hidden group-hover:block" />
-      </DevOnly>
-
-      Unkown Component: {{ componentType }}
-    </div>
-  </DevOnly>
+  <div
+    class="group relative border bg-red-50 p-4 text-red-500"
+    data-testid="unknown"
+  >
+    <Dev :content="content" class="hidden group-hover:block" />
+    <span class="font-bold">Unkown Component {{ componentType }}</span>
+  </div>
 </template>
 <script lang="ts" setup>
 import { Section, Dataset, Content2Section, Page } from "fsxa-api";
 const props = defineProps<{
   content?: Section | Dataset | Content2Section | Page;
 }>();
-
-const { devMode } = useAppConfig();
 
 const componentType = computed(() => {
   switch (props.content?.type) {
