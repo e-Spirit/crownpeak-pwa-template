@@ -11,9 +11,13 @@
           :image="projectProperties?.data['ps_logo']"
       /></NuxtLink>
 
-      <div class="ml-auto flex">
+      <div class="relative ml-auto flex">
         <AppLayoutNavigation class="hidden md:flex" />
-        <AppLayoutMobileNavigation v-if="mobileNavigationVisible" />
+        <AppLayoutMobileNavigation
+          v-if="mobileNavigationVisible"
+          class="z-40 md:hidden"
+          @close="mobileNavigationVisible = false"
+        />
 
         <AppLayoutLanguageSwitch class="ml-2" />
         <button
