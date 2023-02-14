@@ -32,7 +32,7 @@ export default defineNuxtPlugin(() => {
       appConfig.logLevel ||
       LogLevel.NONE,
     enableEventStream:
-      runtimeConfig.private["enableEventStream"] ||
+      !!runtimeConfig.private["enableEventStream"] ||
       appConfig.enableEventStream ||
       false,
   };
