@@ -13,11 +13,13 @@
 
       <div class="relative ml-auto flex">
         <AppLayoutNavigation class="hidden md:flex" />
-        <AppLayoutMobileNavigation
-          v-if="mobileNavigationVisible"
-          class="z-40 md:hidden"
-          @close="mobileNavigationVisible = false"
-        />
+        <transition name="fadeup">
+          <AppLayoutMobileNavigation
+            v-if="mobileNavigationVisible"
+            class="z-40 md:hidden"
+            @close="mobileNavigationVisible = false"
+          />
+        </transition>
 
         <AppLayoutLanguageSwitch class="ml-2" />
         <button

@@ -1,35 +1,9 @@
 <template>
   <div
-    class="fixed top-0 left-0 z-40 w-full border bg-white"
+    class="fixed inset-0 top-0 left-0 -z-10 w-full border bg-white pt-16"
     data-testid="mobileNavigation"
   >
     <div class="container mx-auto h-screen w-full bg-white p-2">
-      <div class="flex justify-between">
-        <NuxtLink to="/"
-          ><ElementsImage
-            v-if="projectProperties?.data && projectProperties?.data['ps_logo']"
-            class="w-30 h-12 object-contain"
-            :image="projectProperties?.data['ps_logo']"
-        /></NuxtLink>
-
-        <button class="md:hidden" @click="$emit('close')">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="h-6 w-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
-        </button>
-      </div>
-
       <div class="h-full overflow-scroll">
         <ul class="flex flex-col items-center divide-y border-t">
           <li
@@ -94,7 +68,6 @@
 import { NavigationItem } from "fsxa-api";
 
 const { navigationData } = useNavigationData();
-const { projectProperties } = useProjectProperties();
 const extended = ref();
 
 // TODO: Make beautiful

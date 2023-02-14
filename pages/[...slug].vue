@@ -1,6 +1,8 @@
 <template>
   <div>
-    <ClientOnly><AppLayoutLoading v-if="pending" /></ClientOnly>
+    <ClientOnly>
+      <AppLayoutLoading v-if="pending" />
+    </ClientOnly>
     <component
       :is="pageLayoutComponent"
       v-if="currentPage"

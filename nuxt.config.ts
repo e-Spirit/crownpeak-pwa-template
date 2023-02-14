@@ -3,9 +3,9 @@ import eslintPlugin from "vite-plugin-eslint";
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   app: {
-    pageTransition: { name: "page", mode: "out-in" },
+    pageTransition: { name: "fade", mode: "out-in" },
   },
-  css: ["@/assets/css/main.css"],
+  css: ["@/assets/css/main.css", "@/assets/css/transitions.css"],
   postcss: {
     plugins: {
       "postcss-import": {},
