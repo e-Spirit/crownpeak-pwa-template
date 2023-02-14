@@ -35,8 +35,9 @@ const internalLinkRoute = computed(() => {
   const referenceId: string =
     props.richTextElement.data.data["lt_link"]?.referenceId;
   if (!referenceId) return "";
+
   const target = navigationData.value?.idMap[referenceId];
-  if (target) return target.seoRoute;
-  return "";
+
+  return target?.seoRoute ?? "";
 });
 </script>
