@@ -16,13 +16,14 @@
     </div>
 
     <div
+      data-testid="languagesDropdown"
       class="absolute top-10 right-0 hidden divide-y bg-white shadow-lg group-hover:block"
     >
       <ul>
         <li v-for="locale of config.allLocales" :key="locale.identifier">
           <button
             :disabled="loading"
-            :data-testid="`${locale}-switch`"
+            :data-testid="`${locale.identifier}-switch`"
             :data-activeLocale="locale.identifier === config.activeLocale"
             :class="{
               underline: locale.identifier === config.activeLocale,

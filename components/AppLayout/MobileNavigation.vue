@@ -12,7 +12,7 @@
             class="w-full"
           >
             <div class="flex items-center justify-between py-3 px-2 font-bold">
-              <InternalLink :nav-item="navItem" @click="$emit('close')" />
+              <InternalLink :nav-item="navItem" @click="emit('close')" />
               <button
                 v-if="
                   getSubNavigation(navItem).length > 0 &&
@@ -55,7 +55,7 @@
                 :key="subNavItem?.id"
                 class="w-full py-3 px-2"
               >
-                <InternalLink :nav-item="subNavItem" @click="$emit('close')" />
+                <InternalLink :nav-item="subNavItem" @click="emit('close')" />
               </li>
             </ul>
           </li>
@@ -83,4 +83,6 @@ function getSubNavigation(navItem: NavigationItem) {
     ?.children?.map((item) => navigationData?.value?.idMap[item.id])
     .filter((e) => e !== undefined) as NavigationItem[];
 }
+
+const emit = defineEmits(["close"]);
 </script>
