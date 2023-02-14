@@ -6,18 +6,18 @@ export function useContent() {
     [caasId: string]: Page;
   }>("cachedPages", () => ({}));
 
-  function findCachedPageByCaaSId(caasDocumentId: string) {
-    return cachedPages.value[caasDocumentId];
+  function findCachedPageBySeoRoute(seoRoute: string) {
+    return cachedPages.value[seoRoute];
   }
 
-  function addToCache(key: string, data: Page) {
-    if (!cachedPages.value[key]) cachedPages.value[key] = data;
+  function addToCache(seoRoute: string, data: Page) {
+    if (!cachedPages.value[seoRoute]) cachedPages.value[seoRoute] = data;
   }
 
   return {
     currentPage,
     cachedPages,
     addToCache,
-    findCachedPageByCaaSId,
+    findCachedPageBySeoRoute,
   };
 }
