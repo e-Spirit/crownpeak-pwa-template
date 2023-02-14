@@ -20,10 +20,10 @@ const { navigationData, activeNavigationItem } = useNavigationData();
 
 const { pending } = useAsyncData(
   async () => {
-    if (!localeConfig.value.activeLocale)
+    if (!localeConfig.value.activeLocale || !activeNavigationItem.value)
       throw createError({
         statusCode: 500,
-        message: "No locale found",
+        message: "Routing error: locale or navigation item undefined",
       });
 
     // fetch project properties
@@ -38,23 +38,22 @@ const { pending } = useAsyncData(
     );
 
     // Redirect to new route if language changed (e.g. from /Startseite/ to /Home/)
-    const activeNavigationItemId = activeNavigationItem.value?.id;
-    if (!activeNavigationItemId) return;
-
     const router = useRouter();
-    const seoRoute =
-      navigationData.value?.idMap[activeNavigationItemId]?.seoRoute;
+    const { path: previousRoute, query, hash } = useRoute();
 
-    if (!seoRoute) {
+    const currentRoute =
+      navigationData.value?.idMap[activeNavigationItem.value.id]?.seoRoute;
+
+    if (!currentRoute) {
       router.push(navigationData.value?.pages.index ?? "/");
       return;
     }
 
-    if (router.currentRoute.value.path !== seoRoute) {
+    if (previousRoute !== currentRoute) {
       router.push({
-        path: seoRoute,
-        query: router.currentRoute.value.query,
-        hash: router.currentRoute.value.hash,
+        path: currentRoute,
+        query,
+        hash,
       });
     }
   },
