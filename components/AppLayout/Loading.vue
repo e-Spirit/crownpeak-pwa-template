@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed inset-0 z-50 flex items-center justify-center bg-white">
+  <div class="absolute inset-0 z-40 flex items-center justify-center bg-white">
     <div role="status">
       <svg
         aria-hidden="true"

@@ -1,9 +1,11 @@
 <template>
   <div class="flex min-h-screen flex-col">
-    <AppLayoutLoading v-if="loading" />
+    <ClientOnly>
+      <AppLayoutLoading v-if="layoutDataIsLoading" />
+    </ClientOnly>
 
     <AppLayoutHeader />
-    <div class="container mx-auto flex-grow">
+    <div class="container relative mx-auto flex-grow">
       <slot />
     </div>
     <AppLayoutFooter />
@@ -15,16 +17,17 @@ const { config: localeConfig } = useLocale();
 const { $fsxaApi } = useNuxtApp();
 const { projectProperties } = useProjectProperties();
 const { navigationData } = useNavigationData();
-const { loading } = useLoading();
+const layoutDataIsLoading = ref(true);
 
 useAsyncData(
   async () => {
-    if (!localeConfig.value.activeLocale) {
+    layoutDataIsLoading.value = true;
+
+    if (!localeConfig.value.activeLocale)
       throw createError({
         statusCode: 500,
         message: "No locale found",
       });
-    }
 
     // fetch project properties
     projectProperties.value = await $fsxaApi.fetchProjectProperties({
@@ -36,6 +39,8 @@ useAsyncData(
       $fsxaApi,
       localeConfig.value.activeLocale
     );
+
+    layoutDataIsLoading.value = false;
   },
   // automatically refetch if locale changes
   { watch: [localeConfig] }
