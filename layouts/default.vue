@@ -1,5 +1,7 @@
 <template>
   <div class="flex min-h-screen flex-col">
+    <AppLayoutLoading v-if="loading" />
+
     <AppLayoutHeader />
     <div class="container mx-auto flex-grow">
       <div>
@@ -12,3 +14,7 @@
     <AppLayoutFooter />
   </div>
 </template>
+
+<script setup lang="ts">
+const { loading } = useLoading();
+</script>
