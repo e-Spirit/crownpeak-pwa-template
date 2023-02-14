@@ -14,7 +14,32 @@
 </template>
 
 <script setup lang="ts">
-const { currentPage } = useContent();
+const { currentPage, addToCache, findCachedPageByCaaSId } = useContent();
+const { $fsxaApi } = useNuxtApp();
+const { config: localeConfig } = useLocale();
+const { activeNavigationItem } = useNavigationData();
+
+// fetch page content
+await useAsyncData(async () => {
+  // This state should not be possible.
+  // The middleware should have figured out both the locale and our current navigation item
+  if (!activeNavigationItem.value || !localeConfig.value.activeLocale)
+    throw new Error("No navigation item found");
+
+  const cachedContent = findCachedPageByCaaSId(
+    activeNavigationItem.value.seoRoute
+  );
+  if (cachedContent) {
+    currentPage.value = cachedContent;
+  } else {
+    currentPage.value = await fetchContentFromNavigationItem(
+      $fsxaApi,
+      activeNavigationItem.value,
+      localeConfig.value.activeLocale
+    );
+    addToCache(activeNavigationItem.value.seoRoute, currentPage.value);
+  }
+});
 
 const pageLayoutComponent = computed(() => {
   switch (currentPage.value?.layout) {
@@ -25,10 +50,6 @@ const pageLayoutComponent = computed(() => {
     default:
       return resolveComponent("Unknown");
   }
-});
-
-definePageMeta({
-  layout: false,
 });
 
 // meta tags
