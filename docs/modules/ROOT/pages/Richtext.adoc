@@ -32,12 +32,16 @@ RichtextElement.vue
 [source,xml]
 ----
 <template>
-  <component
-    :is="richtTextElementComponent"
-    class=""
-    :rich-text-element="richTextElement"
-    :richtext="richTextElement.content"
-  />
+  <span :class="richTextElementClasses">
+    <component
+      :is="richtTextElementComponent"
+      v-if="Array.isArray(richTextElement.content)"
+      class=""
+      :rich-text-element="richTextElement"
+      :richtext="richTextElement.content"
+    />
+    <span v-else>{{ richTextElement.content }}</span>
+  </span>
 </template>
 
 <script setup lang="ts">
@@ -49,9 +53,24 @@ const richtTextElementComponent = computed(() => {
     case "customRichtextElement":
       return resolveComponent("ElementsCustomRichtextComponent");
     default:
-      return resolveComponent("unknown");
+      return resolveComponent("ElementsUnknownRichtextElement");
   }
 });
+
+const richTextElementClasses = computed(() => {
+  const fsStyle = (props.richTextElement.data as Record<string, unknown>)[
+    "data-fs-style"
+  ];
+  switch (fsStyle) {
+    case "format.span_yellow_text":
+      return "text-yellow-500";
+    case "format.standard":
+      return "";
+    default:
+      return "";
+  }
+});
+
 // ...
 </script>
 
@@ -73,7 +92,6 @@ Clicking on it will show you further information about the missing component.
 
 image:RichText/RichTextInfoWindow.png[RichText Info Window]
 
-And finally, clicking the content tab in the info window will reveal all of the data that will be passed into your component.
 
 [source,json]
 ----

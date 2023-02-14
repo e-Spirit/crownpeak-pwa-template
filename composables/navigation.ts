@@ -9,13 +9,23 @@ export function useNavigationData() {
     "activeNavigationItem"
   );
 
+  function findNavItemByRoute(route: string) {
+    // find navigation item in navigation by seo route
+    if (!navigationData.value) return;
+    const navItemId = navigationData.value.seoRouteMap[route];
+    return navItemId ? navigationData.value.idMap[navItemId] : undefined;
+  }
+
   return {
     activeNavigationItem,
     setActiveNavigationItem: (item: NavigationItem) => {
       activeNavigationItem.value = item;
     },
+
     getNavigationStateFromRoute: async (route: string) => {
-      const item = await fetchNavigationItemFromRoute($fsxaApi, route);
+      const item =
+        findNavItemByRoute(route) ||
+        (await fetchNavigationItemFromRoute($fsxaApi, route));
       const locale = getLocaleFromNavigationItem(item);
 
       setLocale(locale);

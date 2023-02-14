@@ -1,12 +1,9 @@
 <template>
-  <div
-    class="group relative border bg-red-100 p-4 font-bold"
-    data-testid="headerSection"
-  >
+  <div class="group relative border bg-red-100 p-4" data-testid="headerSection">
     <DevOnly v-if="appDevMode || envDevMode">
       <Dev :content="data" class="hidden group-hover:block" />
     </DevOnly>
-    Page Header
+    <span class="font-bold">Page Header</span>
   </div>
 </template>
 
