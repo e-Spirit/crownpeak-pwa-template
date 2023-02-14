@@ -1,15 +1,11 @@
 <template>
   <div :data-preview-id="page.previewId" data-testid="standardPageLayout">
-    <NuxtLayout name="default">
-      <template #header>
-        <SectionHeader v-if="page.data" :data="page.data"
-      /></template>
-      <PageBody
-        v-for="pageBody in page.children"
-        :key="pageBody.previewId"
-        :page-body="pageBody"
-      />
-    </NuxtLayout>
+    <SectionHeader v-if="page.data" :data="page.data" />
+    <PageBody
+      v-for="pageBody in page.children"
+      :key="pageBody.previewId"
+      :page-body="pageBody"
+    />
   </div>
 </template>
 
