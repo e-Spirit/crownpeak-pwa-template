@@ -82,6 +82,17 @@ export function useRoute() {
   };
 }
 
+export function useRouter() {
+  return {
+    push: navigateTo,
+    currentRoute: {
+      value: {
+        path: "/",
+      },
+    },
+  };
+}
+
 export {
   useLocale,
   fetchTopLevelNavigation,

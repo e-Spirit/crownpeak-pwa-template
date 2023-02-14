@@ -21,6 +21,7 @@ export default defineConfig({
             "useProjectProperties",
             "useNavigationData",
             "useRoute",
+            "useRouter",
             "useNuxtApp",
             "useHead",
             "navigateTo",
