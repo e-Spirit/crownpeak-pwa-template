@@ -1,9 +1,10 @@
 <template>
   <span>
     <NuxtLink
-      v-if="richTextElement.data.template === 'internal_link'"
+      v-if="richTextElement.data.template === 'internal_link' && linkedNavItem"
       class="underline"
       :to="internalLinkRoute"
+      @click="setActiveNavigationItem(linkedNavItem!)"
     >
       <ElementsRichText :richtext="richTextElement.content" />
     </NuxtLink>
@@ -21,7 +22,7 @@
 <script setup lang="ts">
 import { RichTextElement, Link } from "fsxa-api";
 
-const { navigationData } = useNavigationData();
+const { navigationData, setActiveNavigationItem } = useNavigationData();
 
 interface RichTextLink {
   type: "link";
@@ -31,13 +32,14 @@ interface RichTextLink {
 
 const props = defineProps<{ richTextElement: RichTextLink }>();
 
-const internalLinkRoute = computed(() => {
+const linkedNavItem = computed(() => {
   const referenceId: string =
     props.richTextElement.data.data["lt_link"]?.referenceId;
-  if (!referenceId) return "";
+  if (!referenceId) return;
+  return navigationData.value?.idMap[referenceId];
+});
 
-  const target = navigationData.value?.idMap[referenceId];
-
-  return target?.seoRoute ?? "";
+const internalLinkRoute = computed(() => {
+  return linkedNavItem.value?.seoRoute ?? "";
 });
 </script>
