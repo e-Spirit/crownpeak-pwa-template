@@ -1,7 +1,7 @@
 <template>
   <div class="flex min-h-screen flex-col">
     <ClientOnly>
-      <AppLayoutLoading v-if="layoutDataIsLoading" />
+      <AppLayoutLoading v-if="pending" />
     </ClientOnly>
 
     <AppLayoutHeader />
@@ -17,12 +17,9 @@ const { config: localeConfig } = useLocale();
 const { $fsxaApi } = useNuxtApp();
 const { projectProperties } = useProjectProperties();
 const { navigationData } = useNavigationData();
-const layoutDataIsLoading = ref(true);
 
-useAsyncData(
+const { pending } = useAsyncData(
   async () => {
-    layoutDataIsLoading.value = true;
-
     if (!localeConfig.value.activeLocale)
       throw createError({
         statusCode: 500,
@@ -39,8 +36,6 @@ useAsyncData(
       $fsxaApi,
       localeConfig.value.activeLocale
     );
-
-    layoutDataIsLoading.value = false;
   },
   // automatically refetch if locale changes
   { watch: [localeConfig] }

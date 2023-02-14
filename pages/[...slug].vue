@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ClientOnly><AppLayoutLoading v-if="pageDataIsLoading" /></ClientOnly>
+    <ClientOnly><AppLayoutLoading v-if="pending" /></ClientOnly>
     <component
       :is="pageLayoutComponent"
       v-if="currentPage"
@@ -19,18 +19,13 @@ const { currentPage, addToCache, findCachedPageBySeoRoute } = useContent();
 const { $fsxaApi } = useNuxtApp();
 const { config: localeConfig } = useLocale();
 const { activeNavigationItem } = useNavigationData();
-const pageDataIsLoading = ref(true);
 
 // fetch page content
-useAsyncData(async () => {
-  pageDataIsLoading.value = true;
-
+const { pending } = useAsyncData(async () => {
   // This state should not be possible.
   // The middleware should have figured out both the locale and our current navigation item
-  if (!activeNavigationItem.value || !localeConfig.value.activeLocale) {
-    pageDataIsLoading.value = false;
+  if (!activeNavigationItem.value || !localeConfig.value.activeLocale)
     throw new Error("No navigation item found");
-  }
 
   const cachedContent = findCachedPageBySeoRoute(
     activeNavigationItem.value.seoRoute
@@ -45,7 +40,6 @@ useAsyncData(async () => {
     );
     addToCache(activeNavigationItem.value.seoRoute, currentPage.value);
   }
-  pageDataIsLoading.value = false;
 });
 
 const pageLayoutComponent = computed(() => {
