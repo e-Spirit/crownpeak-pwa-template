@@ -37,6 +37,8 @@ const { pending } = useAsyncData(
       localeConfig.value.activeLocale
     );
 
+    console.log("REFETCHED");
+
     // Redirect to new route if language changed (e.g. from /Startseite/ to /Home/)
     const router = useRouter();
     const { path: previousRoute, query, hash } = useRoute();
@@ -45,11 +47,15 @@ const { pending } = useAsyncData(
       navigationData.value?.idMap[activeNavigationItem.value.id]?.seoRoute;
 
     if (!currentRoute) {
+      console.log("no current route");
+
       router.push(navigationData.value?.pages.index ?? "/");
       return;
     }
 
     if (previousRoute !== currentRoute) {
+      console.log("redir");
+
       router.push({
         path: currentRoute,
         query,

@@ -3,7 +3,11 @@
     class="group relative border bg-red-50 p-4 text-red-500"
     data-testid="unknown"
   >
-    <Dev :content="content" class="hidden group-hover:block" />
+    <Dev
+      :content="content"
+      class="hidden group-hover:block"
+      component-name="unknown section"
+    />
     <span class="font-bold">Unkown Component {{ componentType }}</span>
   </div>
 </template>
