@@ -10,7 +10,7 @@ describe("useContent", () => {
     expect(cachedPages.value).toEqual({});
   });
 
-  describe("findCachedPageByCaaSId", () => {
+  describe("findCachedPageBySeoRoute", () => {
     beforeEach(() => {
       clearMockedState();
     });
@@ -19,26 +19,26 @@ describe("useContent", () => {
       const page2 = createPage();
       const page3 = createPage();
 
-      const { cachedPages, findCachedPageByCaaSId } = useContent();
+      const { cachedPages, findCachedPageBySeoRoute } = useContent();
 
       cachedPages.value[page1.refId] = page1;
       cachedPages.value[page2.refId] = page2;
       cachedPages.value[page3.refId] = page3;
 
-      expect(findCachedPageByCaaSId("unknown-id")).toBeUndefined();
+      expect(findCachedPageBySeoRoute("unknown-id")).toBeUndefined();
     });
     it("item exists => return item", () => {
       const page1 = createPage();
       const page2 = createPage();
       const page3 = createPage();
 
-      const { cachedPages, findCachedPageByCaaSId } = useContent();
+      const { cachedPages, findCachedPageBySeoRoute } = useContent();
 
       cachedPages.value[page1.refId] = page1;
       cachedPages.value[page2.refId] = page2;
       cachedPages.value[page3.refId] = page3;
 
-      expect(findCachedPageByCaaSId(page2.refId)).toBe(page2);
+      expect(findCachedPageBySeoRoute(page2.refId)).toBe(page2);
     });
   });
   describe("addToCache", () => {
