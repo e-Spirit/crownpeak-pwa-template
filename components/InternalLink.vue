@@ -1,10 +1,10 @@
 <template>
   <NuxtLink
     :to="`${props.navItem.seoRoute}`"
-    class="flex flex-col p-3 hover:bg-blue-400"
+    class="hover:underline"
     @click="setActiveNavigationItem(props.navItem)"
   >
-    <span class="text-lg font-bold">{{ props.navItem.label }}</span>
+    {{ props.navItem.label }}
   </NuxtLink>
 </template>
 

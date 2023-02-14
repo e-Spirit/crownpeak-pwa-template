@@ -1,12 +1,15 @@
 type LocaleConfig = {
   activeLocale: string | undefined; // undefined if the user has not selected a locale yet or we have not extracted the locale from the deeplink
   defaultLocale: string;
-  allLocales: string[];
+  allLocales: { name: string; identifier: string }[];
 };
 
 // TODO: Implement this function however you want
 // You might want to use the CaaS to get all available locales
-const getAllLocales = () => ["de_DE", "en_GB"];
+const getAllLocales = () => [
+  { name: "Deutsch", identifier: "de_DE" },
+  { name: "English", identifier: "en_GB" },
+];
 
 const defaultConfig: LocaleConfig = {
   activeLocale: undefined,

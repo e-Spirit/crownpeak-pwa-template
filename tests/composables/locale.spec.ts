@@ -9,7 +9,10 @@ describe("useLocale", () => {
       expect.objectContaining({
         activeLocale: undefined,
         defaultLocale: "de_DE",
-        allLocales: ["de_DE", "en_GB"],
+        allLocales: [
+          { name: "Deutsch", identifier: "de_DE" },
+          { name: "English", identifier: "en_GB" },
+        ],
       })
     );
   });
@@ -23,7 +26,10 @@ describe("useLocale", () => {
       expect.objectContaining({
         activeLocale: "en_GB",
         defaultLocale: "de_DE",
-        allLocales: ["de_DE", "en_GB"],
+        allLocales: [
+          { name: "Deutsch", identifier: "de_DE" },
+          { name: "English", identifier: "en_GB" },
+        ],
       })
     );
   });

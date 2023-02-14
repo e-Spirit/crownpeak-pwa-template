@@ -21,7 +21,7 @@ const defaultConfig: LocaleConfig = {
   allLocales: getAllLocales(),
 };
 
-`getAllLocales` returns a hard-coded string array (`['de_DE', 'en_GB']`) as default, but can be implemented to dynamically fetch available languages from the CaaS.
+`getAllLocales` returns a hard-coded array (`[ { name: "Deutsch", identifier: "de_DE" },{ name: "English", identifier: "en_GB" },]`) as default, but can be implemented to dynamically fetch available languages from the CaaS.
 
 The composable can be imported in any component to read or set the locale:
 

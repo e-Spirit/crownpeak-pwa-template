@@ -15,7 +15,7 @@
         <AppLayoutNavigation class="hidden md:flex" />
         <AppLayoutMobileNavigation v-if="mobileNavigationVisible" />
 
-        <AppLayoutLanguageSwitch />
+        <AppLayoutLanguageSwitch class="ml-2" />
         <button
           class="md:hidden"
           @click="mobileNavigationVisible = !mobileNavigationVisible"
