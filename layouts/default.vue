@@ -16,14 +16,19 @@ const { navigationData } = useNavigationData();
 
 useAsyncData(
   async () => {
+    if (!localeConfig.value.activeLocale) {
+      throw createError({
+        statusCode: 500,
+        message: "No locale found",
+      });
+    }
+
     // fetch project properties
-    if (!localeConfig.value.activeLocale)
-      return new Promise((resolve) => resolve(null));
     projectProperties.value = await $fsxaApi.fetchProjectProperties({
       locale: localeConfig.value.activeLocale,
     });
+
     // fetch top level navigation
-    if (!localeConfig.value.activeLocale) return;
     navigationData.value = await fetchTopLevelNavigation(
       $fsxaApi,
       localeConfig.value.activeLocale
