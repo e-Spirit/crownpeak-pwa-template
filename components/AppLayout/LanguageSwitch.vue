@@ -3,6 +3,8 @@
     <ul v-for="locale of config.allLocales" :key="locale">
       <button
         class="p-3"
+        :data-testid="`${locale}-switch`"
+        :data-activeLocale="locale === config.activeLocale"
         :class="locale === config.activeLocale ? 'bg-green-300' : 'bg-gray-50'"
         @click="setLocale(locale)"
       >
