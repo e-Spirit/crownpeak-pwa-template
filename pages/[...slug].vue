@@ -14,19 +14,19 @@
 </template>
 
 <script setup lang="ts">
-const { currentPage, addToCache, findCachedPageByCaaSId } = useContent();
+const { currentPage, addToCache, findCachedPageBySeoRoute } = useContent();
 const { $fsxaApi } = useNuxtApp();
 const { config: localeConfig } = useLocale();
 const { activeNavigationItem } = useNavigationData();
 
 // fetch page content
-await useAsyncData(async () => {
+useAsyncData(async () => {
   // This state should not be possible.
   // The middleware should have figured out both the locale and our current navigation item
   if (!activeNavigationItem.value || !localeConfig.value.activeLocale)
     throw new Error("No navigation item found");
 
-  const cachedContent = findCachedPageByCaaSId(
+  const cachedContent = findCachedPageBySeoRoute(
     activeNavigationItem.value.seoRoute
   );
   if (cachedContent) {

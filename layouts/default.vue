@@ -14,7 +14,7 @@ const { $fsxaApi } = useNuxtApp();
 const { projectProperties } = useProjectProperties();
 const { navigationData } = useNavigationData();
 
-await useAsyncData(
+useAsyncData(
   async () => {
     // fetch project properties
     if (!localeConfig.value.activeLocale)
