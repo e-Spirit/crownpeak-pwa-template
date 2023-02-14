@@ -19,8 +19,8 @@ const richtTextElementComponent = computed(() => {
   switch (props.richTextElement.type) {
     case "text":
       return resolveComponent("ElementsRichText");
-    // case "link":
-    //   return resolveComponent("ElementsLink");
+    case "link":
+      return resolveComponent("ElementsLink");
     case "block":
       return resolveComponent("ElementsRichText");
     case "linebreak":
