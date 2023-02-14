@@ -39,7 +39,11 @@ export default defineNuxtPlugin(async () => {
       }
 
       if (router.currentRoute.value.path !== seoRoute) {
-        router.push(seoRoute);
+        router.push({
+          path: seoRoute,
+          query: router.currentRoute.value.query,
+          hash: router.currentRoute.value.hash,
+        });
       }
     },
     { watch: [localeConfig] }
