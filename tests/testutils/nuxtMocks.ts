@@ -57,6 +57,7 @@ export function useNuxtApp() {
 
 export function useAsyncData(fun: Function, _options: { watch: any[] }) {
   fun();
+  return { pending: false };
 }
 
 export function definePageMeta() {}

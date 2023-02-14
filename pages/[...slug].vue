@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ClientOnly><AppLayoutLoading v-if="pending" /></ClientOnly>
     <component
       :is="pageLayoutComponent"
       v-if="currentPage"
@@ -20,7 +21,7 @@ const { config: localeConfig } = useLocale();
 const { activeNavigationItem } = useNavigationData();
 
 // fetch page content
-useAsyncData(async () => {
+const { pending } = useAsyncData(async () => {
   // This state should not be possible.
   // The middleware should have figured out both the locale and our current navigation item
   if (!activeNavigationItem.value || !localeConfig.value.activeLocale)
