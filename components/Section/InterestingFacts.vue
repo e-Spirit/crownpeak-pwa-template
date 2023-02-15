@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative grid grid-cols-2 gap-4 p-4 py-20 text-white"
+    class="relative grid items-center gap-4 p-4 py-20 text-white lg:h-screen lg:grid-cols-2"
     data-testid="interestingFactsSection"
   >
     <div
@@ -14,16 +14,25 @@
       />
     </div>
 
-    <div>
-      <h3>{{ data.st_tagline }}</h3>
-      <h2>{{ data.st_headline }}</h2>
-      <p v-if="data.st_text"><ElementsRichText :richtext="data.st_text" /></p>
+    <div class="flex flex-col space-y-2 lg:border-8 lg:p-8">
+      <h3 class="text-xl uppercase">{{ data.st_tagline }}</h3>
+      <h2
+        v-if="data.st_headline"
+        class="text-3xl font-bold uppercase text-yellow-500 lg:text-5xl"
+      >
+        {{ data.st_headline }}
+      </h2>
+      <p v-if="data.st_text" class="text-gray-300">
+        <ElementsRichText :richtext="data.st_text" />
+      </p>
     </div>
 
-    <div class="grid grid-cols-3">
+    <div class="grid grid-cols-3 gap-6">
       <div v-for="counter in data.st_counters" :key="counter.id">
-        <div class="text-4xl">{{ counter.data.st_number }}</div>
-        <div>{{ counter.data.st_text }}</div>
+        <div class="text-4xl font-bold text-yellow-500">
+          {{ counter.data.st_number }}
+        </div>
+        <div class="border-t-2 text-gray-300">{{ counter.data.st_text }}</div>
       </div>
     </div>
   </div>
