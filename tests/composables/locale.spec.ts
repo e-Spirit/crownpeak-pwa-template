@@ -3,11 +3,10 @@ import { useLocale } from "../../composables/locale";
 
 describe("useLocale", () => {
   it("useLocale => provide default config", () => {
-    const { config } = useLocale();
+    const { config, activeLocale } = useLocale();
 
     expect(config.value).toEqual(
       expect.objectContaining({
-        activeLocale: undefined,
         defaultLocale: "de_DE",
         allLocales: [
           { name: "Deutsch", identifier: "de_DE" },
@@ -15,16 +14,16 @@ describe("useLocale", () => {
         ],
       })
     );
+    expect(activeLocale.value).toBeUndefined();
   });
 
   it("setActiveLocale => set activeLocale in config", () => {
-    const { config, setActiveLocale } = useLocale();
+    const { config, setActiveLocale, activeLocale } = useLocale();
 
     setActiveLocale("en_GB");
 
     expect(config.value).toEqual(
       expect.objectContaining({
-        activeLocale: "en_GB",
         defaultLocale: "de_DE",
         allLocales: [
           { name: "Deutsch", identifier: "de_DE" },
@@ -32,5 +31,6 @@ describe("useLocale", () => {
         ],
       })
     );
+    expect(activeLocale.value).toBe("en_GB");
   });
 });
