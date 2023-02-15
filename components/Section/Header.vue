@@ -7,7 +7,7 @@
       class="absolute inset-0 flex flex-col justify-center bg-black bg-opacity-80 p-6 text-white md:p-12"
     >
       <div class="max-w-xl md:border-l-8 md:p-8">
-        <h1 class="text-lg uppercase">{{ data.pt_title }}</h1>
+        <h1 class="text-lg uppercase">{{ data["pt_title"] }}</h1>
         <!-- <p class="text-sm text-gray-300">{{ data.pt_text }}</p> -->
         <span
           v-for="(breadcrumb, index) in breadcrumbs"
@@ -23,22 +23,17 @@
       </div>
     </div>
     <ElementsImage
-      v-if="data.pt_picture"
+      v-if="data['pt_picture']"
       class="h-full w-full object-cover"
-      :image="data.pt_picture"
+      :image="data['pt_picture']"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { Image } from "fsxa-api";
+import { DataEntries } from "fsxa-api";
 
-type PageHeader = {
-  pt_picture: Image;
-  pt_text: string;
-  pt_title: string;
-};
-defineProps<{ data: PageHeader }>();
+defineProps<{ data: DataEntries }>();
 const { devMode: appDevMode } = useAppConfig();
 const { devMode: envDevMode } = useRuntimeConfig();
 
