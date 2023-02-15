@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4">
+  <div class="errorPage">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15,15 +15,51 @@
       />
     </svg>
 
-    <h1 class="text-center text-lg font-bold">Error</h1>
-    <div class="errorContainer">
-      <pre>{{ props.error }}</pre>
+    <h1 class="headline">Error {{ error.statusCode }}</h1>
+    <p v-if="error.message || error.statusMessage" class="statusMessage">
+      {{ error.statusMessage || error.message }}
+    </p>
+    <div class="stackTraceContainer">
+      <pre v-if="error.stack">{{ JSON.stringify(error.stack, null, 2) }} </pre>
+      <div v-else>We don't know anything more about this error.</div>
+    </div>
+    <div class="buttons">
+      <a class="button" href="/">Back to Homepage</a>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
-  error: { statusCode: number; message: string; stack?: string };
+defineProps<{
+  error: {
+    statusCode: number;
+    message?: string;
+    statusMessage?: string;
+    stack?: string;
+  };
 }>();
 </script>
+
+<style lang="css" scoped>
+.errorPage {
+  @apply flex h-full min-h-screen flex-col items-center justify-center p-4;
+}
+.headline {
+  @apply text-center text-4xl font-bold;
+}
+
+.statusMessage {
+  @apply text-center;
+}
+
+.buttons {
+  @apply flex justify-center py-4;
+}
+.button {
+  @apply border border-black p-2 hover:bg-gray-200;
+}
+
+.stackTraceContainer {
+  @apply my-6 max-h-96 max-w-2xl overflow-auto border border-red-800 bg-red-200 p-4;
+}
+</style>
