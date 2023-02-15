@@ -4,7 +4,7 @@ import { ServerErrors, FSXAProxyRoutes, FSXAApiErrors } from "~/types";
 export default defineEventHandler(async (event) => {
   const remoteApi = FSXAApiSingleton.instance; // throws error if undefined
   const body = await readBody(event);
-  const { endpoint } = event.context["params"];
+  const endpoint = event.context["params"]?.["endpoint"];
 
   // TODO: This is because of a mismatch between the FSXA API and the FSXA Proxy API, which should be fixed in the future
   body.filters = body.filter;
