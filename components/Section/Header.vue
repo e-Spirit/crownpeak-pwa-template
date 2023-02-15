@@ -7,12 +7,12 @@
       class="absolute inset-0 flex flex-col justify-center bg-black bg-opacity-80 p-6 text-white md:p-12"
     >
       <div class="max-w-xl md:border-l-8 md:p-8">
-        <h1 class="text-lg uppercase">{{ data["pt_title"] }}</h1>
+        <h1 class="text-3xl uppercase">{{ data["pt_title"] }}</h1>
         <!-- <p class="text-sm text-gray-300">{{ data.pt_text }}</p> -->
         <span
           v-for="(breadcrumb, index) in breadcrumbs"
           :key="'breadcrumb-' + index"
-          class="mr-2 text-xs text-gray-300"
+          class="mr-2 text-sm text-gray-300"
           >>
           <NuxtLink
             class="hover:underline"
