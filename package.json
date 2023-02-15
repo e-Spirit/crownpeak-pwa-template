@@ -24,36 +24,36 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3",
+    "@commitlint/cli": "^17.4.3",
+    "@commitlint/config-conventional": "^17.4.3",
     "@faker-js/faker": "^7.6.0",
-    "@nuxt/webpack-builder": "^3.0.0",
-    "@nuxtjs/eslint-config-typescript": "^10.0.0",
+    "@nuxt/webpack-builder": "^3.2.0",
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@testing-library/vue": "^6.6.1",
-    "autoprefixer": "^10.4.8",
-    "commitizen": "^4.2.5",
-    "cypress": "^12.1.0",
+    "autoprefixer": "^10.4.13",
+    "commitizen": "^4.3.0",
+    "cypress": "^12.5.1",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.21.0",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-chai-friendly": "^0.7.2",
-    "eslint-plugin-nuxt": "^3.2.0",
+    "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-vue": "^9.3.0",
-    "husky": "^8.0.1",
+    "eslint-plugin-vue": "^9.9.0",
+    "husky": "^8.0.3",
     "jsdom": "^21.1.0",
-    "nuxt": "^3.0.0",
-    "postcss": "^8.4.14",
-    "prettier": "^2.8.3",
+    "nuxt": "^3.2.0",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.2",
     "rollup-plugin-node-polyfills": "^0.2.1",
-    "semantic-release": "^19.0.3",
-    "tailwindcss": "^3.1.7",
-    "typescript": "^4.7.4",
-    "unplugin-auto-import": "^0.12.1",
-    "vite-plugin-eslint": "^1.7.0",
-    "vitest": "^0.27.2",
-    "vue-tsc": "^0.40.13"
+    "semantic-release": "^20.1.0",
+    "tailwindcss": "^3.2.6",
+    "typescript": "^4.9.5",
+    "unplugin-auto-import": "^0.14.2",
+    "vite-plugin-eslint": "^1.8.1",
+    "vitest": "^0.28.5",
+    "vue-tsc": "^1.0.24"
   },
   "config": {
     "commitizen": {
@@ -80,6 +80,6 @@
     "tagFormat": "v${version}"
   },
   "dependencies": {
-    "fsxa-api": "^10.7.0"
+    "fsxa-api": "^10.10.0"
   }
 }
