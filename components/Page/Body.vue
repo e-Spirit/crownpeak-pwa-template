@@ -7,7 +7,11 @@
       data-testid="pageBodyChild"
     >
       <DevOnly v-if="appDevMode || envDevMode">
-        <Dev :content="pageBodyContent" class="hidden group-hover:block" />
+        <Dev
+          :content="pageBodyContent"
+          class="hidden group-hover:block"
+          component-name="section"
+        />
       </DevOnly>
 
       <component

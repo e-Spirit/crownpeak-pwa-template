@@ -1,10 +1,14 @@
 <template>
   <span
-    class="group relative border bg-red-50 p-2 text-red-500"
+    class="group relative border bg-red-50 p-1 text-red-500"
     data-testid="unknown"
   >
-    <Dev :content="richTextElement" class="hidden group-hover:block" />
-    <span class="font-bold">Unkown Richtext Element </span>
+    <Dev
+      :content="richTextElement"
+      class="hidden group-hover:block"
+      component-name="unknown richtext element"
+    />
+    <span class="font-bold">Unknown Element </span>
   </span>
 </template>
 <script lang="ts" setup>
