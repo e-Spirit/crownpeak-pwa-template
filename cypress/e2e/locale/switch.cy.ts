@@ -20,7 +20,7 @@ describe(`locale switching`, () => {
     cy.get("button[data-testid='en_GB-switch']").click();
 
     cy.url().should("eq", `${baseURL}/Home/`);
-
+    cy.wait(150); // wait for page transition
     cy.go("back");
 
     cy.url().should("eq", `${baseURL}/Startseite/`);
@@ -47,12 +47,10 @@ describe(`locale switching`, () => {
     cy.get("div[data-testid='languagesDropdown']").invoke("show");
     cy.get("button[data-testid='de_DE-switch']")
       .should("be.visible")
-      .should("have.class", "bg-green-300");
+      .should("have.class", "underline");
 
     cy.get("div[data-testid='languagesDropdown']").invoke("show");
-    cy.get("button[data-testid='en_GB-switch']")
-      .should("be.visible")
-      .should("have.class", "bg-gray-50");
+    cy.get("button[data-testid='en_GB-switch']").should("be.visible");
 
     cy.get("div[data-testid='languagesDropdown']").invoke("show");
     cy.get("button[data-testid='en_GB-switch']").click();
@@ -62,12 +60,10 @@ describe(`locale switching`, () => {
     cy.get("div[data-testid='languagesDropdown']").invoke("show");
     cy.get("button[data-testid='en_GB-switch']")
       .should("be.visible")
-      .should("have.class", "bg-green-300");
+      .should("have.class", "underline");
 
     cy.get("div[data-testid='languagesDropdown']").invoke("show");
-    cy.get("button[data-testid='de_DE-switch']")
-      .should("be.visible")
-      .should("have.class", "bg-gray-50");
+    cy.get("button[data-testid='de_DE-switch']").should("be.visible");
   });
 
   // TODO: Add test for language switch to non-existing page

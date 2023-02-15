@@ -1,10 +1,10 @@
 <template>
   <NuxtLink
-    :to="`${props.navItem.seoRoute}`"
+    :to="`${navItem.seoRoute}` || '/'"
     class="hover:underline"
-    @click="setActiveNavigationItem(props.navItem)"
+    @click="setActiveNavigationItem"
   >
-    {{ props.navItem.label }}
+    {{ navItem.label || "??" }}
   </NuxtLink>
 </template>
 
@@ -13,7 +13,7 @@ import { NavigationItem } from "fsxa-api";
 
 const { setActiveNavigationItem } = useNavigationData();
 
-const props = defineProps<{
+defineProps<{
   navItem: NavigationItem;
 }>();
 </script>
