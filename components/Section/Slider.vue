@@ -94,17 +94,12 @@ const activeImageIndex = ref(0);
 const activeSlide = computed(() => props.data[activeImageIndex.value]);
 
 function nextSlide() {
-  activeImageIndex.value =
-    activeImageIndex.value === props.data.length - 1
-      ? 0
-      : activeImageIndex.value + 1;
+  activeImageIndex.value = (activeImageIndex.value + 1) % props.data.length;
 }
 
 function prevSlide() {
   activeImageIndex.value =
-    activeImageIndex.value === 0
-      ? props.data.length - 1
-      : activeImageIndex.value - 1;
+    (activeImageIndex.value - 1 + props.data.length) % props.data.length;
 }
 </script>
 
