@@ -1,9 +1,5 @@
 export default defineNuxtRouteMiddleware(async (to) => {
-  const {
-    config: {
-      value: { activeLocale },
-    },
-  } = useLocale();
+  const { activeLocale } = useLocale();
 
   const route = decodeURIComponent(to.path);
   const { getNavigationStateFromRoute, activeNavigationItem, getIndexRoute } =
@@ -21,7 +17,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
   try {
     // Deeplink usecase
     if (
-      !activeLocale ||
+      !activeLocale.value ||
       !activeNavigationItem.value ||
       activeNavigationItem.value.seoRoute !== route
     ) {
