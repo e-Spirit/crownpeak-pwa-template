@@ -71,7 +71,12 @@ import { Image, RichTextElement, Section } from "fsxa-api";
 
 interface SliderSlide extends Section {
   data: {
-    st_button: {};
+    st_button: {
+      data: {
+        lt_button_text: string;
+        lt_product_link: { route: string };
+      };
+    };
     st_description: string;
     st_picture: Image;
     st_picture_alt?: string;
