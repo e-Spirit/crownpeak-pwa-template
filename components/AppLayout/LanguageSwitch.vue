@@ -24,12 +24,12 @@
           <button
             :disabled="loading"
             :data-testid="`${locale.identifier}-switch`"
-            :data-activeLocale="locale.identifier === config.activeLocale"
+            :data-activeLocale="locale.identifier === activeLocale"
             :class="{
-              underline: locale.identifier === config.activeLocale,
+              underline: locale.identifier === activeLocale,
             }"
             class="w-full py-3 px-4 hover:bg-gray-200"
-            @click="setLocale(locale.identifier)"
+            @click="setActiveLocale(locale.identifier)"
           >
             {{ locale.name }}
           </button>
@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-const { config, setLocale } = useLocale();
+const { config, activeLocale, setActiveLocale } = useLocale();
 const loading = ref(true);
 
 onMounted(() => {

@@ -13,14 +13,14 @@
 </template>
 
 <script setup lang="ts">
-const { config: localeConfig } = useLocale();
+const { activeLocale } = useLocale();
 const { $fsxaApi } = useNuxtApp();
 const { projectProperties } = useProjectProperties();
 const { navigationData, activeNavigationItem } = useNavigationData();
 
 const { pending } = useAsyncData(
   async () => {
-    if (!localeConfig.value.activeLocale || !activeNavigationItem.value)
+    if (!activeLocale.value || !activeNavigationItem.value)
       throw createError({
         statusCode: 500,
         message: "Routing error: locale or navigation item undefined",
@@ -28,13 +28,13 @@ const { pending } = useAsyncData(
 
     // fetch project properties
     projectProperties.value = await $fsxaApi.fetchProjectProperties({
-      locale: localeConfig.value.activeLocale,
+      locale: activeLocale.value,
     });
 
     // fetch top level navigation
     navigationData.value = await fetchTopLevelNavigation(
       $fsxaApi,
-      localeConfig.value.activeLocale
+      activeLocale.value
     );
 
     // Redirect to new route if language changed (e.g. from /Startseite/ to /Home/)
@@ -58,6 +58,6 @@ const { pending } = useAsyncData(
     }
   },
   // automatically refetch if locale changes
-  { watch: [localeConfig.value] }
+  { watch: [activeLocale] }
 );
 </script>

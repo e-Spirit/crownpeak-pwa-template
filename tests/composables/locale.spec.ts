@@ -17,10 +17,10 @@ describe("useLocale", () => {
     );
   });
 
-  it("setLocale => set activeLocale in config", () => {
-    const { config, setLocale } = useLocale();
+  it("setActiveLocale => set activeLocale in config", () => {
+    const { config, setActiveLocale } = useLocale();
 
-    setLocale("en_GB");
+    setActiveLocale("en_GB");
 
     expect(config.value).toEqual(
       expect.objectContaining({
