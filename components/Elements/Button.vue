@@ -1,5 +1,8 @@
 <template>
-  <button class="border border-white p-3 capitalize" @click="clickHandler">
+  <button
+    class="border border-white p-3 capitalize hover:bg-gray-800"
+    @click="clickHandler"
+  >
     {{ button.data.lt_button_text }}
   </button>
 </template>
