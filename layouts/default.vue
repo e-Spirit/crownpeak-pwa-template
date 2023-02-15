@@ -58,6 +58,6 @@ const { pending } = useAsyncData(
     }
   },
   // automatically refetch if locale changes
-  { watch: [localeConfig] }
+  { watch: [localeConfig.value] }
 );
 </script>
