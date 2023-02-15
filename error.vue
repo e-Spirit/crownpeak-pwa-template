@@ -60,6 +60,6 @@ defineProps<{
 }
 
 .stackTraceContainer {
-  @apply my-6 max-h-96 max-w-2xl overflow-scroll border border-red-800 bg-red-200 p-4;
+  @apply my-6 max-h-96 max-w-2xl overflow-auto border border-red-800 bg-red-200 p-4;
 }
 </style>
