@@ -41,7 +41,7 @@ export default defineConfig({
       template: {
         compilerOptions: {
           isCustomElement: (tag) => {
-            return ["DevOnly", "NuxtLink"].includes(tag);
+            return ["DevOnly", "ClientOnly", "NuxtLink"].includes(tag);
           },
         },
       },

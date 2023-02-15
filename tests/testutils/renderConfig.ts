@@ -5,6 +5,7 @@ import LayoutHeader from "../../components/AppLayout/Header.vue";
 import LanguageSwitch from "../../components/AppLayout/LanguageSwitch.vue";
 import Navigation from "../../components/AppLayout/Navigation.vue";
 import MobileNavigation from "../../components/AppLayout/MobileNavigation.vue";
+import Loading from "../../components/AppLayout/Loading.vue";
 
 import HomePageLayout from "../../components/PageLayout/Home.vue";
 import StandardPageLayout from "../../components/PageLayout/Standard.vue";
@@ -65,6 +66,7 @@ export const renderConfig = {
       AppLayoutNavigation: Navigation,
       AppLayoutMobileNavigation: MobileNavigation,
       AppLayoutLanguageSwitch: LanguageSwitch,
+      AppLayoutLoading: Loading,
 
       InternalLink,
 
