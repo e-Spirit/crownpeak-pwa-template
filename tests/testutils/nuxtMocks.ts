@@ -79,6 +79,7 @@ export function useRoute() {
     query: "testquery",
     hash: "testhash",
     path: "/",
+    params: {},
   };
 }
 
