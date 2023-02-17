@@ -1,9 +1,5 @@
 export default defineNuxtRouteMiddleware(async (to) => {
-  const {
-    config: {
-      value: { activeLocale },
-    },
-  } = useLocale();
+  const { activeLocale } = useLocale();
 
   const route = decodeURIComponent(to.path);
   const { getNavigationStateFromRoute, activeNavigationItem, getIndexRoute } =
@@ -21,7 +17,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
   try {
     // Deeplink usecase
     if (
-      !activeLocale ||
+      !activeLocale.value ||
       !activeNavigationItem.value ||
       activeNavigationItem.value.seoRoute !== route
     ) {
@@ -30,7 +26,11 @@ export default defineNuxtRouteMiddleware(async (to) => {
   } catch (_error: unknown) {
     // Theoretically this does not have to mean that the page does not exist.
     // It could also be a 500 server error or something completely different...
-    throw createError({ statusCode: 404, statusMessage: "Page not found" });
+    throw createError({
+      statusCode: 404,
+      message: "Page not found",
+      fatal: true,
+    });
   }
 
   return true;

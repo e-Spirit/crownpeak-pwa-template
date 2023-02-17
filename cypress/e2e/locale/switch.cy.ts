@@ -7,6 +7,7 @@ describe(`locale switching`, () => {
   it("change language on /Startseite/ => redirect /Home/", () => {
     cy.visit(`${baseURL}/Startseite/`);
 
+    cy.get("div[data-testid='languagesDropdown']").invoke("show");
     cy.get("button[data-testid='en_GB-switch']").click();
 
     cy.url().should("eq", `${baseURL}/Home/`);
@@ -15,14 +16,15 @@ describe(`locale switching`, () => {
   it("change language, navigate back => change language back", () => {
     cy.visit(`${baseURL}/Startseite/`);
 
+    cy.get("div[data-testid='languagesDropdown']").invoke("show");
     cy.get("button[data-testid='en_GB-switch']").click();
 
     cy.url().should("eq", `${baseURL}/Home/`);
-
     cy.go("back");
 
     cy.url().should("eq", `${baseURL}/Startseite/`);
 
+    cy.get("div[data-testid='languagesDropdown']").invoke("show");
     cy.get("button[data-testid='de_DE-switch']")
       .should("be.visible")
       .should("have.attr", "data-activeLocale", "true");
@@ -31,6 +33,7 @@ describe(`locale switching`, () => {
   it("change language => change content", () => {
     cy.visit(`${baseURL}/Startseite/`);
 
+    cy.get("div[data-testid='languagesDropdown']").invoke("show");
     cy.get("button[data-testid='en_GB-switch']").click();
 
     cy.url().should("eq", `${baseURL}/Home/`);
@@ -40,26 +43,26 @@ describe(`locale switching`, () => {
 
   it("change language => highlight active language", () => {
     cy.visit(`${baseURL}/Startseite/`);
-
+    cy.get("div[data-testid='languagesDropdown']").invoke("show");
     cy.get("button[data-testid='de_DE-switch']")
       .should("be.visible")
-      .should("have.class", "bg-green-300");
+      .should("have.class", "underline");
 
-    cy.get("button[data-testid='en_GB-switch']")
-      .should("be.visible")
-      .should("have.class", "bg-gray-50");
+    cy.get("div[data-testid='languagesDropdown']").invoke("show");
+    cy.get("button[data-testid='en_GB-switch']").should("be.visible");
 
+    cy.get("div[data-testid='languagesDropdown']").invoke("show");
     cy.get("button[data-testid='en_GB-switch']").click();
 
     cy.url().should("eq", `${baseURL}/Home/`);
 
+    cy.get("div[data-testid='languagesDropdown']").invoke("show");
     cy.get("button[data-testid='en_GB-switch']")
       .should("be.visible")
-      .should("have.class", "bg-green-300");
+      .should("have.class", "underline");
 
-    cy.get("button[data-testid='de_DE-switch']")
-      .should("be.visible")
-      .should("have.class", "bg-gray-50");
+    cy.get("div[data-testid='languagesDropdown']").invoke("show");
+    cy.get("button[data-testid='de_DE-switch']").should("be.visible");
   });
 
   // TODO: Add test for language switch to non-existing page

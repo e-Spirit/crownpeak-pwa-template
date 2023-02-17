@@ -1,23 +1,25 @@
 <template>
-  <div class="flex border-b py-2" data-testid="navigation">
-    <ul
-      v-for="navItem of topNavigation"
-      :key="navItem?.id"
-      class="group relative"
-    >
-      <InternalLink :nav-item="navItem" />
-
-      <div
-        v-if="getSubNavigation(navItem).length > 0"
-        class="absolute top-10 left-0 hidden border bg-white p-2 group-hover:block"
+  <div data-testid="navigation ">
+    <ul class="flex items-center space-x-4 py-6">
+      <li
+        v-for="navItem of topNavigation"
+        :key="navItem?.id"
+        class="group relative"
       >
+        <InternalLink :nav-item="navItem" />
         <ul
-          v-for="subNavItem of getSubNavigation(navItem)"
-          :key="subNavItem?.id"
+          v-if="getSubNavigation(navItem).length > 0"
+          class="absolute top-6 right-0 hidden divide-y bg-white shadow-lg group-hover:block"
         >
-          <InternalLink :nav-item="subNavItem" />
+          <li
+            v-for="subNavItem of getSubNavigation(navItem)"
+            :key="subNavItem?.id"
+            class="w-full py-3 px-4"
+          >
+            <InternalLink :nav-item="subNavItem" />
+          </li>
         </ul>
-      </div>
+      </li>
     </ul>
   </div>
 </template>

@@ -19,10 +19,10 @@ describe("slug page", () => {
     vi.clearAllMocks();
     clearMockedState();
     const navItem = createNavigationItem();
-    const { setLocale } = useLocale();
+    const { setActiveLocale } = useLocale();
     const { setActiveNavigationItem } = useNavigationData();
     setActiveNavigationItem(navItem);
-    setLocale("de_DE");
+    setActiveLocale("de_DE");
   });
   const mockedContent = {
     currentPage: { value: createPage({ layout: "homepage" }) },
