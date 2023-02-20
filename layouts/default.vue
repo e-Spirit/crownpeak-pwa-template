@@ -49,7 +49,13 @@ const { pending } = useAsyncData(
       return;
     }
 
-    if (previousRoute !== currentRoute) {
+    const currentRouteRegex = activeNavigationItem.value.seoRouteRegex;
+
+    const matches = currentRouteRegex
+      ? previousRoute.match(currentRouteRegex)
+      : false;
+
+    if (currentRoute !== previousRoute && !matches) {
       router.push({
         path: currentRoute,
         query,
