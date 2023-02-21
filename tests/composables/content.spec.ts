@@ -10,7 +10,7 @@ describe("useContent", () => {
     expect(cachedPages.value).toEqual({});
   });
 
-  describe("findCachedPageBySeoRoute", () => {
+  describe("findCachedPageByRoute", () => {
     beforeEach(() => {
       clearMockedState();
     });
@@ -19,29 +19,29 @@ describe("useContent", () => {
       const page2 = createPage();
       const page3 = createPage();
 
-      const { cachedPages, findCachedPageBySeoRoute } = useContent();
+      const { cachedPages, findCachedPageByRoute } = useContent();
 
       cachedPages.value[page1.refId] = page1;
       cachedPages.value[page2.refId] = page2;
       cachedPages.value[page3.refId] = page3;
 
-      expect(findCachedPageBySeoRoute("unknown-id")).toBeUndefined();
+      expect(findCachedPageByRoute("unknown-id")).toBeUndefined();
     });
     it("item exists => return item", () => {
       const page1 = createPage();
       const page2 = createPage();
       const page3 = createPage();
 
-      const { cachedPages, findCachedPageBySeoRoute } = useContent();
+      const { cachedPages, findCachedPageByRoute } = useContent();
 
       cachedPages.value[page1.refId] = page1;
       cachedPages.value[page2.refId] = page2;
       cachedPages.value[page3.refId] = page3;
 
-      expect(findCachedPageBySeoRoute(page2.refId)).toBe(page2);
+      expect(findCachedPageByRoute(page2.refId)).toBe(page2);
     });
   });
-  describe("addToCache", () => {
+  describe("addToCachedPages", () => {
     beforeEach(() => {
       clearMockedState();
     });
@@ -50,11 +50,11 @@ describe("useContent", () => {
       const page2 = createPage();
       const page3 = createPage();
 
-      const { cachedPages, addToCache } = useContent();
+      const { cachedPages, addToCachedPages } = useContent();
 
-      addToCache(page1.refId, page1);
-      addToCache(page2.refId, page2);
-      addToCache(page3.refId, page3);
+      addToCachedPages(page1.refId, page1);
+      addToCachedPages(page2.refId, page2);
+      addToCachedPages(page3.refId, page3);
 
       expect(cachedPages.value[page1.refId]).toBe(page1);
       expect(cachedPages.value[page2.refId]).toBe(page2);
@@ -66,11 +66,11 @@ describe("useContent", () => {
       const page1 = createPage();
       const page2 = createPage();
 
-      const { cachedPages, addToCache } = useContent();
+      const { cachedPages, addToCachedPages } = useContent();
 
-      addToCache(page1.refId, page1);
-      addToCache(page2.refId, page2);
-      addToCache(page2.refId, page2);
+      addToCachedPages(page1.refId, page1);
+      addToCachedPages(page2.refId, page2);
+      addToCachedPages(page2.refId, page2);
 
       expect(cachedPages.value[page1.refId]).toBe(page1);
       expect(cachedPages.value[page2.refId]).toBe(page2);

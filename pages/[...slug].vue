@@ -3,6 +3,7 @@
     <ClientOnly>
       <AppLayoutLoading v-if="pending" />
     </ClientOnly>
+
     <component
       :is="pageLayoutComponent"
       v-if="currentPage"
@@ -37,14 +38,9 @@ const { pending } = useAsyncData(async () => {
     throw new Error("No navigation item found");
 
   const currentRoute = decodeURIComponent(useRoute().path);
+  const cachedPage = findCachedPageByRoute(currentRoute);
+  currentDataset.value = findCachedDatasetByRoute(currentRoute) || null;
 
-  const cachedPage = findCachedPageByRoute(activeNavigationItem.value.seoRoute);
-  const cachedDataset = findCachedDatasetByRoute(
-    activeNavigationItem.value.seoRoute
-  );
-  if (cachedDataset) {
-    currentDataset.value = cachedDataset;
-  }
   if (cachedPage) {
     currentPage.value = cachedPage;
   } else {
@@ -55,8 +51,10 @@ const { pending } = useAsyncData(async () => {
       currentRoute,
       currentDataset.value
     );
+
     currentPage.value = page;
     currentDataset.value = dataset;
+
     addToCachedPages(currentRoute, currentPage.value);
     if (currentDataset.value)
       addToCachedDatasets(currentRoute, currentDataset.value);
