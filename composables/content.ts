@@ -1,13 +1,7 @@
 import { Page, Dataset } from "fsxa-api";
 
 export function useContent() {
-  const currentPage = useState<Page | null>("currentPage");
   const currentDataset = useState<Dataset | null>("currentDataset");
-
-  const cachedPages = useState<{
-    [caasId: string]: Page;
-  }>("cachedPages", () => ({}));
-
   const cachedDatasets = useState<{
     [caasId: string]: Dataset;
   }>("cachedDatasets", () => ({}));
@@ -15,10 +9,14 @@ export function useContent() {
   function findCachedDatasetByRoute(route: string) {
     return cachedDatasets.value[route];
   }
-
   function addToCachedDatasets(route: string, data: Dataset) {
     if (!cachedPages.value[route]) cachedDatasets.value[route] = data;
   }
+
+  const currentPage = useState<Page | null>("currentPage");
+  const cachedPages = useState<{
+    [caasId: string]: Page;
+  }>("cachedPages", () => ({}));
 
   function findCachedPageByRoute(route: string) {
     return cachedPages.value[route];

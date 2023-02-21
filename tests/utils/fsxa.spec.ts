@@ -13,7 +13,7 @@ import {
 import navigationData from "../fixtures/navigationDataSeoRoute.json";
 import navigationItem from "../fixtures/navigationItem.json";
 import datasetsFilter from "../fixtures/datasetsFilter.json";
-import content from "../fixtures/content.json";
+import page from "../fixtures/content.json";
 
 describe("fsxa utils", () => {
   describe("fetchTopLevelNavigation", () => {
@@ -58,7 +58,10 @@ describe("fsxa utils", () => {
 
       fsxaApi.fetchElement = vi.fn().mockReturnValue({});
 
-      expect(await fetchContentById(fsxaApi, "de_DE", "123")).toStrictEqual({});
+      expect(await fetchContentById(fsxaApi, "de_DE", "123")).toStrictEqual({
+        page: {},
+        dataset: null,
+      });
 
       expect(fsxaApi.fetchElement).toHaveBeenCalledWith({
         locale: "de_DE",
@@ -95,11 +98,11 @@ describe("fsxa utils", () => {
       } = setupProxyApi();
 
       fsxaApi.fetchByFilter = vi.fn().mockReturnValue(datasetsFilter);
-      fsxaApi.fetchElement = vi.fn().mockReturnValue(content);
+      fsxaApi.fetchElement = vi.fn().mockReturnValue(page);
 
       expect(
         await fetchContentBySeoRoute(fsxaApi, "de_DE", "/some/route")
-      ).toStrictEqual(content);
+      ).toStrictEqual({ dataset: datasetsFilter.items[0], page });
 
       expect(fsxaApi.fetchElement).toHaveBeenCalled();
       expect(fsxaApi.fetchByFilter).toHaveBeenCalled();
@@ -113,11 +116,11 @@ describe("fsxa utils", () => {
       } = setupProxyApi();
 
       fsxaApi.fetchByFilter = vi.fn().mockReturnValue(datasetsFilter);
-      fsxaApi.fetchElement = vi.fn().mockReturnValue(content);
+      fsxaApi.fetchElement = vi.fn().mockReturnValue(page);
 
       expect(
         await fetchContentFromNavigationItem(fsxaApi, navigationItem, "de_DE")
-      ).toStrictEqual(content);
+      ).toStrictEqual({ dataset: null, page });
 
       expect(fsxaApi.fetchElement).toHaveBeenCalled();
       expect(fsxaApi.fetchByFilter).not.toHaveBeenCalled();
@@ -128,7 +131,7 @@ describe("fsxa utils", () => {
       } = setupProxyApi();
 
       fsxaApi.fetchByFilter = vi.fn().mockReturnValue(datasetsFilter);
-      fsxaApi.fetchElement = vi.fn().mockReturnValue(content);
+      fsxaApi.fetchElement = vi.fn().mockReturnValue(page);
 
       const projectedNavigationItem: NavigationItem = {
         ...navigationItem,
@@ -141,7 +144,7 @@ describe("fsxa utils", () => {
           projectedNavigationItem,
           "de_DE"
         )
-      ).toStrictEqual(content);
+      ).toStrictEqual({ dataset: datasetsFilter.items[0], page });
 
       expect(fsxaApi.fetchElement).toHaveBeenCalled();
       expect(fsxaApi.fetchByFilter).toHaveBeenCalled();
