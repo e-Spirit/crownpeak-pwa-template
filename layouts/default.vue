@@ -16,6 +16,7 @@
 const { activeLocale } = useLocale();
 const { $fsxaApi } = useNuxtApp();
 const { projectProperties } = useProjectProperties();
+const { currentDataset } = useContent();
 const { navigationData, activeNavigationItem, fetchTopLevelNavigation } =
   useNavigationData();
 
@@ -52,19 +53,39 @@ const { pending } = useAsyncData(
     const nextNavigationItem =
       navigationData.value?.idMap[activeNavigationItem.value.id];
 
-    const nextRoute = nextNavigationItem?.seoRoute;
-    const nextRouteRegex = nextNavigationItem?.seoRouteRegex;
+    if (!nextNavigationItem)
+      throw createError({ statusCode: 404, message: "Page not found" });
 
-    // Content Projections have the same page id, but different routes.
-    // Therefore we need to check if the seoRouteRegex matches instead of the seoRoute
+    const nextRouteRegex = nextNavigationItem?.seoRouteRegex;
+    // The route we need to redirect to, if we need to redirect at all
+    let nextRoute = nextNavigationItem?.seoRoute;
+
     const isProjection = nextRouteRegex !== null;
 
+    // Content Projections have the same page id, and equal seoRoutes, while having different _actual_ routes.
+    // Therefore, to check if we need to change the route, we need to check if the seoRouteRegex is different instead.
+    // If it did change, we cant just use the seoRoute of the new navigationItem, because multiple projections share it.
+    // Instead, we need to fetch the current dataset in the new locale and get the route from there.
+    if (isProjection && currentDataset.value) {
+      const { dataset, route } = await getTranslatedRouteFromNavItem(
+        $fsxaApi,
+        nextNavigationItem?.id,
+        currentDataset.value?.id,
+        activeLocale.value as string
+      );
+
+      currentDataset.value = dataset;
+      nextRoute = route;
+    }
+
+    // Only redirect if something actually changed
+    // This is necessary because this code path is called on the layout render as well as when the language changes
     if (
       (!isProjection && nextRoute !== previousRoute) ||
       (isProjection && nextRouteRegex !== previousRouteRegex)
     ) {
       router.push({
-        path: isProjection ? nextRoute : nextRoute,
+        path: nextRoute,
         query,
         hash,
       });

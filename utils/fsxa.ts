@@ -44,6 +44,25 @@ export const fetchDatasetBySeoRoute = async (
   return bestMatch as Dataset | undefined;
 };
 
+export const fetchDatasetById = async (
+  api: FSXAProxyApi,
+  id: string,
+  locale: string
+) => {
+  const dataset = await api.fetchByFilter({
+    filters: [
+      {
+        operator: ComparisonQueryOperatorEnum.EQUALS,
+        value: id,
+        field: "identifier",
+      },
+    ],
+    locale,
+  });
+
+  return dataset.items[0] as Dataset | null;
+};
+
 export const fetchContentById = async (
   api: FSXAProxyApi,
   locale: string,
@@ -130,4 +149,23 @@ export const fetchTopLevelNavigation = (api: FSXAProxyApi, locale: string) => {
   return api.fetchNavigation({
     locale,
   });
+};
+
+export const getTranslatedRouteFromNavItem = async (
+  api: FSXAProxyApi,
+  navigationItemId: string,
+  datasetId: string,
+  locale: string
+) => {
+  const dataset = await fetchDatasetById(api, datasetId, locale);
+
+  if (!dataset) throw new Error("No dataset found");
+
+  const route = dataset.routes.find(
+    (datasetRoute) => datasetRoute.pageRef === navigationItemId
+  )?.route;
+
+  if (!route) throw new Error("No route found");
+
+  return { route, dataset };
 };
