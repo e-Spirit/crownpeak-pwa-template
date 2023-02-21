@@ -31,6 +31,12 @@ export function useNavigationData() {
       setActiveLocale(locale);
       activeNavigationItem.value = item;
     },
+    fetchTopLevelNavigation: async () => {
+      navigationData.value = await fetchTopLevelNavigation(
+        $fsxaApi,
+        activeLocale.value ?? localeConfig.value.defaultLocale
+      );
+    },
     getIndexRoute: async () => {
       if (!navigationData.value) {
         navigationData.value = await fetchTopLevelNavigation(
