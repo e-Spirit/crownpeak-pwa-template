@@ -44,43 +44,50 @@ export const fetchDatasetBySeoRoute = async (
   return bestMatch as Dataset | undefined;
 };
 
-export const fetchContentById = (
+export const fetchContentById = async (
   api: FSXAProxyApi,
   locale: string,
   id: string
-) =>
-  api.fetchElement<Page>({
+) => {
+  const page = await api.fetchElement<Page>({
     id,
     locale,
   });
+  return { page, dataset: null };
+};
 
 export const fetchContentBySeoRoute = async (
   api: FSXAProxyApi,
   locale: string,
-  route: string
+  route: string,
+  cachedDataset?: Dataset | null
 ) => {
-  const dataset = await fetchDatasetBySeoRoute(api, locale, route);
+  const dataset =
+    cachedDataset ?? (await fetchDatasetBySeoRoute(api, locale, route));
+
   if (!dataset) throw new Error("No dataset found");
 
   const firstRoute = dataset.routes?.[0];
   if (!firstRoute) throw new Error("No route found");
 
-  const content = await fetchContentById(api, locale, firstRoute.pageRef);
+  const { page } = await fetchContentById(api, locale, firstRoute.pageRef);
 
-  return content;
+  return { dataset, page };
 };
 
 export const fetchContentFromNavigationItem = (
   api: FSXAProxyApi,
   item: NavigationItem,
-  locale: string
+  locale: string,
+  path: string,
+  cachedDataset?: Dataset | null
 ) => {
-  const { seoRoute, caasDocumentId, seoRouteRegex } = item;
+  const { caasDocumentId, seoRouteRegex } = item;
 
   const isProjection = seoRouteRegex !== null;
 
   return isProjection
-    ? fetchContentBySeoRoute(api, locale, seoRoute)
+    ? fetchContentBySeoRoute(api, locale, path, cachedDataset)
     : fetchContentById(api, locale, caasDocumentId);
 };
 

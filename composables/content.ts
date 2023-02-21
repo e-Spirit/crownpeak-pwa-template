@@ -1,23 +1,39 @@
-import { Page } from "fsxa-api";
+import { Page, Dataset } from "fsxa-api";
 
 export function useContent() {
+  const currentDataset = useState<Dataset | null>("currentDataset");
+  const cachedDatasets = useState<{
+    [caasId: string]: Dataset;
+  }>("cachedDatasets", () => ({}));
+
+  function findCachedDatasetByRoute(route: string) {
+    return cachedDatasets.value[route];
+  }
+  function addToCachedDatasets(route: string, data: Dataset) {
+    if (!cachedPages.value[route]) cachedDatasets.value[route] = data;
+  }
+
   const currentPage = useState<Page | null>("currentPage");
   const cachedPages = useState<{
     [caasId: string]: Page;
   }>("cachedPages", () => ({}));
 
-  function findCachedPageBySeoRoute(seoRoute: string) {
-    return cachedPages.value[seoRoute];
+  function findCachedPageByRoute(route: string) {
+    return cachedPages.value[route];
   }
 
-  function addToCache(seoRoute: string, data: Page) {
-    if (!cachedPages.value[seoRoute]) cachedPages.value[seoRoute] = data;
+  function addToCachedPages(route: string, data: Page) {
+    if (!cachedPages.value[route]) cachedPages.value[route] = data;
   }
 
   return {
     currentPage,
+    currentDataset,
     cachedPages,
-    addToCache,
-    findCachedPageBySeoRoute,
+    cachedDatasets,
+    addToCachedPages,
+    addToCachedDatasets,
+    findCachedPageByRoute,
+    findCachedDatasetByRoute,
   };
 }

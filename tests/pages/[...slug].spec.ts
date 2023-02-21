@@ -11,6 +11,7 @@ import * as content from "../../composables/content";
 import { clearMockedState } from "../testutils/nuxtMocks";
 import { useNavigationData } from "../../composables/navigation";
 import { createNavigationItem } from "../testutils/createNavigationItem";
+import { createDataset } from "../testutils/createDataset";
 import { useLocale } from "../../composables/locale";
 
 describe("slug page", () => {
@@ -26,17 +27,22 @@ describe("slug page", () => {
   });
   const mockedContent = {
     currentPage: { value: createPage({ layout: "homepage" }) },
-    findCachedPageBySeoRoute: (_seoRoute: string) => null,
-    addToCache: (_seoRoute: string, _page: Page) => null,
+    currentDataset: { value: createDataset() },
+    findCachedPageByRoute: (_route: string) => null,
+    findCachedDatasetByRoute: (_route: string) => null,
+    addToCachedPages: (_route: string, _page: Page) => null,
   };
 
   describe("page not cached", () => {
-    it("render with homepage layout prop => render homepage layout component", () => {
+    it("render with homepage layout prop => render homepage layout component", async () => {
       vi.spyOn(content, "useContent").mockReturnValue({
         ...mockedContent,
         currentPage: { value: createPage({ layout: "homepage" }) },
       });
-      const { getByTestId } = render(SlugPage, { global: renderConfig.global });
+      const { getByTestId } = await render(SlugPage, {
+        global: renderConfig.global,
+      });
+
       expect(getByTestId("homePageLayout")).toBeTruthy();
     });
 
@@ -63,7 +69,7 @@ describe("slug page", () => {
     it("render => display cached component", () => {
       vi.spyOn(content, "useContent").mockReturnValue({
         ...mockedContent,
-        findCachedPageBySeoRoute: (_seoRoute: string) =>
+        findCachedPageByRoute: (_route: string) =>
           createPage({ layout: "standard" }),
       });
       const { getByTestId } = render(SlugPage, { global: renderConfig.global });

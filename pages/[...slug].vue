@@ -3,6 +3,7 @@
     <ClientOnly>
       <AppLayoutLoading v-if="pending" />
     </ClientOnly>
+
     <component
       :is="pageLayoutComponent"
       v-if="currentPage"
@@ -17,7 +18,14 @@
 </template>
 
 <script setup lang="ts">
-const { currentPage, addToCache, findCachedPageBySeoRoute } = useContent();
+const {
+  currentPage,
+  currentDataset,
+  addToCachedPages,
+  addToCachedDatasets,
+  findCachedPageByRoute,
+  findCachedDatasetByRoute,
+} = useContent();
 const { $fsxaApi } = useNuxtApp();
 const { activeLocale } = useLocale();
 const { activeNavigationItem } = useNavigationData();
@@ -29,18 +37,27 @@ const { pending } = useAsyncData(async () => {
   if (!activeNavigationItem.value || !activeLocale.value)
     throw new Error("No navigation item found");
 
-  const cachedContent = findCachedPageBySeoRoute(
-    activeNavigationItem.value.seoRoute
-  );
-  if (cachedContent) {
-    currentPage.value = cachedContent;
+  const currentRoute = decodeURIComponent(useRoute().path);
+  const cachedPage = findCachedPageByRoute(currentRoute);
+  currentDataset.value = findCachedDatasetByRoute(currentRoute) || null;
+
+  if (cachedPage) {
+    currentPage.value = cachedPage;
   } else {
-    currentPage.value = await fetchContentFromNavigationItem(
+    const { page, dataset } = await fetchContentFromNavigationItem(
       $fsxaApi,
       activeNavigationItem.value,
-      activeLocale.value
+      activeLocale.value,
+      currentRoute,
+      currentDataset.value
     );
-    addToCache(activeNavigationItem.value.seoRoute, currentPage.value);
+
+    currentPage.value = page;
+    currentDataset.value = dataset;
+
+    addToCachedPages(currentRoute, currentPage.value);
+    if (currentDataset.value)
+      addToCachedDatasets(currentRoute, currentDataset.value);
   }
 });
 
