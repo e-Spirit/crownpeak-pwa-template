@@ -4,10 +4,10 @@ import setupProxyApi from "../../plugins/2.setupProxyApi";
 import {
   fetchTopLevelNavigation,
   getLocaleFromNavigationItem,
-  fetchContentById,
-  fetchContentBySeoRoute,
-  fetchDatasetBySeoRoute,
-  fetchContentFromNavigationItem,
+  fetchPageById,
+  fetchPageByRoute,
+  fetchDatasetByRoute,
+  fetchPageFromNavigationItem,
   fetchNavigationItemFromRoute,
 } from "../../utils/fsxa";
 import navigationData from "../fixtures/navigationDataSeoRoute.json";
@@ -50,7 +50,7 @@ describe("fsxa utils", () => {
     });
   });
 
-  describe("fetchContentById", () => {
+  describe("fetchPageById", () => {
     it("call with valid locale and id => call fsxaApi.fetchElement with locale and id, return element", async () => {
       const {
         provide: { fsxaApi },
@@ -58,10 +58,7 @@ describe("fsxa utils", () => {
 
       fsxaApi.fetchElement = vi.fn().mockReturnValue({});
 
-      expect(await fetchContentById(fsxaApi, "de_DE", "123")).toStrictEqual({
-        page: {},
-        dataset: null,
-      });
+      expect(await fetchPageById(fsxaApi, "de_DE", "123")).toStrictEqual({});
 
       expect(fsxaApi.fetchElement).toHaveBeenCalledWith({
         locale: "de_DE",
@@ -70,7 +67,7 @@ describe("fsxa utils", () => {
     });
   });
 
-  describe("fetchDatasetBySeoRoute", () => {
+  describe("fetchDatasetByRoute", () => {
     it("call with valid params => call fsxaApi.fetchByFilter with same params, return filtered items", async () => {
       const {
         provide: { fsxaApi },
@@ -79,7 +76,7 @@ describe("fsxa utils", () => {
       fsxaApi.fetchByFilter = vi.fn().mockReturnValue(datasetsFilter);
 
       expect(
-        await fetchDatasetBySeoRoute(fsxaApi, "de_DE", "/some/route")
+        await fetchDatasetByRoute(fsxaApi, "de_DE", "/some/route")
       ).toStrictEqual(datasetsFilter.items[0]);
 
       expect(fsxaApi.fetchByFilter).toHaveBeenCalledWith(
@@ -91,7 +88,7 @@ describe("fsxa utils", () => {
     });
   });
 
-  describe("fetchContentBySeoRoute", () => {
+  describe("fetchPageByRoute", () => {
     it("call with locale and route => return content", async () => {
       const {
         provide: { fsxaApi },
@@ -101,16 +98,16 @@ describe("fsxa utils", () => {
       fsxaApi.fetchElement = vi.fn().mockReturnValue(page);
 
       expect(
-        await fetchContentBySeoRoute(fsxaApi, "de_DE", "/some/route")
-      ).toStrictEqual({ dataset: datasetsFilter.items[0], page });
+        await fetchPageByRoute(fsxaApi, "de_DE", "/some/route")
+      ).toStrictEqual(page);
 
       expect(fsxaApi.fetchElement).toHaveBeenCalled();
       expect(fsxaApi.fetchByFilter).toHaveBeenCalled();
     });
   });
 
-  describe("fetchContentFromNavigationItem", () => {
-    it("call with data that is not projection => should not call fetchDatasetBySeoRoute (fetchByFilter)", async () => {
+  describe("fetchPageFromNavigationItem", () => {
+    it("call with data that is not projection => should not call fetchDatasetByRoute (fetchByFilter)", async () => {
       const {
         provide: { fsxaApi },
       } = setupProxyApi();
@@ -119,13 +116,13 @@ describe("fsxa utils", () => {
       fsxaApi.fetchElement = vi.fn().mockReturnValue(page);
 
       expect(
-        await fetchContentFromNavigationItem(fsxaApi, navigationItem, "de_DE")
-      ).toStrictEqual({ dataset: null, page });
+        await fetchPageFromNavigationItem(fsxaApi, navigationItem, "de_DE")
+      ).toStrictEqual(page);
 
       expect(fsxaApi.fetchElement).toHaveBeenCalled();
       expect(fsxaApi.fetchByFilter).not.toHaveBeenCalled();
     });
-    it("call with projection => call fetchDatasetBySeoRoute", async () => {
+    it("call with projection => call fetchDatasetByRoute", async () => {
       const {
         provide: { fsxaApi },
       } = setupProxyApi();
@@ -139,12 +136,12 @@ describe("fsxa utils", () => {
       };
 
       expect(
-        await fetchContentFromNavigationItem(
+        await fetchPageFromNavigationItem(
           fsxaApi,
           projectedNavigationItem,
           "de_DE"
         )
-      ).toStrictEqual({ dataset: datasetsFilter.items[0], page });
+      ).toStrictEqual(page);
 
       expect(fsxaApi.fetchElement).toHaveBeenCalled();
       expect(fsxaApi.fetchByFilter).toHaveBeenCalled();

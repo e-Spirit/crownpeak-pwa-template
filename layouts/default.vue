@@ -73,7 +73,6 @@ const { pending } = useAsyncData(
         currentDataset.value?.id,
         activeLocale.value as string
       );
-
       currentDataset.value = dataset;
       nextRoute = route;
     }

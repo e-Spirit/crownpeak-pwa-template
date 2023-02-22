@@ -3,7 +3,6 @@
     <ClientOnly>
       <AppLayoutLoading v-if="pending" />
     </ClientOnly>
-
     <component
       :is="pageLayoutComponent"
       v-if="currentPage"
@@ -29,38 +28,51 @@ const {
 const { $fsxaApi } = useNuxtApp();
 const { activeLocale } = useLocale();
 const { activeNavigationItem } = useNavigationData();
+const currentRoute = decodeURIComponent(useRoute().path);
 
-// fetch page content
+// fetch page and dataset
 const { pending } = useAsyncData(async () => {
   // This state should not be possible.
   // The middleware should have figured out both the locale and our current navigation item
   if (!activeNavigationItem.value || !activeLocale.value)
     throw new Error("No navigation item found");
 
-  const currentRoute = decodeURIComponent(useRoute().path);
-  const cachedPage = findCachedPageByRoute(currentRoute);
-  currentDataset.value = findCachedDatasetByRoute(currentRoute) || null;
+  const { caasDocumentId, seoRouteRegex } = activeNavigationItem.value;
+  const isContentProjection = seoRouteRegex !== null;
+  let pageId = caasDocumentId;
 
-  if (cachedPage) {
-    currentPage.value = cachedPage;
-  } else {
-    const { page, dataset } = await fetchContentFromNavigationItem(
-      $fsxaApi,
-      activeNavigationItem.value,
-      activeLocale.value,
-      currentRoute,
-      currentDataset.value
-    );
-
-    currentPage.value = page;
-    currentDataset.value = dataset;
-
-    addToCachedPages(currentRoute, currentPage.value);
-    if (currentDataset.value)
+  // for content projections we need to get the dataset first
+  if (isContentProjection) {
+    // get dataset
+    currentDataset.value = findCachedDatasetByRoute(currentRoute) || null;
+    if (!currentDataset.value) {
+      currentDataset.value = await fetchDatasetByRoute(
+        $fsxaApi,
+        activeLocale.value,
+        currentRoute
+      );
+      if (!currentDataset.value) throw createError("No dataset");
       addToCachedDatasets(currentRoute, currentDataset.value);
+    }
+    // get pageRefId from dataset
+    const firstRoute = currentDataset.value.routes?.[0];
+    if (!firstRoute) throw createError("No route found");
+    pageId = firstRoute.pageRef;
+  }
+
+  // get page data
+  currentPage.value = findCachedPageByRoute(currentRoute) || null;
+  if (!currentPage.value) {
+    currentPage.value = await fetchPageById(
+      $fsxaApi,
+      activeLocale.value,
+      pageId
+    );
+    addToCachedPages(currentRoute, currentPage.value);
   }
 });
 
+// dynamic layout component
 const pageLayoutComponent = computed(() => {
   switch (currentPage.value?.layout) {
     case "homepage":
