@@ -1,5 +1,3 @@
-import { should } from "chai";
-
 const baseURL = Cypress.env("cyBaseURL");
 
 describe(`slug page`, () => {
