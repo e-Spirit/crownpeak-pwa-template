@@ -3,7 +3,7 @@
  */
 import { it, describe, beforeEach, vi, expect } from "vitest";
 import { render, cleanup } from "@testing-library/vue";
-import { Page } from "fsxa-api";
+import { Dataset, Page } from "fsxa-api";
 import SlugPage from "../../pages/[...slug].vue";
 import { createPage } from "../testutils/createPage";
 import { renderConfig } from "../testutils/renderConfig";
@@ -28,9 +28,12 @@ describe("slug page", () => {
   const mockedContent = {
     currentPage: { value: createPage({ layout: "homepage" }) },
     currentDataset: { value: createDataset() },
+    cachedPages: {},
+    cachedDatasets: {},
     findCachedPageByRoute: (_route: string) => null,
     findCachedDatasetByRoute: (_route: string) => null,
     addToCachedPages: (_route: string, _page: Page) => null,
+    addToCachedDatasets: (_route: string, _dataset: Dataset) => null,
   };
 
   // test cases broken because testutils do not wait for async data

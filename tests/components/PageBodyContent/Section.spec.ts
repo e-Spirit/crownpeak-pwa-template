@@ -1,13 +1,28 @@
 /**
  * @vitest-environment jsdom
  */
-import { it, expect, describe, beforeEach } from "vitest";
+import { vi, it, expect, describe, beforeEach } from "vitest";
 import { render, cleanup } from "@testing-library/vue";
 import Section from "../../../components/PageBodyContent/Section.vue";
+import { createDataset } from "../../testutils/createDataset";
 import { createSection } from "../../testutils/createSection";
+import { createPage } from "../../testutils/createPage";
 import { renderConfig } from "../../testutils/renderConfig"; // registers custom components
+import * as content from "../../../composables/content";
+import { Page, Dataset } from "fsxa-api";
 
 describe("Section", () => {
+  const mockedContent = {
+    currentPage: { value: createPage({ layout: "homepage" }) },
+    currentDataset: { value: createDataset() },
+    cachedPages: {},
+    cachedDatasets: {},
+    findCachedPageByRoute: (_route: string) => null,
+    findCachedDatasetByRoute: (_route: string) => null,
+    addToCachedPages: (_route: string, _page: Page) => null,
+    addToCachedDatasets: (_route: string, _dataset: Dataset) => null,
+  };
+
   beforeEach(() => {
     cleanup();
   });
@@ -43,6 +58,12 @@ describe("Section", () => {
     const section = createSection({
       sectionType: "products.product",
     });
+
+    vi.spyOn(content, "useContent").mockReturnValue({
+      ...mockedContent,
+      currentDataset: createDataset(),
+    });
+
     const { getByTestId } = render(Section, {
       global: renderConfig.global,
       props: { content: section },
