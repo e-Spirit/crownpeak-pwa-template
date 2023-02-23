@@ -47,4 +47,17 @@ describe(`routing.global.ts`, () => {
     // page should contain 404 somewhere
     cy.get("body").should("contain", "404");
   });
+
+  // This covers a previous bug where the route would not match the seoRoute of the activeNavigationItem,
+  // and therefore the user would be redirected to the seoRoute of the activeNavigationItem.
+  it("navigate to content-projection page through deep link => should not redirect", () => {
+    cy.visit(`${baseURL}/Produkte/Kabellose-Smart-Steckdose-NX-17.html`);
+    cy.url().should(
+      "eq",
+      `${baseURL}/Produkte/Kabellose-Smart-Steckdose-NX-17.html`
+    );
+
+    // checks the breadcrumbs because product detail is not implemented yet.
+    cy.get("body").should("contain", "Kabellose-Smart-Steckdose-NX-17.html");
+  });
 });

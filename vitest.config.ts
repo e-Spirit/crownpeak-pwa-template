@@ -31,7 +31,7 @@ export default defineConfig({
             "useAsyncData",
             "fetchTopLevelNavigation",
             "fetchNavigationItemFromRoute",
-            "fetchContentFromNavigationItem",
+            "fetchPageFromNavigationItem",
             "getLocaleFromNavigationItem",
           ],
         },

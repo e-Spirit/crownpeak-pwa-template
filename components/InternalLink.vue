@@ -2,7 +2,7 @@
   <NuxtLink
     :to="`${navItem.seoRoute}` || '/'"
     class="hover:underline"
-    @click="setActiveNavigationItem"
+    @click="setActiveNavigationItem(navItem)"
   >
     {{ navItem.label || "??" }}
   </NuxtLink>

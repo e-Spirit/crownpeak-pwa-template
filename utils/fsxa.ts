@@ -7,7 +7,7 @@ import {
   Page,
 } from "fsxa-api";
 
-export const fetchDatasetBySeoRoute = async (
+export const fetchDatasetByRoute = async (
   api: FSXAProxyApi,
   locale: string,
   route: string
@@ -41,10 +41,29 @@ export const fetchDatasetBySeoRoute = async (
 
   const bestMatch = data.items[0];
 
-  return bestMatch as Dataset | undefined;
+  return bestMatch as Dataset | null;
 };
 
-export const fetchContentById = async (
+export const fetchDatasetById = async (
+  api: FSXAProxyApi,
+  id: string,
+  locale: string
+) => {
+  const dataset = await api.fetchByFilter({
+    filters: [
+      {
+        operator: ComparisonQueryOperatorEnum.EQUALS,
+        value: id,
+        field: "identifier",
+      },
+    ],
+    locale,
+  });
+
+  return dataset.items[0] as Dataset | null;
+};
+
+export const fetchPageById = async (
   api: FSXAProxyApi,
   locale: string,
   id: string
@@ -53,29 +72,29 @@ export const fetchContentById = async (
     id,
     locale,
   });
-  return { page, dataset: null };
+  return page ?? null;
 };
 
-export const fetchContentBySeoRoute = async (
+export const fetchPageByRoute = async (
   api: FSXAProxyApi,
   locale: string,
   route: string,
   cachedDataset?: Dataset | null
 ) => {
   const dataset =
-    cachedDataset ?? (await fetchDatasetBySeoRoute(api, locale, route));
+    cachedDataset ?? (await fetchDatasetByRoute(api, locale, route));
 
   if (!dataset) throw new Error("No dataset found");
 
   const firstRoute = dataset.routes?.[0];
   if (!firstRoute) throw new Error("No route found");
 
-  const { page } = await fetchContentById(api, locale, firstRoute.pageRef);
+  const page = await fetchPageById(api, locale, firstRoute.pageRef);
 
-  return { dataset, page };
+  return page || null;
 };
 
-export const fetchContentFromNavigationItem = (
+export const fetchPageFromNavigationItem = (
   api: FSXAProxyApi,
   item: NavigationItem,
   locale: string,
@@ -87,8 +106,8 @@ export const fetchContentFromNavigationItem = (
   const isProjection = seoRouteRegex !== null;
 
   return isProjection
-    ? fetchContentBySeoRoute(api, locale, path, cachedDataset)
-    : fetchContentById(api, locale, caasDocumentId);
+    ? fetchPageByRoute(api, locale, path, cachedDataset)
+    : fetchPageById(api, locale, caasDocumentId);
 };
 
 export const fetchNavigationItemFromRoute = async (
@@ -130,4 +149,23 @@ export const fetchTopLevelNavigation = (api: FSXAProxyApi, locale: string) => {
   return api.fetchNavigation({
     locale,
   });
+};
+
+export const getTranslatedRouteFromNavItem = async (
+  api: FSXAProxyApi,
+  navigationItemId: string,
+  datasetId: string,
+  locale: string
+) => {
+  const dataset = await fetchDatasetById(api, datasetId, locale);
+
+  if (!dataset) throw new Error("No dataset found");
+
+  const route = dataset.routes.find(
+    (datasetRoute) => datasetRoute.pageRef === navigationItemId
+  )?.route;
+
+  if (!route) throw new Error("No route found");
+
+  return { route, dataset };
 };
