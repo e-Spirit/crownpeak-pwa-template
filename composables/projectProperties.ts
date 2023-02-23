@@ -13,6 +13,7 @@ export function useProjectProperties() {
   /**
    * Sets projectProperties composable and stores it in under its locale in cachedProjectProperties
    * @param data Navigation data
+   * @param locale Locale identifier
    */
   function setProjectProperties(data: ProjectProperties, locale: string) {
     projectProperties.value = data;

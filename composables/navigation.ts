@@ -47,7 +47,7 @@ export function useNavigationData() {
 
   /**
    * Find navigation item in navigation data by id
-   * @param route
+   * @param id
    * @returns Navigation item or null
    */
   function findNavigationItemById(id: string) {
