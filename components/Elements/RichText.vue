@@ -10,6 +10,5 @@
 
 <script lang="ts" setup>
 import { RichTextElement } from "fsxa-api";
-// TODO: remove all data any types
 defineProps<{ richtext: RichTextElement[] }>();
 </script>

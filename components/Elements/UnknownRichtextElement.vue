@@ -8,7 +8,7 @@
       class="hidden group-hover:block"
       component-name="unknown richtext element"
     />
-    <span class="font-bold">Unknown Element </span>
+    <span class="font-bold">Unknown Element {{ richTextElement?.type }}</span>
   </span>
 </template>
 <script lang="ts" setup>

@@ -57,10 +57,36 @@
           </svg>
         </button>
       </div>
+
+      <div class="mx-4 mt-4 rounded-t text-sm text-gray-800">
+        <button
+          class="rounded-t p-2 font-bold text-white"
+          :class="{
+            'bg-gray-800 ': !displayDataset,
+            'bg-gray-600 ': displayDataset,
+          }"
+          @click="displayDataset = false"
+        >
+          Section Data
+        </button>
+
+        <button
+          v-if="dataset"
+          class="rounded-t p-2 font-bold text-white"
+          :class="{
+            'bg-gray-800 ': displayDataset,
+            'bg-gray-600 ': !displayDataset,
+          }"
+          @click="displayDataset = true"
+        >
+          Current Dataset
+        </button>
+      </div>
+
       <div
-        class="m-4 flex-1 overflow-scroll rounded bg-gray-800 p-4 text-sm text-white"
+        class="mx-4 mb-4 flex-1 overflow-scroll rounded-b rounded-tr bg-gray-800 p-4 text-sm text-white"
       >
-        <pre>{{ content }}</pre>
+        <pre>{{ displayDataset ? dataset : content }}</pre>
       </div>
     </div>
 
@@ -75,10 +101,15 @@
 </template>
 
 <script setup lang="ts">
+import { Dataset } from "fsxa-api";
+
 defineProps<{
   content: unknown;
+  dataset?: Dataset;
   componentName?: string;
 }>();
 
 const devComponentVisible = ref(false);
+
+const displayDataset = ref(false);
 </script>
