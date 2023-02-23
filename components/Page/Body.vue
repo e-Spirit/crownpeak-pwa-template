@@ -9,6 +9,7 @@
       <DevOnly v-if="appDevMode || envDevMode">
         <Dev
           :content="pageBodyContent"
+          :dataset="currentDataset"
           class="hidden group-hover:block"
           component-name="section"
         />
@@ -28,6 +29,7 @@ defineProps<{ pageBody: PageBody }>();
 
 const { devMode: appDevMode } = useAppConfig();
 const { devMode: envDevMode } = useRuntimeConfig();
+const { currentDataset } = useContent();
 
 function getComponentFromPageBodyContent(pageBodyContent: PageBodyContent) {
   switch (pageBodyContent.type) {

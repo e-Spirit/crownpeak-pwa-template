@@ -21,7 +21,11 @@ const richtTextElementComponent = computed(() => {
       return resolveComponent("ElementsRichText");
     case "link":
       return resolveComponent("ElementsLink");
+    case "list":
+      return resolveComponent("ElementsList");
     case "block":
+      return resolveComponent("ElementsRichText");
+    case "paragraph":
       return resolveComponent("ElementsRichText");
     case "linebreak":
       return resolveComponent("ElementsLinebreak");
