@@ -66,7 +66,7 @@ const { data: products, pending } = useAsyncData(async () => {
     locale: activeLocale.value,
     pagesize: 10,
   });
-  addToCachedProducts(currentRoute, items);
+  addToCachedProducts(currentRoute, items as Dataset[]);
   return items as Dataset[];
 });
 </script>
