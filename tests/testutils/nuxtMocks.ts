@@ -13,6 +13,7 @@ import {
   fetchTopLevelNavigation,
   fetchNavigationItemFromRoute,
   fetchPageFromNavigationItem,
+  fetchProducts,
   getLocaleFromNavigationItem,
 } from "../../utils/fsxa";
 
@@ -102,6 +103,7 @@ export {
   fetchTopLevelNavigation,
   fetchNavigationItemFromRoute,
   fetchPageFromNavigationItem,
+  fetchProducts,
   useContent,
   useNavigationData,
   useProjectProperties,
