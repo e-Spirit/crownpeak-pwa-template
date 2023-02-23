@@ -32,8 +32,13 @@ import { ComparisonQueryOperatorEnum, DataEntries, Dataset } from "fsxa-api";
 const props = defineProps<{ data: DataEntries }>();
 const { $fsxaApi } = useNuxtApp();
 const { activeLocale } = useLocale();
+const { findCachedProductsByRoute, addToCachedProducts } = useContent();
+const currentRoute = decodeURIComponent(useRoute().path);
 
 const { data: products, pending } = useAsyncData(async () => {
+  const cachedProducts = findCachedProductsByRoute(currentRoute);
+  if (cachedProducts) return cachedProducts;
+
   const filterParams = props.data["filterParams"];
   const categoryFilter = filterParams?.category
     ? [
@@ -61,6 +66,7 @@ const { data: products, pending } = useAsyncData(async () => {
     locale: activeLocale.value,
     pagesize: 10,
   });
+  addToCachedProducts(currentRoute, items);
   return items as Dataset[];
 });
 </script>

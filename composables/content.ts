@@ -26,6 +26,17 @@ export function useContent() {
     if (!cachedPages.value[route]) cachedPages.value[route] = data;
   }
 
+  const cachedProducts = useState<{
+    [caasId: string]: Dataset[];
+  }>("cachedDatasets", () => ({}));
+
+  function findCachedProductsByRoute(route: string) {
+    return cachedProducts.value[route];
+  }
+  function addToCachedProducts(route: string, data: Dataset[]) {
+    if (!cachedProducts.value[route]) cachedProducts.value[route] = data;
+  }
+
   return {
     currentPage,
     currentDataset,
@@ -33,7 +44,9 @@ export function useContent() {
     cachedDatasets,
     addToCachedPages,
     addToCachedDatasets,
+    addToCachedProducts,
     findCachedPageByRoute,
     findCachedDatasetByRoute,
+    findCachedProductsByRoute,
   };
 }
