@@ -29,7 +29,7 @@
               underline: locale.identifier === activeLocale,
             }"
             class="w-full py-3 px-4 hover:bg-gray-200"
-            @click="setActiveLocale(locale.identifier)"
+            @click="changeLanguage(locale.identifier)"
           >
             {{ locale.name }}
           </button>
@@ -40,10 +40,51 @@
 </template>
 
 <script setup lang="ts">
-const { config, activeLocale, setActiveLocale } = useLocale();
+const { config, activeLocale } = useLocale();
+const { $fsxaApi } = useNuxtApp();
 const loading = ref(true);
+const { activeNavigationItem, setNavigationData } = useNavigationData();
+const { currentDataset } = useContent();
 
 onMounted(() => {
   loading.value = false;
 });
+
+async function changeLanguage(locale: string) {
+  if (locale === activeLocale.value) return;
+
+  // fetch navigation data for new locale
+  const navigationDataAfterLocaleChange = await $fsxaApi.fetchNavigation({
+    locale,
+  });
+
+  // find corresponding navigation item in new navigation data
+  const activeNavigationItemId = activeNavigationItem.value!.id;
+  const navigationItemAfterLocaleChange =
+    navigationDataAfterLocaleChange?.idMap[activeNavigationItemId];
+
+  if (!navigationItemAfterLocaleChange)
+    throw createError("Navigation item not found");
+
+  const isProjection = !!navigationItemAfterLocaleChange.seoRouteRegex;
+
+  let translatedRoute: string | undefined =
+    navigationItemAfterLocaleChange.seoRoute;
+
+  // if content projection ==> determine route from dataset
+  if (isProjection) {
+    const currentDatasetId = currentDataset.value!.id;
+    const pageId = navigationItemAfterLocaleChange.caasDocumentId;
+    const dataset = await fetchDatasetById($fsxaApi, currentDatasetId, locale);
+    if (!dataset) throw createError("No dataset");
+    translatedRoute = dataset.routes.find(
+      (route) => route.pageRef === pageId
+    )?.route;
+  }
+  if (!translatedRoute)
+    throw createError("Translated route could not be determined");
+
+  setNavigationData(navigationDataAfterLocaleChange);
+  useRouter().push(translatedRoute);
+}
 </script>

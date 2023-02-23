@@ -18,14 +18,19 @@ const defaultConfig: LocaleConfig = {
 export function useLocale() {
   const config = useState<LocaleConfig>("localeConfig", () => defaultConfig);
   const activeLocale = useState<string | undefined>("activeLocale");
+  /**
+   * Sets the active locale. Gets called when:
+   * 1. the user changes the locale or
+   * 2. the user opens a deeplink and we extract the locale from the navigation data
+   * @param locale
+   */
+  function setActiveLocale(locale: string) {
+    activeLocale.value = locale;
+  }
+
   return {
     config,
-    // This gets called when:
-    // 1. the user changes the locale or
-    // 2. the user opens a deeplink and we extract the locale from the navigation data
-    setActiveLocale: (locale: string) => {
-      activeLocale.value = locale;
-    },
+    setActiveLocale,
     activeLocale,
   };
 }

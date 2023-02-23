@@ -4,8 +4,11 @@ export default defineNuxtRouteMiddleware(async (to) => {
   const { activeLocale } = useLocale();
 
   const route = decodeURIComponent(to.path);
-  const { getNavigationStateFromRoute, activeNavigationItem, getIndexRoute } =
-    useNavigationData();
+  const {
+    determineNavigationStateFromRoute,
+    activeNavigationItem,
+    getIndexRoute,
+  } = useNavigationData();
 
   // "/" does not exist in the navigation tree, so we first need to figure out the mapped route and then navigate to it.
   if (route === "/") {
@@ -29,7 +32,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
   try {
     if (isDeeplink || isBrowserBackOrForward) {
       // This will use the navigation service to first get the best matching navigation item from the route, and then extract the locale from it
-      await getNavigationStateFromRoute(route);
+      await determineNavigationStateFromRoute(route);
     }
   } catch (_error: unknown) {
     // Theoretically this does not have to mean that the page does not exist.
