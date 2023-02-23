@@ -43,6 +43,15 @@ describe(`slug page`, () => {
     cy.url().should("eq", `${baseURL}/Productsss/Goomazon-Oklexa-SP93.html`);
     cy.get("[data-testid=productSection]").should("contain", "The Oklexa SP93");
   });
+
+  it("navigate to non-existing content projection => display 404", () => {
+    cy.request({
+      url: `${baseURL}/Productsss/Goomazon-Oklexa.html`,
+      failOnStatusCode: false,
+    })
+      .its("status")
+      .should("equal", 404);
+  });
 });
 
 export {};
