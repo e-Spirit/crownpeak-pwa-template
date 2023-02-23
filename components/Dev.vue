@@ -105,7 +105,7 @@ import { Dataset } from "fsxa-api";
 
 defineProps<{
   content: unknown;
-  dataset?: Dataset;
+  dataset?: Dataset | null;
   componentName?: string;
 }>();
 
