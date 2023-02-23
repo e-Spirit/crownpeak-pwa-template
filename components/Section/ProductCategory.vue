@@ -28,21 +28,12 @@
 </template>
 
 <script setup lang="ts">
-import { ComparisonQueryOperatorEnum, DataEntries, Image } from "fsxa-api";
+import { ComparisonQueryOperatorEnum, DataEntries, Dataset } from "fsxa-api";
 const props = defineProps<{ data: DataEntries }>();
 const { $fsxaApi } = useNuxtApp();
 const { activeLocale } = useLocale();
 
-interface Product {
-  id: string;
-  route: string;
-  data: {
-    tt_teaser_image: Image;
-    tt_name: string;
-  };
-}
-
-const { data: products, pending } = await useAsyncData(async () => {
+const { data: products, pending } = useAsyncData(async () => {
   const filterParams = props.data["filterParams"];
   const categoryFilter = filterParams?.category
     ? [
@@ -70,6 +61,6 @@ const { data: products, pending } = await useAsyncData(async () => {
     locale: activeLocale.value,
     pagesize: 10,
   });
-  return items as Product[];
+  return items as Dataset[];
 });
 </script>

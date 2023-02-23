@@ -48,7 +48,10 @@
           <h3 class="bg-black p-2 text-sm font-bold uppercase text-white">
             Delivery
           </h3>
-          <ElementsRichText :richtext="currentDataset?.data['tt_delivery']" />
+          <ElementsRichText
+            v-if="currentDataset?.data['tt_delivery']"
+            :richtext="currentDataset?.data['tt_delivery']"
+          />
         </div>
 
         <div>
@@ -56,6 +59,7 @@
             Installation
           </h3>
           <ElementsRichText
+            v-if="currentDataset?.data['tt_installation']"
             :richtext="currentDataset?.data['tt_installation']"
           />
         </div>
