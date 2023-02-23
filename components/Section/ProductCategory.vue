@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { ComparisonQueryOperatorEnum, DataEntries, Dataset } from "fsxa-api";
+import { DataEntries, Dataset } from "fsxa-api";
 const props = defineProps<{ data: DataEntries }>();
 const { $fsxaApi } = useNuxtApp();
 const { activeLocale } = useLocale();
@@ -40,33 +40,14 @@ const { data: products, pending } = useAsyncData(async () => {
   if (cachedProducts) return cachedProducts;
 
   const filterParams = props.data["filterParams"];
-  const categoryFilter = filterParams?.category
-    ? [
-        {
-          field: "formData.tt_categories.value.identifier",
-          operator: ComparisonQueryOperatorEnum.EQUALS,
-          value: filterParams.category,
-        },
-      ]
-    : [];
-  const { items } = await $fsxaApi.fetchByFilter({
-    filters: [
-      {
-        field: "entityType",
-        operator: ComparisonQueryOperatorEnum.EQUALS,
-        value: "product",
-      },
-      {
-        field: "schema",
-        operator: ComparisonQueryOperatorEnum.EQUALS,
-        value: "products",
-      },
-      ...categoryFilter,
-    ],
-    locale: activeLocale.value,
-    pagesize: 10,
-  });
-  addToCachedProducts(currentRoute, items as Dataset[]);
+
+  const items = await fetchProducts(
+    $fsxaApi,
+    activeLocale.value!,
+    filterParams?.category
+  );
+
+  addToCachedProducts(currentRoute, items);
   return items as Dataset[];
 });
 </script>
