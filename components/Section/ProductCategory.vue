@@ -13,7 +13,7 @@
           >
             <h3 class="text-lg font-bold">{{ product.data["tt_name"] }}</h3>
             <p class="h-16 overflow-hidden text-xs text-gray-200">
-              {{ product.data["tt_abstract"].substring(0, 45) }}...
+              {{ product.data["tt_abstract"]?.substring(0, 45) }}...
             </p>
           </div>
           <ElementsImage
