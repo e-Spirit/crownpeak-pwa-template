@@ -5,6 +5,7 @@ import {
   LogicalQueryOperatorEnum,
   Dataset,
   Page,
+  QueryBuilderQuery,
 } from "fsxa-api";
 
 export const fetchDatasetByRoute = async (
@@ -168,4 +169,39 @@ export const getTranslatedRouteFromNavItem = async (
   if (!route) throw new Error("No route found");
 
   return { route, dataset };
+};
+
+export const fetchProducts = async (
+  api: FSXAProxyApi,
+  locale: string,
+  category?: string
+) => {
+  const filters: QueryBuilderQuery[] = [
+    {
+      field: "entityType",
+      operator: ComparisonQueryOperatorEnum.EQUALS,
+      value: "product",
+    },
+    {
+      field: "schema",
+      operator: ComparisonQueryOperatorEnum.EQUALS,
+      value: "products",
+    },
+  ];
+
+  if (category) {
+    filters.push({
+      field: "formData.tt_categories.value.identifier",
+      operator: ComparisonQueryOperatorEnum.EQUALS,
+      value: category,
+    });
+  }
+
+  const { items } = await api.fetchByFilter({
+    filters,
+    locale,
+    pagesize: 10,
+  });
+
+  return items as Dataset[];
 };

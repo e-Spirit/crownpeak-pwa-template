@@ -1,6 +1,7 @@
 /**
  * @vitest-environment jsdom
  */
+import { Page, Dataset } from "fsxa-api";
 import { vi, it, expect, describe, beforeEach } from "vitest";
 import { render, cleanup } from "@testing-library/vue";
 import Section from "../../../components/PageBodyContent/Section.vue";
@@ -9,7 +10,6 @@ import { createSection } from "../../testutils/createSection";
 import { createPage } from "../../testutils/createPage";
 import { renderConfig } from "../../testutils/renderConfig"; // registers custom components
 import * as content from "../../../composables/content";
-import { Page, Dataset } from "fsxa-api";
 
 describe("Section", () => {
   const mockedContent = {

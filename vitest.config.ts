@@ -32,6 +32,7 @@ export default defineConfig({
             "fetchTopLevelNavigation",
             "fetchNavigationItemFromRoute",
             "fetchPageFromNavigationItem",
+            "fetchProducts",
             "getLocaleFromNavigationItem",
           ],
         },

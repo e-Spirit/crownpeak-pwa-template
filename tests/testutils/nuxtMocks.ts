@@ -1,4 +1,4 @@
-import { FetchElementParams } from "fsxa-api/dist/types";
+import { FetchByFilterParams, FetchElementParams } from "fsxa-api";
 import appConfig from "../fixtures/appConfig.json";
 import runtimeConfig from "../fixtures/runtimeConfig.json";
 import toplevelDE from "../fixtures/toplevelNavigation_de_DE.json";
@@ -13,6 +13,7 @@ import {
   fetchTopLevelNavigation,
   fetchNavigationItemFromRoute,
   fetchPageFromNavigationItem,
+  fetchProducts,
   getLocaleFromNavigationItem,
 } from "../../utils/fsxa";
 
@@ -51,6 +52,9 @@ export function useNuxtApp() {
       fetchProjectProperties: (_config: { locale: string }) =>
         projectProperties,
       fetchElement: (_config: FetchElementParams) => page,
+      fetchByFilter: (_config: FetchByFilterParams) => ({
+        items: [],
+      }),
     },
   };
 }
@@ -99,6 +103,7 @@ export {
   fetchTopLevelNavigation,
   fetchNavigationItemFromRoute,
   fetchPageFromNavigationItem,
+  fetchProducts,
   useContent,
   useNavigationData,
   useProjectProperties,
