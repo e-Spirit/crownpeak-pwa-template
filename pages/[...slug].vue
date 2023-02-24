@@ -64,7 +64,12 @@ const { pending } = useAsyncData(async () => {
     }
     // get pageRefId from dataset
     const firstRoute = currentDataset.value.routes?.[0];
-    if (!firstRoute) throw createError("No route found");
+    if (!firstRoute)
+      throw showError({
+        statusMessage: "Dataset has no matching route",
+        statusCode: 404,
+      });
+
     pageId = firstRoute.pageRef;
   }
 
