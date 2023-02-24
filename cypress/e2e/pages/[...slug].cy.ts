@@ -52,6 +52,26 @@ describe(`slug page`, () => {
       .its("status")
       .should("equal", 404);
   });
+
+  it("fail to fetch project properties => display error", () => {
+    cy.intercept("POST", "/api/properties", {
+      statusCode: 500,
+    }).as("fetchProperties");
+
+    cy.visit(`${baseURL}/Unsere-Lösungen`);
+
+    cy.get("body").should("contain", "Error");
+  });
+
+  it("fail to fetch navigation => display error", () => {
+    cy.intercept("POST", "/api/navigation", {
+      statusCode: 500,
+    }).as("fetchNavigation");
+
+    cy.visit(`${baseURL}/Unsere-Lösungen`);
+
+    cy.get("body").should("contain", "Error");
+  });
 });
 
 export {};
