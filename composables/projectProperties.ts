@@ -36,5 +36,10 @@ export function useProjectProperties() {
       return null;
     }
   }
-  return { projectProperties, setProjectProperties, fetchProjectProperties };
+  return {
+    projectProperties,
+    cachedProjectProperties,
+    setProjectProperties,
+    fetchProjectProperties,
+  };
 }
