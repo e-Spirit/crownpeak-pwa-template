@@ -11,14 +11,30 @@
 interface Button {
   data: {
     lt_button_text: string;
-    lt_product_link: { route: string };
+    lt_product_link?: { route: string };
+    lt_internal?: {
+      referenceId: string;
+    };
   };
 }
 
 const props = defineProps<{ button: Button }>();
 
+const { navigationData } = useNavigationData();
+
 function clickHandler() {
   const router = useRouter();
-  router.push(props.button.data.lt_product_link.route);
+
+  // product link
+  if (props.button.data.lt_product_link) {
+    router.push(props.button.data.lt_product_link.route);
+  }
+  // internal link
+  if (props.button.data.lt_internal) {
+    const referenceId = props.button.data.lt_internal.referenceId;
+    const linkedNavItem = navigationData.value?.idMap[referenceId];
+    const route = linkedNavItem?.seoRoute ?? "";
+    if (route) router.push(route);
+  }
 }
 </script>
