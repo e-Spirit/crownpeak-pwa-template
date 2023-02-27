@@ -51,12 +51,25 @@ const { pending } = useAsyncData(async () => {
         activeLocale.value,
         currentRoute
       );
-      if (!currentDataset.value) throw createError("No dataset");
+
+      if (!currentDataset.value)
+        // Although it is recommended to use createError instead, there is a bug that prevents createError from triggering the error page
+        // https://github.com/nuxt/nuxt/issues/15432
+        throw showError({
+          statusMessage: "Dataset not found",
+          statusCode: 404,
+        });
+
       addToCachedDatasets(currentRoute, currentDataset.value);
     }
     // get pageRefId from dataset
     const firstRoute = currentDataset.value.routes?.[0];
-    if (!firstRoute) throw createError("No route found");
+    if (!firstRoute)
+      throw showError({
+        statusMessage: "Dataset has no matching route",
+        statusCode: 404,
+      });
+
     pageId = firstRoute.pageRef;
   }
 

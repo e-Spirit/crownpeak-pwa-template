@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 const { activeLocale } = useLocale();
-const { setProjectProperties, fetchProjectProperties } = useProjectProperties();
+const { fetchProjectProperties, setProjectProperties } = useProjectProperties();
 const { setNavigationData, fetchNavigationData } = useNavigationData();
 
 // This gets called when the layout is loaded or the locale changes
@@ -22,13 +22,19 @@ const { pending } = useAsyncData(
     // fetch project properties
     const projectProperties = await fetchProjectProperties(activeLocale.value!);
     if (!projectProperties)
-      throw createError("Project properties could not be fetched");
+      throw showError({
+        message: "Project properties could not be fetched",
+        statusCode: 500,
+      });
     setProjectProperties(projectProperties, activeLocale.value!);
 
     // fetch navigationData
     const navigationData = await fetchNavigationData(activeLocale.value!);
     if (!navigationData)
-      throw createError("Navigation data could not be fetched");
+      throw showError({
+        message: "Navigation data could not be fetched",
+        statusCode: 500,
+      });
     setNavigationData(navigationData);
   },
   { watch: [activeLocale] }

@@ -27,10 +27,14 @@ export function useProjectProperties() {
    * @returns Navigation data or null
    */
   async function fetchProjectProperties(locale: string) {
-    return (
-      cachedProjectProperties.value[locale] ||
-      (await $fsxaApi.fetchProjectProperties({ locale }))
-    );
+    try {
+      return (
+        cachedProjectProperties.value[locale] ||
+        (await $fsxaApi.fetchProjectProperties({ locale }))
+      );
+    } catch (error) {
+      return null;
+    }
   }
   return { projectProperties, setProjectProperties, fetchProjectProperties };
 }
