@@ -20,7 +20,7 @@ export function useContent() {
    * @returns
    */
   function addToCachedDatasets(route: string, data: Dataset) {
-    if (!cachedPages.value[route]) cachedDatasets.value[route] = data;
+    if (!cachedDatasets.value[route]) cachedDatasets.value[route] = data;
   }
 
   const currentPage = useState<Page | null>("currentPage");
@@ -47,7 +47,7 @@ export function useContent() {
 
   const cachedProducts = useState<{
     [caasId: string]: Dataset[];
-  }>("cachedDatasets", () => ({}));
+  }>("cachedProducts", () => ({}));
 
   /**
    * Find products in cache by route

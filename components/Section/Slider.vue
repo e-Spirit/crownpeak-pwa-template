@@ -2,7 +2,11 @@
   <div data-testid="sliderSection">
     <div class="group relative">
       <DevOnly v-if="appDevMode || envDevMode">
-        <Dev :content="data" class="hidden group-hover:block" />
+        <Dev
+          :content="data"
+          class="hidden group-hover:block"
+          component-name="Slider"
+        />
       </DevOnly>
       <div v-if="activeSlide" class="realtive text-white">
         <div class="sliderButtonContainer left-0">

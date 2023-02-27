@@ -1,7 +1,11 @@
 <template>
   <div class="group relative h-64" data-testid="headerSection">
     <DevOnly v-if="appDevMode || envDevMode">
-      <Dev :content="data" class="hidden group-hover:block" />
+      <Dev
+        :content="data"
+        class="hidden group-hover:block"
+        component-name="Page Header"
+      />
     </DevOnly>
     <div
       class="absolute inset-0 flex flex-col justify-center bg-black bg-opacity-80 p-6 text-white md:p-12"
