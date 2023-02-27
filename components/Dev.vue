@@ -134,14 +134,9 @@ const devContent = computed(() => {
   } else return props.content;
 });
 
-const products = computed(() => {
-  const route = useRoute().path;
-  const cachedProducts = findCachedProductsByRoute(route);
-  return Array.isArray(cachedProducts) ? cachedProducts : undefined;
-});
+const products = computed(() => findCachedProductsByRoute(useRoute().path));
 
-const isContentProjection = computed(() => {
-  const { seoRouteRegex } = activeNavigationItem.value!;
-  return seoRouteRegex !== null;
-});
+const isContentProjection = computed(
+  () => activeNavigationItem.value?.seoRouteRegex !== null
+);
 </script>
