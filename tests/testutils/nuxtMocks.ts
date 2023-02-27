@@ -12,7 +12,6 @@ import { useProjectProperties } from "../../composables/projectProperties";
 import {
   fetchTopLevelNavigation,
   fetchNavigationItemFromRoute,
-  fetchPageFromNavigationItem,
   fetchProducts,
   getLocaleFromNavigationItem,
 } from "../../utils/fsxa";
@@ -102,7 +101,6 @@ export {
   useLocale,
   fetchTopLevelNavigation,
   fetchNavigationItemFromRoute,
-  fetchPageFromNavigationItem,
   fetchProducts,
   useContent,
   useNavigationData,

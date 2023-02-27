@@ -54,9 +54,10 @@ async function changeLanguage(locale: string) {
   if (locale === activeLocale.value) return;
 
   // fetch navigation data for new locale
-  const navigationDataAfterLocaleChange = await $fsxaApi.fetchNavigation({
-    locale,
-  });
+  const navigationDataAfterLocaleChange = await fetchTopLevelNavigation(
+    $fsxaApi,
+    locale
+  );
 
   // find corresponding navigation item in new navigation data
   const activeNavigationItemId = activeNavigationItem.value!.id;
