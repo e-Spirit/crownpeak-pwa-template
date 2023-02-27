@@ -28,7 +28,7 @@ export function useContent() {
 
   const cachedProducts = useState<{
     [caasId: string]: Dataset[];
-  }>("cachedDatasets", () => ({}));
+  }>("cachedProducts", () => ({}));
 
   function findCachedProductsByRoute(route: string) {
     return cachedProducts.value[route];
