@@ -8,12 +8,20 @@ import {
   QueryBuilderQuery,
 } from "fsxa-api";
 
+/**
+ * Fetch dataset through the FSXA Api by route
+ * @param fsxaApi Instance of the FSXA Api
+ * @param route Route
+ * @param locale Locale
+ * @throws Error if datasets cannot be fetched
+ * @returns Dataset or null
+ */
 export const fetchDatasetByRoute = async (
-  api: FSXAProxyApi,
-  locale: string,
-  route: string
+  fsxaApi: FSXAProxyApi,
+  route: string,
+  locale: string
 ) => {
-  const data = await api.fetchByFilter({
+  const data = await fsxaApi.fetchByFilter({
     locale,
     pagesize: 1,
     filters: [
@@ -45,12 +53,20 @@ export const fetchDatasetByRoute = async (
   return bestMatch as Dataset | null;
 };
 
+/**
+ * Fetch dataset through the FSXA Api by id
+ * @param fsxaApi Instance of the FSXA Api
+ * @param id Dataset identifier
+ * @param locale Locale
+ * @throws Error if datasets cannot be fetched
+ * @returns Dataset or null
+ */
 export const fetchDatasetById = async (
-  api: FSXAProxyApi,
+  fsxaApi: FSXAProxyApi,
   id: string,
   locale: string
 ) => {
-  const dataset = await api.fetchByFilter({
+  const dataset = await fsxaApi.fetchByFilter({
     filters: [
       {
         operator: ComparisonQueryOperatorEnum.EQUALS,
@@ -64,59 +80,41 @@ export const fetchDatasetById = async (
   return dataset.items[0] as Dataset | null;
 };
 
+/**
+ * Fetch page through the FSXA Api by id
+ * @param fsxaApi Instance of the FSXA Api
+ * @param id Page identifier
+ * @param locale Locale
+ * @throws Error if element cannot be fetched
+ * @returns Page or null
+ */
 export const fetchPageById = async (
-  api: FSXAProxyApi,
-  locale: string,
-  id: string
+  fsxaApi: FSXAProxyApi,
+  id: string,
+  locale: string
 ) => {
-  const page = await api.fetchElement<Page>({
+  const page = await fsxaApi.fetchElement<Page>({
     id,
     locale,
   });
+
   return page ?? null;
 };
 
-export const fetchPageByRoute = async (
-  api: FSXAProxyApi,
-  locale: string,
-  route: string,
-  cachedDataset?: Dataset | null
-) => {
-  const dataset =
-    cachedDataset ?? (await fetchDatasetByRoute(api, locale, route));
-
-  if (!dataset) throw new Error("No dataset found");
-
-  const firstRoute = dataset.routes?.[0];
-  if (!firstRoute) throw new Error("No route found");
-
-  const page = await fetchPageById(api, locale, firstRoute.pageRef);
-
-  return page || null;
-};
-
-export const fetchPageFromNavigationItem = (
-  api: FSXAProxyApi,
-  item: NavigationItem,
-  locale: string,
-  path: string,
-  cachedDataset?: Dataset | null
-) => {
-  const { caasDocumentId, seoRouteRegex } = item;
-
-  const isProjection = seoRouteRegex !== null;
-
-  return isProjection
-    ? fetchPageByRoute(api, locale, path, cachedDataset)
-    : fetchPageById(api, locale, caasDocumentId);
-};
-
+/**
+ * Get the corresponding navigation item to the provided route from the navigation service.
+ * This function is used in middleware to always provide a navigation item for a given route.
+ * @param fsxaApi Instance of the FSXA Api
+ * @param route Route
+ * @throws Error if navigation item cannot be fetched or if the navigation data is missing route information
+ * @returns Navigation Item
+ */
 export const fetchNavigationItemFromRoute = async (
-  api: FSXAProxyApi,
+  fsxaApi: FSXAProxyApi,
   route: string
 ) => {
   // This could also be cached
-  const data = await api.fetchNavigation({
+  const data = await fsxaApi.fetchNavigation({
     initialPath: route,
     locale: "",
   });
@@ -124,7 +122,6 @@ export const fetchNavigationItemFromRoute = async (
 
   // If any of the following lines throw an error, the Navigation Service is probably broken?
   const seoRouteId = data.seoRouteMap[route === "/" ? data.pages.index : route];
-
   if (!seoRouteId) throw new Error("No matching route found");
 
   const item = data.idMap[seoRouteId];
@@ -133,46 +130,48 @@ export const fetchNavigationItemFromRoute = async (
   return item;
 };
 
-export const getLocaleFromNavigationItem = (item: NavigationItem) => {
-  const splitted = item?.contentReference?.split(".");
-
+/**
+ * Get the locale from navigation item. This function is used in middleware to always provide the locale of a given route.
+ * @param navigationItem Navigation Item
+ * @throws Error if locale cannot be extracted from navigation item
+ * @returns Locale
+ */
+export const getLocaleFromNavigationItem = (navigationItem: NavigationItem) => {
+  const splitted = navigationItem?.contentReference?.split(".");
   if (!splitted || splitted.length < 2)
     throw new Error("No valid contentReference found");
 
   const locale = splitted?.pop();
-
   if (!locale) throw new Error("No locale found");
 
   return locale;
 };
 
-export const fetchTopLevelNavigation = (api: FSXAProxyApi, locale: string) => {
-  return api.fetchNavigation({
+/**
+ * Fetch navigation data from navigation service
+ * @param fsxaApi Instance of the FSXA Api
+ * @param locale Locale
+ * @returns Navigation Data
+ */
+export const fetchTopLevelNavigation = (
+  fsxaApi: FSXAProxyApi,
+  locale: string
+) => {
+  return fsxaApi.fetchNavigation({
     locale,
   });
 };
 
-export const getTranslatedRouteFromNavItem = async (
-  api: FSXAProxyApi,
-  navigationItemId: string,
-  datasetId: string,
-  locale: string
-) => {
-  const dataset = await fetchDatasetById(api, datasetId, locale);
-
-  if (!dataset) throw new Error("No dataset found");
-
-  const route = dataset.routes.find(
-    (datasetRoute) => datasetRoute.pageRef === navigationItemId
-  )?.route;
-
-  if (!route) throw new Error("No route found");
-
-  return { route, dataset };
-};
-
+/**
+ * Fetch products data from CAAS
+ * @param fsxaApi Instance of the FSXA Api
+ * @param locale Locale
+ * @param category (Optional) Product category identifier
+ * @throws Error if products cannot be fetched
+ * @returns Products
+ */
 export const fetchProducts = async (
-  api: FSXAProxyApi,
+  fsxaApi: FSXAProxyApi,
   locale: string,
   category?: string
 ) => {
@@ -197,7 +196,7 @@ export const fetchProducts = async (
     });
   }
 
-  const { items } = await api.fetchByFilter({
+  const { items } = await fsxaApi.fetchByFilter({
     filters,
     locale,
     pagesize: 10,

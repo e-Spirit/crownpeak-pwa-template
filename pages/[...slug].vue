@@ -48,8 +48,8 @@ const { pending } = useAsyncData(async () => {
     if (!currentDataset.value) {
       currentDataset.value = await fetchDatasetByRoute(
         $fsxaApi,
-        activeLocale.value,
-        currentRoute
+        currentRoute,
+        activeLocale.value
       );
 
       if (!currentDataset.value)
@@ -78,8 +78,8 @@ const { pending } = useAsyncData(async () => {
   if (!currentPage.value) {
     currentPage.value = await fetchPageById(
       $fsxaApi,
-      activeLocale.value,
-      pageId
+      pageId,
+      activeLocale.value
     );
     addToCachedPages(currentRoute, currentPage.value);
   }
