@@ -7,14 +7,15 @@
         <NuxtLink to="/"
           ><ElementsImage
             v-if="projectProperties?.data && projectProperties?.data['ps_logo']"
+            data-testid="logo"
             class="w-30 h-12 object-contain"
             :image="projectProperties?.data['ps_logo']"
         /></NuxtLink>
       </div>
-      <div class="md:text-center">
+      <div class="md:text-center" data-testid="copyright">
         © {{ projectProperties?.data["ps_footer"]["gc_copyright"] }}
       </div>
-      <div class="space-x-2 md:text-right">
+      <div class="space-x-2 md:text-right" data-testid="legal-links">
         <NuxtLink class="hover:underline" to="/impressum">Impressum</NuxtLink>
         <NuxtLink class="hover:underline" to="/datenschutz"
           >Datenschutzerklärung</NuxtLink

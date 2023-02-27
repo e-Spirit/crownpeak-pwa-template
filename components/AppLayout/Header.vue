@@ -7,6 +7,7 @@
       <NuxtLink to="/"
         ><ElementsImage
           v-if="projectProperties?.data && projectProperties?.data['ps_logo']"
+          data-testid="logo"
           class="w-30 h-12 object-contain"
           :image="projectProperties?.data['ps_logo']"
       /></NuxtLink>
@@ -24,6 +25,7 @@
         <AppLayoutLanguageSwitch class="ml-2" />
         <button
           class="md:hidden"
+          data-testid="mobileMenuButton"
           @click="mobileNavigationVisible = !mobileNavigationVisible"
         >
           <svg
