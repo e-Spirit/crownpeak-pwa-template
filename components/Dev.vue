@@ -60,33 +60,45 @@
 
       <div class="mx-4 mt-4 rounded-t text-sm text-gray-800">
         <button
-          class="rounded-t p-2 font-bold text-white"
+          class="rounded-t p-2 font-bold capitalize text-white"
           :class="{
-            'bg-gray-800 ': !displayDataset,
-            'bg-gray-600 ': displayDataset,
+            'bg-gray-800 ': activeItem === 'page',
+            'bg-gray-600 ': activeItem !== 'page',
           }"
-          @click="displayDataset = false"
+          @click="activeItem = 'page'"
         >
-          Section Data
+          {{ componentName }} Data
         </button>
 
         <button
-          v-if="dataset"
+          v-if="dataset && isContentProjection"
           class="rounded-t p-2 font-bold text-white"
           :class="{
-            'bg-gray-800 ': displayDataset,
-            'bg-gray-600 ': !displayDataset,
+            'bg-gray-800 ': activeItem === 'dataset',
+            'bg-gray-600 ': activeItem !== 'dataset',
           }"
-          @click="displayDataset = true"
+          @click="activeItem = 'dataset'"
         >
           Current Dataset
+        </button>
+
+        <button
+          v-if="products"
+          class="rounded-t p-2 font-bold text-white"
+          :class="{
+            'bg-gray-800 ': activeItem === 'products',
+            'bg-gray-600 ': activeItem !== 'products',
+          }"
+          @click="activeItem = 'products'"
+        >
+          Products
         </button>
       </div>
 
       <div
         class="mx-4 mb-4 flex-1 overflow-scroll rounded-b rounded-tr bg-gray-800 p-4 text-sm text-white"
       >
-        <pre>{{ displayDataset ? dataset : content }}</pre>
+        <pre>{{ devContent }}</pre>
       </div>
     </div>
 
@@ -95,21 +107,41 @@
       class="fixed inset-0 z-10 bg-black bg-opacity-50"
       @click="devComponentVisible = false"
     ></div>
-
-    <!--  -->
   </div>
 </template>
 
 <script setup lang="ts">
 import { Dataset } from "fsxa-api";
 
-defineProps<{
+const props = defineProps<{
   content: unknown;
   dataset?: Dataset | null;
   componentName?: string;
 }>();
 
+const { activeNavigationItem } = useNavigationData();
+const { findCachedProductsByRoute } = useContent();
+
 const devComponentVisible = ref(false);
 
-const displayDataset = ref(false);
+const activeItem = ref<"page" | "dataset" | "products">("page");
+
+const devContent = computed(() => {
+  if (activeItem.value === "dataset") {
+    return props.dataset;
+  } else if (activeItem.value === "products") {
+    return products.value;
+  } else return props.content;
+});
+
+const products = computed(() => {
+  const route = useRoute().path;
+  const cachedProducts = findCachedProductsByRoute(route);
+  return Array.isArray(cachedProducts) ? cachedProducts : undefined;
+});
+
+const isContentProjection = computed(() => {
+  const { seoRouteRegex } = activeNavigationItem.value!;
+  return seoRouteRegex !== null;
+});
 </script>
