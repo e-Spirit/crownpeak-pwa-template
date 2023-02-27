@@ -12,7 +12,7 @@ export function useProjectProperties() {
 
   /**
    * Sets projectProperties composable and stores it in under its locale in cachedProjectProperties
-   * @param data Navigation data
+   * @param data ProjectProperties
    * @param locale Locale identifier
    */
   function setProjectProperties(data: ProjectProperties, locale: string) {
@@ -22,9 +22,9 @@ export function useProjectProperties() {
   }
 
   /**
-   * Get's navigation data from cache if it exists, otherwise fetches it from the FSXA Api
+   * Get's project properties from cache if it exists, otherwise fetches it from the FSXA Api
    * @param locale Locale identifier
-   * @returns Navigation data or null
+   * @returns project properties or null
    */
   async function fetchProjectProperties(locale: string) {
     try {
