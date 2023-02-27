@@ -7,7 +7,7 @@
       :rich-text-element="richTextElement"
       :richtext="richTextElement.content"
     />
-    <span v-else>{{ richTextElement.content }}</span>
+    <span v-else v-html="richTextElement.content" />
   </span>
 </template>
 
