@@ -13,9 +13,9 @@ import {
  * @param fsxaApi Instance of the FSXA Api
  * @param route Route
  * @param locale Locale
+ * @throws Error if datasets cannot be fetched
  * @returns Dataset or null
  */
-
 export const fetchDatasetByRoute = async (
   fsxaApi: FSXAProxyApi,
   route: string,
@@ -58,6 +58,7 @@ export const fetchDatasetByRoute = async (
  * @param fsxaApi Instance of the FSXA Api
  * @param id Dataset identifier
  * @param locale Locale
+ * @throws Error if datasets cannot be fetched
  * @returns Dataset or null
  */
 export const fetchDatasetById = async (
@@ -84,6 +85,7 @@ export const fetchDatasetById = async (
  * @param fsxaApi Instance of the FSXA Api
  * @param id Page identifier
  * @param locale Locale
+ * @throws Error if element cannot be fetched
  * @returns Page or null
  */
 export const fetchPageById = async (
@@ -95,6 +97,7 @@ export const fetchPageById = async (
     id,
     locale,
   });
+
   return page ?? null;
 };
 
@@ -103,6 +106,7 @@ export const fetchPageById = async (
  * This function is used in middleware to always provide a navigation item for a given route.
  * @param fsxaApi Instance of the FSXA Api
  * @param route Route
+ * @throws Error if navigation item cannot be fetched or if the navigation data is missing route information
  * @returns Navigation Item
  */
 export const fetchNavigationItemFromRoute = async (
@@ -118,7 +122,6 @@ export const fetchNavigationItemFromRoute = async (
 
   // If any of the following lines throw an error, the Navigation Service is probably broken?
   const seoRouteId = data.seoRouteMap[route === "/" ? data.pages.index : route];
-
   if (!seoRouteId) throw new Error("No matching route found");
 
   const item = data.idMap[seoRouteId];
@@ -130,16 +133,15 @@ export const fetchNavigationItemFromRoute = async (
 /**
  * Get the locale from navigation item. This function is used in middleware to always provide the locale of a given route.
  * @param navigationItem Navigation Item
+ * @throws Error if locale cannot be extracted from navigation item
  * @returns Locale
  */
 export const getLocaleFromNavigationItem = (navigationItem: NavigationItem) => {
   const splitted = navigationItem?.contentReference?.split(".");
-
   if (!splitted || splitted.length < 2)
     throw new Error("No valid contentReference found");
 
   const locale = splitted?.pop();
-
   if (!locale) throw new Error("No locale found");
 
   return locale;
@@ -165,6 +167,7 @@ export const fetchTopLevelNavigation = (
  * @param fsxaApi Instance of the FSXA Api
  * @param locale Locale
  * @param category (Optional) Product category identifier
+ * @throws Error if products cannot be fetched
  * @returns Products
  */
 export const fetchProducts = async (
