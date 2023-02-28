@@ -1,6 +1,6 @@
 <template>
   <div data-testid="dataset">
-    <DevOnly v-if="!datasetComponent">
+    <DevOnly v-if="!datasetComponent && $showDev">
       <Unknown :content="content" />
     </DevOnly>
     <component

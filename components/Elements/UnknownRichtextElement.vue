@@ -4,6 +4,7 @@
     data-testid="unknown"
   >
     <Dev
+      v-if="$showDev"
       :content="richTextElement"
       class="hidden group-hover:block"
       component-name="unknown richtext element"

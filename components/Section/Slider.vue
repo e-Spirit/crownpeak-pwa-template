@@ -1,7 +1,7 @@
 <template>
   <div data-testid="sliderSection">
     <div class="group relative">
-      <DevOnly v-if="appDevMode || envDevMode">
+      <DevOnly v-if="$showDev">
         <Dev
           :content="data"
           class="hidden group-hover:block"
@@ -87,9 +87,6 @@ interface SliderSlide extends Section {
     st_title: RichTextElement[];
   };
 }
-
-const { devMode: appDevMode } = useAppConfig();
-const { devMode: envDevMode } = useRuntimeConfig();
 
 const props = defineProps<{ data: SliderSlide[] }>();
 

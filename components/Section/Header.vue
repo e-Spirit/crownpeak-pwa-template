@@ -1,6 +1,6 @@
 <template>
   <div class="group relative h-64" data-testid="headerSection">
-    <DevOnly v-if="appDevMode || envDevMode">
+    <DevOnly v-if="$showDev">
       <Dev
         :content="data"
         class="hidden group-hover:block"
@@ -38,8 +38,6 @@
 import { DataEntries } from "fsxa-api";
 
 defineProps<{ data: DataEntries }>();
-const { devMode: appDevMode } = useAppConfig();
-const { devMode: envDevMode } = useRuntimeConfig();
 
 const breadcrumbs = computed(() => {
   const { slug } = useRoute().params;

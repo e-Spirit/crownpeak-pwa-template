@@ -1,6 +1,6 @@
 <template>
   <div data-testid="section">
-    <DevOnly v-if="!sectionComponent">
+    <DevOnly v-if="!sectionComponent && $showDev">
       <Unknown :content="content" />
     </DevOnly>
     <component

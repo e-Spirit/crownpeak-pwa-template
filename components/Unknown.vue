@@ -4,6 +4,7 @@
     data-testid="unknown"
   >
     <Dev
+      v-if="$showDev"
       :content="content"
       class="hidden group-hover:block"
       component-name="unknown section"

@@ -6,7 +6,7 @@
       class="group relative my-10"
       data-testid="pageBodyChild"
     >
-      <DevOnly v-if="appDevMode || envDevMode">
+      <DevOnly v-if="$showDev">
         <Dev
           :content="pageBodyContent"
           :dataset="currentDataset"
@@ -27,8 +27,6 @@ import { PageBody, PageBodyContent } from "fsxa-api";
 
 defineProps<{ pageBody: PageBody }>();
 
-const { devMode: appDevMode } = useAppConfig();
-const { devMode: envDevMode } = useRuntimeConfig();
 const { currentDataset } = useContent();
 
 function getComponentFromPageBodyContent(pageBodyContent: PageBodyContent) {
