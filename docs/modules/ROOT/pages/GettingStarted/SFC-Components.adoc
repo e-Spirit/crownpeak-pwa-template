@@ -55,7 +55,6 @@ image:WritingComponents/Basic_teaser.png[Basic Teaser]
 Our component is recognized correctly. But we still do not display the data from the https://docs.e-spirit.com/module/caas/CaaS_FSM_Documentation_EN.html[CaaS] in our component.
 For that we hover over our component and click on the appearing question mark on the right side again.
 
-// TODO
 
 image:WritingComponents/DevMode_teaser_properties.png[Available Properties]
 
@@ -80,7 +79,6 @@ defineProps<{ data: Teaser }>();
 
 The result should look like this:
 
-// TODO
 image:WritingComponents/Modified_teaser_sections.png[Displayed Headline]
 
 To render richtext, image or button elements you can use the `RichText.vue`, `Image.vue` and `Button.vue` components which can be found under the `~/components/Elements/` folder. Use them like this in your teaser component:
