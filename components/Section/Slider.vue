@@ -1,8 +1,9 @@
 <template>
   <div data-testid="sliderSection">
     <div class="group relative">
-      <DevOnly v-if="$showDev()">
+      <DevOnly>
         <Dev
+          v-if="showDev"
           :content="data"
           class="hidden group-hover:block"
           component-name="Slider"
@@ -72,6 +73,8 @@
 
 <script setup lang="ts">
 import { Image, RichTextElement, Section } from "fsxa-api";
+
+const { showDev } = useDev();
 
 interface SliderSlide extends Section {
   data: {

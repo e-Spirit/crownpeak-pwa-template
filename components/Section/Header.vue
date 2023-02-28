@@ -1,7 +1,8 @@
 <template>
   <div class="group relative h-64" data-testid="headerSection">
-    <DevOnly v-if="$showDev()">
+    <DevOnly>
       <Dev
+        v-if="showDev"
         :content="data"
         class="hidden group-hover:block"
         component-name="Page Header"
@@ -38,6 +39,8 @@
 import { DataEntries } from "fsxa-api";
 
 defineProps<{ data: DataEntries }>();
+
+const { showDev } = useDev();
 
 const breadcrumbs = computed(() => {
   const { slug } = useRoute().params;
