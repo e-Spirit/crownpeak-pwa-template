@@ -73,6 +73,7 @@ export function useContent() {
     currentDataset,
     cachedPages,
     cachedDatasets,
+    cachedProducts,
     addToCachedPages,
     addToCachedDatasets,
     addToCachedProducts,

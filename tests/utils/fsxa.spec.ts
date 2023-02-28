@@ -1,4 +1,5 @@
 import { it, expect, describe, vi } from "vitest";
+import { ComparisonQueryOperatorEnum } from "fsxa-api";
 import setupProxyApi from "../../plugins/2.setupProxyApi";
 import {
   fetchTopLevelNavigation,
@@ -6,6 +7,8 @@ import {
   fetchPageById,
   fetchDatasetByRoute,
   fetchNavigationItemFromRoute,
+  fetchDatasetById,
+  fetchProducts,
 } from "../../utils/fsxa";
 import navigationData from "../fixtures/navigationDataSeoRoute.json";
 import navigationItem from "../fixtures/navigationItem.json";
@@ -84,6 +87,33 @@ describe("fsxa utils", () => {
     });
   });
 
+  describe("fetchDatasetById", () => {
+    it("call with valid params => call fsxaApi.fetchByFilter with same params, return filtered items", async () => {
+      const {
+        provide: { fsxaApi },
+      } = setupProxyApi();
+
+      fsxaApi.fetchByFilter = vi.fn().mockReturnValue(datasetsFilter);
+
+      expect(await fetchDatasetById(fsxaApi, "id", "de_DE")).toStrictEqual(
+        datasetsFilter.items[0]
+      );
+
+      expect(fsxaApi.fetchByFilter).toHaveBeenCalledWith(
+        expect.objectContaining({
+          locale: "de_DE",
+          filters: [
+            {
+              operator: ComparisonQueryOperatorEnum.EQUALS,
+              value: "id",
+              field: "identifier",
+            },
+          ],
+        })
+      );
+    });
+  });
+
   describe("fetchNavigationItemFromRoute", () => {
     it("call with valid data => return the navigation item", async () => {
       const {
@@ -123,4 +153,45 @@ describe("fsxa utils", () => {
       ).rejects.toThrow();
     });
   });
+
+  describe("fetchProducts", () => {
+    it("call with valid params => call fsxaApi.fetchByFilter with same params, return filtered items", async () => {
+      const {
+        provide: { fsxaApi },
+      } = setupProxyApi();
+
+      fsxaApi.fetchByFilter = vi.fn().mockReturnValue(datasetsFilter);
+
+      expect(await fetchProducts(fsxaApi, "de_DE", "categoryId")).toStrictEqual(
+        datasetsFilter.items
+      );
+
+      expect(fsxaApi.fetchByFilter).toHaveBeenCalledWith(
+        expect.objectContaining({
+          locale: "de_DE",
+          filters: [
+            {
+              field: "entityType",
+              operator: ComparisonQueryOperatorEnum.EQUALS,
+              value: "product",
+            },
+            {
+              field: "schema",
+              operator: ComparisonQueryOperatorEnum.EQUALS,
+              value: "products",
+            },
+            {
+              field: "formData.tt_categories.value.identifier",
+              operator: ComparisonQueryOperatorEnum.EQUALS,
+              value: "categoryId",
+            },
+          ],
+        })
+      );
+    });
+  });
 });
+
+// fetch dataset by id
+
+// fetch products
