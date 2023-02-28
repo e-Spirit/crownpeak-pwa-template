@@ -6,7 +6,7 @@
       class="group relative my-10"
       data-testid="pageBodyChild"
     >
-      <DevOnly v-if="$showDev">
+      <DevOnly v-if="$showDev()">
         <Dev
           :content="pageBodyContent"
           :dataset="currentDataset"

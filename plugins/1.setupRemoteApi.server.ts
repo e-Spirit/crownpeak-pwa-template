@@ -41,6 +41,8 @@ export default defineNuxtPlugin(() => {
   FSXAApiSingleton.init(new FSXARemoteApi(remoteApiConfig));
 
   return {
-    provide: { showDev: appConfig.devMode || runtimeConfig.private.devMode },
+    provide: {
+      showDev: () => appConfig.devMode || runtimeConfig.private.devMode,
+    },
   };
 });

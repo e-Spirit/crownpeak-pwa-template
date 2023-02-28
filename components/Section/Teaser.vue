@@ -13,7 +13,7 @@
       </p>
     </div>
 
-    <div v-if="data.st_picture">
+    <div v-if="data.st_picture && typeof data.st_picture === 'object'">
       <ElementsImage
         v-if="data.st_picture"
         :image="data.st_picture"

@@ -1,7 +1,7 @@
 <template>
   <div data-testid="sliderSection">
     <div class="group relative">
-      <DevOnly v-if="$showDev">
+      <DevOnly v-if="$showDev()">
         <Dev
           :content="data"
           class="hidden group-hover:block"

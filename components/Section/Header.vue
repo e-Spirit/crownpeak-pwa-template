@@ -1,6 +1,6 @@
 <template>
   <div class="group relative h-64" data-testid="headerSection">
-    <DevOnly v-if="$showDev">
+    <DevOnly v-if="$showDev()">
       <Dev
         :content="data"
         class="hidden group-hover:block"
