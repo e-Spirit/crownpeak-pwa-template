@@ -83,7 +83,7 @@
         </button>
 
         <button
-          v-if="products"
+          v-if="products && !isContentProjection"
           class="rounded-t p-2 font-bold text-white"
           :class="{
             'bg-gray-800 ': activeItem === 'products',
