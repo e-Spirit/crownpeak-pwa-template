@@ -6,9 +6,9 @@
 . <<Introduction>>
 . <<Missing Components>>
 . <<Info Box>>
-* <<Data and Payload>>
-* <<Meta>>
-. <<Errors>>
+* <<Current Dataset>>
+* <<Products>>
+. <<Page Info>>
 
 == Introduction
 
@@ -18,44 +18,45 @@ To enable the development mode, the variable `devMode` must be set to `true` in 
 
 == Missing Components
 
-If you are in development mode and a component on the page has not been developed yet, a `unknown` compoent is rendered. By hovering it and clicking on the question mark you can see exactly which component is missing and what information can be addressed.
+If you are in development mode and a component on the page has not been developed yet, a `unknown` compoent is rendered. 
 
+image:DevMode/Missing_teaser.png[Missing Teaser]
 
-// TODO: change image
-image:DevMode/MissingLayout.png[Missing Layout]
+By hovering it and clicking on the question mark you can see exactly which component is missing and what information can be addressed.
+
+image:DevMode/DevMode_teaser.png[Dev Mode]
+
 
 == Info Box
 
 If you have already implemented a component, you will also see a question mark icon when hovering over the element.
 
-// TODO: change image
+image:DevMode/Questionmark.png[Questionmark]
 
-image:DevMode/QuestionMark.png[QuestionMark]
+Clicking on this question mark will provide you with the same information as if you clicked on an unknown component. You will see which component is being displayed and what data is available.
 
-Clicking on this question mark will provide you with more information about which component is being displayed and what data is available.
 
-=== Data and Payload
 
-This tab shows you all of the data that is available in the scope of this component. The data is defined by the FirstSpirit Template used to describe the current section or layout.
+=== Current Dataset
 
-// TODO
+On content projections the Dev componente shows another tab, called `Current Dataset`. Here you can find additional information about what dataset is loaded for the current page.
 
-image:DevMode/InfoboxData.png[InfoboxData]
 
-=== Meta
+image:DevMode/DevMode_dataset.png[Infobox Dataset]
 
-This tab may contain information about the route, the FirstSpirit database scheme, entity types, previewId and other FirstSpirit related meta information.
+=== Products
 
-// TOOD
+On product category pages the Dev componente shows the `Proudcts` tab, where data about what products have been loaded for the current route is displayed.
 
-image:DevMode/InfoboxMeta.png[InfoboxMeta]
 
-// TODO
+image:DevMode/DevMode_products.png[Infobox Products]
 
-== Errors
+=== Page info
 
-In case an error occurs within one of your components. It will get replaced by an error box to aid you in finding the cause as quickly as possible. This box displays the stack trace and takes the position of your component on the screen.
+To get general information about the page that is loaded you need to click the question mark that is displayed in the top right corner on every page, if the `devMode` is enabled.
 
-// TODO
+image:DevMode/Questionmark_page.png[Question Mark Page]
 
-image:DevMode/Error.png[Error]
+Inside the infobox you can then get general information about what content is in the page and what layout the page should be displayed in.
+
+image:DevMode/DevMode_page.png[Infobox Page]

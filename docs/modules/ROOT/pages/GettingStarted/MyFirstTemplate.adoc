@@ -37,15 +37,13 @@ To enable the development mode, the variable `devMode` must be set to `true` in 
 
 If you are in development mode and a component on the page has not been developed yet, you will get an unknown component which shows where a component is missing and what information in the component can be addressed.
 
-// TODO
-
-image:MissingLayout.png[Missing Layout]
+image:Missing_Component.png[Missing Layout]
 
 If you are in development mode and you have already implemented the component, then you will see question marks when hovering over the element.
 
 //TODO
 
-image:QuestionMark.png[QuestionMark]
+image:Questionmark.png[QuestionMark]
 
 Clicking on this question mark will provide you with more information about which component is being displayed and what data is available.
 
