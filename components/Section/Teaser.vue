@@ -13,9 +13,9 @@
       </p>
     </div>
 
-    <div v-if="data.st_picture && typeof data.st_picture === 'object'">
+    <div v-if="data?.st_picture && typeof data.st_picture !== 'string'">
       <ElementsImage
-        v-if="data.st_picture"
+        v-if="data?.st_picture"
         :image="data.st_picture"
         :alt="data.st_picture_alt"
       />
