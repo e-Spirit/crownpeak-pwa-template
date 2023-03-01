@@ -24,6 +24,7 @@ export default defineConfig({
             "useRouter",
             "useNuxtApp",
             "useHead",
+            "useDev",
             "navigateTo",
             "createError",
             "definePageMeta",

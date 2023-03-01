@@ -1,8 +1,9 @@
 <template>
   <div data-testid="sliderSection">
     <div class="group relative">
-      <DevOnly v-if="appDevMode || envDevMode">
+      <DevOnly>
         <Dev
+          v-if="showDev"
           :content="data"
           class="hidden group-hover:block"
           component-name="Slider"
@@ -73,6 +74,8 @@
 <script setup lang="ts">
 import { Image, RichTextElement, Section } from "fsxa-api";
 
+const { showDev } = useDev();
+
 interface SliderSlide extends Section {
   data: {
     st_button: {
@@ -87,9 +90,6 @@ interface SliderSlide extends Section {
     st_title: RichTextElement[];
   };
 }
-
-const { devMode: appDevMode } = useAppConfig();
-const { devMode: envDevMode } = useRuntimeConfig();
 
 const props = defineProps<{ data: SliderSlide[] }>();
 
