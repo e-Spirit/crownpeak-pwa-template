@@ -18,3 +18,7 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const { projectProperties } = useProjectProperties();
+</script>
