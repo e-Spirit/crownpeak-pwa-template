@@ -14,7 +14,7 @@
       />
     </div>
 
-    <div class="flex flex-col space-y-2 lg:m-16 lg:border-8 lg:p-12">
+    <div class="flex flex-col space-y-2 lg:m-16 lg:border-[12px] lg:p-12">
       <h3 class="text-xl uppercase">{{ data.st_tagline }}</h3>
       <h2
         v-if="data.st_headline"
