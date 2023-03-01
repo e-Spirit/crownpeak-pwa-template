@@ -17,7 +17,7 @@ describe(`routing.global.ts`, () => {
     cy.url().should("contain", "#baz");
   });
 
-  it("navigate to normal page with query+hash => redirect to index page and keep params", () => {
+  it("navigate to normal page with query+hash => do not redirect to index page and keep params", () => {
     cy.visit(`${baseURL}/Unsere-Lösungen/?foo=bar#baz`);
     cy.url().should("not.eq", `${baseURL}/`);
     cy.url().should("contain", "?foo=bar");
