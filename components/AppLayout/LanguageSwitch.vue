@@ -50,6 +50,8 @@ onMounted(() => {
   loading.value = false;
 });
 
+const emits = defineEmits(["languageSwitch"]);
+
 async function changeLanguage(locale: string) {
   if (locale === activeLocale.value) return;
 
@@ -87,5 +89,7 @@ async function changeLanguage(locale: string) {
 
   setNavigationData(navigationDataAfterLocaleChange);
   useRouter().push(translatedRoute);
+
+  emits("languageSwitch", locale);
 }
 </script>

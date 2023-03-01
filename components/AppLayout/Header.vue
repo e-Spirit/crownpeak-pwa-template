@@ -1,22 +1,27 @@
 <template>
   <div
-    class="sticky top-0 z-30 border-b bg-white p-2"
+    class="fixed top-0 z-50 w-full border-b bg-white p-2"
     data-testid="layoutHeader"
   >
     <div class="container mx-auto flex items-center">
-      <NuxtLink to="/"><AppLayoutLogo /></NuxtLink>
+      <NuxtLink to="/" @click="mobileNavigationVisible = false"
+        ><AppLayoutLogo
+      /></NuxtLink>
 
       <div class="relative ml-auto flex">
         <AppLayoutNavigation class="hidden md:flex" />
         <transition name="fadeup">
           <AppLayoutMobileNavigation
             v-if="mobileNavigationVisible"
-            class="z-40 md:hidden"
+            class="-z-10 md:hidden"
             @close="mobileNavigationVisible = false"
           />
         </transition>
 
-        <AppLayoutLanguageSwitch class="ml-2" />
+        <AppLayoutLanguageSwitch
+          class="ml-2"
+          @language-switch="mobileNavigationVisible = false"
+        />
         <button
           class="md:hidden"
           @click="mobileNavigationVisible = !mobileNavigationVisible"

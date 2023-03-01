@@ -11,7 +11,8 @@ export default defineNuxtPlugin(() => {
   const appConfig = useAppConfig(); // app.config.ts
 
   const { showDev } = useDev();
-  showDev.value = !!(appConfig?.devMode || runtimeConfig?.private?.devMode);
+  showDev.value =
+    appConfig?.devMode || runtimeConfig?.private?.devMode === "true";
 
   const remoteApiConfig: FSXARemoteApiConfig = {
     apikey: runtimeConfig.private.apiKey,
