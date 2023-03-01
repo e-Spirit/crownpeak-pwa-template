@@ -4,12 +4,7 @@
     data-testid="layoutHeader"
   >
     <div class="container mx-auto flex items-center">
-      <NuxtLink to="/"
-        ><ElementsImage
-          v-if="projectProperties?.data && projectProperties?.data['ps_logo']"
-          class="w-30 h-12 object-contain"
-          :image="projectProperties?.data['ps_logo']"
-      /></NuxtLink>
+      <NuxtLink to="/"><AppLayoutLogo /></NuxtLink>
 
       <div class="relative ml-auto flex">
         <AppLayoutNavigation class="hidden md:flex" />
@@ -48,5 +43,4 @@
 
 <script setup lang="ts">
 const mobileNavigationVisible = ref(false);
-const { projectProperties } = useProjectProperties();
 </script>

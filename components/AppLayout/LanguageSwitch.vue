@@ -1,6 +1,6 @@
 <template>
   <div class="group relative flex items-center" data-testid="languageSwitch">
-    <div class="rounded-full p-2 hover:bg-gray-200">
+    <div class="rounded-full p-2 text-gray-800 hover:bg-gray-200">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"

@@ -3,12 +3,12 @@
     class="grid items-center gap-8 py-10 md:grid-cols-2"
     data-testid="teaserSection"
   >
-    <div class="flex flex-col space-y-2 p-4 md:p-0">
-      <h3 class="text-xl uppercase text-gray-800">{{ data.st_kicker }}</h3>
-      <h2 v-if="data.st_headline" class="text-3xl font-bold uppercase">
+    <div class="flex flex-col space-y-3 p-4 md:p-0">
+      <h3 class="text-xl text-gray-600">{{ data.st_kicker }}</h3>
+      <h2 v-if="data.st_headline" class="text-4xl font-black uppercase">
         <ElementsRichText :richtext="data.st_headline" />
       </h2>
-      <p v-if="data.st_text" class="text-gray-800">
+      <p v-if="data.st_text" class="text-gray-600">
         <ElementsRichText :richtext="data.st_text" />
       </p>
     </div>
