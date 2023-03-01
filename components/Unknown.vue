@@ -4,6 +4,7 @@
     data-testid="unknown"
   >
     <Dev
+      v-if="showDev"
       :content="content"
       class="hidden group-hover:block"
       component-name="unknown section"
@@ -16,6 +17,8 @@ import { Section, Dataset, Content2Section, Page } from "fsxa-api";
 const props = defineProps<{
   content?: Section | Dataset | Content2Section | Page;
 }>();
+
+const { showDev } = useDev();
 
 const componentType = computed(() => {
   switch (props.content?.type) {
