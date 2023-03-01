@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pt-16 lg:pt-20">
     <ClientOnly>
       <AppLayoutLoading v-if="pending" />
     </ClientOnly>

@@ -13,12 +13,21 @@
       </p>
     </div>
 
-    <div v-if="data?.st_picture && typeof data.st_picture !== 'string'">
-      <ElementsImage
-        v-if="data?.st_picture"
-        :image="data.st_picture"
-        :alt="data.st_picture_alt"
+    <div
+      v-if="data?.st_picture && typeof data.st_picture !== 'string'"
+      class="relative"
+    >
+      <div
+        class="absolute -top-10 -z-10 hidden h-3/4 w-1/2 border-[12px] border-gray-100 md:block"
       />
+
+      <div class="md:pl-10">
+        <ElementsImage
+          v-if="data?.st_picture"
+          :image="data.st_picture"
+          :alt="data.st_picture_alt"
+        />
+      </div>
     </div>
   </div>
 </template>

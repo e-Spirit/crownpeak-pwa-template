@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed top-0 z-50 w-full border-b bg-white p-2"
+    class="fixed top-0 z-50 h-16 w-full border-b bg-white p-2 lg:h-20"
     data-testid="layoutHeader"
   >
     <div class="container mx-auto flex items-center">
