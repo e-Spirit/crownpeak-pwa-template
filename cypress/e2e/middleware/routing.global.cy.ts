@@ -26,12 +26,15 @@ describe(`routing.global.ts`, () => {
 
   it("navigate to normal page => render content", () => {
     cy.visit(`${baseURL}/Unsere-Lösungen`);
-    cy.get("body").should("contain", "Unsere Lösungen");
+    cy.get("body").should("contain", "Sicherheit für Ihr zu Hause");
   });
 
   it("navigate to / => render content", () => {
     cy.visit(`${baseURL}/`);
-    cy.get("body").should("contain", "Startseite");
+    cy.get("body").should(
+      "contain",
+      "Das vernetzte, „intelligente“ Heim sorgt für mehr Sicherheit, spart wertvolle Zeit und senkt Energiekosten."
+    );
   });
 
   it("navigate to non-existing page => show error page", () => {

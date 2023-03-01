@@ -5,15 +5,15 @@
 
 In this section we will be exploring how to go about implementing a Teaser section using the classic Vue single file components.
 
-When you go to the home page in the development mode, you will see that one component is displayed as unknown.
+When you go to the page `/unsere-loesungen` in the development mode, you will see that multiple components are displayed as unknown.
 
-// TODO
+image:WritingComponents/Missing_teaser.png[Missing Teaser]
 
-image:WritingComponents/MissingSection.png[MissingSection]
+By clicking on the question mark on one of the unknown component the dev info tells us that there should be a component of type `Section`. We can also see that the 'sectionType' property of this missing section is called `teaser`.
 
-By clicking on the question mark on the unknown component the dev info tells us that there should be a component of type `Section`. We can also see that the sectionType of this missing section is called `teaser`.
+image:WritingComponents/DevMode_teaser.png[Dev Mode Teaser]
 
-Our section components are located in `~/components/Section/`. That’s where you want to create a new file for the component.
+Our section components are located in `~/components/Section/`. That's where you want to create a new file for the component.
 
 We name our new file `Teaser.vue` and add a template tag to the file so we can see something when we fire up the dev server:
 
@@ -32,6 +32,8 @@ Simply add a `teaser` case to the computed `sectionComponent` property. Make sur
 
 [source,ts]
 ----
+// ~/components/PageBodyContent/Section.vue
+
 ...
 const sectionComponent = computed(() => {
   switch (props.content.sectionType) {
@@ -47,16 +49,14 @@ const sectionComponent = computed(() => {
 
 When we go back to the browser, instead of the unknown component we should see our component.
 
-// TODO
 
-image:WritingComponents/HelloComponent.png[Hello Component]
+image:WritingComponents/Basic_teaser.png[Basic Teaser]
 
 Our component is recognized correctly. But we still do not display the data from the https://docs.e-spirit.com/module/caas/CaaS_FSM_Documentation_EN.html[CaaS] in our component.
 For that we hover over our component and click on the appearing question mark on the right side again.
 
-// TODO
 
-image:WritingComponents/AvailableProperties.png[Available Properties]
+image:WritingComponents/DevMode_teaser_properties.png[Available Properties]
 
 This shows us the data available to display.
 For the first example we want to display the `st_jumbo_headline`. Your section has access to a `data` property that gets passed to your component. You can make this property typesafe by adding a custom interface. Modify the `Teaser.vue` component like this:
@@ -69,18 +69,17 @@ For the first example we want to display the `st_jumbo_headline`. Your section h
   </div>
 </template>
 
-<script setup lang=ts>
+<script setup lang="ts">
 interface Teaser {
   st_jumbo_headline:string
 }
 defineProps<{ data: Teaser }>();
-<script>
+</script>
 ----
 
 The result should look like this:
 
-// TODO
-image:WritingComponents/DisplayedHeadline.png[Displayed Headline]
+image:WritingComponents/Modified_teaser_sections.png[Displayed Headline]
 
 To render richtext, image or button elements you can use the `RichText.vue`, `Image.vue` and `Button.vue` components which can be found under the `~/components/Elements/` folder. Use them like this in your teaser component:
 
@@ -95,7 +94,7 @@ To render richtext, image or button elements you can use the `RichText.vue`, `Im
   </div>
 </template>
 
-<script setup lang=ts>
+<script setup lang="ts">
 import { Image, RichTextElement } from "fsxa-api";
 
 interface Teaser {
@@ -111,7 +110,7 @@ defineProps<{ data: Teaser }>();
 function clickHandler(){
   // do sth.
 }
-<script>
+</script>
 ----
 
 Of course you can modify all components and adjust them according to your specific requirements. In our implementation example `ElementsButton` emits a `buttonClick` event which can be hooked into with `@button-click`. Simply define your click handler function inside the script tag as shown above. 

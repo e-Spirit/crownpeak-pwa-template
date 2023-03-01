@@ -99,5 +99,6 @@ export function useNavigationData() {
     setActiveNavigationItem,
     activeNavigationItem,
     navigationData,
+    cachedNavigationData,
   };
 }
