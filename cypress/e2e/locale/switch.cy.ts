@@ -66,7 +66,7 @@ describe(`locale switching`, () => {
   });
 
   it("change language on content projection => change route and content", () => {
-    cy.visit(`${baseURL}/Productsss/Goomazon-Oklexa-SP93.html`);
+    cy.visit(`${baseURL}/Products/Goomazon-Oklexa-SP93.html`);
 
     cy.get("[data-testid=productSection]").should("contain", "The Oklexa SP93");
 
