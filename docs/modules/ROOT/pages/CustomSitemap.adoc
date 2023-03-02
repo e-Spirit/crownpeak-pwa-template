@@ -1,0 +1,36 @@
+== Custom Sitemap
+
+In this chapter we will describe how to implement a sitemap. 
+
+In Nuxt 3 you can define custom server routes under the `~/server/routes` directory. Everything you put there will be available under `your-url.com/FILENAME` If you look inside you will find our example implementation for how a sitemap can be implemented.
+
+The code is pretty straight forward. First we fetch the navigation data from the navigation service through the FSXAApiSingleton. We already initialized the singleton inside the `~/plugins/1.setupRemoteApi.ts` plugin.
+
+Next we simply map all seo routes from the navigation data to an xml string and set the response header to `Content-Type=text/xml`. That's basically it. If you want, you can also provide a custom stylesheet for your xml or extend the sitemap with custom route entries. 
+
+[source,javascript]
+----
+// ~/server/routes/sitemap.xml.ts
+
+import { FSXAApiSingleton } from "fsxa-api";
+
+export default defineEventHandler(async (event) => {
+  const remoteApi = FSXAApiSingleton.instance;
+  const {
+    public: { baseURL },
+  } = useRuntimeConfig();
+  const navigationData = await remoteApi.fetchNavigation({ locale: "de_DE" });
+  const seoRoutes = Object.keys(navigationData?.seoRouteMap || []);
+  const xmlString = `<?xml version="1.0" encoding="UTF-8"?>
+    <urlset>
+    ${seoRoutes
+      .map((seoRoute) => `<url><loc>${baseURL}${seoRoute}</loc></url>`)
+      .join("\n")}
+          </urlset>`;
+
+  setResponseHeader(event, "Content-Type", "text/xml");
+
+  return xmlString;
+});
+
+----
