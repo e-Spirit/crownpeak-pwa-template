@@ -1,6 +1,6 @@
 <template>
   <div data-testid="navigation ">
-    <ul class="flex items-center space-x-4 py-6">
+    <ul class="flex items-center space-x-4 py-6 text-gray-800">
       <li
         v-for="navItem of topNavigation"
         :key="navItem?.id"

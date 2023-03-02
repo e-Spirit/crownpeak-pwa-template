@@ -199,7 +199,6 @@ export const fetchProducts = async (
   const { items } = await fsxaApi.fetchByFilter({
     filters,
     locale,
-    pagesize: 10,
   });
 
   return items as Dataset[];

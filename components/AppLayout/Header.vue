@@ -1,14 +1,11 @@
 <template>
   <div
-    class="sticky top-0 z-30 border-b bg-white p-2"
+    class="fixed top-0 z-50 h-16 w-full border-b bg-white p-2 lg:h-20"
     data-testid="layoutHeader"
   >
     <div class="container mx-auto flex items-center">
-      <NuxtLink to="/"
-        ><ElementsImage
-          v-if="projectProperties?.data && projectProperties?.data['ps_logo']"
-          class="w-30 h-12 object-contain"
-          :image="projectProperties?.data['ps_logo']"
+      <NuxtLink to="/" @click="mobileNavigationVisible = false"
+        ><AppLayoutLogo
       /></NuxtLink>
 
       <div class="relative ml-auto flex">
@@ -16,12 +13,15 @@
         <transition name="fadeup">
           <AppLayoutMobileNavigation
             v-if="mobileNavigationVisible"
-            class="z-40 md:hidden"
+            class="-z-10 md:hidden"
             @close="mobileNavigationVisible = false"
           />
         </transition>
 
-        <AppLayoutLanguageSwitch class="ml-2" />
+        <AppLayoutLanguageSwitch
+          class="ml-2"
+          @language-switch="mobileNavigationVisible = false"
+        />
         <button
           class="md:hidden"
           @click="mobileNavigationVisible = !mobileNavigationVisible"
@@ -48,5 +48,4 @@
 
 <script setup lang="ts">
 const mobileNavigationVisible = ref(false);
-const { projectProperties } = useProjectProperties();
 </script>
