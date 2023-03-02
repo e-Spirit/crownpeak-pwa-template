@@ -6,10 +6,10 @@
       <div>
         <NuxtLink to="/"><AppLayoutLogo /></NuxtLink>
       </div>
-      <div class="md:text-center">
+      <div class="md:text-center" data-testid="copyright">
         © {{ projectProperties?.data["ps_footer"]["gc_copyright"] }}
       </div>
-      <div class="space-x-2 md:text-right">
+      <div class="space-x-2 md:text-right" data-testid="legal-links">
         <NuxtLink class="hover:underline" to="/impressum">Impressum</NuxtLink>
         <NuxtLink class="hover:underline" to="/datenschutz"
           >Datenschutzerklärung</NuxtLink

@@ -24,6 +24,7 @@
         />
         <button
           class="md:hidden"
+          data-testid="mobileMenuButton"
           @click="mobileNavigationVisible = !mobileNavigationVisible"
         >
           <svg
