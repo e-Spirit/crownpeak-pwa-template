@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div data-testid="logo">
     <img v-if="logoSrc" :src="logoSrc" />
   </div>
 </template>
