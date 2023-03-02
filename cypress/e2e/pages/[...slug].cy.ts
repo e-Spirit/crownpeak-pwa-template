@@ -11,6 +11,22 @@ describe(`slug page`, () => {
       method: "GET",
       url: "/api/elements",
     }).as("fetchContent");
+
+    cy.intercept({
+      method: "GET",
+      url: "/api/filters",
+    }).as("fetchByFilter");
+
+    cy.intercept({
+      method: "GET",
+      url: "/api/navigation",
+    }).as("fetchNavigation");
+
+    cy.intercept({
+      method: "GET",
+      url: "/api/properties",
+    }).as("fetchProperties");
+
     cy.visit(`${baseURL}`);
     cy.get('[href="/Unsere-Lösungen/"]').click();
     cy.get('[href="/Startseite/"]').click();
@@ -19,6 +35,9 @@ describe(`slug page`, () => {
 
     // newtwork calls happen once on the server
     cy.get("@fetchContent").should("eq", null);
+    cy.get("@fetchByFilter").should("eq", null);
+    cy.get("@fetchNavigation").should("eq", null);
+    cy.get("@fetchProperties").should("eq", null);
   });
 
   it("navigate to content projection => display content", () => {

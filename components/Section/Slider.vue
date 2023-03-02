@@ -51,7 +51,7 @@
           class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black to-transparent p-6 md:p-16"
         >
           <div class="flex max-w-xl flex-col space-y-4 md:py-10">
-            <h1 class="text-4xl font-bold md:text-6xl">
+            <h1 class="text-4xl font-black md:text-6xl">
               <ElementsRichText :richtext="activeSlide.data.st_title" />
             </h1>
             <p>{{ activeSlide.data.st_description }}</p>
