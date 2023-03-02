@@ -1,0 +1,23 @@
+= Meta Tags
+
+Setting up meta tags for your pwa is very easy. Simply modify the `useHead` section inside the script tag of your page.
+
+In our example we added the page title, but of course you can provide a description or any other tag you want. For detailed information on what is possible please refer to the https://nuxt.com/docs/migration/meta#meta-tags[Nuxt documentation on meta tags].
+
+[source,xml]
+----
+// ~/pages/[...slug].ts
+
+...
+
+<script setup lang="ts">
+
+...
+
+useHead({
+  title: currentPage.value?.data["pt_title"],
+});
+
+</script>
+----
+
