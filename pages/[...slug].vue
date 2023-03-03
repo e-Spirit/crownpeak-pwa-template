@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :data-preview-id="previewId">
     <ClientOnly>
       <AppLayoutLoading v-if="pending" />
     </ClientOnly>
@@ -30,6 +30,7 @@ const { activeLocale } = useLocale();
 const { activeNavigationItem } = useNavigationData();
 const currentRoute = decodeURIComponent(useRoute().path);
 
+const previewId = currentPage.value?.previewId.split(".")[0];
 // fetch page and dataset
 const { pending } = useAsyncData(async () => {
   // This state should not be possible.

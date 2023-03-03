@@ -6,6 +6,8 @@ import {
   Dataset,
   Page,
   QueryBuilderQuery,
+  // eslint-disable-next-line camelcase
+  CaaSApi_Dataset,
 } from "fsxa-api";
 
 /**
@@ -203,4 +205,33 @@ export const fetchProducts = async (
   });
 
   return items as Dataset[];
+};
+
+export const fetchPageRoute = async (
+  fsxaApi: FSXAProxyApi,
+  locale: string,
+  id: string
+) => {
+  const response = await fsxaApi.fetchByFilter({
+    filters: [
+      {
+        field: "identifier",
+        operator: ComparisonQueryOperatorEnum.EQUALS,
+        value: id,
+      },
+    ],
+    locale,
+    additionalParams: {
+      keys: [{ type: 1, route: 1, "routes.route": 1 }],
+    },
+  });
+
+  const item = response?.items?.[0] as Partial<
+    // eslint-disable-next-line camelcase
+    Pick<CaaSApi_Dataset, "routes" | "route">
+  >;
+
+  const route = item?.route ?? item?.routes?.[0]?.route ?? null;
+
+  return route;
 };

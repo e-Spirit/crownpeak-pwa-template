@@ -22,7 +22,7 @@ export default defineNuxtPlugin(() => {
     remotes: runtimeConfig.private.remotes
       ? JSON.parse(runtimeConfig.private.remotes)
       : {},
-    contentMode: runtimeConfig.private.mode as FSXAContentMode,
+    contentMode: runtimeConfig.public.mode as FSXAContentMode,
     // TODO:
     // filterOptions: {
     //   navigationItemFilter: serverAccessControlConfig?.navigationItemFilter,
@@ -33,7 +33,7 @@ export default defineNuxtPlugin(() => {
       appConfig.logLevel ||
       LogLevel.NONE,
     enableEventStream:
-      !!runtimeConfig.private["enableEventStream"] ||
+      !!runtimeConfig.public["enableEventStream"] ||
       appConfig.enableEventStream ||
       false,
   };

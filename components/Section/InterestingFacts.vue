@@ -15,24 +15,41 @@
     </div>
 
     <div class="flex flex-col space-y-2 lg:border-8 lg:p-8">
-      <h3 class="text-xl uppercase">{{ data.st_tagline }}</h3>
+      <h3 class="text-xl uppercase" data-preview-id="#st_tagline" data-inedit>
+        {{ data.st_tagline }}
+      </h3>
       <h2
         v-if="data.st_headline"
+        data-preview-id="#st_headline"
         class="text-3xl font-bold uppercase text-yellow-500 lg:text-5xl"
       >
         {{ data.st_headline }}
       </h2>
-      <p v-if="data.st_text" class="text-gray-300">
+      <p v-if="data.st_text" class="text-gray-300" data-preview-id="#st_text">
         <ElementsRichText :richtext="data.st_text" />
       </p>
     </div>
 
-    <div class="grid grid-cols-3 gap-6">
-      <div v-for="counter in data.st_counters" :key="counter.id">
-        <div class="text-4xl font-bold text-yellow-500">
+    <div
+      class="grid grid-cols-3 gap-6"
+      data-preview-id="#st_counters"
+      data-inedit
+    >
+      <div
+        v-for="(counter, index) in data.st_counters"
+        :key="counter.id"
+        :data-preview-id="`#${index}`"
+      >
+        <div
+          class="text-4xl font-bold text-yellow-500"
+          data-inedit
+          data-preview-id="#st_number"
+        >
           {{ counter.data.st_number }}
         </div>
-        <div class="border-t-2 text-gray-300">{{ counter.data.st_text }}</div>
+        <div class="border-t-2 text-gray-300" data-preview-id="#st_text">
+          {{ counter.data.st_text }}
+        </div>
       </div>
     </div>
   </div>
