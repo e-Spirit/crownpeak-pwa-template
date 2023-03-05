@@ -90,11 +90,10 @@ const { pending } = useAsyncData(async () => {
     addToCachedPages(currentRoute, currentPage.value);
   }
 
-  if ($setPreviewId) {
+  if ($setPreviewId)
     $setPreviewId(
       currentDataset.value?.previewId ?? currentPage.value?.previewId
     );
-  }
 });
 
 // dynamic layout component
