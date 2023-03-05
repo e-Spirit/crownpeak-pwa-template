@@ -45,16 +45,9 @@ export default defineNuxtPlugin(() => {
     });
 
     // https://docs.e-spirit.com/tpp/snap/#onnavigationchangehandler
-    TPP_SNAP.onNavigationChange(async (newPagePreviewId: string | null) => {
-      if (newPagePreviewId) return navigateToPageId(newPagePreviewId);
-
-      const currentPreviewId = await TPP_SNAP.getPreviewElement();
-      if (!currentPreviewId) return;
-
-      const pageId = currentPreviewId.split(".")[0];
-      if (!pageId) return;
-
-      await waitForPageId($fsxaApi, pageId);
+    TPP_SNAP.onNavigationChange((newPagePreviewId: string | null) => {
+      // If a new page is created, onRequestPreviewElement is also triggered and will handle the navigation
+      if (newPagePreviewId) return;
 
       location.reload();
     });
