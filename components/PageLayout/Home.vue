@@ -1,5 +1,5 @@
 <template>
-  <div :data-preview-id="page.previewId" data-testid="homePageLayout">
+  <div data-testid="homePageLayout">
     <SectionSlider
       v-if="page.data && page.data['pt_slider']"
       :data="page.data['pt_slider']"

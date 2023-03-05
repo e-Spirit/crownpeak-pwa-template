@@ -25,12 +25,17 @@ const {
   findCachedPageByRoute,
   findCachedDatasetByRoute,
 } = useContent();
-const { $fsxaApi } = useNuxtApp();
+const { $fsxaApi, $setPreviewId } = useNuxtApp();
 const { activeLocale } = useLocale();
 const { activeNavigationItem } = useNavigationData();
 const currentRoute = decodeURIComponent(useRoute().path);
 
-const previewId = currentPage.value?.previewId.split(".")[0];
+const previewId = computed(() => {
+  return activeNavigationItem.value?.seoRouteRegex !== null
+    ? currentDataset.value?.previewId
+    : currentPage.value?.previewId;
+});
+
 // fetch page and dataset
 const { pending } = useAsyncData(async () => {
   // This state should not be possible.
@@ -83,6 +88,12 @@ const { pending } = useAsyncData(async () => {
       activeLocale.value
     );
     addToCachedPages(currentRoute, currentPage.value);
+  }
+
+  if ($setPreviewId) {
+    $setPreviewId(
+      currentDataset.value?.previewId ?? currentPage.value?.previewId
+    );
   }
 });
 

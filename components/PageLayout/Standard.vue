@@ -1,5 +1,5 @@
 <template>
-  <div :data-preview-id="page.previewId" data-testid="standardPageLayout">
+  <div data-testid="standardPageLayout">
     <SectionHeader v-if="page.data" :data="page.data" />
     <PageBody
       v-for="pageBody in page.children"

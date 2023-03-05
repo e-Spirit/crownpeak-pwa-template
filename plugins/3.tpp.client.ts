@@ -20,18 +20,15 @@ const onInit = () =>
 export default defineNuxtPlugin(() => {
   const runtimeConfig = useRuntimeConfig();
 
-  const globalPreviewId = useState<string | null>("previewId", () => null);
-
   if (runtimeConfig.public.mode !== FSXAContentMode.PREVIEW) return;
 
   const { $fsxaApi } = useNuxtApp();
   const { activeLocale } = useLocale();
   const router = useRouter();
-  const { navigationData, setActiveNavigationItem } = useNavigationData();
+  const { navigationData, setActiveNavigationItem, activeNavigationItem } =
+    useNavigationData();
 
-  TPP_SNAP.isConnected.then(async (isConnected: boolean) => {
-    console.log(`isConnected: ${isConnected}`);
-
+  TPP_SNAP.isConnected.then(async (_isConnected: boolean) => {
     await onInit();
 
     const waitForPageId = (
@@ -51,9 +48,6 @@ export default defineNuxtPlugin(() => {
         });
 
         setTimeout(() => {
-          console.log(
-            `timed out waiting for pageId: ${pageId} after ${timeout}ms`
-          );
           caasEvents.close();
           resolve(false);
         }, timeout);
@@ -74,14 +68,9 @@ export default defineNuxtPlugin(() => {
       }
     };
 
-    console.log("onInit done");
-
     TPP_SNAP.onRequestPreviewElement(async (previewId: string) => {
-      console.log(`onRequestPreviewElement: ${previewId}`);
-
       const pageId = previewId.split(".")[0];
       if (!pageId) return;
-      globalPreviewId.value = pageId;
 
       TPP_SNAP.setPreviewElement(previewId);
 
@@ -89,19 +78,13 @@ export default defineNuxtPlugin(() => {
     });
 
     TPP_SNAP.onContentChange(
-      ($node: HTMLElement, previewId: string, content: unknown) => {
-        console.log(`onContentChange: ${previewId}`);
-        console.log($node);
-        console.log(content);
-
+      (_$node: HTMLElement, _previewId: string, _content: unknown) => {
         // pattern-lib macht hier auch nichts und rerendered einfach stumpf die komplette Seite. Ist wahrscheinlich das sinnvollste :D
         // location.reload();
       }
     );
 
     TPP_SNAP.onRerenderView(async () => {
-      console.log("onRerenderView");
-
       const previewId: string | undefined = await TPP_SNAP.getPreviewElement();
       if (!previewId) return;
 
@@ -109,17 +92,18 @@ export default defineNuxtPlugin(() => {
       const locale = previewId.split(".")[1];
 
       if (!pageId || !locale) return;
-      globalPreviewId.value = pageId;
 
       await waitForPageId($fsxaApi, pageId);
-      const { currentPage } = useContent();
+      const { currentPage, currentDataset } = useContent();
 
-      currentPage.value = await fetchPageById($fsxaApi, pageId, locale);
+      if (activeNavigationItem.value?.seoRouteRegex !== null) {
+        currentDataset.value = await fetchDatasetById($fsxaApi, pageId, locale);
+      } else {
+        currentPage.value = await fetchPageById($fsxaApi, pageId, locale);
+      }
     });
 
     TPP_SNAP.onNavigationChange(async (newPagePreviewId: string | null) => {
-      console.log(`onNavigationChange: ${newPagePreviewId}`);
-
       if (newPagePreviewId) return navigateToPageId(newPagePreviewId);
 
       const currentPreviewId = await TPP_SNAP.getPreviewElement();
@@ -136,12 +120,10 @@ export default defineNuxtPlugin(() => {
 
   return {
     provide: {
-      setPreviewId: async (previewId: string) => {
+      setPreviewId: async (previewId: string | undefined) => {
         if (await TPP_SNAP.isConnected) TPP_SNAP.setPreviewElement(previewId);
       },
-      getPreviewId: () => {
-        return globalPreviewId.value;
-      },
+      getPreviewId: () => {},
     },
   };
 });

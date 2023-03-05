@@ -6,8 +6,10 @@
     <component
       :is="sectionComponent"
       v-else
-      :data-preview-id="content.previewId"
       :data="content.data"
+      :data-preview-id="
+        content.previewId.split('.')[0] !== '' ? content.previewId : undefined
+      "
     />
   </div>
 </template>
@@ -19,7 +21,7 @@ const props = defineProps<{ content: Section }>();
 const sectionComponent = computed(() => {
   switch (props.content.sectionType) {
     case "interesting_facts":
-      return resolveComponent("SectionInterestingFacts");
+      return "SectionInterestingFacts";
     case "products.category_products":
       return resolveComponent("SectionProductCategory");
     case "products.product":
