@@ -9,6 +9,8 @@ export class WebsocketSingleton {
     if (!this._instance) {
       this._instance = websocket;
 
+      // It is possible that we get a message before we can register the event in the endpoint
+      // so we store the last messages here as well and read them in the endpoint
       this._instance.onmessage = (msg: MessageEvent) => {
         const message = msg.data.toString("utf-8");
         if (this._lastMessages.includes(message)) return;
