@@ -5,19 +5,8 @@ import { ServerErrors } from "~~/types";
 
 export default defineEventHandler(async (event) => {
   const endpoint = event.context["params"]?.["endpoint"];
-
-  // const api = FSXAApiSingleton.instance;
-
-  // console.log("API INSTANCE");
-  // console.log(api);
-  // console.log("---");
-
+  // websocket is already set by middleware
   const websocket = WebsocketSingleton.instance;
-
-  console.log("WEBSOCKET");
-  console.log(websocket?.url);
-
-  console.log("---");
 
   if (`/${endpoint}` === FSXAProxyRoutes.STREAM_CHANGE_EVENTS_ROUTE) {
     const id = randomUUID();
@@ -30,8 +19,6 @@ export default defineEventHandler(async (event) => {
     });
 
     const sendEvent = (data: string) => {
-      console.log("send event");
-
       event.node.res.write(`id: ${id}\n`);
       event.node.res.write(`data: ${data}\n\n`); // Note the extra newline
     };

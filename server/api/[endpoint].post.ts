@@ -1,38 +1,7 @@
-import { FSXAApiSingleton, FSXARemoteApi } from "fsxa-api";
-import ReconnectingWebSocket from "reconnecting-websocket";
-import { WebSocket } from "ws";
-import { WebsocketSingleton } from "~~/server/WebsocketSingleton";
+import { FSXAApiSingleton } from "fsxa-api";
 import { ServerErrors, FSXAProxyRoutes, FSXAApiErrors } from "~/types";
 
 export default defineEventHandler(async (event) => {
-  try {
-    const instance = WebsocketSingleton.instance;
-
-    if (!instance) {
-      const remoteApi = FSXAApiSingleton.instance as FSXARemoteApi;
-      const createSocketUrl = async () => {
-        const caasUrl = remoteApi.buildCaaSUrl().split("?")[0];
-        const token = await remoteApi.fetchSecureToken();
-        const socketUrl = `${caasUrl!.replace(
-          /^http/,
-          "ws"
-        )}/_streams/crud?securetoken=${token}`;
-        return socketUrl;
-      };
-
-      console.log(await createSocketUrl());
-
-      const socket = new ReconnectingWebSocket(createSocketUrl, [], {
-        WebSocket,
-        startClosed: false,
-      });
-
-      WebsocketSingleton.init(socket);
-    }
-  } catch (e) {
-    console.log(e);
-  }
-
   const remoteApi = FSXAApiSingleton.instance; // throws error if undefined
   const body = await readBody(event);
   const endpoint = event.context["params"]?.["endpoint"];
