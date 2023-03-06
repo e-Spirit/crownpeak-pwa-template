@@ -53,7 +53,7 @@ If you are interested in the FSXA check this link:https://docs.e-spirit.com/modu
 .. xref:docs/modules/ROOT/pages/WorkingWithImages.adoc#responsiveness[Responsiveness]
 .. xref:docs/modules/ROOT/pages/WorkingWithImages.adoc#lazy-loading[Lazy Loading]
 . xref:docs/modules/ROOT/pages/TPP_SNAP.adoc[Working with TPP_SNAP]
-
+. xref:docs/modules/ROOT/pages/CustomSitemap.adoc#sitemap[Creating a Sitemap]
 
 == Legal Notices
 

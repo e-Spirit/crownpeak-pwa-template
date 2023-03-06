@@ -1,5 +1,5 @@
 <template>
-  <div :data-preview-id="previewId">
+  <div class="pt-16 lg:pt-20" :data-preview-id="previewId">
     <ClientOnly>
       <AppLayoutLoading v-if="pending" />
     </ClientOnly>
@@ -9,7 +9,7 @@
       :page="currentPage"
     />
     <DevOnly>
-      <div class="fixed top-0 right-0 z-30">
+      <div v-if="showDev" class="fixed top-0 right-0 z-30">
         <Dev v-if="currentPage" :content="currentPage" component-name="page" />
       </div>
     </DevOnly>
@@ -35,6 +35,7 @@ const previewId = computed(() => {
     ? currentDataset.value?.previewId
     : currentPage.value?.previewId;
 });
+const { showDev } = useDev();
 
 // fetch page and dataset
 const { pending } = useAsyncData(async () => {

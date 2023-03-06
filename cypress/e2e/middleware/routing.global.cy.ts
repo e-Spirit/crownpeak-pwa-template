@@ -17,7 +17,7 @@ describe(`routing.global.ts`, () => {
     cy.url().should("contain", "#baz");
   });
 
-  it("navigate to normal page with query+hash => redirect to index page and keep params", () => {
+  it("navigate to normal page with query+hash => do not redirect to index page and keep params", () => {
     cy.visit(`${baseURL}/Unsere-Lösungen/?foo=bar#baz`);
     cy.url().should("not.eq", `${baseURL}/`);
     cy.url().should("contain", "?foo=bar");
@@ -26,12 +26,15 @@ describe(`routing.global.ts`, () => {
 
   it("navigate to normal page => render content", () => {
     cy.visit(`${baseURL}/Unsere-Lösungen`);
-    cy.get("body").should("contain", "Sicherheit für Ihr Zuhause");
+    cy.get("body").should("contain", "Sicherheit für Ihr zu Hause");
   });
 
   it("navigate to / => render content", () => {
     cy.visit(`${baseURL}/`);
-    cy.get("body").should("contain", "DAS CLEVERE HAUS");
+    cy.get("body").should(
+      "contain",
+      "Das vernetzte, „intelligente“ Heim sorgt für mehr Sicherheit, spart wertvolle Zeit und senkt Energiekosten."
+    );
   });
 
   it("navigate to non-existing page => show error page", () => {

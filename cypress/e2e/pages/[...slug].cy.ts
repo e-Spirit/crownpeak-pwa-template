@@ -11,6 +11,22 @@ describe(`slug page`, () => {
       method: "GET",
       url: "/api/elements",
     }).as("fetchContent");
+
+    cy.intercept({
+      method: "GET",
+      url: "/api/filters",
+    }).as("fetchByFilter");
+
+    cy.intercept({
+      method: "GET",
+      url: "/api/navigation",
+    }).as("fetchNavigation");
+
+    cy.intercept({
+      method: "GET",
+      url: "/api/properties",
+    }).as("fetchProperties");
+
     cy.visit(`${baseURL}`);
     cy.get('[href="/Unsere-Lösungen/"]').click();
     cy.get('[href="/Startseite/"]').click();
@@ -19,34 +35,37 @@ describe(`slug page`, () => {
 
     // newtwork calls happen once on the server
     cy.get("@fetchContent").should("eq", null);
+    cy.get("@fetchByFilter").should("eq", null);
+    cy.get("@fetchNavigation").should("eq", null);
+    cy.get("@fetchProperties").should("eq", null);
   });
 
   it("navigate to content projection => display content", () => {
-    cy.visit(`${baseURL}/Productsss/Goomazon-Oklexa-SP93.html`);
+    cy.visit(`${baseURL}/Products/Goomazon-Oklexa-SP93.html`);
     cy.get("[data-testid=productSection]").should("contain", "The Oklexa SP93");
   });
 
   it("click back button to content projection => display same content", () => {
-    cy.visit(`${baseURL}/Productsss/Goomazon-Oklexa-SP93.html`);
+    cy.visit(`${baseURL}/Products/Goomazon-Oklexa-SP93.html`);
     cy.get("[data-testid=productSection]").should("contain", "The Oklexa SP93");
     cy.contains("Home").click();
     cy.url().should("eq", `${baseURL}/Home/`);
     cy.go("back");
-    cy.url().should("eq", `${baseURL}/Productsss/Goomazon-Oklexa-SP93.html`);
+    cy.url().should("eq", `${baseURL}/Products/Goomazon-Oklexa-SP93.html`);
     cy.get("[data-testid=productSection]").should("contain", "The Oklexa SP93");
   });
 
   it("refresh content projection page => display same content", () => {
-    cy.visit(`${baseURL}/Productsss/Goomazon-Oklexa-SP93.html`);
+    cy.visit(`${baseURL}/Products/Goomazon-Oklexa-SP93.html`);
     cy.get("[data-testid=productSection]").should("contain", "The Oklexa SP93");
     cy.reload();
-    cy.url().should("eq", `${baseURL}/Productsss/Goomazon-Oklexa-SP93.html`);
+    cy.url().should("eq", `${baseURL}/Products/Goomazon-Oklexa-SP93.html`);
     cy.get("[data-testid=productSection]").should("contain", "The Oklexa SP93");
   });
 
   it("navigate to non-existing content projection => display 404", () => {
     cy.request({
-      url: `${baseURL}/Productsss/Goomazon-Oklexa.html`,
+      url: `${baseURL}/Products/Goomazon-Oklexa.html`,
       failOnStatusCode: false,
     })
       .its("status")

@@ -1,8 +1,9 @@
 <template>
   <div data-testid="sliderSection">
     <div class="group relative">
-      <DevOnly v-if="appDevMode || envDevMode">
+      <DevOnly>
         <Dev
+          v-if="showDev"
           :content="data"
           class="hidden group-hover:block"
           component-name="Slider"
@@ -50,7 +51,7 @@
           class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black to-transparent p-6 md:p-16"
         >
           <div class="flex max-w-xl flex-col space-y-4 md:py-10">
-            <h1 class="text-4xl font-bold md:text-6xl">
+            <h1 class="text-4xl font-black md:text-6xl">
               <ElementsRichText :richtext="activeSlide.data.st_title" />
             </h1>
             <p>{{ activeSlide.data.st_description }}</p>
@@ -73,6 +74,8 @@
 <script setup lang="ts">
 import { Image, RichTextElement, Section } from "fsxa-api";
 
+const { showDev } = useDev();
+
 interface SliderSlide extends Section {
   data: {
     st_button: {
@@ -87,9 +90,6 @@ interface SliderSlide extends Section {
     st_title: RichTextElement[];
   };
 }
-
-const { devMode: appDevMode } = useAppConfig();
-const { devMode: envDevMode } = useRuntimeConfig();
 
 const props = defineProps<{ data: SliderSlide[] }>();
 

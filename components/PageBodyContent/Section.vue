@@ -1,11 +1,11 @@
 <template>
   <div data-testid="section">
-    <DevOnly v-if="!sectionComponent">
-      <Unknown :content="content" />
+    <DevOnly>
+      <Unknown v-if="!sectionComponent && showDev" :content="content" />
     </DevOnly>
     <component
       :is="sectionComponent"
-      v-else
+      v-if="sectionComponent"
       :data="content.data"
       :data-preview-id="
         content.previewId.split('.')[0] !== '' ? content.previewId : undefined
@@ -17,6 +17,8 @@
 <script setup lang="ts">
 import { Section } from "fsxa-api";
 const props = defineProps<{ content: Section }>();
+
+const { showDev } = useDev();
 
 const sectionComponent = computed(() => {
   switch (props.content.sectionType) {

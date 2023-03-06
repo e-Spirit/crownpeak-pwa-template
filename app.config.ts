@@ -3,7 +3,7 @@ import { FSXAFileConfig } from "./types";
 
 const fsxaConfig: FSXAFileConfig = {
   logLevel: LogLevel.NONE,
-  devMode: true,
+  devMode: false,
   defaultLocale: "de_DE",
   enableEventStream: false,
 };
