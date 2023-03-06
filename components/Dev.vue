@@ -62,16 +62,16 @@
         <button
           class="rounded-t p-2 font-bold capitalize text-white"
           :class="{
-            'bg-gray-800 ': activeItem === 'page',
-            'bg-gray-600 ': activeItem !== 'page',
+            'bg-gray-800 ': activeItem === 'content',
+            'bg-gray-600 ': activeItem !== 'content',
           }"
-          @click="activeItem = 'page'"
+          @click="activeItem = 'content'"
         >
           {{ componentName }} Data
         </button>
 
         <button
-          v-if="dataset && isContentProjection"
+          v-if="currentDataset && isContentProjection"
           class="rounded-t p-2 font-bold text-white"
           :class="{
             'bg-gray-800 ': activeItem === 'dataset',
@@ -93,6 +93,17 @@
         >
           Products
         </button>
+
+        <button
+          class="rounded-t p-2 font-bold text-white"
+          :class="{
+            'bg-gray-800 ': activeItem === 'currentPage',
+            'bg-gray-600 ': activeItem !== 'currentPage',
+          }"
+          @click="activeItem = 'currentPage'"
+        >
+          Current Page
+        </button>
       </div>
 
       <div
@@ -111,30 +122,48 @@
 </template>
 
 <script setup lang="ts">
-import { Dataset } from "fsxa-api";
-
 const props = defineProps<{
   content: unknown;
-  dataset?: Dataset | null;
   componentName?: string;
 }>();
 
 const { activeNavigationItem } = useNavigationData();
-const { findCachedProductsByRoute } = useContent();
+const {
+  findCachedProductsByRoute,
+  findCachedPageByRoute,
+  findCachedDatasetByRoute,
+} = useContent();
 
 const devComponentVisible = ref(false);
 
-const activeItem = ref<"page" | "dataset" | "products">("page");
+const activeItem = ref<"content" | "dataset" | "products" | "currentPage">(
+  "content"
+);
 
 const devContent = computed(() => {
   if (activeItem.value === "dataset") {
-    return props.dataset;
+    return currentDataset.value;
   } else if (activeItem.value === "products") {
     return products.value;
+  } else if (activeItem.value === "currentPage") {
+    return currentPage.value;
   } else return props.content;
 });
 
-const products = computed(() => findCachedProductsByRoute(useRoute().path));
+const products = computed(() => {
+  const route = decodeURIComponent(useRoute().path);
+  return findCachedProductsByRoute(route);
+});
+
+const currentPage = computed(() => {
+  const route = decodeURIComponent(useRoute().path);
+  return findCachedPageByRoute(route);
+});
+
+const currentDataset = computed(() => {
+  const route = decodeURIComponent(useRoute().path);
+  return findCachedDatasetByRoute(route);
+});
 
 const isContentProjection = computed(
   () => activeNavigationItem.value?.seoRouteRegex !== null
