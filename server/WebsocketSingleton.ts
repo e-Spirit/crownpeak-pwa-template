@@ -1,27 +1,36 @@
 import ReconnectingWebSocket from "reconnecting-websocket";
 
+console.log("ACCESS X");
+
 export class WebsocketSingleton {
-  private static instance: ReconnectingWebSocket;
-  private static lastMessages: string[] = [];
+  private static _instance: ReconnectingWebSocket;
+  private static _lastMessages: string[] = [];
 
   public static init(websocket: ReconnectingWebSocket) {
-    if (!WebsocketSingleton.instance) {
-      WebsocketSingleton.instance = websocket;
-      console.log(websocket);
-      console.log(WebsocketSingleton.instance);
-      WebsocketSingleton.instance.onmessage = (msg: MessageEvent) => {
+    if (!this._instance) {
+      console.log("WS INITIALIZED!");
+
+      this._instance = websocket;
+
+      this._instance.onmessage = (msg: MessageEvent) => {
+        console.log("NEW MESSAGE!");
+        console.log(msg);
+
         const message = msg.data.toString("utf-8");
-        if (WebsocketSingleton.lastMessages.includes(message)) return;
-        WebsocketSingleton.lastMessages.push(message);
+        if (this._lastMessages.includes(message)) return;
+        this._lastMessages.push(message);
       };
     }
   }
 
-  static getInstance() {
-    return WebsocketSingleton.instance;
+  public static get instance() {
+    // if (!this._instance)
+    //   throw new Error("Websocket singleton needs to be initialized first!");
+    if (!this._instance) return null;
+    return this._instance;
   }
 
-  static getLastMessages() {
-    return WebsocketSingleton.lastMessages;
+  public static get lastMessages() {
+    return this._lastMessages;
   }
 }
