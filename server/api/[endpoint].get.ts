@@ -5,10 +5,12 @@ import { ServerErrors } from "~~/types";
 
 export default defineEventHandler(async (event) => {
   const endpoint = event.context["params"]?.["endpoint"];
-  // websocket is already set by middleware
-  const websocket = WebsocketSingleton.instance;
 
   if (`/${endpoint}` === FSXAProxyRoutes.STREAM_CHANGE_EVENTS_ROUTE) {
+    // websocket is already set by middleware
+    const websocket = WebsocketSingleton.instance;
+
+    // Id to identify the event stream
     const id = randomUUID();
 
     // event-stream specific headers

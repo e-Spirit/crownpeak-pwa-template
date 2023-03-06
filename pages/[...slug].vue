@@ -90,6 +90,8 @@ const { pending } = useAsyncData(async () => {
     addToCachedPages(currentRoute, currentPage.value);
   }
 
+  // Only available on client side and only relevant if preview mode is enabled
+  // This enables the synchronization of the editor with the actual page
   if ($setPreviewId)
     $setPreviewId(
       currentDataset.value?.previewId ?? currentPage.value?.previewId
