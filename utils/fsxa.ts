@@ -225,7 +225,6 @@ export const fetchPageRoute = async (
   });
 
   const item = response?.items?.[0] as Partial<
-    // eslint-disable-next-line camelcase
     Pick<CaasDataset, "routes" | "route">
   >;
 
