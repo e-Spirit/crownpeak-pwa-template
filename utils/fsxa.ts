@@ -6,8 +6,7 @@ import {
   Dataset,
   Page,
   QueryBuilderQuery,
-  // eslint-disable-next-line camelcase
-  CaaSApi_Dataset,
+  CaaSApi_Dataset as CaasDataset,
 } from "fsxa-api";
 
 /**
@@ -227,7 +226,7 @@ export const fetchPageRoute = async (
 
   const item = response?.items?.[0] as Partial<
     // eslint-disable-next-line camelcase
-    Pick<CaaSApi_Dataset, "routes" | "route">
+    Pick<CaasDataset, "routes" | "route">
   >;
 
   const route = item?.route ?? item?.routes?.[0]?.route ?? null;
