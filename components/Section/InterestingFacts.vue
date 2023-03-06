@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative grid items-center gap-4 p-4 py-20 text-white lg:h-screen lg:grid-cols-2"
+    class="relative grid items-center gap-4 p-4 py-20 text-white lg:h-[800px] lg:grid-cols-2"
     data-testid="interestingFactsSection"
   >
     <div
@@ -14,14 +14,11 @@
       />
     </div>
 
-    <div class="flex flex-col space-y-2 lg:border-8 lg:p-8">
-      <h3 class="text-xl uppercase" data-preview-id="#st_tagline" data-inedit>
-        {{ data.st_tagline }}
-      </h3>
+    <div class="flex flex-col space-y-2 lg:m-16 lg:border-[12px] lg:p-12">
+      <h3 class="text-xl uppercase" data-preview-id="#st_tagline" data-inedit>{{ data.st_tagline }}</h3>
       <h2
-        v-if="data.st_headline"
-        data-preview-id="#st_headline"
-        class="text-3xl font-bold uppercase text-yellow-500 lg:text-5xl"
+        v-if="data.st_headline" data-preview-id="#st_headline"
+        class="text-3xl font-black uppercase text-yellow-500 lg:text-5xl"
       >
         {{ data.st_headline }}
       </h2>
@@ -47,7 +44,7 @@
         >
           {{ counter.data.st_number }}
         </div>
-        <div class="border-t-2 text-gray-300" data-preview-id="#st_text">
+        <div class="max-w-[100px] border-t-2 text-gray-300" data-preview-id="#st_text">
           {{ counter.data.st_text }}
         </div>
       </div>

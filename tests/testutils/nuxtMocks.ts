@@ -5,6 +5,7 @@ import toplevelDE from "../fixtures/toplevelNavigation_de_DE.json";
 import toplevelEN from "../fixtures/toplevelNavigation_en_GB.json";
 import page from "../fixtures/page.json";
 import projectProperties from "../fixtures/projectProperties.json";
+import { useDev } from "../../composables/showDev";
 import { useLocale } from "../../composables/locale";
 import { useContent } from "../../composables/content";
 import { useNavigationData } from "../../composables/navigation";
@@ -98,6 +99,7 @@ export function useRouter() {
 }
 
 export {
+  useDev,
   useLocale,
   fetchTopLevelNavigation,
   fetchNavigationItemFromRoute,
