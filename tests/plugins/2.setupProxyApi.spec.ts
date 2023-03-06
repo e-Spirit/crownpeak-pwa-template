@@ -1,5 +1,5 @@
 import { it, expect } from "vitest";
-import setupProxyApi from "../../plugins/2.setupProxyApi";
+import setupProxyApi from "../../plugins/3.setupProxyApi";
 import runtimeConfig from "../fixtures/runtimeConfig.json";
 
 it("setupProxyApi => provide fsxaApi", () => {

@@ -1,7 +1,7 @@
 import TPP_SNAP from "fs-tpp-api";
 import { FSXAProxyApi } from "fsxa-api";
 
-// WHY IS THIS NOT IN fsxa-api?
+// TODO (?): Move those types to the fsxa-api
 export type CaaSEventType = "insert" | "replace" | "delete";
 
 export type CaaSEvent = {
@@ -17,9 +17,9 @@ export const onInit = () =>
     });
   });
 
-export const waitForPageId = (
+export const waitForPreviewId = (
   fsxaApi: FSXAProxyApi,
-  pageId: string,
+  previewId: string,
   timeout = 2000
 ) =>
   new Promise((resolve) => {
@@ -27,7 +27,7 @@ export const waitForPageId = (
 
     caasEvents.addEventListener("message", ({ data }: MessageEvent) => {
       const { documentKey }: CaaSEvent = JSON.parse(data);
-      if (documentKey._id === pageId) {
+      if (documentKey._id === previewId) {
         caasEvents.close();
         resolve(true);
       }
@@ -43,10 +43,9 @@ export const navigateToPageId = async (pageId: string) => {
   const { $fsxaApi } = useNuxtApp();
   const { activeLocale } = useLocale();
   const router = useRouter();
+  await waitForPreviewId($fsxaApi, pageId);
 
   const { navigationData, setActiveNavigationItem } = useNavigationData();
-
-  await waitForPageId($fsxaApi, pageId);
 
   const page = navigationData.value?.idMap[pageId];
 

@@ -1,5 +1,6 @@
 import { FSXAContentMode } from "fsxa-api";
 import TPP_SNAP from "fs-tpp-api";
+import { waitForPreviewId } from "~~/utils/tpp";
 
 export default defineNuxtPlugin(() => {
   const {
@@ -34,7 +35,7 @@ export default defineNuxtPlugin(() => {
 
       if (!pageId || !locale) return;
 
-      await waitForPageId($fsxaApi, pageId);
+      await waitForPreviewId($fsxaApi, previewId);
       const { currentPage, currentDataset } = useContent();
 
       if (activeNavigationItem.value?.seoRouteRegex !== null) {

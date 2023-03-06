@@ -1,6 +1,6 @@
 import { it, expect, describe, vi } from "vitest";
 import { ComparisonQueryOperatorEnum } from "fsxa-api";
-import setupProxyApi from "../../plugins/2.setupProxyApi";
+import setupProxyApi from "../../plugins/3.setupProxyApi";
 import {
   fetchTopLevelNavigation,
   getLocaleFromNavigationItem,
