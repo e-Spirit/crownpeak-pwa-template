@@ -15,9 +15,12 @@
     </div>
 
     <div class="flex flex-col space-y-2 lg:m-16 lg:border-[12px] lg:p-12">
-      <h3 class="text-xl uppercase" data-preview-id="#st_tagline" data-inedit>{{ data.st_tagline }}</h3>
+      <h3 class="text-xl uppercase" data-preview-id="#st_tagline" data-inedit>
+        {{ data.st_tagline }}
+      </h3>
       <h2
-        v-if="data.st_headline" data-preview-id="#st_headline"
+        v-if="data.st_headline"
+        data-preview-id="#st_headline"
         class="text-3xl font-black uppercase text-yellow-500 lg:text-5xl"
       >
         {{ data.st_headline }}
@@ -44,7 +47,10 @@
         >
           {{ counter.data.st_number }}
         </div>
-        <div class="max-w-[100px] border-t-2 text-gray-300" data-preview-id="#st_text">
+        <div
+          class="max-w-[100px] border-t-2 text-gray-300"
+          data-preview-id="#st_text"
+        >
           {{ counter.data.st_text }}
         </div>
       </div>

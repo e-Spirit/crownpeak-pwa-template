@@ -22,7 +22,9 @@
         <h1 class="mt-4 text-4xl font-black" data-preview-id="#tt_name">
           {{ currentDataset?.data["tt_name"] }}
         </h1>
-        <p class="text-gray-800" data-preview-id="#tt_abstract">{{ currentDataset?.data["tt_abstract"] }}</p>
+        <p class="text-gray-800" data-preview-id="#tt_abstract">
+          {{ currentDataset?.data["tt_abstract"] }}
+        </p>
         <p class="my-6 text-3xl font-black" data-preview-id="#tt_price">
           {{ currentDataset?.data["tt_price"] }}
         </p>
@@ -30,7 +32,10 @@
         <div class="grid grid-cols-2 gap-4">
           <div>
             <h3 class="mb-1 text-lg font-bold">Kategorien</h3>
-            <ul class="list-inside list-disc text-gray-800" data-preview-id="#tt_categories">
+            <ul
+              class="list-inside list-disc text-gray-800"
+              data-preview-id="#tt_categories"
+            >
               <li
                 v-for="(category, index) in currentDataset?.data[
                   'tt_categories'
@@ -45,7 +50,10 @@
 
           <div>
             <h3 class="mb-1 text-lg font-bold">Kompatibilität</h3>
-            <ul class="list-inside list-disc text-gray-800" data-preview-id="#tt_compatibility">
+            <ul
+              class="list-inside list-disc text-gray-800"
+              data-preview-id="#tt_compatibility"
+            >
               <li
                 v-for="(compatibility, index) in currentDataset?.data[
                   'tt_compatibility'

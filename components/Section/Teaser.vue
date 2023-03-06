@@ -4,8 +4,14 @@
     data-testid="teaserSection"
   >
     <div class="flex flex-col space-y-3 p-4 md:p-0">
-      <h3 class="text-xl text-gray-600" data-preview-id="#st_kicker">{{ data.st_kicker }}</h3>
-      <h2 v-if="data.st_headline" class="text-4xl font-black uppercase" data-preview-id="#st_headline">
+      <h3 class="text-xl text-gray-600" data-preview-id="#st_kicker">
+        {{ data.st_kicker }}
+      </h3>
+      <h2
+        v-if="data.st_headline"
+        class="text-4xl font-black uppercase"
+        data-preview-id="#st_headline"
+      >
         <ElementsRichText :richtext="data.st_headline" />
       </h2>
       <p v-if="data.st_text" class="text-gray-600" data-preview-id="#st_text">
