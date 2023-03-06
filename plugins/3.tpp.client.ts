@@ -17,7 +17,9 @@ export default defineNuxtPlugin(() => {
   const { activeNavigationItem } = useNavigationData();
 
   TPP_SNAP.isConnected.then(async (_isConnected: boolean) => {
-    await onInit();
+    const initialized = await onInit();
+
+    if (!initialized) return;
 
     // onRequestPreviewElement is called if you e.g. click on a result in the search results
     // https://docs.e-spirit.com/tpp/snap/#onrequestpreviewelementhandler

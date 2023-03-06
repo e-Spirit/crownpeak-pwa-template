@@ -15,9 +15,8 @@ export type CaaSEvent = {
  * @returns Promise that resolves to true if the TPP Snap is initialized, false if the timeout was reached
  */
 export const onInit = () =>
-  new Promise((resolve, reject) => {
+  new Promise((resolve) => {
     TPP_SNAP.onInit((success: boolean) => {
-      if (!success) reject(new Error("onInit failed"));
       resolve(success);
     });
   });
