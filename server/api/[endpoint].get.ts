@@ -1,6 +1,6 @@
 import { randomUUID } from "crypto";
 import { FSXAProxyRoutes } from "fsxa-api";
-import { WebsocketSingleton } from "~~/server/WebsocketSingleton";
+import { WebsocketSingleton } from "~~/server/CaasEventListenerSingleton";
 import { ServerErrors } from "~~/types";
 
 export default defineEventHandler(async (event) => {
