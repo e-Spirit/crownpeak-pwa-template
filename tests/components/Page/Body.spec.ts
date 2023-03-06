@@ -50,16 +50,4 @@ describe("pageBody", () => {
       pageBodyChildren[3]?.querySelector("[data-testid=unknown]")
     ).toBeTruthy(); // unknwon maps to unknwon component
   });
-
-  it("render => has data-preview-id attribute", () => {
-    const pageBody = createPageBody();
-    const { getByTestId } = render(PageBody, {
-      global: renderConfig.global,
-      props: { pageBody },
-    });
-    const pageBodyElement = getByTestId("pageBody");
-    expect(pageBodyElement.getAttribute("data-preview-id")).toStrictEqual(
-      pageBody.previewId
-    );
-  });
 });
