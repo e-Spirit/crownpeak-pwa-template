@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-16 lg:pt-20" :data-preview-id="previewId">
+  <div class="mt-16 lg:mt-20" :data-preview-id="previewId">
     <ClientOnly>
       <AppLayoutLoading v-if="pending" />
     </ClientOnly>
