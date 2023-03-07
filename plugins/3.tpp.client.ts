@@ -36,6 +36,7 @@ export default defineNuxtPlugin(() => {
     // The previewId can be for a dataset or a page.
     // https://docs.e-spirit.com/tpp/snap/#onrerenderviewhandler
     TPP_SNAP.onRerenderView(async () => {
+      console.log("onRerenderView", await TPP_SNAP.getPreviewElement());
       const previewId: string | undefined = await TPP_SNAP.getPreviewElement();
       if (!previewId) return;
 
@@ -73,6 +74,15 @@ export default defineNuxtPlugin(() => {
       // For example, if you change the language in the page, the previewId will be updated and the editor will show the correct language as well
       setPreviewId: async (previewId: string | undefined) => {
         if (await TPP_SNAP.isConnected) TPP_SNAP.setPreviewElement(previewId);
+      },
+      createSection: async (bodyName: string) => {
+        // Used by the add section component to create a new section
+        // https://docs.e-spirit.com/tpp/snap/#tpp_snapcreatesection`
+        const previewId: string | undefined =
+          await TPP_SNAP.getPreviewElement();
+        if (!previewId) return;
+
+        return TPP_SNAP.createSection(previewId, { body: bodyName });
       },
     },
   };

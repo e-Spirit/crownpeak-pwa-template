@@ -21,6 +21,9 @@
         :content="pageBodyContent"
       />
     </div>
+    <ClientOnly>
+      <AddSection :body-name="pageBody.name" />
+    </ClientOnly>
   </div>
 </template>
 <script setup lang="ts">
