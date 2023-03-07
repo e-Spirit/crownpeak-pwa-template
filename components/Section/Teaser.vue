@@ -30,7 +30,7 @@
       <div class="md:pl-10">
         <ElementsImage
           v-if="data?.st_picture"
-          data-preview-id="#st_picture"
+          :data-preview-id="data.st_picture?.previewId"
           :image="data.st_picture"
           :alt="data.st_picture_alt"
         />
