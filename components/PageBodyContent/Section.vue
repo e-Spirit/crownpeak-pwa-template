@@ -23,7 +23,7 @@ const { showDev } = useDev();
 const sectionComponent = computed(() => {
   switch (props.content.sectionType) {
     case "interesting_facts":
-      return "SectionInterestingFacts";
+      return resolveComponent("SectionInterestingFacts");
     case "products.category_products":
       return resolveComponent("SectionProductCategory");
     case "products.product":
