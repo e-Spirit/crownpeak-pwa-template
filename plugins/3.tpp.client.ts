@@ -36,7 +36,6 @@ export default defineNuxtPlugin(() => {
     // The previewId can be for a dataset or a page.
     // https://docs.e-spirit.com/tpp/snap/#onrerenderviewhandler
     TPP_SNAP.onRerenderView(async () => {
-      console.log("onRerenderView", await TPP_SNAP.getPreviewElement());
       const previewId: string | undefined = await TPP_SNAP.getPreviewElement();
       if (!previewId) return;
 
