@@ -10,7 +10,6 @@
         <Dev
           v-if="showDev"
           :content="pageBodyContent"
-          :dataset="currentDataset"
           class="hidden group-hover:block"
           component-name="section"
         />
@@ -28,7 +27,6 @@ import { PageBody, PageBodyContent } from "fsxa-api";
 
 defineProps<{ pageBody: PageBody }>();
 
-const { currentDataset } = useContent();
 const { showDev } = useDev();
 
 function getComponentFromPageBodyContent(pageBodyContent: PageBodyContent) {

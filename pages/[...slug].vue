@@ -8,11 +8,6 @@
       v-if="currentPage"
       :page="currentPage"
     />
-    <DevOnly>
-      <div v-if="showDev" class="fixed top-0 right-0 z-30">
-        <Dev v-if="currentPage" :content="currentPage" component-name="page" />
-      </div>
-    </DevOnly>
   </div>
 </template>
 
@@ -29,8 +24,6 @@ const { $fsxaApi } = useNuxtApp();
 const { activeLocale } = useLocale();
 const { activeNavigationItem } = useNavigationData();
 const currentRoute = decodeURIComponent(useRoute().path);
-
-const { showDev } = useDev();
 
 // fetch page and dataset
 const { pending } = useAsyncData(async () => {
