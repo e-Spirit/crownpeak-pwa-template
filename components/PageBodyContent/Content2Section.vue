@@ -1,8 +1,5 @@
 <template>
   <div data-testid="content2section">
-    <DevOnly>
-      <Unknown v-if="!content2SectionComponent && showDev" :content="content" />
-    </DevOnly>
     <component :is="content2SectionComponent" :content="content" />
   </div>
 </template>
@@ -11,8 +8,6 @@
 import { Content2Section } from "fsxa-api";
 
 const props = defineProps<{ content: Content2Section }>();
-
-const { showDev } = useDev();
 
 const content2SectionComponent = computed(() => {
   switch (props.content.sectionType) {
