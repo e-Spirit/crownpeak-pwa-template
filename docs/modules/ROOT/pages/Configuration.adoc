@@ -104,16 +104,6 @@ You can also set the `logLevel` via _ENV variable_
 
 ENV variable will take the priority if set, e.x. *FSXA_LOG_LEVEL*=`3`
 
-// TODO: implement functionality
-=== customSnapHooks `boolean` _optional_
-
-You may want to override the https://github.com/e-Spirit/fsxa-nuxt-module#options[default] https://www.npmjs.com/package/fs-tpp-api[TPP] (https://docs.e-spirit.com/tpp/snap/[Snap]) version. 
-
-TPP Snap provides some https://docs.e-spirit.com/tpp/snap/#oncontentchangehandler[`onXxx`-hooks] and the FSXA provides
-
-// TODO: update link
-https://github.com/e-Spirit/fsxa-pattern-library/blob/master/src/utils/tpp-snap-hooks.ts[opinionated handler] for them. Set `customSnapHooks` to `true` to use your own handler instead.
-
 
 === enableEventStream _optional_
 
@@ -125,10 +115,10 @@ When enabled, events for `insert`, `replace` and `delete` CaaS documents can be 
 [source,javascript]
 ----
 const fsxaConfig = {
-  devMode: true,
+  logLevel: LogLevel.NONE,
+  devMode: false,
   defaultLocale: "de_DE",
-  logLevel: 3,
-  customSnapHooks: true
+  enableEventStream: false,
 }
 
 export default defineAppConfig(fsxaConfig);

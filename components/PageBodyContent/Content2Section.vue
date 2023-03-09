@@ -16,9 +16,8 @@ const { showDev } = useDev();
 
 const content2SectionComponent = computed(() => {
   switch (props.content.sectionType) {
-    // TODO
     default:
-      return undefined;
+      return resolveComponent("Unknown");
   }
 });
 </script>

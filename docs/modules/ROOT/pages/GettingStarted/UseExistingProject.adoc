@@ -18,8 +18,7 @@ We recommend to activate the "CaaS Modus" in the *Navigation Project Configurati
 If you use different URLs Factories, we cannot guarantee that the navigation component inside the fsxa-stack can handle it properly. 
 
 == Clone and Configure PWA
-// TODO: add link to github
-Get the link:https://github.com/e-Spirit//[FSXA-PWA from github].
+Get the link:https://github.com/e-Spirit/fsxa-nuxt3-pwa[FSXA-PWA from github].
 
 == Import scripts for switching OCM to local environment
 

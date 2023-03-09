@@ -6,7 +6,6 @@ export interface FSXAFileConfig {
   devMode?: boolean;
   contentMode?: "preview" | "release";
   snapUrl?: string;
-  customSnapHooks?: boolean;
   maxReferenceDepth?: number;
   remotes?: Record<
     string,
@@ -27,6 +26,7 @@ export enum ServerErrors {
 }
 
 // TODO: Routes not exported from FSXA Api
+// will be solved when equivalent to the express integration  is implemented
 export enum FSXAProxyRoutes {
   FETCH_ELEMENT_ROUTE = "/elements",
   FETCH_NAVIGATION_ROUTE = "/navigation",
@@ -36,6 +36,7 @@ export enum FSXAProxyRoutes {
 }
 
 // TODO: Errors not exported from FSXA Api
+// will be solved when status codes ticket is implemented
 export enum FSXAApiErrors {
   UNKNOWN_CONTENT_MODE = "The content mode must be preview or release.",
   UNKNOWN_API_MODE = "The api mode must be remote or proxy.",

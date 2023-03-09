@@ -37,7 +37,6 @@ export default defineNuxtRouteMiddleware(async (to) => {
   } catch (_error: unknown) {
     // Theoretically this does not have to mean that the page does not exist.
     // It could also be a 500 server error or something completely different...
-    // TODO: Differentiate between 404 and other errors.
     throw createError({
       statusCode: 404,
       message: "Page not found",

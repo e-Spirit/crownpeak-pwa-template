@@ -16,9 +16,8 @@ const { showDev } = useDev();
 
 const datasetComponent = computed(() => {
   switch (props.content.template) {
-    // TODO
     default:
-      return undefined;
+      return resolveComponent("Unknown");
   }
 });
 </script>
