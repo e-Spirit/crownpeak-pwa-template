@@ -53,10 +53,10 @@ image:DevMode/DevMode_products.png[Infobox Products]
 
 === Page info
 
-To get general information about the page that is loaded you need to click the question mark that is displayed in the top right corner on every page, if the `devMode` is enabled.
+To get general information about the page that is loaded click on a question mark that is displayed in the top right corner on any section of the page, if the `devMode` is enabled.
 
-image:DevMode/Questionmark_page.png[Question Mark Page]
+image:DevMode/Questionmark.png[Questionmark]
 
-Inside the infobox you can then get general information about what content is in the page and what layout the page should be displayed in.
+Inside the infobox you can then get general information about what content is in the page by clicking on the "Current Page" tab. Here you can also find information about what layout the page should be displayed in.
 
 image:DevMode/DevMode_page.png[Infobox Page]

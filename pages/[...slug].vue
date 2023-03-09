@@ -8,11 +8,6 @@
       v-if="currentPage"
       :page="currentPage"
     />
-    <DevOnly>
-      <div v-if="showDev" class="fixed top-0 right-0 z-30">
-        <Dev v-if="currentPage" :content="currentPage" component-name="page" />
-      </div>
-    </DevOnly>
   </div>
 </template>
 
