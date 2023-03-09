@@ -1,5 +1,5 @@
 <template>
-  <div :data-preview-id="pageBody.previewId" data-testid="pageBody">
+  <div data-testid="pageBody">
     <div
       v-for="(pageBodyContent, index) in pageBody.children"
       :key="pageBodyContent.type + index"
@@ -20,6 +20,9 @@
         :content="pageBodyContent"
       />
     </div>
+    <ClientOnly>
+      <AddSection :body-name="pageBody.name" />
+    </ClientOnly>
   </div>
 </template>
 <script setup lang="ts">

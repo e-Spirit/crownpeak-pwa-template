@@ -4,11 +4,7 @@
       <Unknown v-if="!datasetComponent && showDev"></Unknown>
       :content="content" />
     </DevOnly>
-    <component
-      :is="datasetComponent"
-      :data-preview-id="content.previewId"
-      :content="content"
-    />
+    <component :is="datasetComponent" :content="content" />
   </div>
 </template>
 

@@ -33,6 +33,9 @@ export default defineNuxtConfig({
     public: {
       baseURL: process.env["BASE_URL"] || "http://localhost:3000",
       logLevel: process.env["FSXA_LOG_LEVEL"],
+      mode: process.env["FSXA_MODE"],
+      snapUrl: process.env["FSXA_SNAP_URL"],
+      enableEventStream: process.env["FSXA_ENABLE_EVENT_STREAM"],
     },
     private: {
       apiKey: process.env["FSXA_API_KEY"],
@@ -42,10 +45,7 @@ export default defineNuxtConfig({
       tenantId: process.env["FSXA_TENANT_ID"],
       remotes: process.env["FSXA_REMOTES"],
       maxReferenceDepth: process.env["FSXA_MAX_REFERENCE_DEPTH"],
-      mode: process.env["FSXA_MODE"],
       devMode: process.env["FSXA_DEV_MODE"],
-      snapUrl: process.env["FSXA_SNAP_URL"],
-      enableEventStream: process.env["FSXA_ENABLE_EVENT_STREAM"],
     },
   },
 });

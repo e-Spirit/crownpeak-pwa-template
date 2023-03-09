@@ -6,8 +6,10 @@
     <component
       :is="sectionComponent"
       v-if="sectionComponent"
-      :data-preview-id="content.previewId"
       :data="content.data"
+      :data-preview-id="
+        content.previewId.split('.')[0] !== '' ? content.previewId : undefined
+      "
     />
   </div>
 </template>

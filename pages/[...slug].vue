@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-16 lg:pt-20">
+  <div class="mt-16 lg:mt-20" :data-preview-id="previewId">
     <ClientOnly>
       <AppLayoutLoading v-if="pending" />
     </ClientOnly>
@@ -20,10 +20,16 @@ const {
   findCachedPageByRoute,
   findCachedDatasetByRoute,
 } = useContent();
-const { $fsxaApi } = useNuxtApp();
+const { $fsxaApi, $setPreviewId } = useNuxtApp();
 const { activeLocale } = useLocale();
 const { activeNavigationItem } = useNavigationData();
 const currentRoute = decodeURIComponent(useRoute().path);
+
+const previewId = computed(() => {
+  return activeNavigationItem.value?.seoRouteRegex !== null
+    ? currentDataset.value?.previewId
+    : currentPage.value?.previewId;
+});
 
 // fetch page and dataset
 const { pending } = useAsyncData(async () => {
@@ -78,6 +84,13 @@ const { pending } = useAsyncData(async () => {
     );
     addToCachedPages(currentRoute, currentPage.value);
   }
+
+  // Only available on client side and only relevant if preview mode is enabled
+  // This enables the synchronization of the editor with the actual page
+  if ($setPreviewId)
+    $setPreviewId(
+      currentDataset.value?.previewId ?? currentPage.value?.previewId
+    );
 });
 
 // dynamic layout component
