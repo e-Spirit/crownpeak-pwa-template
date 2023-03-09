@@ -1,6 +1,6 @@
 import { randomUUID } from "crypto";
 import { FSXAProxyRoutes } from "fsxa-api";
-import { WebsocketSingleton } from "~~/server/CaasEventListenerSingleton";
+import { CaasEventListenerSingleton } from "~~/server/CaasEventListenerSingleton";
 import { ServerErrors } from "~~/types";
 
 export default defineEventHandler(async (event) => {
@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
 
   if (`/${endpoint}` === FSXAProxyRoutes.STREAM_CHANGE_EVENTS_ROUTE) {
     // websocket is already set by middleware
-    const websocket = WebsocketSingleton.instance;
+    const caasEventListener = CaasEventListenerSingleton.instance;
 
     // Id to identify the event stream
     const id = randomUUID();
@@ -26,11 +26,13 @@ export default defineEventHandler(async (event) => {
     };
 
     // send all of the messages that we received before the client connected
-    WebsocketSingleton.lastMessages.forEach((msg: string) => sendEvent(msg));
+    CaasEventListenerSingleton.lastMessages.forEach((msg: string) =>
+      sendEvent(msg)
+    );
 
     // on websocket message, send event to client
-    if (websocket)
-      websocket.onmessage = (msg: MessageEvent) =>
+    if (caasEventListener)
+      caasEventListener.onmessage = (msg: MessageEvent) =>
         sendEvent(msg.data.toString("utf-8"));
 
     // dont end the connection, wait for the client to close it
