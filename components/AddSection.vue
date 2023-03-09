@@ -1,13 +1,28 @@
 <template>
   <div
     v-if="mode === FSXAContentMode.PREVIEW"
-    class="flex flex-col items-center"
+    class="my-10 flex flex-col items-center"
   >
     <button
-      class="w-fit border border-black px-4 py-2 font-medium"
+      class="flex w-fit items-center space-x-2 border border-black px-4 py-2 font-medium hover:bg-gray-50"
       :onclick="() => $createSection(bodyName)"
     >
-      Add Section
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="h-6 w-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 4.5v15m7.5-7.5h-15"
+        />
+      </svg>
+
+      <span>Add Section</span>
     </button>
   </div>
 </template>
