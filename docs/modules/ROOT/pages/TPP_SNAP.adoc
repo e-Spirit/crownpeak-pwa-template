@@ -6,9 +6,9 @@ There are some configurations you could customize, like the used xref:Configurat
 
 == Nested Elements
 
-At layout and section level, the FSXA takes care of enriching the UI so that the elements are editable in the ContentCreator. However, as soon as we have sections within a dataset or a section, there is currently no automatism. So you have to take action here that your child sections can also be edited in the ContentCreator.
+At layout and section level, the FSXA takes care of enriching the UI with borders and buttons that provide the editing functionality in the ContentCreator. However, as soon as we have nested elements within a dataset or a section, there is currently no automatism for adding these editorial UI elements. So you have to take action here that your child sections can also be edited in the ContentCreator.
 
-To enable the editing of such a component make sure to provide a custom preview id for both the nested component as well as the parent component using the syntax #PARENT_COMPONENT_NAME and #NESTED_COMPONENT_INDEX as the following examples show. The example is a snippet from the InterestingFacts component
+To enable the editing of such nested components make sure to provide a custom preview id for both the nested component as well as the parent component using the syntax \#PARENT_COMPONENT_NAME and \#NESTED_COMPONENT_INDEX as the following example shows. The example is a snippet from the `InterestingFacts`` component located at `~/components/Section`. The parent component name is `st_counters` so the data preview id will be `#st_counters`, the childs preview id will be set dynamically to `#${index}`
 
 === Example
 
@@ -59,4 +59,10 @@ Currently, 3 hooks are implemented:
 
 == CaaS Events
 
-CaaS events are sent on every change to your CaaS database and sent as a webhook to the Nuxt Server. The Websocket gets initiated in `~/server/middleware/websocket.ts`, stored in `~/server/WebsocketSingleton.ts` and used in `~/server/api/[endpoint].get.ts`. The communication between the Nuxt server and frontend is also defined in the endpoint and is done over EventStreams. This logic is mostly handled by the TPP_SNAP library, the rest can be found in `~/utils/tpp.ts`, specifically the `waitForPreviewId` function. CaasEvents are also optional, instead of waiting for the event a well timed timeout can be used to make sure that the content is updated before the application tries to fetch it.
+CaaS events are sent on every change to your CaaS database and sent as a webhook to the Nuxt Server. There the `CaaSEventListenerSingleton` will be initialized and receive and further process the webhook.
+
+We initialize the CaasEventListenerSingleton in `~/server/middleware/InitCaasEventListener.ts`, and use in `~/server/api/[endpoint].get.ts`. 
+
+The communication between the Nuxt server and frontend is also defined in the endpoint and is done over EventStreams. This logic is mostly handled by the TPP_SNAP library, the rest can be found in `~/utils/tpp.ts`, specifically the `waitForPreviewId` function. 
+
+CaasEvents are optional, instead of waiting for the event a well timed timeout can be used to make sure that the content is updated before the application tries to fetch it.

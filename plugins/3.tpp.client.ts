@@ -39,8 +39,7 @@ export default defineNuxtPlugin(() => {
       const previewId: string | undefined = await TPP_SNAP.getPreviewElement();
       if (!previewId) return;
 
-      const pageId = previewId.split(".")[0];
-      const locale = previewId.split(".")[1];
+      const [pageId, locale] = previewId.split(".");
 
       if (!pageId || !locale) return;
 
