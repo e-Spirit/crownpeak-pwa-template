@@ -30,7 +30,6 @@ const previewId = computed(() => {
     ? currentDataset.value?.previewId
     : currentPage.value?.previewId;
 });
-const { showDev } = useDev();
 
 // fetch page and dataset
 const { pending } = useAsyncData(async () => {
