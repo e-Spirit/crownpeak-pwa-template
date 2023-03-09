@@ -1,7 +1,7 @@
 <template>
   <div data-testid="content2section">
     <DevOnly>
-      <Unknown v-if="showDev" :content="content" />
+      <Unknown v-if="!content2SectionComponent && showDev" :content="content" />
     </DevOnly>
     <component :is="content2SectionComponent" :content="content" />
   </div>

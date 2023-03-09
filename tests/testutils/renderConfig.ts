@@ -32,6 +32,7 @@ import Link from "../../components/Elements/Link.vue";
 
 import InternalLink from "../../components/InternalLink.vue";
 
+import AddSection from "../../components/AddSection.vue";
 import Unknown from "../../components/Unknown.vue";
 import Dev from "../../components/Dev.vue";
 
@@ -72,6 +73,7 @@ export const renderConfig = {
 
       InternalLink,
 
+      AddSection,
       Unknown,
       Dev,
     },
