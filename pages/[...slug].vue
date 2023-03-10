@@ -20,7 +20,7 @@ const {
   findCachedPageByRoute,
   findCachedDatasetByRoute,
 } = useContent();
-const { $fsxaApi, $setPreviewId } = useNuxtApp();
+const { $fsxaApi, $setPreviewId, $logger } = useNuxtApp();
 const { activeLocale } = useLocale();
 const { activeNavigationItem } = useNavigationData();
 const currentRoute = decodeURIComponent(useRoute().path);
@@ -35,8 +35,17 @@ const previewId = computed(() => {
 const { pending } = useAsyncData(async () => {
   // This state should not be possible.
   // The middleware should have figured out both the locale and our current navigation item
-  if (!activeNavigationItem.value || !activeLocale.value)
-    throw new Error("No navigation item found");
+  if (!activeNavigationItem.value || !activeLocale.value) {
+    $logger.error(
+      "The middleware could not determine the navigation state for this route.",
+      currentRoute,
+      "Navigation item: ",
+      activeNavigationItem.value,
+      "Locale: ",
+      activeLocale.value
+    );
+    throw new Error("No navigation item or locale found");
+  }
 
   const { caasDocumentId, seoRouteRegex } = activeNavigationItem.value;
   const isContentProjection = seoRouteRegex !== null;
@@ -44,39 +53,47 @@ const { pending } = useAsyncData(async () => {
 
   // for content projections we need to get the dataset first
   if (isContentProjection) {
+    $logger.info("On content projection");
     // get dataset
     currentDataset.value = findCachedDatasetByRoute(currentRoute) || null;
     if (!currentDataset.value) {
+      $logger.info(
+        "Dataset not cached yet. Trying to fetch dataset with fsxa api"
+      );
       currentDataset.value = await fetchDatasetByRoute(
         $fsxaApi,
         currentRoute,
         activeLocale.value
       );
 
-      if (!currentDataset.value)
+      if (!currentDataset.value) {
+        $logger.error("Dataset could not be fetched!");
         // Although it is recommended to use createError instead, there is a bug that prevents createError from triggering the error page
         // https://github.com/nuxt/nuxt/issues/15432
         throw showError({
           statusMessage: "Dataset not found",
           statusCode: 404,
         });
-
+      }
       addToCachedDatasets(currentRoute, currentDataset.value);
     }
     // get pageRefId from dataset
     const firstRoute = currentDataset.value.routes?.[0];
-    if (!firstRoute)
+
+    if (!firstRoute) {
+      $logger.error("Dataset has no matching route");
       throw showError({
         statusMessage: "Dataset has no matching route",
         statusCode: 404,
       });
-
+    }
     pageId = firstRoute.pageRef;
   }
 
   // get page data
   currentPage.value = findCachedPageByRoute(currentRoute) || null;
   if (!currentPage.value) {
+    $logger.info("Page data not cached yet. Trying to fetch with fsxa api...");
     currentPage.value = await fetchPageById(
       $fsxaApi,
       pageId,
