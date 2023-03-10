@@ -70,13 +70,11 @@ import { NavigationItem } from "fsxa-api";
 const { navigationData } = useNavigationData();
 const extended = ref();
 
-// TODO: Make beautiful
 const topNavigation = computed(() => {
   return (navigationData.value?.structure ?? [])
     .map((item) => navigationData.value?.idMap[item.id])
     .filter((e) => e !== undefined) as NavigationItem[];
 });
-// TODO: Make beautiful
 function getSubNavigation(navItem: NavigationItem) {
   return (navigationData.value?.structure ?? [])
     .find((item) => item.id === navItem.id)

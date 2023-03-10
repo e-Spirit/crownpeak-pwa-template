@@ -38,7 +38,7 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_ELEMENT_ROUTE}`, () => {
     });
   });
 
-  // TODO
+  // TODO: we currently cannot easily test this
   it.skip(`missing permissions => return 401`, () => {});
 
   it(`body is invalid => return 500`, () => {
@@ -103,7 +103,7 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_BY_FILTER_ROUTE}`, () => {
     });
   });
 
-  // TODO
+  // TODO: we currently cannot easily test this
   it.skip(`missing permissions => return 401`, () => {});
 
   it(`body is invalid => return 500`, () => {
@@ -164,7 +164,7 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_NAVIGATION_ROUTE}`, () => {
     });
   });
 
-  // TODO
+  // TODO: we currently cannot easily test this
   it.skip(`missing permissions => return 401`, () => {});
 
   it(`body is invalid => return 500`, () => {
@@ -195,7 +195,7 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_PROPERTIES_ROUTE}`, () => {
     });
   });
 
-  // TODO
+  // TODO: we currently cannot easily test this
   it.skip(`body contains ? => return 404`, () => {});
 
   // Tmissing permissions => return 401`, () => {});
