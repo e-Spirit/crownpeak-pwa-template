@@ -13,7 +13,7 @@ This chapter describes how to set up the project and complete the first steps.
 == Requirements
 
 * https://nodejs.org/en/[node] - latest LTS Version: 18.3.0
-* A text editor - like https://code.visualstudio.com/[VS Code] with the https://marketplace.visualstudio.com/items?itemName=Vue.volar[Volar] plugin.
+* A text editor - like https://code.visualstudio.com/[VS Code] with the https://marketplace.visualstudio.com/items?itemName=Vue.volar[Vue language Features] plugin. Make sure you disable any other Vue related plugins, because they might interfer with each other.
 * A terminal - like VS Code’s integrated https://code.visualstudio.com/docs/editor/integrated-terminal[terminal]
 * https://git-scm.com/[Git] - latest major version: > 2.
 
