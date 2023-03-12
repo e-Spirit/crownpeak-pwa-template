@@ -28,10 +28,7 @@ export default defineNuxtPlugin(() => {
       : {},
     contentMode: runtimeConfig.public.mode as FSXAContentMode,
     // TODO:
-    // filterOptions: {
-    //   navigationItemFilter: serverAccessControlConfig?.navigationItemFilter,
-    //   caasItemFilter: serverAccessControlConfig?.caasItemFilter,
-    // },
+    // server access config
     logLevel:
       Number.parseInt(runtimeConfig.public["logLevel"]) ||
       appConfig.logLevel ||
