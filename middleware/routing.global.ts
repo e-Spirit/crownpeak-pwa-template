@@ -2,6 +2,7 @@
 // This can happen on both the client and the server.
 export default defineNuxtRouteMiddleware(async (to) => {
   const { activeLocale } = useLocale();
+  const { $logger } = useNuxtApp();
 
   const route = decodeURIComponent(to.path);
   const {
@@ -12,6 +13,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
 
   // "/" does not exist in the navigation tree, so we first need to figure out the mapped route and then navigate to it.
   if (route === "/") {
+    $logger.info("Trying to redirect / to home route...");
     return navigateTo({
       path: await getIndexRoute(),
       hash: to.hash,
@@ -37,6 +39,8 @@ export default defineNuxtRouteMiddleware(async (to) => {
   } catch (_error: unknown) {
     // Theoretically this does not have to mean that the page does not exist.
     // It could also be a 500 server error or something completely different...
+    // TODO: Differentiate between 404 and other errors.
+    $logger.error("Server error or page not found.");
     throw createError({
       statusCode: 404,
       message: "Page not found",
