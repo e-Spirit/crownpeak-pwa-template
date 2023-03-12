@@ -75,4 +75,4 @@ const { projectProperties } = useProjectProperties();
 
 Just like navigation data, project properties are fetched when the app layout is loaded or when the locale changes and cached for every corresponding locale.
 
-For more information about what project properties are and how to work with them read xref:docs/modules/ROOT/pages/ProjectProperties.adoc[this short guide].
+For more information about what project properties are and how to work with them read xref:docs/pages/ProjectProperties.adoc[this short guide].

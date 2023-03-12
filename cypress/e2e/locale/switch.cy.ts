@@ -76,6 +76,4 @@ describe(`locale switching`, () => {
     cy.url().should("eq", `${baseURL}/Produkte/Goomazon-Oklexa-SP93.html`);
     cy.get("[data-testid=productSection]").should("contain", "Die Oklexa SP93");
   });
-  // TODO: Add test for language switch to non-existing page
-  // Need to integrate E2E CaaS Setup first
 });
