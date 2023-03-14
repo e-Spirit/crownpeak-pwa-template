@@ -3,11 +3,15 @@
     <component
       :is="sectionComponent"
       v-if="sectionComponent"
-      :content="content"
       :data="content.data"
       :data-preview-id="
         content.previewId?.split('.')[0] !== '' ? content.previewId : undefined
       "
+    />
+    <Unknown
+      v-if="!sectionComponent && $isPreviewMode"
+      :content="content"
+      :data="content.data"
     />
   </div>
 </template>
@@ -27,7 +31,7 @@ const sectionComponent = computed(() => {
     case "teaser":
       return resolveComponent("SectionTeaser");
     default:
-      return resolveComponent("Unknown");
+      return undefined;
   }
 });
 </script>

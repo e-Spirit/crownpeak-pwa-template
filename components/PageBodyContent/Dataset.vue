@@ -1,6 +1,15 @@
 <template>
   <div data-testid="dataset">
-    <component :is="datasetComponent" :content="content" />
+    <component
+      :is="datasetComponent"
+      v-if="datasetComponent"
+      :content="content"
+    />
+    <Unknown
+      v-if="!datasetComponent && $isPreviewMode"
+      :content="content"
+      :data="content.data"
+    />
   </div>
 </template>
 
@@ -11,7 +20,7 @@ const props = defineProps<{ content: Dataset }>();
 const datasetComponent = computed(() => {
   switch (props.content.template) {
     default:
-      return resolveComponent("Unknown");
+      return undefined;
   }
 });
 </script>

@@ -36,7 +36,7 @@ describe("slug page", () => {
     addToCachedDatasets: (_route: string, _dataset: Dataset) => null,
   };
 
-  // test cases broken because testutils do not wait for async data
+  // test cases broken because testutils do not wait for useasyncdata
   describe.skip("page not cached", () => {
     it("render with homepage layout prop => render homepage layout component", async () => {
       vi.spyOn(content, "useContent").mockReturnValue({

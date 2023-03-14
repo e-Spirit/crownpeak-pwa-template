@@ -1,13 +1,11 @@
 <template>
   <div class="group relative h-64" data-testid="headerSection">
-    <DevOnly>
-      <Dev
-        v-if="showDev"
-        :content="data"
-        class="hidden group-hover:block"
-        component-name="Page Header"
-      />
-    </DevOnly>
+    <Dev
+      v-if="showDev && $isPreviewMode"
+      :content="data"
+      class="hidden group-hover:block"
+      component-name="Page Header"
+    />
     <div
       class="absolute inset-0 flex flex-col justify-center bg-black bg-opacity-80 p-6 text-white md:p-12"
     >

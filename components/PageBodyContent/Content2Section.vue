@@ -1,6 +1,16 @@
 <template>
   <div data-testid="content2section">
-    <component :is="content2SectionComponent" :content="content" />
+    <component
+      :is="content2SectionComponent"
+      v-if="content2SectionComponent"
+      :content="content"
+    />
+
+    <Unknown
+      v-if="!content2SectionComponent && $isPreviewMode"
+      :content="content"
+      :data="content.data"
+    />
   </div>
 </template>
 
@@ -12,7 +22,7 @@ const props = defineProps<{ content: Content2Section }>();
 const content2SectionComponent = computed(() => {
   switch (props.content.sectionType) {
     default:
-      return resolveComponent("Unknown");
+      return undefined;
   }
 });
 </script>

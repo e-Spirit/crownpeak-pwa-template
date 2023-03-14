@@ -6,14 +6,12 @@
       class="group relative my-10"
       data-testid="pageBodyChild"
     >
-      <DevOnly>
-        <Dev
-          v-if="showDev"
-          :content="pageBodyContent"
-          class="hidden group-hover:block"
-          component-name="section"
-        />
-      </DevOnly>
+      <Dev
+        v-if="showDev && $isPreviewMode"
+        :content="pageBodyContent"
+        class="hidden group-hover:block"
+        component-name="section"
+      />
 
       <component
         :is="getComponentFromPageBodyContent(pageBodyContent)"
@@ -21,7 +19,7 @@
       />
     </div>
     <ClientOnly>
-      <AddSection :body-name="pageBody.name" />
+      <AddSection v-if="$isPreviewMode" :body-name="pageBody.name" />
     </ClientOnly>
   </div>
 </template>
