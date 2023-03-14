@@ -1,14 +1,12 @@
 <template>
   <div data-testid="sliderSection">
     <div class="group relative">
-      <DevOnly>
-        <Dev
-          v-if="showDev"
-          :content="data"
-          class="hidden group-hover:block"
-          component-name="Slider"
-        />
-      </DevOnly>
+      <Dev
+        v-if="showDev && $isPreviewMode"
+        :content="data"
+        class="hidden group-hover:block"
+        component-name="Slider"
+      />
       <div v-if="activeSlide" class="realtive text-white">
         <div class="sliderButtonContainer left-0">
           <button class="sliderButton pr-8" @click="prevSlide">
@@ -64,9 +62,6 @@
           :image="activeSlide?.data.st_picture"
         />
       </div>
-
-      <!-- {{ activeImage }} {{ data.data }} -->
-      <!-- <pre>{{ activeSlide.data }}</pre> -->
     </div>
   </div>
 </template>
@@ -75,6 +70,8 @@
 import { Image, RichTextElement, Section } from "fsxa-api";
 
 const { showDev } = useDev();
+
+const { $isPreviewMode } = useNuxtApp();
 
 interface SliderSlide extends Section {
   data: {

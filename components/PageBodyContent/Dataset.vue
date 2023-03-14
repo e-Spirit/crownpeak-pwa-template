@@ -1,6 +1,15 @@
 <template>
   <div data-testid="dataset">
-    <component :is="datasetComponent" :content="content" />
+    <component
+      :is="datasetComponent"
+      v-if="datasetComponent"
+      :content="content"
+    />
+    <Unknown
+      v-if="!datasetComponent && $isPreviewMode"
+      :content="content"
+      :data="content.data"
+    />
   </div>
 </template>
 
@@ -8,10 +17,12 @@
 import { Dataset } from "fsxa-api";
 const props = defineProps<{ content: Dataset }>();
 
+const { $isPreviewMode } = useNuxtApp();
+
 const datasetComponent = computed(() => {
   switch (props.content.template) {
     default:
-      return resolveComponent("Unknown");
+      return undefined;
   }
 });
 </script>

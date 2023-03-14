@@ -1,4 +1,4 @@
-import { FSXAProxyApi, LogLevel } from "fsxa-api";
+import { FSXAContentMode, FSXAProxyApi, LogLevel } from "fsxa-api";
 
 export default defineNuxtPlugin(() => {
   const runtimeConfig = useRuntimeConfig();
@@ -14,6 +14,7 @@ export default defineNuxtPlugin(() => {
   return {
     provide: {
       fsxaApi,
+      isPreviewMode: runtimeConfig.public.mode === FSXAContentMode.PREVIEW,
     },
   };
 });

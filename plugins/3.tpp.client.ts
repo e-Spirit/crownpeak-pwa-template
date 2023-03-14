@@ -1,4 +1,3 @@
-import { FSXAContentMode } from "fsxa-api";
 import TPP_SNAP from "fs-tpp-api";
 import {
   onNavigationChangeHandler,
@@ -10,12 +9,9 @@ import {
  * Nuxt plugin that initializes the TPP Snap, only works if you are in the FirstSpirit editor and if the environment variable FSXA_MODE is set to "preview"
  */
 export default defineNuxtPlugin(() => {
-  const {
-    public: { mode },
-  } = useRuntimeConfig();
+  const { $isPreviewMode } = useNuxtApp();
 
-  // Set by environment variable
-  if (mode !== FSXAContentMode.PREVIEW) return;
+  if (!$isPreviewMode) return;
 
   TPP_SNAP.isConnected.then(async (_isConnected: boolean) => {
     const initialized = await onInit();

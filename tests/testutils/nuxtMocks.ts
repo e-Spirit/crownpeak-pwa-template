@@ -63,6 +63,7 @@ export function useNuxtApp() {
         addEventListener: (_event: string, _cb: (data: any) => void) => null,
       }),
     },
+    $isPreviewMode: true,
   };
 }
 
