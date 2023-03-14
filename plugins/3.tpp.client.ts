@@ -38,14 +38,20 @@ export default defineNuxtPlugin(() => {
 
   return {
     provide: {
-      // Used by the actual page to set the current previewId, allowing the synchronization of the page with the editor
-      // For example, if you change the language in the page, the previewId will be updated and the editor will show the correct language as well
+      /**
+       * Used by the actual page to set the current previewId, allowing the synchronization of the page with the editor
+       * For example, if you change the language in the page, the previewId will be updated and the editor will show the correct language as well
+       * @param previewId preview id of the current dataset or page
+       */
       setPreviewId: async (previewId: string | undefined) => {
         if (await TPP_SNAP.isConnected) TPP_SNAP.setPreviewElement(previewId);
       },
+      /**
+       *  Used by the add section component to create a new section
+       *  https://docs.e-spirit.com/tpp/snap/#tpp_snapcreatesection`
+       * @param bodyName name attribute of the pageBody
+       */
       createSection: async (bodyName: string) => {
-        // Used by the add section component to create a new section
-        // https://docs.e-spirit.com/tpp/snap/#tpp_snapcreatesection`
         const previewId: string | undefined =
           await TPP_SNAP.getPreviewElement();
         if (!previewId) return;
