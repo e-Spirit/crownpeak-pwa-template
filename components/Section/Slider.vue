@@ -62,9 +62,6 @@
           :image="activeSlide?.data.st_picture"
         />
       </div>
-
-      <!-- {{ activeImage }} {{ data.data }} -->
-      <!-- <pre>{{ activeSlide.data }}</pre> -->
     </div>
   </div>
 </template>
