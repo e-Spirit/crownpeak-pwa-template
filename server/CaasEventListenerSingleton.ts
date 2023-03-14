@@ -1,7 +1,10 @@
 import { FSXAApiSingleton, FSXARemoteApi } from "fsxa-api";
 import ReconnectingWebSocket from "reconnecting-websocket";
 
-// WebsocketSingleton is a singleton that holds the websocket connection, set by the middleware, and used by the endpoint
+/**
+ * The CaasEventListenerSingleton holds a websocket connection to the CaaS and listens for content changes there.
+ * It is initialized in the initCaasEventListener middleware and used by the api [endpoint].get.ts
+ * */
 export class CaasEventListenerSingleton {
   private static _instance: ReconnectingWebSocket;
   private static _lastMessages: string[] = [];
