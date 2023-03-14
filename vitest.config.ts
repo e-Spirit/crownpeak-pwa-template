@@ -7,6 +7,9 @@ import { configure } from "@testing-library/vue";
 configure({});
 
 export default defineConfig({
+  test: {
+    environment: "jsdom",
+  },
   plugins: [
     AutoImport({
       imports: [
@@ -31,6 +34,9 @@ export default defineConfig({
             "useLocale",
             "useAsyncData",
             "fetchTopLevelNavigation",
+            "fetchPageRoute",
+            "fetchDatasetById",
+            "fetchPageById",
             "fetchNavigationItemFromRoute",
             "fetchProducts",
             "getLocaleFromNavigationItem",

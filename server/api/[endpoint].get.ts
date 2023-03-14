@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const endpoint = event.context["params"]?.["endpoint"];
 
   if (`/${endpoint}` === FSXAProxyRoutes.STREAM_CHANGE_EVENTS_ROUTE) {
-    // websocket is already set by middleware
+    // caasEventListener is already set by middleware
     const caasEventListener = CaasEventListenerSingleton.instance;
 
     // Id to identify the event stream
@@ -30,7 +30,7 @@ export default defineEventHandler(async (event) => {
       sendEvent(msg)
     );
 
-    // on websocket message, send event to client
+    // on caasEventListener message, send event to client
     if (caasEventListener)
       caasEventListener.onmessage = (msg: MessageEvent) =>
         sendEvent(msg.data.toString("utf-8"));

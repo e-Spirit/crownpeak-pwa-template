@@ -11,10 +11,13 @@ import { useContent } from "../../composables/content";
 import { useNavigationData } from "../../composables/navigation";
 import { useProjectProperties } from "../../composables/projectProperties";
 import {
+  fetchPageRoute,
   fetchTopLevelNavigation,
   fetchNavigationItemFromRoute,
   fetchProducts,
   getLocaleFromNavigationItem,
+  fetchDatasetById,
+  fetchPageById,
 } from "../../utils/fsxa";
 
 let mockedState: any = {};
@@ -54,6 +57,10 @@ export function useNuxtApp() {
       fetchElement: (_config: FetchElementParams) => page,
       fetchByFilter: (_config: FetchByFilterParams) => ({
         items: [],
+      }),
+      connectEventStream: () => ({
+        close: () => null,
+        addEventListener: (_event: string, _cb: (data: any) => void) => null,
       }),
     },
   };
@@ -103,6 +110,9 @@ export {
   useLocale,
   fetchTopLevelNavigation,
   fetchNavigationItemFromRoute,
+  fetchPageRoute,
+  fetchDatasetById,
+  fetchPageById,
   fetchProducts,
   useContent,
   useNavigationData,
