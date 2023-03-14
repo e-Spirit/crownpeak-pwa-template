@@ -56,6 +56,7 @@ export function useNuxtApp() {
         items: [],
       }),
     },
+    $isPreviewMode: true,
   };
 }
 

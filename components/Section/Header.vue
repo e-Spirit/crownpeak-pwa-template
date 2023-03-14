@@ -38,6 +38,8 @@ import { DataEntries } from "fsxa-api";
 
 defineProps<{ data: DataEntries }>();
 
+const { $isPreviewMode } = useNuxtApp();
+
 const { showDev } = useDev();
 
 const breadcrumbs = computed(() => {

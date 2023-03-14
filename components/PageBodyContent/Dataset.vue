@@ -17,6 +17,8 @@
 import { Dataset } from "fsxa-api";
 const props = defineProps<{ content: Dataset }>();
 
+const { $isPreviewMode } = useNuxtApp();
+
 const datasetComponent = computed(() => {
   switch (props.content.template) {
     default:

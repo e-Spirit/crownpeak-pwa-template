@@ -74,6 +74,8 @@ import { Image, RichTextElement, Section } from "fsxa-api";
 
 const { showDev } = useDev();
 
+const { $isPreviewMode } = useNuxtApp();
+
 interface SliderSlide extends Section {
   data: {
     st_button: {

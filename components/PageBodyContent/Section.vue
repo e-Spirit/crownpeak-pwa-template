@@ -20,6 +20,8 @@
 import { Section } from "fsxa-api";
 const props = defineProps<{ content: Section }>();
 
+const { $isPreviewMode } = useNuxtApp();
+
 const sectionComponent = computed(() => {
   switch (props.content.sectionType) {
     case "interesting_facts":

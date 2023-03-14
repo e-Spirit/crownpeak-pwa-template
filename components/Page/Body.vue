@@ -30,6 +30,8 @@ defineProps<{ pageBody: PageBody }>();
 
 const { showDev } = useDev();
 
+const { $isPreviewMode } = useNuxtApp();
+
 function getComponentFromPageBodyContent(pageBodyContent: PageBodyContent) {
   switch (pageBodyContent.type) {
     case "Dataset":
