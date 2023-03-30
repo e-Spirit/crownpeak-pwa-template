@@ -6,6 +6,13 @@ on:
 
 env:
   CI: ${{ secrets.CI }}
+  BASE_URL: ${{ secrets.BASE_URL }}
+  FSXA_MODE: ${{ secrets.FSXA_MODE }}
+  FSXA_API_KEY: ${{ secrets.FSXA_API_KEY }}
+  FSXA_NAVIGATION_SERVICE: ${{ secrets.FSXA_NAVIGATION_SERVICE }}
+  FSXA_CAAS: ${{ secrets.FSXA_CAAS }}
+  FSXA_PROJECT_ID: ${{ secrets.FSXA_PROJECT_ID }}
+  FSXA_TENANT_ID: ${{ secrets.FSXA_TENANT_ID }}
 
 jobs:
   release:
@@ -19,7 +26,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 18.13.0
 
       - name: use cache if package-lock has not changed
         uses: actions/cache@v3
@@ -34,6 +41,17 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          build: npm run build
+          start: npm run start
+        env:
+          CYPRESS_cyBaseURL: ${{ secrets.CY_BASE_URL }}
 
       - name: Release
         run: npm run semantic-release
