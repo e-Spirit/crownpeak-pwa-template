@@ -58,10 +58,10 @@ In the deployment process Crownpeak Technology uses Docker to containerize the a
 To verify your pwa is compliant to the provided Dockerfile, you can use the Dockerfile.template.
 You just need to create your `.env` file according to `.env.template` with your own values.
 
-Once you have your `.env` file ready, execute `docker build -t fsxa-nuxt3-pwa -f Dockerfile.template .`
+Once you have your `.env` file ready, execute `docker build -t fsxa-nuxt3-pwa .`
 
 To check the compliance with the Crownpeak Technology build pipeline the image needs to be build and run locally.
-You can then run the image locally with `docker run --env-file .env -p XXXX:3000 fsxa-nuxt3-pwa`
+You can then run the image locally with `docker run -p XXXX:3000 fsxa-nuxt3-pwa`
 Where XXXX can be replaced with any free port on your machine.
 When the container is running, visit localhost:XXXX in a browser and the pwa should show up.
 
