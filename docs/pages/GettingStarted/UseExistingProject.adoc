@@ -14,7 +14,7 @@ Use the *ServerManager* to install two *Project components* for your project, if
 * CaaS Connect Project App
 * Navigation Project Configuration
 
-We recommend to activate the "CaaS Modus" in the *Navigation Project Configuration*. 
+We recommend to activating the "CaaS Modus" in the *Navigation Project Configuration*. 
 If you use different URLs Factories, we cannot guarantee that the navigation component inside the fsxa-stack can handle it properly. 
 
 == Clone and Configure PWA
@@ -22,7 +22,7 @@ Get the link:https://github.com/e-Spirit/fsxa-nuxt3-pwa[FSXA-PWA from github].
 
 == Import scripts for switching OCM to local environment
 
-If you have the _PWA Smart Living Global_ FirstSpirit project you find the scripts there under _Scripts/CaaS-Zero_.
+If you have the _PWA Smart Living Global_ FirstSpirit project, you find the scripts there under _Scripts/CaaS-Zero_.
 
 image:SetApplicationURL.png[script set_application_url]
 
@@ -123,7 +123,7 @@ message.setKind(RequestOperation.Kind.INFO);
 message.perform("App URL set to\n\n\t" + url + "\n\nPlease reload page now...");
 ----
 
-With this script you can simply switch the OCM URL to _localhost:3000_ from ContentCreator, once you have your PWA running locally under that address.
+With this script you can switch the OCM URL to _localhost:3000_ from ContentCreator, once you have your PWA running locally under that address.
 
 == Get configuration values for .env file
 

@@ -3,7 +3,7 @@
 :moduledir: ..
 :imagesdir: {moduledir}/images
 
-RichText allows you to display information in the FirstSpirit context using great and customisable formatting. This brings with it a certain complexity.
+RichText allows you to display information in the FirstSpirit context using great and customizable formatting. This brings with it a certain complexity.
 
 Here you can see some example code of how RichText data could look like: 
 
