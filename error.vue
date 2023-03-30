@@ -6,7 +6,7 @@
       viewBox="0 0 24 24"
       stroke-width="1.5"
       stroke="currentColor"
-      class="mx-auto h-12 w-12"
+      class="errorImage"
     >
       <path
         stroke-linecap="round"
@@ -41,6 +41,9 @@ defineProps<{
 </script>
 
 <style lang="css" scoped>
+.errorImage {
+  @apply mx-auto h-12 w-12;
+}
 .errorPage {
   @apply flex h-full min-h-screen flex-col items-center justify-center p-4;
 }
