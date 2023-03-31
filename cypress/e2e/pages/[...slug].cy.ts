@@ -50,6 +50,10 @@ describe(`slug page`, () => {
     cy.get("[data-testid=productSection]").should("contain", "The Oklexa SP93");
     cy.contains("Home").click();
     cy.url().should("eq", `${baseURL}/Home/`);
+
+    // wait until content is displayed
+    cy.contains("Life made easier");
+
     cy.go("back");
     cy.url().should("eq", `${baseURL}/Products/Goomazon-Oklexa-SP93.html`);
     cy.get("[data-testid=productSection]").should("contain", "The Oklexa SP93");
