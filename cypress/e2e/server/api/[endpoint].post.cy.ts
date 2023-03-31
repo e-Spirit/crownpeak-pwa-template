@@ -38,9 +38,6 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_ELEMENT_ROUTE}`, () => {
     });
   });
 
-  // TODO: we currently cannot easily test this
-  it.skip(`missing permissions => return 401`, () => {});
-
   it(`body is invalid => return 500`, () => {
     cy.eventNames();
     cy.request({
@@ -103,9 +100,6 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_BY_FILTER_ROUTE}`, () => {
     });
   });
 
-  // TODO: we currently cannot easily test this
-  it.skip(`missing permissions => return 401`, () => {});
-
   it(`body is invalid => return 500`, () => {
     cy.request({
       method: "POST",
@@ -164,9 +158,6 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_NAVIGATION_ROUTE}`, () => {
     });
   });
 
-  // TODO: we currently cannot easily test this
-  it.skip(`missing permissions => return 401`, () => {});
-
   it(`body is invalid => return 500`, () => {
     cy.request({
       method: "POST",
@@ -194,11 +185,6 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_PROPERTIES_ROUTE}`, () => {
       expect(response.status).to.eq(200);
     });
   });
-
-  // TODO: we currently cannot easily test this
-  it.skip(`body contains ? => return 404`, () => {});
-
-  // Tmissing permissions => return 401`, () => {});
 
   it(`body is invalid => return 500`, () => {
     cy.request({
