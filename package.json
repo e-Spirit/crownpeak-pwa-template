@@ -8,7 +8,7 @@
     "url": "https://github.com/Wimadev/fsxa-nuxt3-pwa.git"
   },
   "engines": {
-    "npm": "8.9.3",
+    "npm": "8.19.3",
     "node": "18.13.0"
   },
   "scripts": {
