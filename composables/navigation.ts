@@ -1,15 +1,15 @@
-import { NavigationData, NavigationItem } from "fsxa-api";
+import { NavigationData, NavigationItem } from 'fsxa-api'
 
 export function useNavigationData() {
-  const navigationData = useState<NavigationData | null>("navigationData");
+  const navigationData = useState<NavigationData | null>('navigationData')
   const cachedNavigationData = useState<{
-    [locale: string]: NavigationData;
-  }>("cachedNavigationData", () => ({}));
+    [locale: string]: NavigationData
+  }>('cachedNavigationData', () => ({}))
   const activeNavigationItem = useState<NavigationItem | undefined>(
-    "activeNavigationItem"
-  );
-  const { config: localeConfig, activeLocale, setActiveLocale } = useLocale();
-  const { $fsxaApi } = useNuxtApp();
+    'activeNavigationItem'
+  )
+  const { config: localeConfig, activeLocale, setActiveLocale } = useLocale()
+  const { $fsxaApi } = useNuxtApp()
 
   /**
    * Get's navigation data from cache if it exists, otherwise fetches it from the FSXA Api
@@ -20,7 +20,7 @@ export function useNavigationData() {
     return (
       cachedNavigationData.value[locale] ||
       (await $fsxaApi.fetchNavigation({ locale }))
-    );
+    )
   }
 
   /**
@@ -28,10 +28,10 @@ export function useNavigationData() {
    * @param data Navigation data
    */
   function setNavigationData(data: NavigationData) {
-    navigationData.value = data;
-    const locale = data.meta.identifier.languageId;
+    navigationData.value = data
+    const locale = data.meta.identifier.languageId
     if (!cachedNavigationData.value[locale])
-      cachedNavigationData.value[locale] = data;
+      cachedNavigationData.value[locale] = data
   }
 
   /**
@@ -40,9 +40,9 @@ export function useNavigationData() {
    * @returns Navigation item or null
    */
   function findNavigationItemByRoute(route: string) {
-    if (!navigationData.value) return;
-    const navItemId = navigationData.value.seoRouteMap[route];
-    return navItemId ? navigationData.value.idMap[navItemId] : null;
+    if (!navigationData.value) return
+    const navItemId = navigationData.value.seoRouteMap[route]
+    return navItemId ? navigationData.value.idMap[navItemId] : null
   }
 
   /**
@@ -51,7 +51,7 @@ export function useNavigationData() {
    * @returns Navigation item or null
    */
   function findNavigationItemById(id: string) {
-    return navigationData.value?.idMap[id] ?? null;
+    return navigationData.value?.idMap[id] ?? null
   }
 
   /**
@@ -61,10 +61,10 @@ export function useNavigationData() {
   async function determineNavigationStateFromRoute(route: string) {
     const item =
       findNavigationItemByRoute(route) ||
-      (await fetchNavigationItemFromRoute($fsxaApi, route));
-    const locale = getLocaleFromNavigationItem(item);
-    setActiveLocale(locale);
-    activeNavigationItem.value = item;
+      (await fetchNavigationItemFromRoute($fsxaApi, route))
+    const locale = getLocaleFromNavigationItem(item)
+    setActiveLocale(locale)
+    activeNavigationItem.value = item
   }
 
   /**
@@ -76,9 +76,9 @@ export function useNavigationData() {
       navigationData.value = await fetchTopLevelNavigation(
         $fsxaApi,
         activeLocale.value ?? localeConfig.value.defaultLocale
-      );
+      )
     }
-    return navigationData.value?.pages?.index;
+    return navigationData.value?.pages?.index
   }
 
   /**
@@ -86,7 +86,7 @@ export function useNavigationData() {
    * @param item Navigation item
    */
   function setActiveNavigationItem(item: NavigationItem) {
-    activeNavigationItem.value = item;
+    activeNavigationItem.value = item
   }
 
   return {
@@ -99,6 +99,6 @@ export function useNavigationData() {
     setActiveNavigationItem,
     activeNavigationItem,
     navigationData,
-    cachedNavigationData,
-  };
+    cachedNavigationData
+  }
 }

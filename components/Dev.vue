@@ -33,7 +33,7 @@
           <p>
             This
             <span :class="{ 'font-bold ': componentName }">{{
-              componentName || "component"
+              componentName || 'component'
             }}</span>
             has access to the following data:
           </p>
@@ -63,7 +63,7 @@
           class="rounded-t p-2 font-bold capitalize text-white"
           :class="{
             'bg-gray-800 ': activeItem === 'content',
-            'bg-gray-600 ': activeItem !== 'content',
+            'bg-gray-600 ': activeItem !== 'content'
           }"
           @click="activeItem = 'content'"
         >
@@ -75,7 +75,7 @@
           class="rounded-t p-2 font-bold text-white"
           :class="{
             'bg-gray-800 ': activeItem === 'dataset',
-            'bg-gray-600 ': activeItem !== 'dataset',
+            'bg-gray-600 ': activeItem !== 'dataset'
           }"
           @click="activeItem = 'dataset'"
         >
@@ -87,7 +87,7 @@
           class="rounded-t p-2 font-bold text-white"
           :class="{
             'bg-gray-800 ': activeItem === 'products',
-            'bg-gray-600 ': activeItem !== 'products',
+            'bg-gray-600 ': activeItem !== 'products'
           }"
           @click="activeItem = 'products'"
         >
@@ -98,7 +98,7 @@
           class="rounded-t p-2 font-bold text-white"
           :class="{
             'bg-gray-800 ': activeItem === 'currentPage',
-            'bg-gray-600 ': activeItem !== 'currentPage',
+            'bg-gray-600 ': activeItem !== 'currentPage'
           }"
           @click="activeItem = 'currentPage'"
         >
@@ -123,49 +123,49 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  content: unknown;
-  componentName?: string;
-}>();
+  content: unknown
+  componentName?: string
+}>()
 
-const { activeNavigationItem } = useNavigationData();
+const { activeNavigationItem } = useNavigationData()
 const {
   findCachedProductsByRoute,
   findCachedPageByRoute,
-  findCachedDatasetByRoute,
-} = useContent();
+  findCachedDatasetByRoute
+} = useContent()
 
-const devComponentVisible = ref(false);
+const devComponentVisible = ref(false)
 
-const activeItem = ref<"content" | "dataset" | "products" | "currentPage">(
-  "content"
-);
+const activeItem = ref<'content' | 'dataset' | 'products' | 'currentPage'>(
+  'content'
+)
 
 const devContent = computed(() => {
-  if (activeItem.value === "dataset") {
-    return currentDataset.value;
-  } else if (activeItem.value === "products") {
-    return products.value;
-  } else if (activeItem.value === "currentPage") {
-    return currentPage.value;
-  } else return props.content;
-});
+  if (activeItem.value === 'dataset') {
+    return currentDataset.value
+  } else if (activeItem.value === 'products') {
+    return products.value
+  } else if (activeItem.value === 'currentPage') {
+    return currentPage.value
+  } else return props.content
+})
 
 const products = computed(() => {
-  const route = decodeURIComponent(useRoute().path);
-  return findCachedProductsByRoute(route);
-});
+  const route = decodeURIComponent(useRoute().path)
+  return findCachedProductsByRoute(route)
+})
 
 const currentPage = computed(() => {
-  const route = decodeURIComponent(useRoute().path);
-  return findCachedPageByRoute(route);
-});
+  const route = decodeURIComponent(useRoute().path)
+  return findCachedPageByRoute(route)
+})
 
 const currentDataset = computed(() => {
-  const route = decodeURIComponent(useRoute().path);
-  return findCachedDatasetByRoute(route);
-});
+  const route = decodeURIComponent(useRoute().path)
+  return findCachedDatasetByRoute(route)
+})
 
 const isContentProjection = computed(
   () => activeNavigationItem.value?.seoRouteRegex !== null
-);
+)
 </script>

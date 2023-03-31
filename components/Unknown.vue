@@ -13,23 +13,23 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { Section, Dataset, Content2Section, Page } from "fsxa-api";
+import { Section, Dataset, Content2Section, Page } from 'fsxa-api'
 const props = defineProps<{
-  content?: Section | Dataset | Content2Section | Page;
-}>();
+  content?: Section | Dataset | Content2Section | Page
+}>()
 
-const { showDev } = useDev();
+const { showDev } = useDev()
 
 const componentType = computed(() => {
   switch (props.content?.type) {
-    case "Section":
-      return "Section " + props.content.sectionType;
-    case "Content2Section":
-      return "Content2Section " + props.content.sectionType;
-    case "Dataset":
-      return "Dataset " + props.content.schema + " " + props.content.template;
+    case 'Section':
+      return 'Section ' + props.content.sectionType
+    case 'Content2Section':
+      return 'Content2Section ' + props.content.sectionType
+    case 'Dataset':
+      return 'Dataset ' + props.content.schema + ' ' + props.content.template
     default:
-      return props.content;
+      return props.content
   }
-});
+})
 </script>

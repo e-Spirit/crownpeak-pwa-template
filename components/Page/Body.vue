@@ -24,24 +24,24 @@
   </div>
 </template>
 <script setup lang="ts">
-import { PageBody, PageBodyContent } from "fsxa-api";
+import { PageBody, PageBodyContent } from 'fsxa-api'
 
-defineProps<{ pageBody: PageBody }>();
+defineProps<{ pageBody: PageBody }>()
 
-const { showDev } = useDev();
+const { showDev } = useDev()
 
-const { $isPreviewMode } = useNuxtApp();
+const { $isPreviewMode } = useNuxtApp()
 
 function getComponentFromPageBodyContent(pageBodyContent: PageBodyContent) {
   switch (pageBodyContent.type) {
-    case "Dataset":
-      return resolveComponent("PageBodyContentDataset");
-    case "Content2Section":
-      return resolveComponent("PageBodyContentSection");
-    case "Section":
-      return resolveComponent("PageBodyContentSection");
+    case 'Dataset':
+      return resolveComponent('PageBodyContentDataset')
+    case 'Content2Section':
+      return resolveComponent('PageBodyContentSection')
+    case 'Section':
+      return resolveComponent('PageBodyContentSection')
     default:
-      return resolveComponent("Unknown");
+      return resolveComponent('Unknown')
   }
 }
 </script>

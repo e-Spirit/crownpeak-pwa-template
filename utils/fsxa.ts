@@ -6,8 +6,8 @@ import {
   Dataset,
   Page,
   QueryBuilderQuery,
-  CaaSApi_Dataset as CaasDataset,
-} from "fsxa-api";
+  CaaSApi_Dataset as CaasDataset
+} from 'fsxa-api'
 
 /**
  * Fetch dataset through the FSXA Api by route
@@ -30,29 +30,29 @@ export const fetchDatasetByRoute = async (
         operator: LogicalQueryOperatorEnum.OR,
         filters: [
           {
-            field: "route",
+            field: 'route',
             operator: ComparisonQueryOperatorEnum.EQUALS,
-            value: route,
+            value: route
           },
           {
-            field: "routes.route",
+            field: 'routes.route',
             operator: ComparisonQueryOperatorEnum.EQUALS,
-            value: route,
-          },
-        ],
+            value: route
+          }
+        ]
       },
       {
         operator: ComparisonQueryOperatorEnum.EQUALS,
-        value: "Dataset",
-        field: "fsType",
-      },
-    ],
-  });
+        value: 'Dataset',
+        field: 'fsType'
+      }
+    ]
+  })
 
-  const bestMatch = data.items[0];
+  const bestMatch = data.items[0]
 
-  return bestMatch as Dataset | null;
-};
+  return bestMatch as Dataset | null
+}
 
 /**
  * Fetch dataset through the FSXA Api by id
@@ -72,14 +72,14 @@ export const fetchDatasetById = async (
       {
         operator: ComparisonQueryOperatorEnum.EQUALS,
         value: id,
-        field: "identifier",
-      },
+        field: 'identifier'
+      }
     ],
-    locale,
-  });
+    locale
+  })
 
-  return dataset.items[0] as Dataset | null;
-};
+  return dataset.items[0] as Dataset | null
+}
 
 /**
  * Fetch page through the FSXA Api by id
@@ -96,11 +96,11 @@ export const fetchPageById = async (
 ) => {
   const page = await fsxaApi.fetchElement<Page>({
     id,
-    locale,
-  });
+    locale
+  })
 
-  return page ?? null;
-};
+  return page ?? null
+}
 
 /**
  * Get the corresponding navigation item to the provided route from the navigation service.
@@ -117,19 +117,19 @@ export const fetchNavigationItemFromRoute = async (
   // This could also be cached
   const data = await fsxaApi.fetchNavigation({
     initialPath: route,
-    locale: "",
-  });
-  if (!data) throw new Error("No navigation data found");
+    locale: ''
+  })
+  if (!data) throw new Error('No navigation data found')
 
   // If any of the following lines throw an error, the Navigation Service is probably broken?
-  const seoRouteId = data.seoRouteMap[route === "/" ? data.pages.index : route];
-  if (!seoRouteId) throw new Error("No matching route found");
+  const seoRouteId = data.seoRouteMap[route === '/' ? data.pages.index : route]
+  if (!seoRouteId) throw new Error('No matching route found')
 
-  const item = data.idMap[seoRouteId];
-  if (!item) throw new Error("No navigation item found");
+  const item = data.idMap[seoRouteId]
+  if (!item) throw new Error('No navigation item found')
 
-  return item;
-};
+  return item
+}
 
 /**
  * Get the locale from navigation item. This function is used in middleware to always provide the locale of a given route.
@@ -138,15 +138,15 @@ export const fetchNavigationItemFromRoute = async (
  * @returns Locale
  */
 export const getLocaleFromNavigationItem = (navigationItem: NavigationItem) => {
-  const splitted = navigationItem?.contentReference?.split(".");
+  const splitted = navigationItem?.contentReference?.split('.')
   if (!splitted || splitted.length < 2)
-    throw new Error("No valid contentReference found");
+    throw new Error('No valid contentReference found')
 
-  const locale = splitted?.pop();
-  if (!locale) throw new Error("No locale found");
+  const locale = splitted?.pop()
+  if (!locale) throw new Error('No locale found')
 
-  return locale;
-};
+  return locale
+}
 
 /**
  * Fetch navigation data from navigation service
@@ -159,9 +159,9 @@ export const fetchTopLevelNavigation = (
   locale: string
 ) => {
   return fsxaApi.fetchNavigation({
-    locale,
-  });
-};
+    locale
+  })
+}
 
 /**
  * Fetch products data from CAAS
@@ -178,32 +178,32 @@ export const fetchProducts = async (
 ) => {
   const filters: QueryBuilderQuery[] = [
     {
-      field: "entityType",
+      field: 'entityType',
       operator: ComparisonQueryOperatorEnum.EQUALS,
-      value: "product",
+      value: 'product'
     },
     {
-      field: "schema",
+      field: 'schema',
       operator: ComparisonQueryOperatorEnum.EQUALS,
-      value: "products",
-    },
-  ];
+      value: 'products'
+    }
+  ]
 
   if (category) {
     filters.push({
-      field: "formData.tt_categories.value.identifier",
+      field: 'formData.tt_categories.value.identifier',
       operator: ComparisonQueryOperatorEnum.EQUALS,
-      value: category,
-    });
+      value: category
+    })
   }
 
   const { items } = await fsxaApi.fetchByFilter({
     filters,
-    locale,
-  });
+    locale
+  })
 
-  return items as Dataset[];
-};
+  return items as Dataset[]
+}
 
 export const fetchPageRoute = async (
   fsxaApi: FSXAProxyApi,
@@ -213,22 +213,22 @@ export const fetchPageRoute = async (
   const response = await fsxaApi.fetchByFilter({
     filters: [
       {
-        field: "identifier",
+        field: 'identifier',
         operator: ComparisonQueryOperatorEnum.EQUALS,
-        value: id,
-      },
+        value: id
+      }
     ],
     locale,
     additionalParams: {
-      keys: [{ type: 1, route: 1, "routes.route": 1 }],
-    },
-  });
+      keys: [{ type: 1, route: 1, 'routes.route': 1 }]
+    }
+  })
 
   const item = response?.items?.[0] as Partial<
-    Pick<CaasDataset, "routes" | "route">
-  >;
+    Pick<CaasDataset, 'routes' | 'route'>
+  >
 
-  const route = item?.route ?? item?.routes?.[0]?.route ?? null;
+  const route = item?.route ?? item?.routes?.[0]?.route ?? null
 
-  return route;
-};
+  return route
+}
