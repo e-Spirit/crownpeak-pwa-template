@@ -107,9 +107,9 @@
       </div>
 
       <div
-        class="mx-4 mb-4 flex-1 overflow-scroll rounded-b rounded-tr bg-gray-800 p-4 text-sm text-white"
+        class="mx-4 mb-4 flex-1 overflow-scroll rounded-b rounded-tr bg-gray-800 p-4 text-sm leading-7 text-white"
       >
-        <pre>{{ devContent }}</pre>
+        <pre><code  v-html="highglightedDevContent" /></pre>
       </div>
     </div>
 
@@ -122,6 +122,11 @@
 </template>
 
 <script setup lang="ts">
+import hljs from "highlight.js/lib/core";
+import json from "highlight.js/lib/languages/json";
+
+hljs.registerLanguage("json", json);
+
 const props = defineProps<{
   content: unknown;
   componentName?: string;
@@ -150,6 +155,11 @@ const devContent = computed(() => {
   } else return props.content;
 });
 
+const highglightedDevContent = computed(() => {
+  const stringifiedDevContent = JSON.stringify(devContent.value, null, 2);
+  return hljs.highlight(stringifiedDevContent, { language: "json" }).value;
+});
+
 const products = computed(() => {
   const route = decodeURIComponent(useRoute().path);
   return findCachedProductsByRoute(route);
@@ -169,3 +179,85 @@ const isContentProjection = computed(
   () => activeNavigationItem.value?.seoRouteRegex !== null
 );
 </script>
+
+<style lang="css">
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #dfdfe0;
+  background: #292a2f;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #a5b0bd;
+  font-style: italic;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-formula {
+  color: #ef81b0;
+}
+
+.hljs-section,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-deletion,
+.hljs-subst {
+  color: #dfdfe0;
+}
+
+.hljs-literal {
+  color: #ef81b0;
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta-string {
+  color: #f08875;
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title {
+  color: #dfdfe0;
+}
+
+.hljs-number {
+  color: #d5ca86;
+}
+
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #bbf0e4;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-title {
+  color: #dfdfe0;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}
+</style>
