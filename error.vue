@@ -20,7 +20,7 @@
       {{ error.statusMessage || error.message }}
     </p>
     <div class="stackTraceContainer">
-      <pre v-if="error.stack">{{ JSON.stringify(error.stack, null, 2) }} </pre>
+      <div v-if="error.stack" v-html="error.stack" />
       <div v-else>We don't know anything more about this error.</div>
     </div>
     <div class="buttons">
