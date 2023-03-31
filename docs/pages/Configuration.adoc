@@ -83,6 +83,10 @@ Due to performance reasons content references in your project get resolved up to
 
 When enabled, events for `insert`, `replace` and `delete` CaaS documents can be observed and handled. It's currently used in preview mode, to sync updated data in FirstSpirit with the CaaS and the App State.
 
+=== FSXA_LOCALE `string` _optional_
+
+Normally the current URL is used to find out the language. If this is not possible (for example, when a user calls `/`) the `defaultLocale` is used to retrieve the navigation data via the `FSXA API`. With this variable you can override the `defaultLocale` config from your `app.config.ts` file. The environment variable will take the priority.
+
 == app.config.ts file
 
 The following settings allow easy configuration of the PWA through the `app.config.ts` file. Keep in mind that changes to the configuration of this file will be checked into version control.
