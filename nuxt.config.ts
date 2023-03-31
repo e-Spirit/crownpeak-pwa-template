@@ -36,6 +36,7 @@ export default defineNuxtConfig({
       mode: process.env["FSXA_MODE"],
       snapUrl: process.env["FSXA_SNAP_URL"],
       enableEventStream: process.env["FSXA_ENABLE_EVENT_STREAM"],
+      defaultLocale: process.env["FSXA_LOCALE"],
     },
     private: {
       apiKey: process.env["FSXA_API_KEY"],

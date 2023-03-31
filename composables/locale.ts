@@ -10,13 +10,26 @@ const getAllLocales = () => [
   { name: "English", identifier: "en_GB" },
 ];
 
-const defaultConfig: LocaleConfig = {
+const defaultLocaleConfig: LocaleConfig = {
   defaultLocale: "de_DE",
   allLocales: getAllLocales(),
 };
 
 export function useLocale() {
-  const config = useState<LocaleConfig>("localeConfig", () => defaultConfig);
+  const {
+    public: { defaultLocale: runtimeConfigDefaultLocale },
+  } = useRuntimeConfig();
+  const { defaultLocale: appConfigDefaultLocale } = useAppConfig();
+
+  defaultLocaleConfig.defaultLocale =
+    runtimeConfigDefaultLocale ||
+    appConfigDefaultLocale ||
+    defaultLocaleConfig.defaultLocale;
+
+  const config = useState<LocaleConfig>(
+    "localeConfig",
+    () => defaultLocaleConfig
+  );
   const activeLocale = useState<string | undefined>("activeLocale");
   /**
    * Sets the active locale. Gets called when:
