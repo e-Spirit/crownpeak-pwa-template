@@ -2,10 +2,10 @@
 
 This example project is using https://tailwindcss.com/[TailwindCSS]. TailwindCSS is a utility-first framework to provide a lot of utility classes to design the website directly in the markup without the need to write additional classes. For more information on how to use tailwind please refer to the offical documentation linked above.
 
-Using TailwindCSS is strongly optinonated and if you don't want to use it you can of course just remove the library. Just undo the steps listed in the offical https://tailwindcss.com/docs/guides/nuxtjs[installation guide for Nuxt.js]. Keep in mind that you also have to update all components and CSS files where Tailwind utilities have been used.
+Using TailwindCSS is strongly optinonated and if you don't want to use it you can of course remove the library. To do so, undo the steps listed in the offical https://tailwindcss.com/docs/guides/nuxtjs[installation guide for Nuxt.js]. Keep in mind that you also have to update all components and CSS files where Tailwind utilities have been used.
 
 Other than that the FSXA-PWA does not provide any special styling functionalities besides what the underlying frameworks Nuxt.js and Vue.js provide. Please refer to the respective documentations for detailed information on how to get the most out of the styling capabilities.
 
-* Global styling, affecting every component, page and layout: https://nuxt.com/docs/getting-started/assets/[Nuxt specific global styling]
+* Global styling, affecting every component, page and layout. Put all global css files inside the `~/assets` directory. These files need to be registered inside the `nuxt.config.ts` file under the `css` key:  https://nuxt.com/docs/getting-started/assets/[Nuxt specific global styling]
 * Component scoped styling, affecting only the component: https://vuejs.org/api/sfc-css-features.html[Style features of single file components]
 * Styling specific elements in markup: https://vuejs.org/guide/essentials/class-and-style.html[Vue class and style bindings in markup]

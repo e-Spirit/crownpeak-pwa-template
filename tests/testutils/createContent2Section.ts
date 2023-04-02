@@ -1,11 +1,11 @@
-import { Content2Section } from "fsxa-api";
-import { faker } from "@faker-js/faker";
+import { Content2Section } from 'fsxa-api'
+import { faker } from '@faker-js/faker'
 
 export function createContent2Section(
   optionalContent2Section?: Partial<Content2Section>
 ): Content2Section {
   const content2section: Content2Section = {
-    type: "Content2Section",
+    type: 'Content2Section',
     sectionType: faker.name.firstName(),
     data: {
       schema: faker.name.firstName(),
@@ -14,9 +14,9 @@ export function createContent2Section(
       recordCountPerPage: faker.datatype.number(),
       maxPageCount: faker.datatype.number(),
       filterParams: {},
-      ordering: [],
+      ordering: []
     },
-    children: [],
-  };
-  return { ...content2section, ...optionalContent2Section };
+    children: []
+  }
+  return { ...content2section, ...optionalContent2Section }
 }

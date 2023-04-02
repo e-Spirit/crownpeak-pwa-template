@@ -1,213 +1,213 @@
-import { ComparisonQueryOperatorEnum } from "fsxa-api";
-import { ServerErrors, FSXAProxyRoutes, FSXAApiErrors } from "~/types";
+import { ComparisonQueryOperatorEnum } from 'fsxa-api'
+import { ServerErrors, FSXAProxyRoutes, FSXAApiErrors } from '~/types'
 
-const baseURL = Cypress.env("cyBaseURL");
+const baseURL = Cypress.env('cyBaseURL')
 
 describe(`post to /api${FSXAProxyRoutes.FETCH_ELEMENT_ROUTE}`, () => {
   beforeEach(() => {
-    cy.visit(baseURL);
-  });
+    cy.visit(baseURL)
+  })
   it(`body contains existing id => return 200 and queried element`, () => {
-    const id = "ec121aab-e29a-4e35-b97a-3dc33bb50d25";
+    const id = 'ec121aab-e29a-4e35-b97a-3dc33bb50d25'
     cy.request({
-      method: "POST",
+      method: 'POST',
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_ELEMENT_ROUTE}`,
       body: {
-        locale: "de_DE",
-        id,
-      },
+        locale: 'de_DE',
+        id
+      }
     }).should((response) => {
-      expect(response.body.id).to.eq(id);
-      expect(response.status).to.eq(200);
-    });
-  });
+      expect(response.body.id).to.eq(id)
+      expect(response.status).to.eq(200)
+    })
+  })
 
   it(`body contains unknown id => return 404`, () => {
-    const id = "unknownId";
+    const id = 'unknownId'
     cy.request({
-      method: "POST",
+      method: 'POST',
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_ELEMENT_ROUTE}`,
       body: {
-        locale: "de_DE",
-        id,
+        locale: 'de_DE',
+        id
       },
-      failOnStatusCode: false,
+      failOnStatusCode: false
     }).should((response) => {
-      expect(response.status).to.eq(404);
-      expect(response.body.message).to.eq(FSXAApiErrors.NOT_FOUND);
-    });
-  });
+      expect(response.status).to.eq(404)
+      expect(response.body.message).to.eq(FSXAApiErrors.NOT_FOUND)
+    })
+  })
 
   it(`body is invalid => return 500`, () => {
-    cy.eventNames();
+    cy.eventNames()
     cy.request({
-      method: "POST",
+      method: 'POST',
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_ELEMENT_ROUTE}`,
       body: {
-        locale: "de_DE",
+        locale: 'de_DE'
       },
-      failOnStatusCode: false,
+      failOnStatusCode: false
     }).should((response) => {
-      expect(response.status).to.eq(500);
-      expect(response.body.message).to.exist;
-    });
-  });
-});
+      expect(response.status).to.eq(500)
+      expect(response.body.message).to.exist
+    })
+  })
+})
 
 describe(`post to /api${FSXAProxyRoutes.FETCH_BY_FILTER_ROUTE}`, () => {
   beforeEach(() => {
-    cy.visit(baseURL);
-  });
+    cy.visit(baseURL)
+  })
   it(`query existing elements => return 200 and filtered elements`, () => {
-    const id = "ec121aab-e29a-4e35-b97a-3dc33bb50d25";
+    const id = 'ec121aab-e29a-4e35-b97a-3dc33bb50d25'
     cy.request({
-      method: "POST",
+      method: 'POST',
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_BY_FILTER_ROUTE}`,
       body: {
-        locale: "de_DE",
+        locale: 'de_DE',
         filter: [
           {
             value: id,
-            field: "identifier",
-            operator: ComparisonQueryOperatorEnum.EQUALS,
-          },
-        ],
-      },
+            field: 'identifier',
+            operator: ComparisonQueryOperatorEnum.EQUALS
+          }
+        ]
+      }
     }).should((response) => {
-      expect(response.body.items[0].id).to.eq(id);
-      expect(response.status).to.eq(200);
-    });
-  });
+      expect(response.body.items[0].id).to.eq(id)
+      expect(response.status).to.eq(200)
+    })
+  })
 
   it(`query unknown elements => return 200 and empty items array`, () => {
-    const id = "unknownId";
+    const id = 'unknownId'
     cy.request({
-      method: "POST",
+      method: 'POST',
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_BY_FILTER_ROUTE}`,
       body: {
-        locale: "de_DE",
+        locale: 'de_DE',
         filter: [
           {
             value: id,
-            field: "identifier",
-            operator: ComparisonQueryOperatorEnum.EQUALS,
-          },
-        ],
-      },
+            field: 'identifier',
+            operator: ComparisonQueryOperatorEnum.EQUALS
+          }
+        ]
+      }
     }).should((response) => {
-      expect(response.body.items).to.be.empty;
-      expect(response.status).to.eq(200);
-    });
-  });
+      expect(response.body.items).to.be.empty
+      expect(response.status).to.eq(200)
+    })
+  })
 
   it(`body is invalid => return 500`, () => {
     cy.request({
-      method: "POST",
+      method: 'POST',
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_BY_FILTER_ROUTE}`,
       body: {
-        locale: "de_DE",
+        locale: 'de_DE',
         filter: [
           {
-            field: "identifier",
-            operator: ComparisonQueryOperatorEnum.EQUALS,
-          },
-        ],
+            field: 'identifier',
+            operator: ComparisonQueryOperatorEnum.EQUALS
+          }
+        ]
       },
-      failOnStatusCode: false,
+      failOnStatusCode: false
     }).should((response) => {
-      expect(response.body.message).to.exist;
-      expect(response.status).to.eq(500);
-    });
-  });
-});
+      expect(response.body.message).to.exist
+      expect(response.status).to.eq(500)
+    })
+  })
+})
 
 describe(`post to /api${FSXAProxyRoutes.FETCH_NAVIGATION_ROUTE}`, () => {
   beforeEach(() => {
-    cy.visit(baseURL);
-  });
+    cy.visit(baseURL)
+  })
   it(`body contains valid locale => return navigation data`, () => {
     cy.request({
-      method: "POST",
+      method: 'POST',
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_NAVIGATION_ROUTE}`,
       body: {
-        locale: "de_DE",
-      },
+        locale: 'de_DE'
+      }
     }).should((response) => {
       expect(response.body).to.have.all.keys([
-        "idMap",
-        "pages",
-        "seoRouteMap",
-        "structure",
-        "meta",
-      ]);
-      expect(response.status).to.eq(200);
-    });
-  });
+        'idMap',
+        'pages',
+        'seoRouteMap',
+        'structure',
+        'meta'
+      ])
+      expect(response.status).to.eq(200)
+    })
+  })
 
   it(`body contains invalid locale => return 404`, () => {
     cy.request({
-      method: "POST",
+      method: 'POST',
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_NAVIGATION_ROUTE}`,
       body: {
-        locale: "invalid_locale",
+        locale: 'invalid_locale'
       },
-      failOnStatusCode: false,
+      failOnStatusCode: false
     }).should((response) => {
-      expect(response.status).to.eq(404);
-      expect(response.body.message).to.eq(FSXAApiErrors.NOT_FOUND);
-    });
-  });
+      expect(response.status).to.eq(404)
+      expect(response.body.message).to.eq(FSXAApiErrors.NOT_FOUND)
+    })
+  })
 
   it(`body is invalid => return 500`, () => {
     cy.request({
-      method: "POST",
+      method: 'POST',
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_NAVIGATION_ROUTE}`,
-      body: { locale: "invalidLocaleFormat" },
-      failOnStatusCode: false,
+      body: { locale: 'invalidLocaleFormat' },
+      failOnStatusCode: false
     }).should((response) => {
-      expect(response.status).to.eq(500);
-      expect(response.body.message).to.exist;
-    });
-  });
-});
+      expect(response.status).to.eq(500)
+      expect(response.body.message).to.exist
+    })
+  })
+})
 
 describe(`post to /api${FSXAProxyRoutes.FETCH_PROPERTIES_ROUTE}`, () => {
   beforeEach(() => {
-    cy.visit(baseURL);
-  });
+    cy.visit(baseURL)
+  })
   it(`body contains valid locale => return project properties`, () => {
     cy.request({
-      method: "POST",
+      method: 'POST',
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_PROPERTIES_ROUTE}`,
-      body: { locale: "de_DE" },
+      body: { locale: 'de_DE' }
     }).should((response) => {
-      expect(response.body.type).to.eq("ProjectProperties");
-      expect(response.status).to.eq(200);
-    });
-  });
+      expect(response.body.type).to.eq('ProjectProperties')
+      expect(response.status).to.eq(200)
+    })
+  })
 
   it(`body is invalid => return 500`, () => {
     cy.request({
-      method: "POST",
+      method: 'POST',
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_PROPERTIES_ROUTE}`,
-      body: { locale: "invalidLocaleFormat" },
-      failOnStatusCode: false,
+      body: { locale: 'invalidLocaleFormat' },
+      failOnStatusCode: false
     }).should((response) => {
-      expect(response.body.message).to.exist;
-      expect(response.status).to.eq(500);
-    });
-  });
-});
+      expect(response.body.message).to.exist
+      expect(response.status).to.eq(500)
+    })
+  })
+})
 
-it("Unknown route", () => {
-  cy.visit(baseURL);
+it('Unknown route', () => {
+  cy.visit(baseURL)
   cy.request({
-    method: "POST",
+    method: 'POST',
     url: `${baseURL}/api/unknown`,
     body: {},
-    failOnStatusCode: false,
+    failOnStatusCode: false
   }).should((response) => {
-    expect(response.status).to.eq(500);
-    expect(response.body.message).to.eq(ServerErrors.UNKNOWN_ROUTE);
-  });
-});
+    expect(response.status).to.eq(500)
+    expect(response.body.message).to.eq(ServerErrors.UNKNOWN_ROUTE)
+  })
+})

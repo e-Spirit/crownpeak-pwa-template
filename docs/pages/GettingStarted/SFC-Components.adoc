@@ -3,21 +3,23 @@
 :moduledir: ../..
 :imagesdir: {moduledir}/images
 
-In this section we will be exploring how to go about implementing a Teaser section using the classic Vue single file components.
+In this chapter we will be exploring how to go about implementing a new section component using the classic Vue single file components. We will demonstrate the process by referencing to an example project that you will see below.
 
-When you go to the page `/unsere-loesungen` in the development mode, you will see that multiple components are displayed as unknown.
+You can see in the following picture that multiple components are displayed as unknown in our example project. These components have been created in First Spirit but in our pwa the UI has not been implemented yet. 
 
 image:WritingComponents/Missing_teaser.png[Missing Teaser]
 
-By clicking on the question mark on one of the unknown component the dev info tells us that there should be a component of type `Section`. We can also see that the 'sectionType' property of this missing section is called `teaser`.
+By clicking on the question mark on one of the unknown components the dev info tells us all the information the component has access to. In our example we can see that there should be a component of type `Section`. We can also see that the 'sectionType' property of this missing section is called `teaser`.
 
 image:WritingComponents/DevMode_teaser.png[Dev Mode Teaser]
 
-Our section components are located in `~/components/Section/`. That's where you want to create a new file for the component.
+The section components in our demo project are located in `~/components/Section/`. That's where we are going to create a new file for the example component. 
 
-We name our new file `Teaser.vue` and add a template tag to the file so we can see something when we fire up the dev server:
+In general the `~/components` folder holds all the reusable components in your project. You are free to create subfolders as you like and come up with a custom folder structure. Remember to update any references to your components accordingly.
 
-[source,xml]
+We name our new file `Teaser.vue` and add a template tag to the file so that we can see something when we fire up the dev server:
+
+[source, xml]
 ----
 <template>
   <div>
@@ -28,7 +30,9 @@ We name our new file `Teaser.vue` and add a template tag to the file so we can s
 
 Now we need to reference our newly created teaser component inside the general `Section.vue` component which can be found in the `~/components/PageBodyContent/` directory. 
 
-Simply add a `teaser` case to the computed `sectionComponent` property. Make sure to name the case after the respective `sectionType` and name the component that is going to be resolved according to the path where it is located. In this case `Section/Teaser.vue` becomes `SectionTeaser`. As of now, the component name needs to be a hardcoded string. Variable component resolving is not yet possible in Nuxt 3.
+Add a `teaser` case to the computed `sectionComponent` property. Make sure to name the case after the respective `sectionType` and name the component that is going to be resolved according to the path where it is located. 
+
+In this case `Section/Teaser.vue` becomes `SectionTeaser`. As of now, the component name needs to be a hardcoded string. Variable component resolving is not yet possible in Nuxt 3.
 
 [source,ts]
 ----
@@ -47,19 +51,23 @@ const sectionComponent = computed(() => {
 ----
 
 
-When we go back to the browser, instead of the unknown component we should see our component.
+When we go back to the browser, instead of the unknown component we now see our new teaser component.
 
 
 image:WritingComponents/Basic_teaser.png[Basic Teaser]
 
-Our component is recognized correctly. But we still do not display the data from the https://docs.e-spirit.com/module/caas/CaaS_FSM_Documentation_EN.html[CaaS] in our component.
-For that we hover over our component and click on the appearing question mark on the right side again.
+Our component is recognized correctly. But we still do not display any data from the https://docs.e-spirit.com/module/caas/CaaS_FSM_Documentation_EN.html[CaaS] in our component.
+For that we hover over our new component and click on the appearing question mark on the right side again.
 
 
 image:WritingComponents/DevMode_teaser_properties.png[Available Properties]
 
-This shows us the data available to display.
-For the first example we want to display the `st_jumbo_headline`. Your section has access to a `data` property that gets passed to your component. You can make this property typesafe by adding a custom interface. Modify the `Teaser.vue` component like this:
+This shows us all the data available to display. In our example there is a property called `st_jumbo_headline`
+that we are going to display. 
+
+Our newly created `Teaser.vue` component has access to a `data` property that gets passed from the general Section component. You can provide some typesafety by adding a custom interface to this property. 
+
+To display data in our example we modify the `Teaser.vue` component like this:
 
 [source,xml]
 ----
@@ -81,7 +89,7 @@ The result should look like this:
 
 image:WritingComponents/Modified_teaser_sections.png[Displayed Headline]
 
-To render richtext, image or button elements you can use the `RichText.vue`, `Image.vue` and `Button.vue` components which can be found under the `~/components/Elements/` folder. Use them like this in your teaser component:
+To render richtext, image or button elements you can use the `RichText.vue`, `Image.vue` and `Button.vue` components which can be found under the `~/components/Elements/` folder. We use them like this in our example teaser component:
 
 [source,xml]
 ----
@@ -113,4 +121,4 @@ function clickHandler(){
 </script>
 ----
 
-Of course you can modify all components and adjust them according to your specific requirements. In our implementation example `ElementsButton` emits a `buttonClick` event which can be hooked into with `@button-click`. Simply define your click handler function inside the script tag as shown above. 
+Of course, you can modify all components and adjust them according to your specific requirements. In our implementation example `ElementsButton` emits a `buttonClick` event which can be hooked into with `@button-click`. Define your click handler function inside the script tag as shown above. 

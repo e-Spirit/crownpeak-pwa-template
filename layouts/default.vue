@@ -12,44 +12,44 @@
 </template>
 
 <script setup lang="ts">
-const { activeLocale } = useLocale();
-const { fetchProjectProperties, setProjectProperties } = useProjectProperties();
-const { setNavigationData, fetchNavigationData } = useNavigationData();
-const { $logger } = useNuxtApp();
+const { activeLocale } = useLocale()
+const { fetchProjectProperties, setProjectProperties } = useProjectProperties()
+const { setNavigationData, fetchNavigationData } = useNavigationData()
+const { $logger } = useNuxtApp()
 
 // This gets called when the layout is loaded or the locale changes
 const { pending } = useAsyncData(
   async () => {
     // fetch project properties
-    const projectProperties = await fetchProjectProperties(activeLocale.value!);
+    const projectProperties = await fetchProjectProperties(activeLocale.value!)
     if (!projectProperties) {
       $logger.error(
-        "Project properties could not be fetched for locale: ",
+        'Project properties could not be fetched for locale: ',
         activeLocale.value
-      );
+      )
       throw showError({
-        message: "Project properties could not be fetched",
-        statusCode: 500,
-      });
+        message: 'Project properties could not be fetched',
+        statusCode: 500
+      })
     }
 
-    setProjectProperties(projectProperties, activeLocale.value!);
+    setProjectProperties(projectProperties, activeLocale.value!)
 
     // fetch navigationData
-    const navigationData = await fetchNavigationData(activeLocale.value!);
+    const navigationData = await fetchNavigationData(activeLocale.value!)
     if (!navigationData) {
       $logger.error(
-        "Navigation data could not be fetched for locale: ",
+        'Navigation data could not be fetched for locale: ',
         activeLocale.value
-      );
+      )
       throw showError({
-        message: "Navigation data could not be fetched",
-        statusCode: 500,
-      });
+        message: 'Navigation data could not be fetched',
+        statusCode: 500
+      })
     }
 
-    setNavigationData(navigationData);
+    setNavigationData(navigationData)
   },
   { watch: [activeLocale] }
-);
+)
 </script>

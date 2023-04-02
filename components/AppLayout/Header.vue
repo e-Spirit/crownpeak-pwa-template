@@ -48,5 +48,5 @@
 </template>
 
 <script setup lang="ts">
-const mobileNavigationVisible = ref(false);
+const mobileNavigationVisible = ref(false)
 </script>

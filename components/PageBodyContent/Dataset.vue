@@ -14,15 +14,15 @@
 </template>
 
 <script setup lang="ts">
-import { Dataset } from "fsxa-api";
-const props = defineProps<{ content: Dataset }>();
+import { Dataset } from 'fsxa-api'
+const props = defineProps<{ content: Dataset }>()
 
-const { $isPreviewMode } = useNuxtApp();
+const { $isPreviewMode } = useNuxtApp()
 
 const datasetComponent = computed(() => {
   switch (props.content.template) {
     default:
-      return undefined;
+      return undefined
   }
-});
+})
 </script>

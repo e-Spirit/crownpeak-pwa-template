@@ -13,11 +13,11 @@
 </template>
 
 <script setup lang="ts">
-import { RichTextElement } from "fsxa-api";
-defineProps<{ richTextElement: RichTextElement }>();
+import { RichTextElement } from 'fsxa-api'
+defineProps<{ richTextElement: RichTextElement }>()
 
 function getRichtext(item: string | RichTextElement) {
-  if (typeof item === "string" || !item.content) return;
-  return item.content as RichTextElement[];
+  if (typeof item === 'string' || !item.content) return
+  return item.content as RichTextElement[]
 }
 </script>

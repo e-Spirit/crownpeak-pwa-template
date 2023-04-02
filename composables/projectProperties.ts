@@ -1,14 +1,14 @@
-import { ProjectProperties } from "fsxa-api";
+import { ProjectProperties } from 'fsxa-api'
 
 export function useProjectProperties() {
   const projectProperties = useState<ProjectProperties | null>(
-    "projectProperties"
-  );
+    'projectProperties'
+  )
   const cachedProjectProperties = useState<{
-    [locale: string]: ProjectProperties;
-  }>("cachedProjectProperties", () => ({}));
+    [locale: string]: ProjectProperties
+  }>('cachedProjectProperties', () => ({}))
 
-  const { $fsxaApi } = useNuxtApp();
+  const { $fsxaApi } = useNuxtApp()
 
   /**
    * Sets projectProperties composable and stores it in under its locale in cachedProjectProperties
@@ -16,9 +16,9 @@ export function useProjectProperties() {
    * @param locale Locale identifier
    */
   function setProjectProperties(data: ProjectProperties, locale: string) {
-    projectProperties.value = data;
+    projectProperties.value = data
     if (!cachedProjectProperties.value[locale])
-      cachedProjectProperties.value[locale] = data;
+      cachedProjectProperties.value[locale] = data
   }
 
   /**
@@ -31,15 +31,15 @@ export function useProjectProperties() {
       return (
         cachedProjectProperties.value[locale] ||
         (await $fsxaApi.fetchProjectProperties({ locale }))
-      );
+      )
     } catch (error) {
-      return null;
+      return null
     }
   }
   return {
     projectProperties,
     cachedProjectProperties,
     setProjectProperties,
-    fetchProjectProperties,
-  };
+    fetchProjectProperties
+  }
 }

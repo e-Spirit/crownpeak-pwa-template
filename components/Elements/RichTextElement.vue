@@ -12,39 +12,39 @@
 </template>
 
 <script lang="ts" setup>
-import { RichTextElement } from "fsxa-api";
-const props = defineProps<{ richTextElement: RichTextElement }>();
+import { RichTextElement } from 'fsxa-api'
+const props = defineProps<{ richTextElement: RichTextElement }>()
 
 const richtTextElementComponent = computed(() => {
   switch (props.richTextElement.type) {
-    case "text":
-      return resolveComponent("ElementsRichText");
-    case "link":
-      return resolveComponent("ElementsLink");
-    case "list":
-      return resolveComponent("ElementsUnorderedList");
-    case "block":
-      return resolveComponent("ElementsRichText");
-    case "paragraph":
-      return resolveComponent("ElementsRichText");
-    case "linebreak":
-      return resolveComponent("ElementsLinebreak");
+    case 'text':
+      return resolveComponent('ElementsRichText')
+    case 'link':
+      return resolveComponent('ElementsLink')
+    case 'list':
+      return resolveComponent('ElementsUnorderedList')
+    case 'block':
+      return resolveComponent('ElementsRichText')
+    case 'paragraph':
+      return resolveComponent('ElementsRichText')
+    case 'linebreak':
+      return resolveComponent('ElementsLinebreak')
     default:
-      return resolveComponent("ElementsUnknownRichtextElement");
+      return resolveComponent('ElementsUnknownRichtextElement')
   }
-});
+})
 
 const richTextElementClasses = computed(() => {
   const fsStyle = (props.richTextElement.data as Record<string, unknown>)[
-    "data-fs-style"
-  ];
+    'data-fs-style'
+  ]
   switch (fsStyle) {
-    case "format.span_yellow_text":
-      return "text-yellow-500";
-    case "format.standard":
-      return "";
+    case 'format.span_yellow_text':
+      return 'text-yellow-500'
+    case 'format.standard':
+      return ''
     default:
-      return "";
+      return ''
   }
-});
+})
 </script>

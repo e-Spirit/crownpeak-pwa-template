@@ -43,28 +43,20 @@ The https://docs.e-spirit.com/module/caas/CaaS_Platform_Documentation_EN.html[Fi
 
 == Deployment
 
-By default customers are provided with a _DQP_ setup: _Development_, _Quality Assurance_, and _Production_. They get a _git_ repository with corresponding branches. In the FSXA default setup all that is required to deploy changes to a PWA is pushing changes - the PWA will automatically be built and deployed. With FirstSpirit’s pattern of "`preview`" and "`release`" states for project contents this setup leeds to three times two = six PWA instances per project.
-
-Technology used "`behind the scenes`":
-
-* https://kubernetes.io/[Kubernetes]
-* https://helm.sh/[Helm]
-* https://rancher.com/[Rancher]
-
-image:ccd_tools.svg[CCD Tools,400]
-
 === Running the application in a production environment
-In the deployment process Crownpeak Technology uses Docker to containerize the applications.
-To verify your pwa is compliant to the provided Dockerfile, you can use the Dockerfile.template.
-You just need to create your `.env` file according to `.env.template` with your own values.
 
-Once you have your `.env` file ready, execute `docker build -t fsxa-nuxt3-pwa -f Dockerfile.template .`
+We provide an example Dockerfile in this project that can be used to containerize your PWA. To verify that your application is still running in the docker container, you can build and run the container locally. We assume you already installed docker on your machine.
 
-To check the compliance with the Crownpeak Technology build pipeline the image needs to be build and run locally.
-You can then run the image locally with `docker run --env-file .env -p XXXX:3000 fsxa-nuxt3-pwa`
+First, create your `.env` file according to `.env.template`.
+
+Once you have your `.env` file ready, execute 
+
+`docker build -t fsxa-nuxt3-pwa -f Dockerfile.template .`
+
+You can then run the image locally with 
+
+`docker run --env-file .env -p XXXX:3000 fsxa-nuxt3-pwa`
+
 Where XXXX can be replaced with any free port on your machine.
 When the container is running, visit localhost:XXXX in a browser and the pwa should show up.
 
-Please note:
-Due to security aspects providing a custom Dockerfile will stop the build pipeline.
-Make sure not to commit a Dockerfile (Dockerfile.template is okay) to your project's repository.

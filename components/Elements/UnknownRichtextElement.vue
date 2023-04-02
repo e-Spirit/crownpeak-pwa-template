@@ -13,11 +13,11 @@
   </span>
 </template>
 <script lang="ts" setup>
-import { RichTextElement } from "fsxa-api/dist/types";
+import { RichTextElement } from 'fsxa-api/dist/types'
 
 defineProps<{
-  richTextElement?: RichTextElement;
-}>();
+  richTextElement?: RichTextElement
+}>()
 
-const { showDev } = useDev();
+const { showDev } = useDev()
 </script>
