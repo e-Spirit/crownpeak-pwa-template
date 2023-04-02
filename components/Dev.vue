@@ -122,10 +122,10 @@
 </template>
 
 <script setup lang="ts">
-import hljs from "highlight.js/lib/core";
-import json from "highlight.js/lib/languages/json";
+import hljs from 'highlight.js/lib/core'
+import json from 'highlight.js/lib/languages/json'
 
-hljs.registerLanguage("json", json);
+hljs.registerLanguage('json', json)
 
 const props = defineProps<{
   content: unknown
@@ -156,9 +156,9 @@ const devContent = computed(() => {
 })
 
 const highglightedDevContent = computed(() => {
-  const stringifiedDevContent = JSON.stringify(devContent.value, null, 2);
-  return hljs.highlight(stringifiedDevContent, { language: "json" }).value;
-});
+  const stringifiedDevContent = JSON.stringify(devContent.value, null, 2)
+  return hljs.highlight(stringifiedDevContent, { language: 'json' }).value
+})
 
 const products = computed(() => {
   const route = decodeURIComponent(useRoute().path)
