@@ -6,7 +6,7 @@ In Nuxt 3 you can define custom server routes under the `~/server/routes` direct
 
 The code is pretty straight forward. First we fetch the navigation data from the navigation service through the FSXAApiSingleton. We already initialized the singleton inside the `~/plugins/1.setupRemoteApi.ts` plugin.
 
-Next we simply map all seo routes from the navigation data to an xml string and set the response header to `Content-Type=text/xml`. That's basically it. If you want, you can also provide a custom stylesheet for your xml or extend the sitemap with custom route entries. 
+Next we map all seo routes from the navigation data to an xml string and set the response header to `Content-Type=text/xml`. That's basically it. If you want, you can also provide a custom stylesheet for your xml or extend the sitemap with custom route entries. 
 
 [source,javascript]
 ----
