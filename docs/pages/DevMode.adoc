@@ -6,8 +6,9 @@
 . <<Introduction>>
 . <<Missing Components>>
 . <<Info Box>>
-* <<Current Dataset>>
-* <<Products>>
+
+- <<Current Dataset>>
+- <<Products>>
 . <<Page Info>>
 
 == Introduction
@@ -18,14 +19,13 @@ To enable the development mode, the variable `devMode` must be set to `true` in 
 
 == Missing Components
 
-If you are in development mode and a component on the page has not been developed yet, a `unknown` compoent is rendered. 
+If you are in development mode and a component on the page has not been developed yet, an `unknown` compoent is rendered.
 
 image:DevMode/Missing_teaser.png[Missing Teaser]
 
 By hovering it and clicking on the question mark you can see exactly which component is missing and what information can be addressed.
 
 image:DevMode/DevMode_teaser.png[Dev Mode]
-
 
 == Info Box
 
@@ -35,23 +35,14 @@ image:DevMode/Questionmark.png[Questionmark]
 
 Clicking on this question mark will provide you with the same information as if you clicked on an unknown component. You will see which component is being displayed and what data is available.
 
-
-
 === Current Dataset
 
-On content projections the Dev componente shows another tab, called `Current Dataset`. Here you can find additional information about what dataset is loaded for the current page.
-
+On content projections the Dev component shows another tab, called `Current Dataset`. Here you can find additional information about what dataset is loaded for the current page.
 
 image:DevMode/DevMode_dataset.png[Infobox Dataset]
 
-=== Products
 
-On product category pages the Dev componente shows the `Proudcts` tab, where data about what products have been loaded for the current route is displayed.
-
-
-image:DevMode/DevMode_products.png[Infobox Products]
-
-=== Page info
+=== Page Info
 
 To get general information about the page that is loaded click on a question mark that is displayed in the top right corner on any section of the page, if the `devMode` is enabled.
 
@@ -60,3 +51,9 @@ image:DevMode/Questionmark.png[Questionmark]
 Inside the infobox you can then get general information about what content is in the page by clicking on the "Current Page" tab. Here you can also find information about what layout the page should be displayed in.
 
 image:DevMode/DevMode_page.png[Infobox Page]
+
+=== Additional Data
+
+In our example application we are dealing with product data and therefore extended the functionality of the dev component to also list all cached products. The `Products` tab shows what products have been loaded for the current route.
+
+image:DevMode/DevMode_products.png[Infobox Products]

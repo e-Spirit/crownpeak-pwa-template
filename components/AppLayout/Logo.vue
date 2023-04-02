@@ -5,14 +5,14 @@
 </template>
 
 <script lang="ts" setup>
-import { Image } from "fsxa-api";
+import { Image } from 'fsxa-api'
 
-const { projectProperties } = useProjectProperties();
+const { projectProperties } = useProjectProperties()
 
 const logoSrc = computed(() => {
-  if (!projectProperties.value?.data) return;
-  const image = projectProperties.value?.data["ps_logo"] as Image;
-  if (!image) return;
-  return image.resolutions["ORIGINAL"]?.url;
-});
+  if (!projectProperties.value?.data) return
+  const image = projectProperties.value?.data['ps_logo'] as Image
+  if (!image) return
+  return image.resolutions['ORIGINAL']?.url
+})
 </script>

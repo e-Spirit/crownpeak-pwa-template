@@ -1,17 +1,17 @@
-import { Page, Dataset } from "fsxa-api";
+import { Page, Dataset } from 'fsxa-api'
 
 export function useContent() {
-  const currentDataset = useState<Dataset | null>("currentDataset");
+  const currentDataset = useState<Dataset | null>('currentDataset')
   const cachedDatasets = useState<{
-    [caasId: string]: Dataset;
-  }>("cachedDatasets", () => ({}));
+    [caasId: string]: Dataset
+  }>('cachedDatasets', () => ({}))
   /**
    * Find dataset in cache by route
    * @param route Route
    * @returns Dataset or undefined
    */
   function findCachedDatasetByRoute(route: string) {
-    return cachedDatasets.value[route];
+    return cachedDatasets.value[route]
   }
   /**
    * Add dataset to cache for given route if it has not been cached yet
@@ -20,20 +20,20 @@ export function useContent() {
    * @returns
    */
   function addToCachedDatasets(route: string, data: Dataset) {
-    if (!cachedDatasets.value[route]) cachedDatasets.value[route] = data;
+    if (!cachedDatasets.value[route]) cachedDatasets.value[route] = data
   }
 
-  const currentPage = useState<Page | null>("currentPage");
+  const currentPage = useState<Page | null>('currentPage')
   const cachedPages = useState<{
-    [caasId: string]: Page;
-  }>("cachedPages", () => ({}));
+    [caasId: string]: Page
+  }>('cachedPages', () => ({}))
   /**
    * Find page in cache by route
    * @param route Route
    * @returns page or undefined
    */
   function findCachedPageByRoute(route: string) {
-    return cachedPages.value[route];
+    return cachedPages.value[route]
   }
   /**
    * Add page to cache for given route if it has not been cached yet
@@ -42,12 +42,12 @@ export function useContent() {
    * @returns
    */
   function addToCachedPages(route: string, data: Page) {
-    if (!cachedPages.value[route]) cachedPages.value[route] = data;
+    if (!cachedPages.value[route]) cachedPages.value[route] = data
   }
 
   const cachedProducts = useState<{
-    [caasId: string]: Dataset[];
-  }>("cachedProducts", () => ({}));
+    [caasId: string]: Dataset[]
+  }>('cachedProducts', () => ({}))
 
   /**
    * Find products in cache by route
@@ -55,7 +55,7 @@ export function useContent() {
    * @returns products or undefined
    */
   function findCachedProductsByRoute(route: string) {
-    return cachedProducts.value[route];
+    return cachedProducts.value[route]
   }
 
   /**
@@ -65,7 +65,7 @@ export function useContent() {
    * @returns
    */
   function addToCachedProducts(route: string, data: Dataset[]) {
-    if (!cachedProducts.value[route]) cachedProducts.value[route] = data;
+    if (!cachedProducts.value[route]) cachedProducts.value[route] = data
   }
 
   return {
@@ -79,6 +79,6 @@ export function useContent() {
     addToCachedProducts,
     findCachedPageByRoute,
     findCachedDatasetByRoute,
-    findCachedProductsByRoute,
-  };
+    findCachedProductsByRoute
+  }
 }

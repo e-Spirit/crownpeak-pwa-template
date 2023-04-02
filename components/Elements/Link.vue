@@ -20,26 +20,26 @@
 </template>
 
 <script setup lang="ts">
-import { RichTextElement, Link } from "fsxa-api";
+import { RichTextElement, Link } from 'fsxa-api'
 
-const { navigationData, setActiveNavigationItem } = useNavigationData();
+const { navigationData, setActiveNavigationItem } = useNavigationData()
 
 interface RichTextLink {
-  type: "link";
-  content: RichTextElement[];
-  data: Link;
+  type: 'link'
+  content: RichTextElement[]
+  data: Link
 }
 
-const props = defineProps<{ richTextElement: RichTextLink }>();
+const props = defineProps<{ richTextElement: RichTextLink }>()
 
 const linkedNavItem = computed(() => {
   const referenceId: string =
-    props.richTextElement.data.data["lt_link"]?.referenceId;
-  if (!referenceId) return;
-  return navigationData.value?.idMap[referenceId];
-});
+    props.richTextElement.data.data['lt_link']?.referenceId
+  if (!referenceId) return
+  return navigationData.value?.idMap[referenceId]
+})
 
 const internalLinkRoute = computed(() => {
-  return linkedNavItem.value?.seoRoute ?? "";
-});
+  return linkedNavItem.value?.seoRoute ?? ''
+})
 </script>

@@ -2,19 +2,18 @@
 
 == Changing the App Layout
 
-The app layout contains elements that appear on multiple pages for example the navigation or footer components. You can modify our default app layout example by editing the `~/layouts/default.vue` file. We assume that you are familiar with the way layouts work in Nuxt. If not, please read the official https://nuxt.com/docs/guide/directory-structure/layouts[Nuxt documentation on layouts] first. 
+The app layout contains elements that appear on multiple pages for example the navigation or footer components. You can modify our default app layout example by editing the `~/layouts/default.vue` file. We assume that you are familiar with the way layouts work in Nuxt. If not, please read the official https://nuxt.com/docs/guide/directory-structure/layouts[Nuxt documentation on layouts] first.
 
-Of course you can also define multiple app layouts and use them across your pages.
-
+Of course, you can also define multiple app layouts and use them across your pages.
 
 == Changing the Page Layout
 
-Additionally each page itself has a `layout`. This page layout can be seen as another layer in between app layout and the page content for reusing components across pages. In this example we have a `Home` and `Standard` page layout which can be found in the `~/components/PageLayout` directory.
+Additionally, each page itself has a `layout`. This page layout can be seen as another layer in between app layout and the page content for reusing components across pages. In this example we have a `Home` and `Standard` page layout which can be found in the `~/components/PageLayout` directory.
 
-To define a custom page layout add a new component `MyCustomPageLayout.vue` to the `~/components/PageLayout` folder. In our example we pass a `page` property that you can use to render the page content. Use our `PageBody`component to display sections and datasets.
+To define a custom page layout add a new component `MyCustomPageLayout.vue` to the `~/components/PageLayout` folder. In our example we pass a `page` property that you can use to render the page content. Use our `PageBody` component to display sections and datasets.
 
-[source,xml]
-----
+## [source,xml]
+
 <template>
   <div :data-preview-id="page.previewId" data-testid="myCustomPageLayout">
     <div>Here is some content that gets reused on every page that shares this layout</div>      
@@ -30,6 +29,36 @@ To define a custom page layout add a new component `MyCustomPageLayout.vue` to t
 import { Page } from "fsxa-api";
 defineProps<{ page: Page }>();
 </script>
-----
 
+---
 
+In order to use the new page layout you need to register it inside the `~/pages/[...slug].vue` page. You can do so by extending the computed `pageLayoutComponent` property like described below:
+
+## [source,xml]
+
+// ~/pages/[...slug].vue
+
+// ...
+
+<script setup lang="ts">
+
+// ...
+// dynamic layout component
+const pageLayoutComponent = computed(() => {
+  switch (currentPage.value?.layout) {
+    case "homepage":
+      return resolveComponent("PageLayoutHome");
+    case "standard":
+      return resolveComponent("PageLayoutStandard");
+    
+    // add this case statement
+    case "myCustomLayout":
+      return resolveComponent("PageLayoutMyCustomLayout");
+
+    default:
+      return resolveComponent("Unknown");
+  }
+});
+</script>
+
+---

@@ -33,7 +33,7 @@
           <p>
             This
             <span :class="{ 'font-bold ': componentName }">{{
-              componentName || "component"
+              componentName || 'component'
             }}</span>
             has access to the following data:
           </p>
@@ -63,7 +63,7 @@
           class="rounded-t p-2 font-bold capitalize text-white"
           :class="{
             'bg-gray-800 ': activeItem === 'content',
-            'bg-gray-600 ': activeItem !== 'content',
+            'bg-gray-600 ': activeItem !== 'content'
           }"
           @click="activeItem = 'content'"
         >
@@ -75,7 +75,7 @@
           class="rounded-t p-2 font-bold text-white"
           :class="{
             'bg-gray-800 ': activeItem === 'dataset',
-            'bg-gray-600 ': activeItem !== 'dataset',
+            'bg-gray-600 ': activeItem !== 'dataset'
           }"
           @click="activeItem = 'dataset'"
         >
@@ -87,7 +87,7 @@
           class="rounded-t p-2 font-bold text-white"
           :class="{
             'bg-gray-800 ': activeItem === 'products',
-            'bg-gray-600 ': activeItem !== 'products',
+            'bg-gray-600 ': activeItem !== 'products'
           }"
           @click="activeItem = 'products'"
         >
@@ -98,7 +98,7 @@
           class="rounded-t p-2 font-bold text-white"
           :class="{
             'bg-gray-800 ': activeItem === 'currentPage',
-            'bg-gray-600 ': activeItem !== 'currentPage',
+            'bg-gray-600 ': activeItem !== 'currentPage'
           }"
           @click="activeItem = 'currentPage'"
         >
@@ -107,9 +107,9 @@
       </div>
 
       <div
-        class="mx-4 mb-4 flex-1 overflow-scroll rounded-b rounded-tr bg-gray-800 p-4 text-sm text-white"
+        class="mx-4 mb-4 flex-1 overflow-scroll rounded-b rounded-tr bg-gray-800 p-4 text-sm leading-7 text-white"
       >
-        <pre>{{ devContent }}</pre>
+        <pre><code  v-html="highglightedDevContent" /></pre>
       </div>
     </div>
 
@@ -122,50 +122,142 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
-  content: unknown;
-  componentName?: string;
-}>();
+import hljs from "highlight.js/lib/core";
+import json from "highlight.js/lib/languages/json";
 
-const { activeNavigationItem } = useNavigationData();
+hljs.registerLanguage("json", json);
+
+const props = defineProps<{
+  content: unknown
+  componentName?: string
+}>()
+
+const { activeNavigationItem } = useNavigationData()
 const {
   findCachedProductsByRoute,
   findCachedPageByRoute,
-  findCachedDatasetByRoute,
-} = useContent();
+  findCachedDatasetByRoute
+} = useContent()
 
-const devComponentVisible = ref(false);
+const devComponentVisible = ref(false)
 
-const activeItem = ref<"content" | "dataset" | "products" | "currentPage">(
-  "content"
-);
+const activeItem = ref<'content' | 'dataset' | 'products' | 'currentPage'>(
+  'content'
+)
 
 const devContent = computed(() => {
-  if (activeItem.value === "dataset") {
-    return currentDataset.value;
-  } else if (activeItem.value === "products") {
-    return products.value;
-  } else if (activeItem.value === "currentPage") {
-    return currentPage.value;
-  } else return props.content;
+  if (activeItem.value === 'dataset') {
+    return currentDataset.value
+  } else if (activeItem.value === 'products') {
+    return products.value
+  } else if (activeItem.value === 'currentPage') {
+    return currentPage.value
+  } else return props.content
+})
+
+const highglightedDevContent = computed(() => {
+  const stringifiedDevContent = JSON.stringify(devContent.value, null, 2);
+  return hljs.highlight(stringifiedDevContent, { language: "json" }).value;
 });
 
 const products = computed(() => {
-  const route = decodeURIComponent(useRoute().path);
-  return findCachedProductsByRoute(route);
-});
+  const route = decodeURIComponent(useRoute().path)
+  return findCachedProductsByRoute(route)
+})
 
 const currentPage = computed(() => {
-  const route = decodeURIComponent(useRoute().path);
-  return findCachedPageByRoute(route);
-});
+  const route = decodeURIComponent(useRoute().path)
+  return findCachedPageByRoute(route)
+})
 
 const currentDataset = computed(() => {
-  const route = decodeURIComponent(useRoute().path);
-  return findCachedDatasetByRoute(route);
-});
+  const route = decodeURIComponent(useRoute().path)
+  return findCachedDatasetByRoute(route)
+})
 
 const isContentProjection = computed(
   () => activeNavigationItem.value?.seoRouteRegex !== null
-);
+)
 </script>
+
+<style lang="css">
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #dfdfe0;
+  background: #292a2f;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #a5b0bd;
+  font-style: italic;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-formula {
+  color: #ef81b0;
+}
+
+.hljs-section,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-deletion,
+.hljs-subst {
+  color: #dfdfe0;
+}
+
+.hljs-literal {
+  color: #ef81b0;
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta-string {
+  color: #f08875;
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title {
+  color: #dfdfe0;
+}
+
+.hljs-number {
+  color: #d5ca86;
+}
+
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #bbf0e4;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-title {
+  color: #dfdfe0;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}
+</style>

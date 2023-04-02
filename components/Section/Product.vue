@@ -20,13 +20,13 @@
     <div class="bg-black lg:p-8">
       <div class="flex h-full flex-col space-y-6 bg-white p-4">
         <h1 class="mt-4 text-4xl font-black" data-preview-id="#tt_name">
-          {{ currentDataset?.data["tt_name"] }}
+          {{ currentDataset?.data['tt_name'] }}
         </h1>
         <p class="text-gray-800" data-preview-id="#tt_abstract">
-          {{ currentDataset?.data["tt_abstract"] }}
+          {{ currentDataset?.data['tt_abstract'] }}
         </p>
         <p class="my-6 text-3xl font-black" data-preview-id="#tt_price">
-          {{ currentDataset?.data["tt_price"] }}
+          {{ currentDataset?.data['tt_price'] }}
         </p>
 
         <div class="grid grid-cols-2 gap-4">
@@ -165,11 +165,11 @@
 </template>
 
 <script setup lang="ts">
-import { DataEntries } from "fsxa-api";
-defineProps<{ data: DataEntries }>();
+import { DataEntries } from 'fsxa-api'
+defineProps<{ data: DataEntries }>()
 
-const { currentDataset } = useContent();
+const { currentDataset } = useContent()
 
-const deliveryExpanded = ref(false);
-const installationExpanded = ref(false);
+const deliveryExpanded = ref(false)
+const installationExpanded = ref(false)
 </script>
