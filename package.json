@@ -7,6 +7,10 @@
     "type": "git",
     "url": "https://github.com/Wimadev/fsxa-nuxt3-pwa.git"
   },
+  "engines": {
+    "npm": "8.19.3",
+    "node": "18.13.0"
+  },
   "scripts": {
     "build": "nuxt build",
     "commit": "npm run lint && git-cz",
