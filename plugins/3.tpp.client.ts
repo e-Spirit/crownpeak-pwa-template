@@ -1,36 +1,36 @@
-import TPP_SNAP from "fs-tpp-api";
+import TPP_SNAP from 'fs-tpp-api'
 import {
   onNavigationChangeHandler,
   onRequestPreviewElementHandler,
-  onRerenderViewHandler,
-} from "~~/utils/tpp";
+  onRerenderViewHandler
+} from '~~/utils/tpp'
 
 /**
  * Nuxt plugin that initializes the TPP Snap, only works if you are in the FirstSpirit editor and if the environment variable FSXA_MODE is set to "preview"
  */
 export default defineNuxtPlugin(() => {
-  const { $isPreviewMode } = useNuxtApp();
+  const { $isPreviewMode } = useNuxtApp()
 
-  if (!$isPreviewMode) return;
+  if (!$isPreviewMode) return
 
   TPP_SNAP.isConnected.then(async (_isConnected: boolean) => {
-    const initialized = await onInit();
+    const initialized = await onInit()
 
-    if (!initialized) return;
+    if (!initialized) return
 
     // onRequestPreviewElement is called if you e.g. click on a result in the search results
     // https://docs.e-spirit.com/tpp/snap/#onrequestpreviewelementhandler
-    TPP_SNAP.onRequestPreviewElement(onRequestPreviewElementHandler);
+    TPP_SNAP.onRequestPreviewElement(onRequestPreviewElementHandler)
 
     // onRerenderView is called if content changed and you do not have the onContentChange event handler implemented
     // The previewId can be for a dataset or a page.
     // https://docs.e-spirit.com/tpp/snap/#onrerenderviewhandler
-    TPP_SNAP.onRerenderView(onRerenderViewHandler);
+    TPP_SNAP.onRerenderView(onRerenderViewHandler)
 
     // onNavigationChange is called if anything in the navigation structure changed, e.g. a page was created or deleted
     // https://docs.e-spirit.com/tpp/snap/#onnavigationchangehandler
-    TPP_SNAP.onNavigationChange(onNavigationChangeHandler);
-  });
+    TPP_SNAP.onNavigationChange(onNavigationChangeHandler)
+  })
 
   return {
     provide: {
@@ -40,7 +40,7 @@ export default defineNuxtPlugin(() => {
        * @param previewId preview id of the current dataset or page
        */
       setPreviewId: async (previewId: string | undefined) => {
-        if (await TPP_SNAP.isConnected) TPP_SNAP.setPreviewElement(previewId);
+        if (await TPP_SNAP.isConnected) TPP_SNAP.setPreviewElement(previewId)
       },
       /**
        *  Used by the add section component to create a new section
@@ -48,12 +48,11 @@ export default defineNuxtPlugin(() => {
        * @param bodyName name attribute of the pageBody
        */
       createSection: async (bodyName: string) => {
-        const previewId: string | undefined =
-          await TPP_SNAP.getPreviewElement();
-        if (!previewId) return;
+        const previewId: string | undefined = await TPP_SNAP.getPreviewElement()
+        if (!previewId) return
 
-        return TPP_SNAP.createSection(previewId, { body: bodyName });
-      },
-    },
-  };
-});
+        return TPP_SNAP.createSection(previewId, { body: bodyName })
+      }
+    }
+  }
+})

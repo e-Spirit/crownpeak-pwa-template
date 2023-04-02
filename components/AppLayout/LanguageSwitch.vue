@@ -26,7 +26,7 @@
             :data-testid="`${locale.identifier}-switch`"
             :data-activeLocale="locale.identifier === activeLocale"
             :class="{
-              underline: locale.identifier === activeLocale,
+              underline: locale.identifier === activeLocale
             }"
             class="w-full py-3 px-4 hover:bg-gray-200"
             @click="changeLanguage(locale.identifier)"
@@ -40,56 +40,56 @@
 </template>
 
 <script setup lang="ts">
-const { config, activeLocale } = useLocale();
-const { $fsxaApi } = useNuxtApp();
-const loading = ref(true);
-const { activeNavigationItem, setNavigationData } = useNavigationData();
-const { currentDataset } = useContent();
+const { config, activeLocale } = useLocale()
+const { $fsxaApi } = useNuxtApp()
+const loading = ref(true)
+const { activeNavigationItem, setNavigationData } = useNavigationData()
+const { currentDataset } = useContent()
 
 onMounted(() => {
-  loading.value = false;
-});
+  loading.value = false
+})
 
-const emits = defineEmits(["languageSwitch"]);
+const emits = defineEmits(['languageSwitch'])
 
 async function changeLanguage(locale: string) {
-  if (locale === activeLocale.value) return;
+  if (locale === activeLocale.value) return
 
   // fetch navigation data for new locale
   const navigationDataAfterLocaleChange = await fetchTopLevelNavigation(
     $fsxaApi,
     locale
-  );
+  )
 
   // find corresponding navigation item in new navigation data
-  const activeNavigationItemId = activeNavigationItem.value!.id;
+  const activeNavigationItemId = activeNavigationItem.value!.id
   const navigationItemAfterLocaleChange =
-    navigationDataAfterLocaleChange?.idMap[activeNavigationItemId];
+    navigationDataAfterLocaleChange?.idMap[activeNavigationItemId]
 
   if (!navigationItemAfterLocaleChange)
-    throw createError("Navigation item not found");
+    throw createError('Navigation item not found')
 
-  const isProjection = !!navigationItemAfterLocaleChange.seoRouteRegex;
+  const isProjection = !!navigationItemAfterLocaleChange.seoRouteRegex
 
   let translatedRoute: string | undefined =
-    navigationItemAfterLocaleChange.seoRoute;
+    navigationItemAfterLocaleChange.seoRoute
 
   // if content projection ==> determine route from dataset
   if (isProjection) {
-    const currentDatasetId = currentDataset.value!.id;
-    const pageId = navigationItemAfterLocaleChange.caasDocumentId;
-    const dataset = await fetchDatasetById($fsxaApi, currentDatasetId, locale);
-    if (!dataset) throw createError("No dataset");
+    const currentDatasetId = currentDataset.value!.id
+    const pageId = navigationItemAfterLocaleChange.caasDocumentId
+    const dataset = await fetchDatasetById($fsxaApi, currentDatasetId, locale)
+    if (!dataset) throw createError('No dataset')
     translatedRoute = dataset.routes.find(
       (route) => route.pageRef === pageId
-    )?.route;
+    )?.route
   }
   if (!translatedRoute)
-    throw createError("Translated route could not be determined");
+    throw createError('Translated route could not be determined')
 
-  setNavigationData(navigationDataAfterLocaleChange);
-  useRouter().push(translatedRoute);
+  setNavigationData(navigationDataAfterLocaleChange)
+  useRouter().push(translatedRoute)
 
-  emits("languageSwitch", locale);
+  emits('languageSwitch', locale)
 }
 </script>

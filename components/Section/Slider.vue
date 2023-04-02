@@ -67,40 +67,40 @@
 </template>
 
 <script setup lang="ts">
-import { Image, RichTextElement, Section } from "fsxa-api";
+import { Image, RichTextElement, Section } from 'fsxa-api'
 
-const { showDev } = useDev();
+const { showDev } = useDev()
 
-const { $isPreviewMode } = useNuxtApp();
+const { $isPreviewMode } = useNuxtApp()
 
 interface SliderSlide extends Section {
   data: {
     st_button: {
       data: {
-        lt_button_text: string;
-        lt_product_link: { route: string };
-      };
-    };
-    st_description: string;
-    st_picture: Image;
-    st_picture_alt?: string;
-    st_title: RichTextElement[];
-  };
+        lt_button_text: string
+        lt_product_link: { route: string }
+      }
+    }
+    st_description: string
+    st_picture: Image
+    st_picture_alt?: string
+    st_title: RichTextElement[]
+  }
 }
 
-const props = defineProps<{ data: SliderSlide[] }>();
+const props = defineProps<{ data: SliderSlide[] }>()
 
-const activeImageIndex = ref(0);
+const activeImageIndex = ref(0)
 
-const activeSlide = computed(() => props.data[activeImageIndex.value]);
+const activeSlide = computed(() => props.data[activeImageIndex.value])
 
 function nextSlide() {
-  activeImageIndex.value = (activeImageIndex.value + 1) % props.data.length;
+  activeImageIndex.value = (activeImageIndex.value + 1) % props.data.length
 }
 
 function prevSlide() {
   activeImageIndex.value =
-    (activeImageIndex.value - 1 + props.data.length) % props.data.length;
+    (activeImageIndex.value - 1 + props.data.length) % props.data.length
 }
 </script>
 

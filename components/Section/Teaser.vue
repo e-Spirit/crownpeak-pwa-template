@@ -39,25 +39,25 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Image, RichTextElement } from "fsxa-api";
+import { Image, RichTextElement } from 'fsxa-api'
 
 interface Teaser {
-  st_headline: RichTextElement[];
-  st_jumbo_headline: string;
-  st_kicker: string;
-  st_picture?: Image;
-  st_picture_alt?: string;
-  st_text: RichTextElement[];
+  st_headline: RichTextElement[]
+  st_jumbo_headline: string
+  st_kicker: string
+  st_picture?: Image
+  st_picture_alt?: string
+  st_text: RichTextElement[]
   st_button: {
     data: {
-      lt_button_text: string;
+      lt_button_text: string
       lt_internal: {
-        referenceId: string;
-        referenceType: string;
-      };
-    };
-  } | null;
+        referenceId: string
+        referenceType: string
+      }
+    }
+  } | null
 }
 
-defineProps<{ data: Teaser }>();
+defineProps<{ data: Teaser }>()
 </script>

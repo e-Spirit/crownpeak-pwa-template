@@ -4,16 +4,16 @@
     class="hover:underline"
     @click="setActiveNavigationItem(navItem)"
   >
-    {{ navItem.label || "??" }}
+    {{ navItem.label || '??' }}
   </NuxtLink>
 </template>
 
 <script setup lang="ts">
-import { NavigationItem } from "fsxa-api";
+import { NavigationItem } from 'fsxa-api'
 
-const { setActiveNavigationItem } = useNavigationData();
+const { setActiveNavigationItem } = useNavigationData()
 
 defineProps<{
-  navItem: NavigationItem;
-}>();
+  navItem: NavigationItem
+}>()
 </script>

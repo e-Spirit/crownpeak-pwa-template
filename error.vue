@@ -32,12 +32,12 @@
 <script setup lang="ts">
 defineProps<{
   error: {
-    statusCode: number;
-    message?: string;
-    statusMessage?: string;
-    stack?: string;
-  };
-}>();
+    statusCode: number
+    message?: string
+    statusMessage?: string
+    stack?: string
+  }
+}>()
 </script>
 
 <style lang="css" scoped>
