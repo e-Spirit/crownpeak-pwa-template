@@ -20,7 +20,10 @@ describe('Section', () => {
     findCachedPageByRoute: (_route: string) => null,
     findCachedDatasetByRoute: (_route: string) => null,
     addToCachedPages: (_route: string, _page: Page) => null,
-    addToCachedDatasets: (_route: string, _dataset: Dataset) => null
+    addToCachedDatasets: (_route: string, _dataset: Dataset) => null,
+    cachedProducts: undefined,
+    addToCachedProducts: (_route: string, _data: Dataset[]) => null,
+    findCachedProductsByRoute: (_route: string) => null
   }
 
   beforeEach(() => {

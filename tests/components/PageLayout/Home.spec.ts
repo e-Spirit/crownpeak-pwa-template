@@ -16,7 +16,7 @@ describe('HomePageLayout', () => {
     const page = createPage()
     const pageBody = createPageBody()
     page.children.push(pageBody)
-    page.data.pt_slider = []
+    page.data['pt_slider'] = []
 
     const { getByTestId } = render(Home, {
       global: renderConfig.global,

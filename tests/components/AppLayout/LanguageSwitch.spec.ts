@@ -32,7 +32,7 @@ describe('header', () => {
     expect(languageSwitch).not.toBe(null)
     expect(languagesUL?.children.length).toBe(config.allLocales.length)
 
-    for (let i = 0; i < languagesUL.children.length; i++) {
+    for (let i = 0; i < languagesUL!.children.length; i++) {
       const child = languagesUL?.children[i]
       expect(child?.innerHTML).toContain(config.allLocales[i].name)
     }
