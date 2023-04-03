@@ -24,7 +24,7 @@ export default defineNuxtPlugin(() => {
       appConfig.maxReferenceDepth,
     projectID: runtimeConfig.private.projectId,
     remotes: runtimeConfig.private.remotes
-      ? typeof runtimeConfig.private.remotes === "string"
+      ? typeof runtimeConfig.private.remotes === 'string'
         ? JSON.parse(runtimeConfig.private.remotes)
         : runtimeConfig.private.remotes
       : {},
