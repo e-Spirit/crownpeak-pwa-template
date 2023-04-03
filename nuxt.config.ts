@@ -35,7 +35,8 @@ export default defineNuxtConfig({
       logLevel: process.env['NUXT_PUBLIC_FSXA_LOG_LEVEL'],
       mode: process.env['NUXT_PUBLIC_FSXA_MODE'],
       snapUrl: process.env['NUXT_PUBLIC_FSXA_SNAP_URL'],
-      enableEventStream: process.env['NUXT_PUBLIC_FSXA_ENABLE_EVENT_STREAM']
+      enableEventStream: process.env['NUXT_PUBLIC_FSXA_ENABLE_EVENT_STREAM'],
+      defaultLocale: process.env['NUXT_PUBLIC_FSXA_LOCALE']
     },
     private: {
       apiKey: process.env['NUXT_PRIVATE_API_KEY'],

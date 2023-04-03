@@ -30,44 +30,14 @@ describe('slug page', () => {
     currentDataset: { value: createDataset() },
     cachedPages: {},
     cachedDatasets: {},
+    cachedProducts: [],
+    addToCachedProducts: (_route: string, _data: Dataset[]) => null,
+    findCachedProductsByRoute: (_route: string) => null,
     findCachedPageByRoute: (_route: string) => null,
     findCachedDatasetByRoute: (_route: string) => null,
     addToCachedPages: (_route: string, _page: Page) => null,
     addToCachedDatasets: (_route: string, _dataset: Dataset) => null
   }
-
-  // test cases broken because testutils do not wait for useasyncdata
-  describe.skip('page not cached', () => {
-    it('render with homepage layout prop => render homepage layout component', async () => {
-      vi.spyOn(content, 'useContent').mockReturnValue({
-        ...mockedContent,
-        currentPage: { value: createPage({ layout: 'homepage' }) }
-      })
-      const { getByTestId } = await render(SlugPage, {
-        global: renderConfig.global
-      })
-
-      expect(getByTestId('homePageLayout')).toBeTruthy()
-    })
-
-    it('render with standard layout prop => render standard layout component', () => {
-      vi.spyOn(content, 'useContent').mockReturnValue({
-        ...mockedContent,
-        currentPage: { value: createPage({ layout: 'standard' }) }
-      })
-      const { getByTestId } = render(SlugPage, { global: renderConfig.global })
-      expect(getByTestId('standardPageLayout')).toBeTruthy()
-    })
-
-    it('render with unknown layout prop => render unknown component', () => {
-      vi.spyOn(content, 'useContent').mockReturnValue({
-        ...mockedContent,
-        currentPage: { value: createPage({ layout: 'unknown' }) }
-      })
-      const { getByTestId } = render(SlugPage, { global: renderConfig.global })
-      expect(getByTestId('unknown')).toBeTruthy()
-    })
-  })
 
   describe('page cached', () => {
     it('render => display cached component', () => {
@@ -80,6 +50,4 @@ describe('slug page', () => {
       expect(getByTestId('standardPageLayout')).toBeTruthy()
     })
   })
-
-  // test cache
 })

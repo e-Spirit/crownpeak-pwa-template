@@ -50,6 +50,10 @@ describe(`slug page`, () => {
     cy.get('[data-testid=productSection]').should('contain', 'The Oklexa SP93')
     cy.contains('Home').click()
     cy.url().should('eq', `${baseURL}/Home/`)
+
+    // wait until content is displayed
+    cy.contains('Life made easier')
+
     cy.go('back')
     cy.url().should('eq', `${baseURL}/Products/Goomazon-Oklexa-SP93.html`)
     cy.get('[data-testid=productSection]').should('contain', 'The Oklexa SP93')
@@ -70,19 +74,6 @@ describe(`slug page`, () => {
     })
       .its('status')
       .should('equal', 404)
-  })
-
-  // fetching api/properties is down ssr, and no real http call is actually made
-  // this is why cypress cant intercept it and it works as expected
-  // not sure how to test this properly without over-engineering everything
-  it.skip('fail to fetch project properties => display error', () => {
-    cy.intercept('POST', '/api/properties', {
-      statusCode: 500
-    }).as('fetchProperties')
-
-    cy.visit(`${baseURL}/Unsere-Lösungen`)
-
-    cy.get('body').should('contain', 'Error')
   })
 
   it('fail to fetch navigation => display error', () => {
