@@ -25,20 +25,20 @@
 </template>
 
 <script setup lang="ts">
-import { NavigationItem } from "fsxa-api";
+import { NavigationItem } from 'fsxa-api'
 
-const { navigationData } = useNavigationData();
+const { navigationData } = useNavigationData()
 
 const topNavigation = computed(() => {
   return (navigationData.value?.structure ?? [])
     .map((item) => navigationData.value?.idMap[item.id])
-    .filter((e) => e !== undefined) as NavigationItem[];
-});
+    .filter((e) => e !== undefined) as NavigationItem[]
+})
 
 function getSubNavigation(navItem: NavigationItem) {
   return (navigationData.value?.structure ?? [])
     .find((item) => item.id === navItem.id)
     ?.children?.map((item) => navigationData?.value?.idMap[item.id])
-    .filter((e) => e !== undefined) as NavigationItem[];
+    .filter((e) => e !== undefined) as NavigationItem[]
 }
 </script>

@@ -1,5 +1,5 @@
-import { NavigationItem } from "fsxa-api";
-import { faker } from "@faker-js/faker";
+import { NavigationItem } from 'fsxa-api'
+import { faker } from '@faker-js/faker'
 
 export function createNavigationItem(
   optionalNavigationItem?: Partial<NavigationItem>
@@ -14,9 +14,9 @@ export function createNavigationItem(
     label: faker.random.word(),
     permissions: {
       allowed: [],
-      denied: [],
+      denied: []
     },
-    parentIds: [],
-  };
-  return { ...NavigationItem, ...optionalNavigationItem };
+    parentIds: []
+  }
+  return { ...NavigationItem, ...optionalNavigationItem }
 }

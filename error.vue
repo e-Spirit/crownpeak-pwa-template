@@ -6,7 +6,7 @@
       viewBox="0 0 24 24"
       stroke-width="1.5"
       stroke="currentColor"
-      class="mx-auto h-12 w-12"
+      class="errorImage"
     >
       <path
         stroke-linecap="round"
@@ -20,7 +20,7 @@
       {{ error.statusMessage || error.message }}
     </p>
     <div class="stackTraceContainer">
-      <pre v-if="error.stack">{{ JSON.stringify(error.stack, null, 2) }} </pre>
+      <div v-if="error.stack" v-html="error.stack" />
       <div v-else>We don't know anything more about this error.</div>
     </div>
     <div class="buttons">
@@ -32,15 +32,18 @@
 <script setup lang="ts">
 defineProps<{
   error: {
-    statusCode: number;
-    message?: string;
-    statusMessage?: string;
-    stack?: string;
-  };
-}>();
+    statusCode: number
+    message?: string
+    statusMessage?: string
+    stack?: string
+  }
+}>()
 </script>
 
 <style lang="css" scoped>
+.errorImage {
+  @apply mx-auto h-12 w-12;
+}
 .errorPage {
   @apply flex h-full min-h-screen flex-col items-center justify-center p-4;
 }

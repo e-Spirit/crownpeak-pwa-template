@@ -59,15 +59,15 @@
 </template>
 
 <script setup lang="ts">
-import { Image, RichTextElement } from "fsxa-api";
+import { Image, RichTextElement } from 'fsxa-api'
 
 interface InterestingFacts {
-  st_background_image: Image;
-  st_headline: string;
-  st_tagline: string;
-  st_text: RichTextElement[];
-  st_counters: { id: string; data: { st_number: Number; st_text: string } }[];
+  st_background_image: Image
+  st_headline: string
+  st_tagline: string
+  st_text: RichTextElement[]
+  st_counters: { id: string; data: { st_number: Number; st_text: string } }[]
 }
 
-defineProps<{ data: InterestingFacts }>();
+defineProps<{ data: InterestingFacts }>()
 </script>

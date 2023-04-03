@@ -12,7 +12,7 @@ For in depth information on how to use composables in your Nuxt project check ou
 
 == ShowDev
 
-Stores whether or not to show the `Dev` overlay on components.
+Stores whether to show the `Dev` overlay on components.
 
 == Locale
 
@@ -33,7 +33,7 @@ The composable can be imported in any component to read or set the locale:
 const { config, setActiveLocale } = useLocale();
 </script>
 
-The config contains the default locale, as well as all possible locales. `setActiveLocale` can be used to implement a language switch component. Keep in mind though, that in order to create a fully functional language switch it is not enough to just update the active locale. You can check out our example implementation under `~/components/AppLayout/LanguageSwitch.vue` for that.
+The config contains the default locale, as well as all possible locales. `setActiveLocale` can be used to implement a language switch component. Keep in mind though, that in order to create a fully functional language switch it is not enough to only update the active locale. You can check out our example implementation under `~/components/AppLayout/LanguageSwitch.vue` for that.
 
 == Navigation Data
 
@@ -73,6 +73,6 @@ Project properties are accessed by using the `useProjectProperties` (`~/composab
 [source, javascript]
 const { projectProperties } = useProjectProperties();
 
-Just like navigation data, project properties are fetched when the app layout is loaded or when the locale changes and cached for every corresponding locale.
+Like navigation data, project properties are fetched when the app layout is loaded or when the locale changes and cached for every corresponding locale.
 
-For more information about what project properties are and how to work with them read xref:docs/pages/ProjectProperties.adoc[this short guide].
+For more information about what project properties are and how to work with them read xref:ProjectProperties.adoc[this short guide].

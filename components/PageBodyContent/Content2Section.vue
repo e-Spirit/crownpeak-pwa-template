@@ -15,15 +15,15 @@
 </template>
 
 <script setup lang="ts">
-import { Content2Section } from "fsxa-api";
+import { Content2Section } from 'fsxa-api'
 
-const props = defineProps<{ content: Content2Section }>();
-const { $isPreviewMode } = useNuxtApp();
+const props = defineProps<{ content: Content2Section }>()
+const { $isPreviewMode } = useNuxtApp()
 
 const content2SectionComponent = computed(() => {
   switch (props.content.sectionType) {
     default:
-      return undefined;
+      return undefined
   }
-});
+})
 </script>

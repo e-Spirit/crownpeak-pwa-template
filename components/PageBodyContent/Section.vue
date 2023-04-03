@@ -17,23 +17,23 @@
 </template>
 
 <script setup lang="ts">
-import { Section } from "fsxa-api";
-const props = defineProps<{ content: Section }>();
+import { Section } from 'fsxa-api'
+const props = defineProps<{ content: Section }>()
 
-const { $isPreviewMode } = useNuxtApp();
+const { $isPreviewMode } = useNuxtApp()
 
 const sectionComponent = computed(() => {
   switch (props.content.sectionType) {
-    case "interesting_facts":
-      return resolveComponent("SectionInterestingFacts");
-    case "products.category_products":
-      return resolveComponent("SectionProductCategory");
-    case "products.product":
-      return resolveComponent("SectionProduct");
-    case "teaser":
-      return resolveComponent("SectionTeaser");
+    case 'interesting_facts':
+      return resolveComponent('SectionInterestingFacts')
+    case 'products.category_products':
+      return resolveComponent('SectionProductCategory')
+    case 'products.product':
+      return resolveComponent('SectionProduct')
+    case 'teaser':
+      return resolveComponent('SectionTeaser')
     default:
-      return undefined;
+      return undefined
   }
-});
+})
 </script>
