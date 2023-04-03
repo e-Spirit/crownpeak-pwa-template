@@ -50,7 +50,7 @@ We provide an example Dockerfile in this project that can be used to containeriz
 First, create your `.env` file according to `.env.template`.
     
 Then, build the image with
-`docker build -t fsxa-nuxt3-pwa -f Dockerfile .`
+`docker build -t fsxa-nuxt3-pwa .`
 
 You can then run the image locally with 
 

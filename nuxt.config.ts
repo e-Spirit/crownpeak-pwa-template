@@ -32,11 +32,11 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       baseURL: process.env['NUXT_PUBLIC_BASE_URL'] || 'http://localhost:3000',
-      logLevel: process.env['NUXT_PUBLIC_FSXA_LOG_LEVEL'],
-      mode: process.env['NUXT_PUBLIC_FSXA_MODE'],
-      snapUrl: process.env['NUXT_PUBLIC_FSXA_SNAP_URL'],
-      enableEventStream: process.env['NUXT_PUBLIC_FSXA_ENABLE_EVENT_STREAM'],
-      defaultLocale: process.env['NUXT_PUBLIC_FSXA_LOCALE']
+      logLevel: process.env['NUXT_PUBLIC_LOG_LEVEL'],
+      mode: process.env['NUXT_PUBLIC_MODE'],
+      snapUrl: process.env['NUXT_PUBLIC_SNAP_URL'],
+      enableEventStream: process.env['NUXT_PUBLIC_ENABLE_EVENT_STREAM'],
+      defaultLocale: process.env['NUXT_PUBLIC_DEFAULT_LOCALE']
     },
     private: {
       apiKey: process.env['NUXT_PRIVATE_API_KEY'],
@@ -45,8 +45,8 @@ export default defineNuxtConfig({
       projectId: process.env['NUXT_PRIVATE_PROJECT_ID'],
       tenantId: process.env['NUXT_PRIVATE_TENANT_ID'],
       remotes: process.env['NUXT_PRIVATE_REMOTES'],
-      maxReferenceDepth: process.env['NUXT_PRIVATE_FSXA_MAX_REFERENCE_DEPTH'],
-      devMode: process.env['NUXT_PRIVATE_FSXA_DEV_MODE']
+      maxReferenceDepth: process.env['NUXT_PRIVATE_MAX_REFERENCE_DEPTH'],
+      devMode: process.env['NUXT_PRIVATE_DEV_MODE']
     }
   }
 })

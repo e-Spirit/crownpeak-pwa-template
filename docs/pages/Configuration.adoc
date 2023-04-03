@@ -4,19 +4,19 @@
 
 The .env file allows you to provide required variables for the local build process. We recommend that you do not check them into your source code management. Ideally, you inject them later via your CI/CD process.
 
-=== FSXA_API_KEY `string`
+=== NUXT_PRIVATE_API_KEY `string`
 
 This API key is required by the PWA to obtain authorized access to the CaaS and navigation service. Our Customer Success Management team (team-csm@e-spirit.com) will be happy to provide you with this key after the successful provisioning of your FSXA environment. The API key will only be used on the server and is not exposed on the client side.
 
-=== FSXA_CAAS `string`
+=== NUXT_PRIVATE_CAAS `string`
 
 The URL under which the CaaS can be reached. This URL is only used on the server and is not visible to the user in the client.
 
-=== FSXA_NAVIGATION_SERVICE `string`
+=== NUXT_PRIVATE_NAVIGATION_SERVICE `string`
 
 The URL under which the navigation service is available. This URL is only used on the server and is not visible to the user in the client.
 
-=== FSXA_PROJECT_ID `string`
+=== NUXT_PRIVATE_PROJECT_ID `string`
 
 Several projects can be configured on your FirstSpirit server. In order for the PWA to know which data it needs to access, it needs the UUID of the relevant project.
 
@@ -43,19 +43,19 @@ connection = context.userService.connection;
 return connection.user.isProjectAdmin(connection.project);
 ....
 
-=== FSXA_TENANT_ID `string`
+=== NUXT_PRIVATE_TENANT_ID `string`
 
 The tenantId is used by the PWA to distinguish between the different FSXA environments provided to you.
 
-=== FSXA_MODE `"preview"` | `"release"`
+=== NUXT_PUBLIC_MODE `"preview"` | `"release"`
 
 We distinguish between preview and release data. This is the traditional FirstSpirit way. Specify here which data should be loaded by the PWA.
 
-=== BASE_URL `string` (optional but recommended)
+=== NUXT_PUBLIC_BASE_URL `string` (_optional_ but recommended)
 
 Default is set to `http://localhost:3000`.
 
-=== FSXA_SNAP_URL `string` (optional but recommended)
+=== NUXT_PUBLIC_SNAP_URL `string` (_optional_ but recommended)
 
 FSXA offers a lot of LiveEdit features in the authoring environment to edit sections, images, datasets, etc. in place and this needs an external dependency called Snap Library.
 
@@ -67,7 +67,7 @@ where [your-firstspirit-server] is the hostname of your FirstSpirit server, e.g.
 
 This path should be set as `FSXA_SNAP_URL`` in your .env file. A fallback is the latest https://cdn.jsdelivr.net/npm/fs-tpp-api/snap.js[CDN version] of this dependency, which may cause a version mismatch and is not recommended.
 
-=== FSXA*LOG_LEVEL `number` \_optional*
+=== NUXT_PUBLIC_LOG_LEVEL `number` _optional_
 
 Possible log levels: `0` = Info, `1` = Log, `2` = Warning, `3` = Error, `4` = None. The default is `3`.
 
@@ -75,15 +75,15 @@ You can also set the `logLevel` via _app.config.ts_
 
 ENV variable will take the priority if set, e.x.
 
-=== FSXA*MAX_REFERENCE_DEPTH `number` \_optional*
+=== NUXT_PRIVATE_MAX_REFERENCE_DEPTH `number` _optional_
 
 Due to performance reasons content references in your project get resolved up to a maximum reference depth of 10. Meaning a dataset refering to a dataset refering to a dataset ... and so on. You can increase that number by specifying the `FSXA_MAX_REFERENCE_DEPTH` variable.
 
-=== FSXA*ENABLE_EVENT_STREAM `boolean` \_optional*
+=== NUXT_PUBLIC_ENABLE_EVENT_STREAM `boolean` _optional_
 
 When enabled, events for `insert`, `replace` and `delete` CaaS documents can be observed and handled. It's currently used in preview mode, to sync updated data in FirstSpirit with the CaaS and the App State.
 
-=== FSXA_LOCALE `string` _optional_
+=== NUXT_PUBLIC_DEFAULT_LOCALE `string` _optional_
 
 Normally the current URL is used to find out the language. If this is not possible (for example, when a user calls `/`) the `defaultLocale` is used to retrieve the navigation data via the `FSXA API`. With this variable you can override the `defaultLocale` config from your `app.config.ts` file. The environment variable will take the priority.
 
