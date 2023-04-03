@@ -6,9 +6,8 @@
   },
   "extends": [
     "@nuxtjs/eslint-config-typescript",
-    "prettier",
-    "plugin:prettier/recommended",
-    "plugin:chai-friendly/recommended"
+    "plugin:chai-friendly/recommended",
+    "plugin:prettier/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": "latest",

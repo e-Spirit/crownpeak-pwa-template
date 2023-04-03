@@ -1,8 +1,8 @@
 import { it, expect, vi } from 'vitest'
 import { FSXAApiSingleton } from 'fsxa-api'
-import setupRemoteApi from '../../plugins/1.setupRemoteApi.server'
-import runtimeConfig from '../fixtures/runtimeConfig.json'
-import appConfig from '../fixtures/appConfig.json'
+import setupRemoteApi from '~/plugins/1.setupRemoteApi.server'
+import runtimeConfig from '~/tests/fixtures/runtimeConfig.json'
+import appConfig from '~/tests/fixtures/appConfig.json'
 
 it('setupRemoteApi => initialize FSXAApiSingleton', () => {
   const initSingleton = vi.spyOn(FSXAApiSingleton, 'init')

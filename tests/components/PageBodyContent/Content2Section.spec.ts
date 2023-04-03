@@ -3,9 +3,9 @@
  */
 import { it, expect, describe, beforeEach } from 'vitest'
 import { render, cleanup } from '@testing-library/vue'
-import Content2Section from '../../../components/PageBodyContent/Content2Section.vue'
-import { createContent2Section } from '../../testutils/createContent2Section'
-import { renderConfig } from '../../testutils/renderConfig' // registers custom components
+import Content2Section from '~/components/PageBodyContent/Content2Section.vue'
+import { createContent2Section } from '~/tests/testutils/createContent2Section'
+import { renderConfig } from '~/tests/testutils/renderConfig' // registers custom components
 
 describe('Content2Section', () => {
   beforeEach(() => {

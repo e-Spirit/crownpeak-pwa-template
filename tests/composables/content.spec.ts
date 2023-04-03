@@ -1,8 +1,8 @@
 import { it, expect, describe, beforeEach } from 'vitest'
-import { useContent } from '../../composables/content'
-import { createPage } from '../testutils/createPage'
-import { createDataset } from '../testutils/createDataset'
-import { clearMockedState } from '../testutils/nuxtMocks'
+import { createPage } from '~/tests/testutils/createPage'
+import { createDataset } from '~/tests/testutils/createDataset'
+import { clearMockedState } from '~/tests/testutils/nuxtMocks'
+import { useContent } from '~/composables/content'
 
 describe('useContent', () => {
   it('useContent => provide default current page, current dataset, cached pages, cached dataset', () => {
@@ -87,9 +87,9 @@ describe('useContent', () => {
 
       const { cachedProducts, findCachedProductsByRoute } = useContent()
 
-      cachedProducts.value[dataset1.route] = dataset1
-      cachedProducts.value[dataset2.route] = dataset2
-      cachedProducts.value[dataset3.route] = dataset3
+      cachedProducts.value[dataset1.route] = [dataset1]
+      cachedProducts.value[dataset2.route] = [dataset2]
+      cachedProducts.value[dataset3.route] = [dataset3]
 
       expect(findCachedProductsByRoute('unknown-id')).toBeUndefined()
     })
@@ -100,11 +100,11 @@ describe('useContent', () => {
 
       const { cachedProducts, findCachedProductsByRoute } = useContent()
 
-      cachedProducts.value[dataset1.route] = dataset1
-      cachedProducts.value[dataset2.route] = dataset2
-      cachedProducts.value[dataset3.route] = dataset3
+      cachedProducts.value[dataset1.route] = [dataset1]
+      cachedProducts.value[dataset2.route] = [dataset2]
+      cachedProducts.value[dataset3.route] = [dataset3]
 
-      expect(findCachedProductsByRoute(dataset2.route)).toBe(dataset2)
+      expect(findCachedProductsByRoute(dataset2.route)).toEqual([dataset2])
     })
   })
   describe('addToCachedPages', () => {

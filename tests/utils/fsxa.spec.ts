@@ -19,7 +19,7 @@ describe('fsxa utils', () => {
     it('call with valid locale => get navigation data, call fsxaApi.fetchNavigation with locale', async () => {
       const {
         provide: { fsxaApi }
-      } = setupProxyApi()
+      } = setupProxyApi('path')
 
       fsxaApi.fetchNavigation = vi.fn().mockReturnValue(navigationData)
 
@@ -53,7 +53,7 @@ describe('fsxa utils', () => {
     it('call with valid locale and id => call fsxaApi.fetchElement with locale and id, return element', async () => {
       const {
         provide: { fsxaApi }
-      } = setupProxyApi()
+      } = setupProxyApi('path')
 
       fsxaApi.fetchElement = vi.fn().mockReturnValue({})
 
@@ -70,7 +70,7 @@ describe('fsxa utils', () => {
     it('call with valid params => call fsxaApi.fetchByFilter with same params, return filtered items', async () => {
       const {
         provide: { fsxaApi }
-      } = setupProxyApi()
+      } = setupProxyApi('path')
 
       fsxaApi.fetchByFilter = vi.fn().mockReturnValue(datasetsFilter)
 
@@ -91,7 +91,7 @@ describe('fsxa utils', () => {
     it('call with valid params => call fsxaApi.fetchByFilter with same params, return filtered items', async () => {
       const {
         provide: { fsxaApi }
-      } = setupProxyApi()
+      } = setupProxyApi('path')
 
       fsxaApi.fetchByFilter = vi.fn().mockReturnValue(datasetsFilter)
 
@@ -118,7 +118,7 @@ describe('fsxa utils', () => {
     it('call with valid data => return the navigation item', async () => {
       const {
         provide: { fsxaApi }
-      } = setupProxyApi()
+      } = setupProxyApi('path')
 
       fsxaApi.fetchNavigation = vi.fn().mockReturnValue(navigationData)
 
@@ -130,7 +130,7 @@ describe('fsxa utils', () => {
     it('call with / => return the index navigation item', async () => {
       const {
         provide: { fsxaApi }
-      } = setupProxyApi()
+      } = setupProxyApi('path')
 
       fsxaApi.fetchNavigation = vi.fn().mockReturnValue(navigationData)
 
@@ -144,7 +144,7 @@ describe('fsxa utils', () => {
     it('call with missing route => throw', () => {
       const {
         provide: { fsxaApi }
-      } = setupProxyApi()
+      } = setupProxyApi('path')
 
       fsxaApi.fetchNavigation = vi.fn().mockReturnValue(navigationData)
 
@@ -158,7 +158,7 @@ describe('fsxa utils', () => {
     it('call with valid params => call fsxaApi.fetchByFilter with same params, return filtered items', async () => {
       const {
         provide: { fsxaApi }
-      } = setupProxyApi()
+      } = setupProxyApi('path')
 
       fsxaApi.fetchByFilter = vi.fn().mockReturnValue(datasetsFilter)
 

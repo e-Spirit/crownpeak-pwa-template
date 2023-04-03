@@ -1,10 +1,10 @@
 import { it, expect, describe, beforeEach } from 'vitest'
-import { useNavigationData } from '../../composables/navigation'
-import navigationItemFixture from '../fixtures/navigationItem.json'
-import navigationDataFixture from '../fixtures/toplevelNavigation_en_GB.json'
-import { clearMockedState, useLocale } from '../testutils/nuxtMocks'
-import { createNavigationData } from '../testutils/createNavigationData'
-import { createNavigationItem } from '../testutils/createNavigationItem'
+import { useNavigationData } from '~/composables/navigation'
+import navigationItemFixture from '~/tests/fixtures/navigationItem.json'
+import navigationDataFixture from '~/tests/fixtures/toplevelNavigation_en_GB.json'
+import { clearMockedState, useLocale } from '~/tests/testutils/nuxtMocks'
+import { createNavigationData } from '~/tests/testutils/createNavigationData'
+import { createNavigationItem } from '~/tests/testutils/createNavigationItem'
 
 describe('useNavigationData', () => {
   beforeEach(() => {

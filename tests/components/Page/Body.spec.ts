@@ -3,12 +3,12 @@
  */
 import { it, expect, describe, afterEach } from 'vitest'
 import { render, cleanup } from '@testing-library/vue'
-import PageBody from '../../../components/Page/Body.vue'
-import { createPageBody } from '../../testutils/createPageBody'
-import { createSection } from '../../testutils/createSection'
-import { createDataset } from '../../testutils/createDataset'
-import { createContent2Section } from '../../testutils/createContent2Section'
-import { renderConfig } from '../../testutils/renderConfig' // registers custom components
+import PageBody from '~/components/Page/Body.vue'
+import { createPageBody } from '~/tests/testutils/createPageBody'
+import { createSection } from '~/tests/testutils/createSection'
+import { createDataset } from '~/tests/testutils/createDataset'
+import { createContent2Section } from '~/tests/testutils/createContent2Section'
+import { renderConfig } from '~/tests/testutils/renderConfig' // registers custom components
 
 describe('pageBody', () => {
   afterEach(() => {

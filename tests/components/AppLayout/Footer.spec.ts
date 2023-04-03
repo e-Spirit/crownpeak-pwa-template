@@ -3,11 +3,11 @@
  */
 import { it, expect, describe, afterEach } from 'vitest'
 import { render, cleanup } from '@testing-library/vue'
-import Footer from '../../../components/AppLayout/Footer.vue'
-import { renderConfig } from '../../testutils/renderConfig' // registers custom components
-import { useProjectProperties } from '../../../composables/projectProperties'
-import { clearMockedState } from '../../testutils/nuxtMocks'
-import projectPropertiesFixture from '../../fixtures/projectProperties.json'
+import { renderConfig } from '~/tests/testutils/renderConfig' // registers custom components
+import { clearMockedState } from '~/tests/testutils/nuxtMocks'
+import projectPropertiesFixture from '~/tests/fixtures/projectProperties.json'
+import Footer from '~/components/AppLayout/Footer.vue'
+import { useProjectProperties } from '~/composables/projectProperties'
 
 describe('footer', () => {
   afterEach(() => {

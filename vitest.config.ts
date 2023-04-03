@@ -8,7 +8,15 @@ configure({})
 
 export default defineConfig({
   test: {
-    environment: 'jsdom'
+    environment: 'jsdom',
+    typecheck: {
+      tsconfig: './tests/tsconfig.json'
+    }
+  },
+  resolve: {
+    alias: {
+      '~': __dirname
+    }
   },
   plugins: [
     AutoImport({

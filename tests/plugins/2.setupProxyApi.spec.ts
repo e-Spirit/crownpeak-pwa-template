@@ -1,6 +1,6 @@
 import { it, expect } from 'vitest'
-import setupProxyApi from '../../plugins/2.setupProxyApi'
-import runtimeConfig from '../fixtures/runtimeConfig.json'
+import setupProxyApi from '~/plugins/2.setupProxyApi'
+import runtimeConfig from '~/tests/fixtures/runtimeConfig.json'
 
 it('setupProxyApi => provide fsxaApi', () => {
   const {
