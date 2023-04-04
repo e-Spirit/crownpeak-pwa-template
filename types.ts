@@ -26,7 +26,7 @@ export enum ServerErrors {
 }
 
 // TODO: Routes not exported from FSXA Api
-// will be solved when equivalent to the express integration  is implemented
+// will be solved when equivalent to the express integration  is implemented (TNG-1261)
 export enum FSXAProxyRoutes {
   FETCH_ELEMENT_ROUTE = '/elements',
   FETCH_NAVIGATION_ROUTE = '/navigation',
@@ -36,7 +36,7 @@ export enum FSXAProxyRoutes {
 }
 
 // TODO: Errors not exported from FSXA Api
-// will be solved when status codes ticket is implemented
+// will be solved when status codes ticket is implemented (TNG-1263)
 export enum FSXAApiErrors {
   UNKNOWN_CONTENT_MODE = 'The content mode must be preview or release.',
   UNKNOWN_API_MODE = 'The api mode must be remote or proxy.',
