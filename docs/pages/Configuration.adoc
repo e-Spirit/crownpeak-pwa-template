@@ -52,7 +52,7 @@ The tenantId is used by the PWA to distinguish between the different FSXA enviro
 We distinguish between preview and release data. This is the traditional FirstSpirit way. Specify here which data should be loaded by the PWA.
 
 === CI
-We use husky to enforce branch protection rules to prevent direct commits and pushes to the branches alpha and main. On your local machine this variable is not needed, but in your CI it can be set to 'yes' to allow the semantic release plugin to do releases.
+We use husky to enforce branch protection rules to prevent direct commits and pushes to the alpha and main branches. On your local machine this variable is not needed, but in your CI it can be set to 1 to allow the semantic release plugin to do releases.
 
 === BASE_URL `string` (optional but recommended)
 
