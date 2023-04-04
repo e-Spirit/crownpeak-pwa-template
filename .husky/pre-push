@@ -3,12 +3,12 @@
 
 branch="$(git rev-parse --abbrev-ref HEAD)"
 
-if [ "$branch" = "main" -a "$CI" != "true" ]; then
+if [ "$branch" = "main" -a "$CI" != 1 ]; then
   echo "You can't push directly to main branch"
   exit 1
 fi
 
-if [ "$branch" = "alpha" -a "$CI" != "true" ]; then
+if [ "$branch" = "alpha" -a "$CI" != 1 ]; then
   echo "You can't push directly to alpha branch"
   exit 1
 fi
