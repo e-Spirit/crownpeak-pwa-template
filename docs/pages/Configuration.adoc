@@ -2,7 +2,7 @@
 
 == .env-File
 
-The .env file allows you to provide required variables for the local build process. We recommend that you do not check them into your source code management. Ideally, you inject them later via your CI/CD process.
+The .env file allows you to provide required variables for the local build process. We recommend that you do not check them into your source code management. Ideally, you inject them later via your CI/CD process. The environment variables follow a strict naming convention enforced by Nuxt. More information can be found in `nuxt.config.ts`
 
 === NUXT_PRIVATE_API_KEY `string`
 
