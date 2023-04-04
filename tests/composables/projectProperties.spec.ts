@@ -1,8 +1,8 @@
 import { it, expect, describe, beforeEach } from 'vitest'
-import { useProjectProperties } from '../../composables/projectProperties'
-import { createProjectProperties } from '../testutils/createProjectProperties'
-import { clearMockedState } from '../testutils/nuxtMocks'
-import projectPropertiesFixture from '../fixtures/projectProperties.json'
+import { createProjectProperties } from '~/tests/testutils/createProjectProperties'
+import { clearMockedState } from '~/tests/testutils/nuxtMocks'
+import projectPropertiesFixture from '~/tests/fixtures/projectProperties.json'
+import { useProjectProperties } from '~/composables/projectProperties'
 
 describe('useProjectProperties', () => {
   beforeEach(() => {

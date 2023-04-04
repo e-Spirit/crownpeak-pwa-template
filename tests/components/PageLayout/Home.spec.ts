@@ -3,10 +3,10 @@
  */
 import { it, describe, beforeEach, expect } from 'vitest'
 import { render, cleanup } from '@testing-library/vue'
-import Home from '../../../components/PageLayout/Home.vue'
-import { createPage } from '../../testutils/createPage'
-import { createPageBody } from '../../testutils/createPageBody'
-import { renderConfig } from '../../testutils/renderConfig'
+import Home from '~/components/PageLayout/Home.vue'
+import { createPage } from '~/tests/testutils/createPage'
+import { createPageBody } from '~/tests/testutils/createPageBody'
+import { renderConfig } from '~/tests/testutils/renderConfig'
 
 describe('HomePageLayout', () => {
   beforeEach(() => {
@@ -16,7 +16,7 @@ describe('HomePageLayout', () => {
     const page = createPage()
     const pageBody = createPageBody()
     page.children.push(pageBody)
-    page.data.pt_slider = []
+    page.data['pt_slider'] = []
 
     const { getByTestId } = render(Home, {
       global: renderConfig.global,

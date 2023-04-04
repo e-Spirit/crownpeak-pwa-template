@@ -3,10 +3,10 @@
  */
 import { it, describe, beforeEach, expect } from 'vitest'
 import { render, cleanup } from '@testing-library/vue'
-import Standard from '../../../components/PageLayout/Standard.vue'
-import { createPage } from '../../testutils/createPage'
-import { renderConfig } from '../../testutils/renderConfig'
-import { createPageBody } from '../../testutils/createPageBody'
+import Standard from '~/components/PageLayout/Standard.vue'
+import { createPage } from '~/tests/testutils/createPage'
+import { renderConfig } from '~/tests/testutils/renderConfig'
+import { createPageBody } from '~/tests/testutils/createPageBody'
 
 describe('StandardPageLayout', () => {
   beforeEach(() => {

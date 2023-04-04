@@ -3,11 +3,11 @@
  */
 import { it, expect, describe, afterEach } from 'vitest'
 import { render, cleanup } from '@testing-library/vue'
-import Header from '../../../components/AppLayout/Header.vue'
-import { renderConfig } from '../../testutils/renderConfig' // registers custom components
-import { useProjectProperties } from '../../../composables/projectProperties'
-import { clearMockedState } from '../../testutils/nuxtMocks'
-import projectPropertiesFixture from '../../fixtures/projectProperties.json'
+import Header from '~/components/AppLayout/Header.vue'
+import { renderConfig } from '~/tests/testutils/renderConfig' // registers custom components
+import { useProjectProperties } from '~/composables/projectProperties'
+import { clearMockedState } from '~/tests/testutils/nuxtMocks'
+import projectPropertiesFixture from '~/tests/fixtures/projectProperties.json'
 
 describe('header', () => {
   afterEach(() => {

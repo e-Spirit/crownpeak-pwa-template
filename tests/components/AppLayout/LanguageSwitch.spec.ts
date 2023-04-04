@@ -3,10 +3,10 @@
  */
 import { it, expect, describe, afterEach } from 'vitest'
 import { render, cleanup } from '@testing-library/vue'
-import LanguageSwitch from '../../../components/AppLayout/LanguageSwitch.vue'
-import { renderConfig } from '../../testutils/renderConfig' // registers custom components
-import { clearMockedState } from '../../testutils/nuxtMocks'
-import { useLocale } from '../../../composables/locale'
+import LanguageSwitch from '~/components/AppLayout/LanguageSwitch.vue'
+import { renderConfig } from '~/tests/testutils/renderConfig' // registers custom components
+import { clearMockedState } from '~/tests/testutils/nuxtMocks'
+import { useLocale } from '~/composables/locale'
 
 describe('header', () => {
   afterEach(() => {
@@ -30,11 +30,11 @@ describe('header', () => {
     const languagesUL = languagesDropdown.children[0]
 
     expect(languageSwitch).not.toBe(null)
-    expect(languagesUL.children.length).toBe(config.allLocales.length)
+    expect(languagesUL?.children.length).toBe(config.allLocales.length)
 
-    for (let i = 0; i < languagesUL.children.length; i++) {
-      const child = languagesUL.children[i]
-      expect(child.innerHTML).toContain(config.allLocales[i].name)
+    for (let i = 0; i < languagesUL!.children.length; i++) {
+      const child = languagesUL?.children[i]
+      expect(child?.innerHTML).toContain(config.allLocales[i].name)
     }
   })
 })

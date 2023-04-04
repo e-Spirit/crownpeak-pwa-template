@@ -4,12 +4,12 @@
 import { Page, Dataset } from 'fsxa-api'
 import { vi, it, expect, describe, beforeEach } from 'vitest'
 import { render, cleanup } from '@testing-library/vue'
-import Section from '../../../components/PageBodyContent/Section.vue'
-import { createDataset } from '../../testutils/createDataset'
-import { createSection } from '../../testutils/createSection'
-import { createPage } from '../../testutils/createPage'
-import { renderConfig } from '../../testutils/renderConfig' // registers custom components
-import * as content from '../../../composables/content'
+import Section from '~/components/PageBodyContent/Section.vue'
+import { createDataset } from '~/tests/testutils/createDataset'
+import { createSection } from '~/tests/testutils/createSection'
+import { createPage } from '~/tests/testutils/createPage'
+import { renderConfig } from '~/tests/testutils/renderConfig' // registers custom components
+import * as content from '~/composables/content'
 
 describe('Section', () => {
   const mockedContent = {
@@ -20,7 +20,10 @@ describe('Section', () => {
     findCachedPageByRoute: (_route: string) => null,
     findCachedDatasetByRoute: (_route: string) => null,
     addToCachedPages: (_route: string, _page: Page) => null,
-    addToCachedDatasets: (_route: string, _dataset: Dataset) => null
+    addToCachedDatasets: (_route: string, _dataset: Dataset) => null,
+    cachedProducts: undefined,
+    addToCachedProducts: (_route: string, _data: Dataset[]) => null,
+    findCachedProductsByRoute: (_route: string) => null
   }
 
   beforeEach(() => {
