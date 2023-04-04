@@ -1,4 +1,7 @@
 // This middleware is getting called whenever the route changes. (Internal links and deeplinks)
+
+import { FSXAApiErrors } from '~~/types'
+
 // This can happen on both the client and the server.
 export default defineNuxtRouteMiddleware(async (to) => {
   const { activeLocale } = useLocale()
@@ -36,13 +39,20 @@ export default defineNuxtRouteMiddleware(async (to) => {
       await determineNavigationStateFromRoute(route)
     }
   } catch (_error: unknown) {
-    // Theoretically this does not have to mean that the page does not exist.
-    // It could also be a 500 server error or something completely different...
-    // TODO: Differentiate between 404 and other errors.
-    $logger.error('Server error or page not found.')
+    // TODO: TNG-1263 - Improve error handling with status codes
+    if (_error instanceof Error && _error.message === FSXAApiErrors.NOT_FOUND) {
+      $logger.error('Server error or page not found.')
+      throw createError({
+        statusCode: 404,
+        message: 'Page not found',
+        fatal: true
+      })
+    }
+
+    $logger.error('Internal server error.')
     throw createError({
-      statusCode: 404,
-      message: 'Page not found',
+      statusCode: 500,
+      message: 'Internal server error',
       fatal: true
     })
   }
