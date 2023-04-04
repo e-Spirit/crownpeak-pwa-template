@@ -48,10 +48,9 @@ The https://docs.e-spirit.com/module/caas/CaaS_Platform_Documentation_EN.html[Fi
 We provide an example Dockerfile in this project that can be used to containerize your PWA. To verify that your application is still running in the docker container, you can build and run the container locally. We assume you already installed docker on your machine.
 
 First, create your `.env` file according to `.env.template`.
-
-Once you have your `.env` file ready, execute 
-
-`docker build -t fsxa-nuxt3-pwa -f Dockerfile.template .`
+    
+Then, build the image with
+`docker build -t fsxa-nuxt3-pwa .`
 
 You can then run the image locally with 
 

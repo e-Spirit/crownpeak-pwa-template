@@ -30,23 +30,28 @@ export default defineNuxtConfig({
     typeCheck: true
   },
   runtimeConfig: {
+    // the environment variables follow a strict naming convention, enforced by nuxt.
+    // if you want to override the values during runtime
+    // they need to be: NUXT_PUBLIC_<KEY> or NUXT_PRIVATE_<KEY>, where KEY is the capitalized key of the object key (logLevel -> NUXT_PUBLIC_LOG_LEVEL)
+    // If you change baseUrl: process.env['NUXT_PUBLIC_SOMETHING_ELSE'], setting NUXT_PUBLIC_SOMETHING_ELSE will only work during build time
+    // During runtime, you need to use NUXT_PUBLIC_BASE_URL.
     public: {
-      baseURL: process.env['BASE_URL'] || 'http://localhost:3000',
-      logLevel: process.env['FSXA_LOG_LEVEL'],
-      mode: process.env['FSXA_MODE'],
-      snapUrl: process.env['FSXA_SNAP_URL'],
-      enableEventStream: process.env['FSXA_ENABLE_EVENT_STREAM'],
-      defaultLocale: process.env['FSXA_LOCALE']
+      baseURL: process.env['NUXT_PUBLIC_BASE_URL'] || 'http://localhost:3000',
+      logLevel: process.env['NUXT_PUBLIC_LOG_LEVEL'],
+      mode: process.env['NUXT_PUBLIC_MODE'],
+      snapUrl: process.env['NUXT_PUBLIC_SNAP_URL'],
+      enableEventStream: process.env['NUXT_PUBLIC_ENABLE_EVENT_STREAM'],
+      defaultLocale: process.env['NUXT_PUBLIC_DEFAULT_LOCALE']
     },
     private: {
-      apiKey: process.env['FSXA_API_KEY'],
-      navigationService: process.env['FSXA_NAVIGATION_SERVICE'],
-      caas: process.env['FSXA_CAAS'],
-      projectId: process.env['FSXA_PROJECT_ID'],
-      tenantId: process.env['FSXA_TENANT_ID'],
-      remotes: process.env['FSXA_REMOTES'],
-      maxReferenceDepth: process.env['FSXA_MAX_REFERENCE_DEPTH'],
-      devMode: process.env['FSXA_DEV_MODE']
+      apiKey: process.env['NUXT_PRIVATE_API_KEY'],
+      navigationService: process.env['NUXT_PRIVATE_NAVIGATION_SERVICE'],
+      caas: process.env['NUXT_PRIVATE_CAAS'],
+      projectId: process.env['NUXT_PRIVATE_PROJECT_ID'],
+      tenantId: process.env['NUXT_PRIVATE_TENANT_ID'],
+      remotes: process.env['NUXT_PRIVATE_REMOTES'],
+      maxReferenceDepth: process.env['NUXT_PRIVATE_MAX_REFERENCE_DEPTH'],
+      devMode: process.env['NUXT_PRIVATE_DEV_MODE']
     }
   }
 })
