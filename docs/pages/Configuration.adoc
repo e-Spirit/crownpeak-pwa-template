@@ -51,6 +51,9 @@ The tenantId is used by the PWA to distinguish between the different FSXA enviro
 
 We distinguish between preview and release data. This is the traditional FirstSpirit way. Specify here which data should be loaded by the PWA.
 
+=== CI
+We use husky to enforce branch protection rules to prevent direct commits and pushes to the alpha and main branches. On your local machine this variable is not needed, but in your CI it can be set to 1 to allow the semantic release plugin to do releases. This is done automatically by Github.
+
 === NUXT_PUBLIC_BASE_URL `string` (_optional_ but recommended)
 
 Default is set to `http://localhost:3000`.
@@ -86,6 +89,7 @@ When enabled, events for `insert`, `replace` and `delete` CaaS documents can be 
 === NUXT_PUBLIC_DEFAULT_LOCALE `string` _optional_
 
 Normally the current URL is used to find out the language. If this is not possible (for example, when a user calls `/`) the `defaultLocale` is used to retrieve the navigation data via the `FSXA API`. With this variable you can override the `defaultLocale` config from your `app.config.ts` file. The environment variable will take the priority.
+
 
 == app.config.ts file
 
