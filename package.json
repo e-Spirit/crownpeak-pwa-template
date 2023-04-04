@@ -5,7 +5,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Wimadev/fsxa-nuxt3-pwa.git"
+    "url": "https://github.com/e-Spirit/fsxa-nuxt3-pwa.git"
   },
   "engines": {
     "npm": "8.19.3",
