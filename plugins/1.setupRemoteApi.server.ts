@@ -24,7 +24,9 @@ export default defineNuxtPlugin(() => {
       appConfig.maxReferenceDepth,
     projectID: runtimeConfig.private.projectId,
     remotes: runtimeConfig.private.remotes
-      ? JSON.parse(runtimeConfig.private.remotes)
+      ? typeof runtimeConfig.private.remotes === 'string'
+        ? JSON.parse(runtimeConfig.private.remotes)
+        : runtimeConfig.private.remotes
       : {},
     contentMode: runtimeConfig.public.mode as FSXAContentMode,
     logLevel:
