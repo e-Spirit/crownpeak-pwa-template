@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const endpoint = event.context['params']?.['endpoint']
 
   // TODO: This is because of a mismatch between the FSXA API and the FSXA Proxy API,
-  // should be fixed in a future ticket
+  // should be fixed in a future ticket (TNG-1267)
   body.filters = body.filter
 
   try {

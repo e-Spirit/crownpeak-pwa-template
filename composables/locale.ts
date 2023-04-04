@@ -4,7 +4,7 @@ type LocaleConfig = {
 }
 
 // TODO: Implement this function however you want
-// You might want to use the CaaS to get all available locales
+// You might want to use the CaaS to get all available locales (TNG-1262)
 const getAllLocales = () => [
   { name: 'Deutsch', identifier: 'de_DE' },
   { name: 'English', identifier: 'en_GB' }

@@ -1,9 +1,10 @@
 import TPP_SNAP from 'fs-tpp-api'
 import { FSXAProxyApi } from 'fsxa-api'
 
-// TODO (?): Move these types to the fsxa-api
+// TODO (TNG-1290): Move this type to the fsxa-api
 export type CaaSEventType = 'insert' | 'replace' | 'delete'
 
+// TODO (TNG-1290): Move this type to the fsxa-api
 // JSON Schema for the CaaSEvent
 export type CaaSEvent = {
   operationType: CaaSEventType

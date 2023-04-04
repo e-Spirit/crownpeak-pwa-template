@@ -27,8 +27,6 @@ export default defineNuxtPlugin(() => {
       ? JSON.parse(runtimeConfig.private.remotes)
       : {},
     contentMode: runtimeConfig.public.mode as FSXAContentMode,
-    // TODO:
-    // server access config
     logLevel:
       Number.parseInt(runtimeConfig.public['logLevel']) ||
       appConfig.logLevel ||

@@ -9,7 +9,6 @@ export default defineNuxtPlugin(() => {
     Number.parseInt(runtimeConfig.public['logLevel']) ||
       appConfig.logLevel ||
       LogLevel.NONE
-    // TODO: client access config
   )
   return {
     provide: {

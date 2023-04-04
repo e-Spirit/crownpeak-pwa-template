@@ -1,5 +1,5 @@
 /* eslint no-console: 0 */
-// TODO: the logger should be exported from the fsxa api in a future ticket
+// TODO: the logger should be exported from the fsxa api in a future ticket (TNG-1289)
 import { inspect } from 'util'
 import chalk from 'chalk'
 import { LogLevel } from 'fsxa-api'
