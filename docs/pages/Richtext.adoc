@@ -70,7 +70,7 @@ RichtextElement.vue
 <template>
   <span :class="richTextElementClasses">
     <component
-      :is="richtTextElementComponent"
+      :is="richTextElementComponent"
       v-if="Array.isArray(richTextElement.content)"
       class=""
       :rich-text-element="richTextElement"
@@ -83,7 +83,7 @@ RichtextElement.vue
 <script setup lang="ts">
 const props = defineProps<{ richTextElement: RichTextElement }>();
 
-const richtTextElementComponent = computed(() => {
+const richTextElementComponent = computed(() => {
   switch (props.richTextElement.type) {
     // add this case
     case "customRichtextElement":
