@@ -112,7 +112,7 @@ const richTextElementClasses = computed(() => {
 
 ----
 
-In our Crownpeak PWA sample project we have already included some sample components, which you can of course use, adapt or extend. 
+In our Crownpeak PWA Template we have already included some sample components, which you can of course use, adapt or extend. 
 
 Over the course of time, however, it may happen that you use formatting that does not yet have a frontend component as a counterpart or that you adapt existing formatting.
 
