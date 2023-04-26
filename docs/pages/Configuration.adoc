@@ -6,7 +6,7 @@ The .env file allows you to provide required variables for the local build proce
 
 === NUXT_PRIVATE_API_KEY `string`
 
-This API key is required by the PWA to obtain authorized access to the CaaS and navigation service. Our Customer Success Management team (team-csm@e-spirit.com) will be happy to provide you with this key after the successful provisioning of your FSXA environment. The API key will only be used on the server and is not exposed on the client side.
+This API key is required by the PWA to obtain authorized access to the CaaS and navigation service. Our Customer Success Management team (team-csm@e-spirit.com) will be happy to provide you with this key after the successful provisioning of your cloud environment. The API key will only be used on the server and is not exposed on the client side.
 
 === NUXT_PRIVATE_CAAS `string`
 
