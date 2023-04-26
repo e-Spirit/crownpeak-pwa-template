@@ -13,7 +13,7 @@
 
 == Introduction
 
-The Crownpeak PWA template features a development mode that helps you to easily map the content coming from the CaaS to your components.
+The Crownpeak PWA Template features a development mode that helps you to easily map the content coming from the CaaS to your components.
 
 To enable the development mode, the variable `devMode` must be set to `true` in the `app.config.ts` file. This file is also checked into git. So be sure to change the variable back to `false` before deploying to production. Alternatively you can enable devMode by setting the `NUXT_PRIVATE_DEV_MODE` environment variable.
 

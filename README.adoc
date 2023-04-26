@@ -1,6 +1,6 @@
 = Crownpeak PWA Template
 
-The Crownpeak PWA template is an example project and can be used as basis for developing your own PWA
+The Crownpeak PWA Template is an example project and can be used as basis for developing your own PWA
 in the context of the FirstSpirit headless approach. 
 
 === Table of contents
@@ -14,7 +14,7 @@ in the context of the FirstSpirit headless approach.
 .. xref:docs/pages/GettingStarted/MyFirstTemplate.adoc[My First Template]
 .. xref:docs/pages/GettingStarted/CustomCSS.adoc[Adding CSS]
 .. xref:docs/pages/GettingStarted/ChangingtheAppLayout.adoc[Changing the App Layout]
-.. xref:docs/pages/GettingStarted/UseExistingProject.adoc[Using an Existing Project With the Crownpeak PWA template]
+.. xref:docs/pages/GettingStarted/UseExistingProject.adoc[Using an Existing Project With the Crownpeak PWA Template]
 . xref:docs/pages/Configuration.adoc[Configuration]
 .. xref:docs/pages/Configuration.adoc#env-file[.env file]
 .. xref:docs/pages/Configuration.adoc#app-config[app.config.ts file]
@@ -49,8 +49,8 @@ in the context of the FirstSpirit headless approach.
 
 == Legal Notices
 
-Crownpeak PWA template is a product of http://www.e-spirit.com[Crownpeak Technology GmbH], Dortmund, Germany.
-The Crownpeak PWA template is subject to the Apache-2.0 license.
+Crownpeak PWA Template is a product of http://www.e-spirit.com[Crownpeak Technology GmbH], Dortmund, Germany.
+The Crownpeak PWA Template is subject to the Apache-2.0 license.
 
 == Disclaimer
 

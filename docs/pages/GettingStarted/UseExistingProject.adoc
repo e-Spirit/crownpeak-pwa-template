@@ -1,9 +1,9 @@
-= Using an Existing Project With the Crownpeak PWA template
+= Using an Existing Project With the Crownpeak PWA Template
 
 :moduledir: ../..
 :imagesdir: {moduledir}/images
 
-This chapter covers the basic steps that are required to use your existing FirstSpirit project with the Crownpeak PWA template.
+This chapter covers the basic steps that are required to use your existing FirstSpirit project with the Crownpeak PWA Template.
 
 == Configure CaaS and Navigation Service
 
@@ -15,10 +15,10 @@ Use the *ServerManager* to install two *Project components* for your project, if
 * Navigation Project Configuration
 
 We recommend to activating the "CaaS Mode" in the *Navigation Project Configuration*. 
-If you use different URL Factories, we cannot guarantee that the navigation component inside the fsxa-api can handle it properly. 
+If you use different URL Factories, we cannot guarantee that the FSXA-API can handle it properly. 
 
 == Clone and Configure PWA
-Get the link:https://github.com/e-Spirit/fsxa-nuxt3-pwa[Crownpeak PWA template from github].
+Get the link:https://github.com/e-Spirit/fsxa-nuxt3-pwa[Crownpeak PWA Template from github].
 
 == Import scripts for switching OCM to local environment
 
