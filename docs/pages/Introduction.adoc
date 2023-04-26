@@ -5,11 +5,11 @@
 
 == General
 
-The FSXA PWA is a project that demonstrates how to build a _Progressive Web App_ that is consuming contents created and continuosly updated with the enterprise content management system https://www.e-spirit.com/en/product/firstspirit-dxp/enterprise-cms/[FirstSpirit]. It is part of the https://docs.e-spirit.com/module/fsxa/[FirstSpirit Experience Accelerator], a set of projects allowing you to set up a state-of-the-art web presence in a fraction of the time required previously or with competing products.
+The Crownpeak PWA template is a project that demonstrates how to build a _Progressive Web App_ that is consuming contents created and continuosly updated with the enterprise content management system https://www.e-spirit.com/en/product/firstspirit-dxp/enterprise-cms/[FirstSpirit]. It is part of the https://docs.e-spirit.com/module/fsxa/[FirstSpirit Experience Accelerator], a set of projects allowing you to set up a state-of-the-art web presence in a fraction of the time required previously or with competing products.
 
 == Projects used
 
-The FSXA PWA connects to several other projects:
+The Crownpeak PWA template connects to several other projects:
 
 * https://github.com/e-Spirit/fsxa-api[FSXA-API]
 * http://docs.e-spirit.com/tpp/[Omnichannel Manager]
@@ -39,7 +39,7 @@ The Omnichannel Manager provides the FirstSpirit ContentCreator’s advanced edi
 
 === FirstSpirit CaaS
 
-The https://docs.e-spirit.com/module/caas/CaaS_Platform_Documentation_EN.html[FirstSpirit CaaS] (Content as a Service) provides all editorial content from your FirstSpirit project. Your project’s structural data is provided as well, via the https://docs.e-spirit.com/module/caas/CaaS_Platform_Documentation_EN.html[Navigation Service].
+The https://docs.e-spirit.com/module/caas-platform/CaaS_Platform_Documentation_EN.html[FirstSpirit CaaS] (Content as a Service) provides all editorial content from your FirstSpirit project. Your project’s structural data is provided as well, via the https://navigationservice.e-spirit.cloud/docs/user/en/documentation.html[Navigation Service].
 
 == Deployment
 
@@ -50,11 +50,11 @@ We provide an example Dockerfile in this project that can be used to containeriz
 First, create your `.env` file according to `.env.template`.
     
 Then, build the image with
-`docker build -t fsxa-nuxt3-pwa .`
+`docker build -t crownpeak-pwa-template .`
 
 You can then run the image locally with 
 
-`docker run --env-file .env -p XXXX:3000 fsxa-nuxt3-pwa`
+`docker run --env-file .env -p XXXX:3000 crownpeak-pwa-template`
 
 Where XXXX can be replaced with any free port on your machine.
 When the container is running, visit localhost:XXXX in a browser and the pwa should show up.

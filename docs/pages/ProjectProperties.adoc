@@ -7,7 +7,7 @@ FirstSpirit provides a mechanism to configure _global project settings_ in a spe
 
 image:GlobalContentAreaSA.png[Global setting]
 
-In the FSXA example project https://docs.e-spirit.com/module/fsxa/ueberblick/bestandteile-fs/sl-global/index.html[Smart Living Global] a `Theming` tab allows you to quickly modify _project settings_ such as `button color`, `text highlighting color` or `banner opacity`.
+In the example project Smart Living Global a `Theming` tab allows you to quickly modify _project settings_ such as `button color`, `text highlighting color` or `banner opacity`.
 
 In our example project the _global settings_ get fetched from the FSXA-API in the `projectProperties.ts` plugin after initializing the FSXA-API.
 

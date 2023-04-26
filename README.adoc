@@ -1,16 +1,7 @@
-= FSXA-PWA
+= Crownpeak PWA Template
 
-The FSXA-PWA is an example project and can be used as basis for developing your own PWA
-in the context of the FirstSpirit Experience Accelerator.
-
-== About the FSXA
-
-The FirstSpirit Experience Accelerator (FSXA) is the hybrid solution of a digital
-experience platform, combining a headless approach with enterprise capabilities.
-
-== Documentation
-
-If you are interested in the FSXA check this link:https://docs.e-spirit.com/module/fsxa/overview/benefits-hybrid/index.html[Overview].
+The Crownpeak PWA template is an example project and can be used as basis for developing your own PWA
+in the context of the FirstSpirit headless approach. 
 
 === Table of contents
 
@@ -23,7 +14,7 @@ If you are interested in the FSXA check this link:https://docs.e-spirit.com/modu
 .. xref:docs/pages/GettingStarted/MyFirstTemplate.adoc[My First Template]
 .. xref:docs/pages/GettingStarted/CustomCSS.adoc[Adding CSS]
 .. xref:docs/pages/GettingStarted/ChangingtheAppLayout.adoc[Changing the App Layout]
-.. xref:docs/pages/GettingStarted/UseExistingProject.adoc[Using an Existing Project With the FSXA PWA]
+.. xref:docs/pages/GettingStarted/UseExistingProject.adoc[Using an Existing Project With the Crownpeak PWA template]
 . xref:docs/pages/Configuration.adoc[Configuration]
 .. xref:docs/pages/Configuration.adoc#env-file[.env file]
 .. xref:docs/pages/Configuration.adoc#app-config[app.config.ts file]
@@ -58,8 +49,8 @@ If you are interested in the FSXA check this link:https://docs.e-spirit.com/modu
 
 == Legal Notices
 
-FSXA-PWA is a product of http://www.e-spirit.com[Crownpeak Technology GmbH], Dortmund, Germany.
-The FSXA-PWA is subject to the Apache-2.0 license.
+Crownpeak PWA template is a product of http://www.e-spirit.com[Crownpeak Technology GmbH], Dortmund, Germany.
+The Crownpeak PWA template is subject to the Apache-2.0 license.
 
 == Disclaimer
 

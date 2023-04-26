@@ -31,9 +31,9 @@ This chapter describes how to set up the project and complete the first steps.
 
 == Development Mode
 
-There is a development mode that helps to easily map the content coming from the https://docs.e-spirit.com/module/caas/CaaS_FSM_Documentation_EN.html[CaaS].
+There is a development mode that helps to easily map the content coming from the https://docs.e-spirit.com/module/caas-module/CaaS_FSM_Documentation_EN.html[CaaS].
 
-To enable the development mode, the variable `devMode` must be set to `true` in the `app.config.ts` file. Be aware that you have to restart the server when you change anything in this file. This file is also checked into git. So be sure to change the variable back to `false` before deploying to production. Alternatively you can set `FSXA_DEV_MODE` to `true` in your `.env` file.
+To enable the development mode, the variable `devMode` must be set to `true` in the `app.config.ts` file. Be aware that you have to restart the server when you change anything in this file. This file is also checked into git. So be sure to change the variable back to `false` before deploying to production. Alternatively you can set `NUXT_PRIVATE_DEV_MODE` to `true` in your `.env` file.
 
 If you are in development mode and a component on the page has not been developed yet, you will get an unknown component which shows where a component is missing and what information in the component can be addressed.
 
