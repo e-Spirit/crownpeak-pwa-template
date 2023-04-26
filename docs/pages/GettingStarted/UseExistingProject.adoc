@@ -1,9 +1,9 @@
-= Using an Existing Project With the FSXA PWA
+= Using an Existing Project With the Crownpeak PWA Template
 
 :moduledir: ../..
 :imagesdir: {moduledir}/images
 
-This chapter covers the basic steps that are required to use your existing FirstSpirit project with the FSXA-PWA.
+This chapter covers the basic steps that are required to use your existing FirstSpirit project with the Crownpeak PWA Template.
 
 == Configure CaaS and Navigation Service
 
@@ -14,11 +14,11 @@ Use the *ServerManager* to install two *Project components* for your project, if
 * CaaS Connect Project App
 * Navigation Project Configuration
 
-We recommend to activating the "CaaS Modus" in the *Navigation Project Configuration*. 
-If you use different URLs Factories, we cannot guarantee that the navigation component inside the fsxa-stack can handle it properly. 
+We recommend to activating the "CaaS Mode" in the *Navigation Project Configuration*. 
+If you use different URL Factories, we cannot guarantee that the FSXA-API can handle it properly. 
 
 == Clone and Configure PWA
-Get the link:https://github.com/e-Spirit/fsxa-nuxt3-pwa[FSXA-PWA from github].
+Get the link:https://github.com/e-Spirit/fsxa-nuxt3-pwa[Crownpeak PWA Template from github].
 
 == Import scripts for switching OCM to local environment
 
@@ -133,7 +133,7 @@ URLs for CaaS and Navigation Service can be retrieved from the Server Manager, f
 
 The Configuration chapter also describes how to get the Project ID.
 
-The FSXA_TENANT_ID is your company name as used in the first element of our _.e-spirit.hosting_ addresses. If you access FirstSpirit under _company_x.e-spirit.hosting_, your Tenant ID should be _company_x_.
+The NUXT_PRIVATE_TENANT_ID is your company name as used in the first element of our _.e-spirit.hosting_ addresses. If you access FirstSpirit under _company_x.e-spirit.hosting_, your Tenant ID should be _company_x_.
 
 == Configure PWA
 

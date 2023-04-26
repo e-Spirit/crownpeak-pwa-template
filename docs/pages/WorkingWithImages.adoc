@@ -8,7 +8,7 @@
 
 == Introduction
 
-In modern web design an image needs to be available in multiple croppings and resolutions in order to be rendered in all layouts across all devices or be usable in more than one slot (banner, slider, thumbnails, gallery etc.). The FSXA-PWA offers a variety of tools to ensure the correct image gets loaded at the proper time. In order to save on bandwidth and thus reduce page loading times, it is important to generate and store the same image in multiple resolutions and croppings.
+In modern web design an image needs to be available in multiple croppings and resolutions in order to be rendered in all layouts across all devices or be usable in more than one slot (banner, slider, thumbnails, gallery etc.). The Crownpeak PWA Template offers a variety of tools to ensure the correct image gets loaded at the proper time. In order to save on bandwidth and thus reduce page loading times, it is important to generate and store the same image in multiple resolutions and croppings.
 
 == Working with CaaS
 
@@ -67,7 +67,7 @@ FirstSpirit offers a tool set to create and store multiple croppings and/or reso
 
 == Responsiveness
 
-The ability of the page layout to adapt to multiple screen resolutions and aspect ratios is called responsiveness. To achieve this behavior for images in the FSXA-PWA we defined a custom `Image.vue` component which makes it easy to directly use the resolutions data from the CaaS to render images in different sizes. The image becomes responsive by leveraging the `srcset` property of `img` tags. For detailed information on how it works, please check out https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images[Mozilla's guide to responsive images]. Another way to make images responsive is by working with different breakpoints. 
+The ability of the page layout to adapt to multiple screen resolutions and aspect ratios is called responsiveness. To achieve this behavior for images in the Crownpeak PWA Template we defined a custom `Image.vue` component which makes it easy to directly use the resolutions data from the CaaS to render images in different sizes. The image becomes responsive by leveraging the `srcset` property of `img` tags. For detailed information on how it works, please check out https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images[Mozilla's guide to responsive images]. Another way to make images responsive is by working with different breakpoints. 
 
 == Lazy Loading
 

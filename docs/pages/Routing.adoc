@@ -7,7 +7,7 @@
 
 == FirstSpirit Navigation Service
 
-The FSXA-PWA directly maps the navigation structure of the underlying FirstSpirit project into the predefined navigation component. This is achieved using the navigation service which maps all the routes as defined in FirstSpirit to CaaS URLs. The data is fetched by the https://github.com/e-Spirit/fsxa-api[FSXA-API]. Here is an example of navigation data.
+The Crownpeak PWA Template directly maps the navigation structure of the underlying FirstSpirit project into the predefined navigation component. This is achieved using the navigation service which maps all the routes as defined in FirstSpirit to CaaS URLs. The data is fetched by the https://github.com/e-Spirit/fsxa-api[FSXA-API]. Here is an example of navigation data.
 
 [source,json]
 ----
@@ -41,7 +41,7 @@ It contains labels and contentReferences which you can use to fill a navigation 
 
 Nuxt.js provides https://nuxt.com/docs/guide/directory-structure/pages[file based routing] conventions. We assume you are familiar with how routing works in Nuxt.js. If not, please make sure to check out the documentation linked above.
 
-Since routing is slightly more complex in the context of the FSXA-PWA, you also have the possibility to use the example `<InternalLink />` component. Using this component, you can easily link to pages in the navigation structure by providing a `NavigationItem` as a property instead of a route.
+Since routing is slightly more complex in the context of the Crownpeak PWA Template, you also have the possibility to use the example `<InternalLink />` component. Using this component, you can easily link to pages in the navigation structure by providing a `NavigationItem` as a property instead of a route.
 
 SFC Example
 

@@ -1,6 +1,6 @@
 import { LogLevel } from 'fsxa-api'
 
-export interface FSXAFileConfig {
+export interface AppFileConfig {
   defaultLocale: string
   logLevel?: LogLevel
   devMode?: boolean

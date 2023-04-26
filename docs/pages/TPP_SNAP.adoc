@@ -1,12 +1,12 @@
 = TPP-Snap
 
-TPP-Snap from the https://docs.e-spirit.com/tpp/index.html.en[OmnichannelManager] is a JavaScript library designed to connect the FirstSpirit ContentCreator UI with dynamically generated HTML elements (like in a PWA). This connection is achieved using preview ids. When you add a known preview id as an attribute to an HTML element, the Snap library will automatically decorate it using borders and buttons when your PWA is viewed in the FirstSpirit ContentCreator. This allows editors to edit the contents of dynamically generated HTML Elements. The library also offers the tools to add your own buttons to the UI as you see fit. To enable this functionality, you MUST set the environment variable FSXA_MODE to "preview".
+TPP-Snap from the https://docs.e-spirit.com/tpp/index.html.en[OmnichannelManager] is a JavaScript library designed to connect the FirstSpirit ContentCreator UI with dynamically generated HTML elements (like in a PWA). This connection is achieved using preview ids. When you add a known preview id as an attribute to an HTML element, the Snap library will automatically decorate it using borders and buttons when your PWA is viewed in the FirstSpirit ContentCreator. This allows editors to edit the contents of dynamically generated HTML Elements. The library also offers the tools to add your own buttons to the UI as you see fit. To enable this functionality, you MUST set the environment variable NUXT_PUBLIC_MODE to "preview".
 
 There are some configurations you could customize, like xref:Configuration.adoc#firstspirit-omnichannel-manager-api-version[event-hooks].
 
 == Nested Elements
 
-At layout and section level, the FSXA takes care of enriching the UI with borders and buttons that provide the editing functionality in the ContentCreator. However, as soon as we have nested elements within a dataset or a section, there is currently no automatism for adding these editorial UI elements. So you have to take action here that your child sections can also be edited in the ContentCreator.
+At layout and section level, https://docs.e-spirit.com/tpp/snap/[TPP_SNAP] takes care of enriching the UI with borders and buttons that provide the editing functionality in the ContentCreator. However, as soon as we have nested elements within a dataset or a section, there is currently no automatism for adding these editorial UI elements. So you have to take action here that your child sections can also be edited in the ContentCreator.
 
 To enable the editing of such nested components, make sure to provide a custom preview id for both the nested component and the parent component using the syntax \#PARENT_COMPONENT_NAME and #NESTED_COMPONENT_INDEX as the following example shows. The example is a snippet from the `InterestingFacts` component located at `~/components/Section`. The parent component name is `st_counters` so the data preview id will be`#st_counters`, the child's preview id will be set dynamically to `#${index}`
 

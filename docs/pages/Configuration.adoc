@@ -6,7 +6,7 @@ The .env file allows you to provide required variables for the local build proce
 
 === NUXT_PRIVATE_API_KEY `string`
 
-This API key is required by the PWA to obtain authorized access to the CaaS and navigation service. Our Customer Success Management team (team-csm@e-spirit.com) will be happy to provide you with this key after the successful provisioning of your FSXA environment. The API key will only be used on the server and is not exposed on the client side.
+This API key is required by the PWA to obtain authorized access to the CaaS and navigation service. Our Customer Success Management team (team-csm@e-spirit.com) will be happy to provide you with this key after the successful provisioning of your cloud environment. The API key will only be used on the server and is not exposed on the client side.
 
 === NUXT_PRIVATE_CAAS `string`
 
@@ -45,7 +45,7 @@ return connection.user.isProjectAdmin(connection.project);
 
 === NUXT_PRIVATE_TENANT_ID `string`
 
-The tenantId is used by the PWA to distinguish between the different FSXA environments provided to you.
+The tenantId is used by the PWA to distinguish between the different environments provided to you.
 
 === NUXT_PUBLIC_MODE `"preview"` | `"release"`
 
@@ -60,15 +60,15 @@ Default is set to `http://localhost:3000`.
 
 === NUXT_PUBLIC_SNAP_URL `string` (_optional_ but recommended)
 
-FSXA offers a lot of LiveEdit features in the authoring environment to edit sections, images, datasets, etc. in place and this needs an external dependency called Snap Library.
+Snap Library is an external dependency which offers a lot of LiveEdit features in the authoring environment to edit sections, images, datasets, etc. in place.
 
 The current implementation is https://docs.e-spirit.com/tpp/snap/[TPP Snap] and the URL to this script has to look like:
 
 `https://[your-firstspirit-server]/fs5webedit/snap.js` or `https://[your-firstspirit-server]/fs5webedit[_project-id]/snap.js`
 
-where [your-firstspirit-server] is the hostname of your FirstSpirit server, e.g. https://company.e-spirit.hosting and fs5webedit[_project-id] the path of the ContentCreator WebApp (log in to your project in ContentCreator to see the path in your browser).
+where [your-firstspirit-server] is the hostname of your FirstSpirit server (e.g. https://company.e-spirit.hosting) and fs5webedit[_project-id] the path of the ContentCreator WebApp (log in to your project in ContentCreator to see the path in your browser).
 
-This path should be set as `FSXA_SNAP_URL`` in your .env file. A fallback is the latest https://cdn.jsdelivr.net/npm/fs-tpp-api/snap.js[CDN version] of this dependency, which may cause a version mismatch and is not recommended.
+This path should be set as `NUXT_PUBLIC_SNAP_URL`` in your .env file. A fallback is the latest https://cdn.jsdelivr.net/npm/fs-tpp-api/snap.js[CDN version] of this dependency which may cause a version mismatch and is not recommended.
 
 === NUXT_PUBLIC_LOG_LEVEL `number` _optional_
 
@@ -109,7 +109,7 @@ Possible log levels: `0` = Info, `1` = Log, `2` = Warning, `3` = Error, `4` = No
 
 You can also set the `logLevel` via _ENV variable_
 
-ENV variable will take the priority if set, e.x. _FSXA_LOG_LEVEL_=`3`
+ENV variable will take the priority if set, e.x. _NUXT_PUBLIC_LOG_LEVEL_=`3`
 
 === enableEventStream _optional_
 
@@ -118,12 +118,16 @@ When enabled, events for `insert`, `replace` and `delete` CaaS documents can be 
 === example app.config.ts
 
 ## [source,javascript]
+import { LogLevel } from 'fsxa-api'
+import { AppFileConfig } from './types'
 
-const fsxaConfig = {
-logLevel: LogLevel.NONE,
-devMode: false,
-defaultLocale: "de_DE",
-enableEventStream: false,
+const appConfig: AppFileConfig = {
+  logLevel: LogLevel.NONE,
+  devMode: false,
+  defaultLocale: 'de_DE',
+  enableEventStream: false
 }
 
-## export default defineAppConfig(fsxaConfig);
+export default defineAppConfig(appConfig)
+
+##

@@ -1,11 +1,11 @@
 import { LogLevel } from 'fsxa-api'
-import { FSXAFileConfig } from './types'
+import { AppFileConfig } from './types'
 
-const fsxaConfig: FSXAFileConfig = {
+const appConfig: AppFileConfig = {
   logLevel: LogLevel.WARNING,
   devMode: false,
   defaultLocale: 'de_DE',
   enableEventStream: false
 }
 
-export default defineAppConfig(fsxaConfig)
+export default defineAppConfig(appConfig)
