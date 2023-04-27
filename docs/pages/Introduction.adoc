@@ -17,7 +17,7 @@ The Crownpeak PWA Template connects to several other projects:
 * https://navigationservice.e-spirit.cloud/docs/user/en/documentation.html[Navigation Service]
 
 The following image illustrates the general architecture:
-image:docs/images/pwa-template-architecture.png[Crownpeak PWA Template architecture]
+image:pwa-template-architecture.png[Crownpeak PWA Template architecture]
 
 === FSXA API
 
