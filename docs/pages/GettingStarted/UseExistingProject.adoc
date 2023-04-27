@@ -18,7 +18,7 @@ We recommend to activating the "CaaS Mode" in the *Navigation Project Configurat
 If you use different URL Factories, we cannot guarantee that the FSXA-API can handle it properly. 
 
 == Clone and Configure PWA
-Get the link:https://github.com/e-Spirit/Crownpeak-PWA-Template[Crownpeak PWA Template from github].
+Get the link:https://github.com/e-Spirit/crownpeak-pwa-template[Crownpeak PWA Template from github].
 
 == Import scripts for switching OCM to local environment
 
