@@ -3,6 +3,16 @@
 The Crownpeak PWA Template is an example project and can be used as basis for developing your own PWA
 in the context of the FirstSpirit headless approach. 
 
+
+== Beta Disclaimer
+
+Please note that this is a beta version of the _Crownpeak PWA template_ that is undergoing final testing before the first release.
+The application, its repository, and all content therein are provided on an "as is" and "as available" basis to early adopters.
+
+If you encounter any bugs, glitches, lack of functionality, or other issues with the repository, [please let us know|https://github.com/e-Spirit/crownpeak-pwa-template/issues] so that we can address them appropriately.
+Your help in this regard is greatly appreciated!
+
+
 === Table of contents
 
 . xref:docs/pages/Introduction.adoc[Introduction]

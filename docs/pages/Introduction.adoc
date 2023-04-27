@@ -14,8 +14,10 @@ The Crownpeak PWA Template connects to several other projects:
 * https://github.com/e-Spirit/fsxa-api[FSXA-API]
 * https://docs.e-spirit.com/tpp/[Omnichannel Manager]
 * https://docs.e-spirit.com/module/caas-platform/CaaS_Platform_Documentation_EN.html[FirstSpirit CaaS]
+* https://navigationservice.e-spirit.cloud/docs/user/en/documentation.html[Navigation Service]
 
-// TODO: new architecture image here
+The following image illustrates the general architecture:
+image:docs/images/pwa-template-architecture.png[Crownpeak PWA Template architecture]
 
 === FSXA API
 
