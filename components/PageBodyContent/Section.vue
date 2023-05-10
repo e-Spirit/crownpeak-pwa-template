@@ -32,6 +32,8 @@ const sectionComponent = computed(() => {
       return resolveComponent('SectionProduct')
     case 'teaser':
       return resolveComponent('SectionTeaser')
+    case 'languageimage':
+      return resolveComponent('SectionLanguageImage')
     default:
       return undefined
   }
