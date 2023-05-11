@@ -1,7 +1,7 @@
 <template>
   <span :class="richTextElementClasses">
     <component
-      :is="richtTextElementComponent"
+      :is="richTextElementComponent"
       v-if="Array.isArray(richTextElement.content)"
       class=""
       :rich-text-element="richTextElement"
@@ -15,7 +15,7 @@
 import { RichTextElement } from 'fsxa-api'
 const props = defineProps<{ richTextElement: RichTextElement }>()
 
-const richtTextElementComponent = computed(() => {
+const richTextElementComponent = computed(() => {
   switch (props.richTextElement.type) {
     case 'text':
       return resolveComponent('ElementsRichText')
@@ -29,6 +29,8 @@ const richtTextElementComponent = computed(() => {
       return resolveComponent('ElementsRichText')
     case 'linebreak':
       return resolveComponent('ElementsLinebreak')
+    case 'u':
+      return resolveComponent('ElementsUnderlined')
     default:
       return resolveComponent('ElementsUnknownRichtextElement')
   }
