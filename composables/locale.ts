@@ -1,18 +1,33 @@
-type LocaleConfig = {
-  defaultLocale: string
-  allLocales: { name: string; identifier: string }[]
+type LocaleType = {
+  // it can be null in case it is not used ISO format
+  name: string | null
+  identifier: string
 }
 
-// TODO: Implement this function however you want
-// You might want to use the CaaS to get all available locales (TNG-1262)
-const getAllLocales = () => [
-  { name: 'Deutsch', identifier: 'de_DE' },
-  { name: 'English', identifier: 'en_GB' }
-]
+type LocaleConfig = {
+  defaultLocale: string
+}
+
+function getLocaleWithRegion(identifiers: string[]) {
+  const locales: LocaleType[] = []
+  identifiers.forEach((identifier) => {
+    // Split the identifier into language and region
+    // e.g. de_DE => [de, DE]
+    const [language, region] = identifier.split('_')
+    if (language && region) {
+      const regionName = new Intl.DisplayNames([language], { type: 'region' })
+      locales.push({
+        name: regionName.of(region) ?? null,
+        identifier
+      })
+    }
+  })
+
+  return locales
+}
 
 const defaultLocaleConfig: LocaleConfig = {
-  defaultLocale: 'de_DE',
-  allLocales: getAllLocales()
+  defaultLocale: 'de_DE'
 }
 
 export function useLocale() {
@@ -31,6 +46,7 @@ export function useLocale() {
     () => defaultLocaleConfig
   )
   const activeLocale = useState<string | undefined>('activeLocale')
+  const availableLocales = useState<LocaleType[]>('availableLocales')
   /**
    * Sets the active locale. Gets called when:
    * 1. the user changes the locale or
@@ -41,9 +57,15 @@ export function useLocale() {
     activeLocale.value = locale
   }
 
+  function setAvailableLocales(identifiers: string[]) {
+    availableLocales.value = getLocaleWithRegion(identifiers)
+  }
+
   return {
     config,
     setActiveLocale,
-    activeLocale
+    activeLocale,
+    availableLocales,
+    setAvailableLocales
   }
 }

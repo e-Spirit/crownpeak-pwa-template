@@ -17,10 +17,10 @@
 
     <div
       data-testid="languagesDropdown"
-      class="absolute top-10 right-0 hidden divide-y bg-white shadow-lg group-hover:block"
+      class="absolute top-10 right-0 hidden w-48 divide-y bg-white shadow-lg group-hover:block"
     >
       <ul>
-        <li v-for="locale of config.allLocales" :key="locale.identifier">
+        <li v-for="locale of availableLocales" :key="locale.identifier">
           <button
             :disabled="loading"
             :data-testid="`${locale.identifier}-switch`"
@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-const { config, activeLocale } = useLocale()
+const { activeLocale, availableLocales } = useLocale()
 const { $fsxaApi } = useNuxtApp()
 const loading = ref(true)
 const { activeNavigationItem, setNavigationData } = useNavigationData()
