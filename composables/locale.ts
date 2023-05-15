@@ -8,7 +8,7 @@ type LocaleConfig = {
   defaultLocale: string
 }
 
-function getLocaleWithRegion(identifiers: string[]) {
+function getLocalesWithRegion(identifiers: string[]) {
   const locales: LocaleType[] = []
   identifiers.forEach((identifier) => {
     // Split the identifier into language and region
@@ -58,7 +58,7 @@ export function useLocale() {
   }
 
   function setAvailableLocales(identifiers: string[]) {
-    availableLocales.value = getLocaleWithRegion(identifiers)
+    availableLocales.value = getLocalesWithRegion(identifiers)
   }
 
   return {
