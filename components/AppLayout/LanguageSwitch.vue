@@ -17,7 +17,7 @@
 
     <div
       data-testid="languagesDropdown"
-      class="absolute top-10 right-0 hidden w-48 divide-y bg-white shadow-lg group-hover:block"
+      class="absolute top-10 right-0 hidden divide-y bg-white shadow-lg group-hover:block"
     >
       <ul>
         <li v-for="locale of availableLocales" :key="locale.identifier">

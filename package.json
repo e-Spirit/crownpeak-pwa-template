@@ -1,5 +1,4 @@
 {
-  "version": "0.0.0",
   "name": "fsxa-nuxt3-pwa",
   "private": true,
   "description": "Demo PWA built with Nuxt 3 and FSXA",
@@ -26,7 +25,8 @@
     "semantic-release:dry-run": "semantic-release --dry-run",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "start": "node ./.output/server/index.mjs",
-    "test": "vitest"
+    "test": "vitest",
+    "locale": "vitest ./tests/composables/locale.spec.ts"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",

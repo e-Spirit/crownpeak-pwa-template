@@ -1,29 +1,13 @@
-type LocaleType = {
-  // it can be null in case it is not used ISO format
-  name: string | null
-  identifier: string
-}
+import { getLanguageNamesFromLocales } from '../utils/misc'
 
 type LocaleConfig = {
   defaultLocale: string
 }
 
-function getLocalesWithRegion(identifiers: string[]) {
-  const locales: LocaleType[] = []
-  identifiers.forEach((identifier) => {
-    // Split the identifier into language and region
-    // e.g. de_DE => [de, DE]
-    const [language, region] = identifier.split('_')
-    if (language && region) {
-      const regionName = new Intl.DisplayNames([language], { type: 'region' })
-      locales.push({
-        name: regionName.of(region) ?? null,
-        identifier
-      })
-    }
-  })
-
-  return locales
+export type LocaleType = {
+  // it can be null in case it is not used ISO format
+  name: string | null
+  identifier: string
 }
 
 const defaultLocaleConfig: LocaleConfig = {
@@ -58,7 +42,7 @@ export function useLocale() {
   }
 
   function setAvailableLocales(identifiers: string[]) {
-    availableLocales.value = getLocalesWithRegion(identifiers)
+    availableLocales.value = getLanguageNamesFromLocales(identifiers)
   }
 
   return {
