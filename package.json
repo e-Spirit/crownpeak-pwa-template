@@ -25,8 +25,7 @@
     "semantic-release:dry-run": "semantic-release --dry-run",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "start": "node ./.output/server/index.mjs",
-    "test": "vitest",
-    "locale": "vitest ./tests/composables/locale.spec.ts"
+    "test": "vitest"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
