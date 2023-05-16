@@ -12,12 +12,9 @@
 </template>
 
 <script setup lang="ts">
-import { getAvailableLocales } from 'fsxa-api'
-
-const { activeLocale, setAvailableLocales } = useLocale()
+const { activeLocale } = useLocale()
 const { fetchProjectProperties, setProjectProperties } = useProjectProperties()
 const { setNavigationData, fetchNavigationData } = useNavigationData()
-const config = useRuntimeConfig()
 const { $logger } = useNuxtApp()
 
 // This gets called when the layout is loaded or the locale changes
@@ -37,16 +34,6 @@ const { pending } = useAsyncData(
     }
 
     setProjectProperties(projectProperties, activeLocale.value!)
-
-    const availableLocales = await getAvailableLocales({
-      navigationServiceURL: config.private.navigationService,
-      projectId: config.private.projectId,
-      contentMode: config.public.mode
-    })
-
-    if (availableLocales) {
-      setAvailableLocales(availableLocales)
-    }
 
     // fetch navigationData
     const navigationData = await fetchNavigationData(activeLocale.value!)
