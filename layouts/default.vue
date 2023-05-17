@@ -17,8 +17,6 @@ const { fetchProjectProperties, setProjectProperties } = useProjectProperties()
 const { setNavigationData, fetchNavigationData } = useNavigationData()
 const { $logger } = useNuxtApp()
 
-await fetchAvailableLocales()
-
 // This gets called when the layout is loaded or the locale changes
 const { pending } = useAsyncData(
   async () => {
@@ -54,4 +52,6 @@ const { pending } = useAsyncData(
   },
   { watch: [activeLocale] }
 )
+// should be placed at the bottom not to block the rendering of the page
+fetchAvailableLocales()
 </script>
