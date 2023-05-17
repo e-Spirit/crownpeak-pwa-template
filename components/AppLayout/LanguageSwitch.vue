@@ -16,12 +16,11 @@
     </div>
 
     <div
-      v-if="!pending"
       data-testid="languagesDropdown"
       class="absolute top-10 right-0 hidden divide-y bg-white shadow-lg group-hover:block"
     >
       <ul>
-        <li v-for="locale of availableLocales" :key="locale.identifier">
+        <li v-for="locale of allLocales" :key="locale.identifier">
           <button
             :disabled="loading"
             :data-testid="`${locale.identifier}-switch`"
@@ -41,34 +40,17 @@
 </template>
 
 <script setup lang="ts">
-import { getAvailableLocales } from 'fsxa-api'
-
-const { activeLocale, availableLocales, setAvailableLocales } = useLocale()
+const { activeLocale, availableLocales } = useLocale()
 const { $fsxaApi } = useNuxtApp()
 const loading = ref(true)
 const { activeNavigationItem, setNavigationData } = useNavigationData()
 const { currentDataset } = useContent()
-const config = useRuntimeConfig()
+
+const allLocales = availableLocales.value
 
 onMounted(() => {
   loading.value = false
 })
-
-const { pending } = await useAsyncData(
-  'availableLocales',
-  async () => {
-    const availableLocales = await getAvailableLocales({
-      navigationServiceURL: config.private.navigationService,
-      projectId: config.private.projectId,
-      contentMode: config.public.mode
-    })
-
-    if (availableLocales) {
-      setAvailableLocales(availableLocales)
-    }
-  },
-  { watch: [availableLocales] }
-)
 
 const emits = defineEmits(['languageSwitch'])
 

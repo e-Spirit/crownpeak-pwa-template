@@ -12,10 +12,12 @@
 </template>
 
 <script setup lang="ts">
-const { activeLocale } = useLocale()
+const { activeLocale, fetchAvailableLocales } = useLocale()
 const { fetchProjectProperties, setProjectProperties } = useProjectProperties()
 const { setNavigationData, fetchNavigationData } = useNavigationData()
 const { $logger } = useNuxtApp()
+
+await fetchAvailableLocales()
 
 // This gets called when the layout is loaded or the locale changes
 const { pending } = useAsyncData(

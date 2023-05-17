@@ -1,3 +1,4 @@
+import { getAvailableLocales } from 'fsxa-api'
 import { getLanguageNamesFromLocales } from '../utils/misc'
 
 type LocaleConfig = {
@@ -15,9 +16,10 @@ const defaultLocaleConfig: LocaleConfig = {
 }
 
 export function useLocale() {
+  const runtimeConfig = useRuntimeConfig()
   const {
     public: { defaultLocale: runtimeConfigDefaultLocale }
-  } = useRuntimeConfig()
+  } = runtimeConfig
   const { defaultLocale: appConfigDefaultLocale } = useAppConfig()
 
   defaultLocaleConfig.defaultLocale =
@@ -45,11 +47,21 @@ export function useLocale() {
     availableLocales.value = getLanguageNamesFromLocales(identifiers)
   }
 
+  async function fetchAvailableLocales() {
+    const availableLocales = await getAvailableLocales({
+      navigationServiceURL: runtimeConfig.private.navigationService,
+      projectId: runtimeConfig.private.projectId,
+      contentMode: runtimeConfig.public.mode
+    })
+    setAvailableLocales(availableLocales)
+  }
+
   return {
     config,
     setActiveLocale,
     activeLocale,
     availableLocales,
-    setAvailableLocales
+    setAvailableLocales,
+    fetchAvailableLocales
   }
 }
