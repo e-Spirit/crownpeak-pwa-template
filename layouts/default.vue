@@ -52,6 +52,5 @@ const { pending } = useAsyncData(
   },
   { watch: [activeLocale] }
 )
-// should be placed at the bottom not to block the rendering of the page
-fetchAvailableLocales()
+await fetchAvailableLocales()
 </script>
