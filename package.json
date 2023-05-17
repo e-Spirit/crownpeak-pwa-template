@@ -84,11 +84,6 @@
     ],
     "tagFormat": "v${version}"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not op_mini all"
-  ],
   "dependencies": {
     "fs-tpp-api": "^2.4.7",
     "fsxa-api": "^10.12.0",
