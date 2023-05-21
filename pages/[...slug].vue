@@ -12,6 +12,8 @@
 </template>
 
 <script setup lang="ts">
+import { getAvailableLocales } from 'fsxa-api'
+
 const {
   currentPage,
   currentDataset,
@@ -21,9 +23,10 @@ const {
   findCachedDatasetByRoute
 } = useContent()
 const { $fsxaApi, $setPreviewId, $logger } = useNuxtApp()
-const { activeLocale } = useLocale()
+const { activeLocale, setAvailableLocales } = useLocale()
 const { activeNavigationItem } = useNavigationData()
 const currentRoute = decodeURIComponent(useRoute().path)
+const config = useRuntimeConfig()
 
 const previewId = computed(() => {
   return activeNavigationItem.value?.seoRouteRegex !== null
@@ -33,6 +36,16 @@ const previewId = computed(() => {
 
 // fetch page and dataset
 const { pending } = useAsyncData(async () => {
+  const allLocales = await getAvailableLocales({
+    navigationServiceURL: config.private.navigationService,
+    projectId: config.private.projectId,
+    contentMode: config.public.mode
+  })
+
+  if (allLocales) {
+    setAvailableLocales(allLocales)
+  }
+
   // This state should not be possible.
   // The middleware should have figured out both the locale and our current navigation item
   if (!activeNavigationItem.value || !activeLocale.value) {
