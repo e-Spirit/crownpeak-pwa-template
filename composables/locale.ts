@@ -48,12 +48,14 @@ export function useLocale() {
   }
 
   async function fetchAvailableLocales() {
-    const availableLocales = await getAvailableLocales({
-      navigationServiceURL: runtimeConfig.private.navigationService,
-      projectId: runtimeConfig.private.projectId,
-      contentMode: runtimeConfig.public.mode
-    })
-    setAvailableLocales(availableLocales)
+    if (process.server) {
+      const availableLocales = await getAvailableLocales({
+        navigationServiceURL: runtimeConfig.private.navigationService,
+        projectId: runtimeConfig.private.projectId,
+        contentMode: runtimeConfig.public.mode
+      })
+      setAvailableLocales(availableLocales)
+    }
   }
 
   return {
