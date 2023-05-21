@@ -127,5 +127,6 @@ useHead({
   title: currentPage.value?.data['pt_title']
 })
 
+// this request will fetch the available locales and set the active locale
 fetchAvailableLocales()
 </script>
