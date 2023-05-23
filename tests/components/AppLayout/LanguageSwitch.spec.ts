@@ -15,14 +15,16 @@ describe('header', () => {
   })
 
   it('render language switch => render languages from locale config', () => {
-    const { config } = useLocale()
+    const { availableLocales, setAvailableLocales } = useLocale()
 
-    // the testing library does not support composables
-    config.allLocales = config.value.allLocales
+    // set available locales
+    setAvailableLocales(['en_GB', 'de_DE'])
 
     const { getByTestId } = render(LanguageSwitch, {
       global: renderConfig.global
     })
+
+    const allLocales = availableLocales.value
 
     const languageSwitch = getByTestId('languageSwitch')
     const languagesDropdown = getByTestId('languagesDropdown')
@@ -30,11 +32,11 @@ describe('header', () => {
     const languagesUL = languagesDropdown.children[0]
 
     expect(languageSwitch).not.toBe(null)
-    expect(languagesUL?.children.length).toBe(config.allLocales.length)
+    expect(languagesUL?.children.length).toBe(allLocales.length)
 
     for (let i = 0; i < languagesUL!.children.length; i++) {
       const child = languagesUL?.children[i]
-      expect(child?.innerHTML).toContain(config.allLocales[i].name)
+      expect(child?.innerHTML).toContain(allLocales[i].name)
     }
   })
 })

@@ -21,7 +21,7 @@ const {
   findCachedDatasetByRoute
 } = useContent()
 const { $fsxaApi, $setPreviewId, $logger } = useNuxtApp()
-const { activeLocale } = useLocale()
+const { activeLocale, fetchAvailableLocales } = useLocale()
 const { activeNavigationItem } = useNavigationData()
 const currentRoute = decodeURIComponent(useRoute().path)
 
@@ -126,4 +126,7 @@ const pageLayoutComponent = computed(() => {
 useHead({
   title: currentPage.value?.data['pt_title']
 })
+
+// this request will fetch the available locales and set the active locale
+fetchAvailableLocales()
 </script>
