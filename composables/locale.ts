@@ -1,24 +1,25 @@
+import { getAvailableLocales } from 'fsxa-api'
+import { getLanguageNamesFromLocales } from '../utils/misc'
+
 type LocaleConfig = {
   defaultLocale: string
-  allLocales: { name: string; identifier: string }[]
 }
 
-// TODO: Implement this function however you want
-// You might want to use the CaaS to get all available locales (TNG-1262)
-const getAllLocales = () => [
-  { name: 'Deutsch', identifier: 'de_DE' },
-  { name: 'English', identifier: 'en_GB' }
-]
+export type LocaleType = {
+  // it can be null in case it is not used ISO format
+  name: string | null
+  identifier: string
+}
 
 const defaultLocaleConfig: LocaleConfig = {
-  defaultLocale: 'de_DE',
-  allLocales: getAllLocales()
+  defaultLocale: 'de_DE'
 }
 
 export function useLocale() {
+  const runtimeConfig = useRuntimeConfig()
   const {
     public: { defaultLocale: runtimeConfigDefaultLocale }
-  } = useRuntimeConfig()
+  } = runtimeConfig
   const { defaultLocale: appConfigDefaultLocale } = useAppConfig()
 
   defaultLocaleConfig.defaultLocale =
@@ -31,6 +32,7 @@ export function useLocale() {
     () => defaultLocaleConfig
   )
   const activeLocale = useState<string | undefined>('activeLocale')
+  const availableLocales = useState<LocaleType[]>('availableLocales')
   /**
    * Sets the active locale. Gets called when:
    * 1. the user changes the locale or
@@ -41,9 +43,27 @@ export function useLocale() {
     activeLocale.value = locale
   }
 
+  function setAvailableLocales(identifiers: string[]) {
+    availableLocales.value = getLanguageNamesFromLocales(identifiers)
+  }
+
+  async function fetchAvailableLocales() {
+    if (process.server) {
+      const availableLocales = await getAvailableLocales({
+        navigationServiceURL: runtimeConfig.private.navigationService,
+        projectId: runtimeConfig.private.projectId,
+        contentMode: runtimeConfig.public.mode
+      })
+      setAvailableLocales(availableLocales)
+    }
+  }
+
   return {
     config,
     setActiveLocale,
-    activeLocale
+    activeLocale,
+    availableLocales,
+    setAvailableLocales,
+    fetchAvailableLocales
   }
 }
