@@ -1,9 +1,5 @@
-// import { useLocale } from '~~/composables/locale'
-
 describe(`locale switching`, () => {
   const baseURL = Cypress.env('cyBaseURL')
-  // const { setAvailableLocales } = useLocale()
-  // setAvailableLocales(['en_GB', 'de_DE'])
   beforeEach(() => {
     cy.visit(baseURL)
   })

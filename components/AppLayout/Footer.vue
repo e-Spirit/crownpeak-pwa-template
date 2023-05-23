@@ -10,8 +10,8 @@
         © {{ projectProperties?.data['ps_footer']['gc_copyright'] }}
       </div>
       <div class="space-x-2 md:text-right" data-testid="legal-links">
-        <NuxtLink class="hover:underline" to="/impressum">Impressum</NuxtLink>
-        <NuxtLink class="hover:underline" to="/datenschutz"
+        <NuxtLink class="hover:underline" to="/Impressum">Impressum</NuxtLink>
+        <NuxtLink class="hover:underline" to="/Datenschutz"
           >Datenschutzerklärung</NuxtLink
         >
       </div>
