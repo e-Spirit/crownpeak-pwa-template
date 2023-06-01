@@ -35,10 +35,12 @@ interface LegalLink {
 const getLegalLinks = (
   projectProperties: ProjectProperties | null
 ): LegalLink[] =>
-  projectProperties?.data['ps_footer'].gc_linklist.map((link) => ({
-    name: link.data.lt_text,
-    route: '/' + link.data.lt_text.replaceAll(' ', '-')
-  }))
+  projectProperties?.data['ps_footer'].gc_linklist.map(
+    (link: { data: { lt_text: string } }) => ({
+      name: link.data.lt_text,
+      route: '/' + link.data.lt_text.replaceAll(' ', '-')
+    })
+  )
 const projectProperties = await fetchProjectProperties(activeLocale!.value!)
 const state = reactive({
   projectProperties,
