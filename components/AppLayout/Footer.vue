@@ -24,7 +24,8 @@
 
 <script setup lang="ts">
 import { ProjectProperties } from 'fsxa-api/dist/types'
-const { fetchProjectProperties, setProjectProperties } = useProjectProperties()
+const { projectProperties, fetchProjectProperties, setProjectProperties } =
+  useProjectProperties()
 const { activeLocale } = useLocale()
 
 interface LegalLink {
@@ -41,10 +42,10 @@ const getLegalLinks = (
       route: '/' + link.data.lt_text.replaceAll(' ', '-')
     })
   )
-const projectProperties = await fetchProjectProperties(activeLocale!.value!)
+
 const state = reactive({
   projectProperties,
-  legalLinks: getLegalLinks(projectProperties)
+  legalLinks: getLegalLinks(projectProperties.value)
 })
 
 watch(activeLocale, async (newLocale) => {
