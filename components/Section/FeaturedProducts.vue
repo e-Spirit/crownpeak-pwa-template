@@ -27,14 +27,14 @@
       >
         <ElementsFeaturedProductItem
           :product="product"
-          :image-source="imgSrc[index]"
+          :image-source="productImageSources[index]"
         />
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { DataEntry, Image } from 'fsxa-api/dist/types'
+import { DataEntry, Image } from 'fsxa-api'
 interface FeaturedProducts {
   st_featured_products_header: null | string
   st_featured_products_picture: DataEntry[]
@@ -42,22 +42,20 @@ interface FeaturedProducts {
 }
 
 const props = defineProps<{ data: FeaturedProducts }>()
-const imgSrc = computed(() => {
-  const images = props.data['st_featured_products_picture'].map(
-    (product) => product.data['tt_teaser_image']
-  ) as Image[]
-  return images.map((image) => {
-    const productTeaserIndex = Object.keys(image.resolutions).findIndex(
-      (resolutionName) => resolutionName === 'product_teaser'
-    )
-    if (productTeaserIndex === -1) {
+const productImageSources = computed(() => {
+  const resolutionName = 'product_teaser'
+  const containsResolution = (image: Image, resolution: string): boolean => {
+    return Object.prototype.hasOwnProperty.call(image, resolution)
+  }
+
+  return props.data['st_featured_products_picture'].map((product) => {
+    const image = product.data['tt_teaser_image']
+    if (containsResolution(image, resolutionName)) {
       throw createError(
-        'The data contains no image resolution named "product_teaser". Please add one to the dataset.'
+        `The data contains no image resolution named ${resolutionName}. Please add one to the dataset.`
       )
     }
-    return Object.values(image.resolutions).map((resolution) => resolution.url)[
-      productTeaserIndex
-    ]
+    return image.resolutions[resolutionName]!.url
   })
 })
 </script>
