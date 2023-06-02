@@ -32,6 +32,8 @@ const sectionComponent = computed(() => {
       return resolveComponent('SectionProduct')
     case 'teaser':
       return resolveComponent('SectionTeaser')
+    case 'featured_products':
+      return resolveComponent('SectionFeaturedProducts')
     default:
       return undefined
   }
