@@ -44,13 +44,19 @@ interface FeaturedProducts {
 const props = defineProps<{ data: FeaturedProducts }>()
 const productImageSources = computed(() => {
   const resolutionName = 'product_teaser'
-  const containsResolution = (image: Image, resolution: string): boolean => {
-    return Object.prototype.hasOwnProperty.call(image, resolution)
+  const containsResolution = (
+    image: Image,
+    resolutionName: string
+  ): boolean => {
+    return Object.prototype.hasOwnProperty.call(
+      image.resolutions,
+      resolutionName
+    )
   }
 
   return props.data['st_featured_products_picture'].map((product) => {
     const image = product.data['tt_teaser_image']
-    if (containsResolution(image, resolutionName)) {
+    if (!containsResolution(image, resolutionName)) {
       throw createError(
         `The data contains no image resolution named ${resolutionName}. Please add one to the dataset.`
       )
