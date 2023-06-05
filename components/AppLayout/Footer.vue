@@ -7,11 +7,12 @@
         <NuxtLink to="/"><AppLayoutLogo /></NuxtLink>
       </div>
       <div class="md:text-center" data-testid="copyright">
-        © {{ state.projectProperties?.data['ps_footer']['gc_copyright'] }}
+        ©
+        {{ projectProperties?.data['ps_footer']['gc_copyright'] }}
       </div>
       <div class="space-x-2 md:text-right" data-testid="legal-links">
         <NuxtLink
-          v-for="link of state.legalLinks"
+          v-for="link of legalLinks"
           :key="link.name"
           class="hover:underline"
           :to="link.route"
@@ -23,36 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { ProjectProperties } from 'fsxa-api/dist/types'
-const { projectProperties, fetchProjectProperties, setProjectProperties } =
-  useProjectProperties()
-const { activeLocale } = useLocale()
+const { projectProperties } = useProjectProperties()
 
-interface LegalLink {
-  name: string
-  route: string
-}
-
-const getLegalLinks = (
-  projectProperties: ProjectProperties | null
-): LegalLink[] =>
-  projectProperties?.data['ps_footer'].gc_linklist.map(
-    (link: { data: { lt_text: string } }) => ({
-      name: link.data.lt_text,
-      route: '/' + link.data.lt_text.replaceAll(' ', '-')
-    })
-  )
-
-const state = reactive({
-  projectProperties,
-  legalLinks: getLegalLinks(projectProperties.value)
-})
-
-watch(activeLocale, async (newLocale) => {
-  const newProjectProperties = await fetchProjectProperties(newLocale!)
-  setProjectProperties(newProjectProperties!, newLocale!)
-
-  state.legalLinks = getLegalLinks(newProjectProperties)
-  state.projectProperties = newProjectProperties
-})
+const legalLinks = computed(() => getLegalLinks(projectProperties.value))
 </script>
