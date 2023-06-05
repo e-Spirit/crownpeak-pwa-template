@@ -7,12 +7,16 @@
         <NuxtLink to="/"><AppLayoutLogo /></NuxtLink>
       </div>
       <div class="md:text-center" data-testid="copyright">
-        © {{ projectProperties?.data['ps_footer']['gc_copyright'] }}
+        ©
+        {{ projectProperties?.data['ps_footer']['gc_copyright'] }}
       </div>
       <div class="space-x-2 md:text-right" data-testid="legal-links">
-        <NuxtLink class="hover:underline" to="/Impressum">Impressum</NuxtLink>
-        <NuxtLink class="hover:underline" to="/Datenschutz"
-          >Datenschutzerklärung</NuxtLink
+        <NuxtLink
+          v-for="link of legalLinks"
+          :key="link.name"
+          class="hover:underline"
+          :to="link.route"
+          >{{ link.name }}</NuxtLink
         >
       </div>
     </div>
@@ -20,5 +24,8 @@
 </template>
 
 <script setup lang="ts">
+import { getLegalLinks } from '~/utils/fsxa'
 const { projectProperties } = useProjectProperties()
+
+const legalLinks = computed(() => getLegalLinks(projectProperties.value))
 </script>

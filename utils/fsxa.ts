@@ -6,9 +6,10 @@ import {
   Dataset,
   Page,
   QueryBuilderQuery,
-  CaaSApi_Dataset as CaasDataset
+  CaaSApi_Dataset as CaasDataset,
+  ProjectProperties
 } from 'fsxa-api'
-
+import { LegalLink } from '~~/types'
 /**
  * Fetch dataset through the FSXA Api by route
  * @param fsxaApi Instance of the FSXA Api
@@ -232,3 +233,13 @@ export const fetchPageRoute = async (
 
   return route
 }
+
+export const getLegalLinks = (
+  projectProperties: ProjectProperties | null
+): LegalLink[] =>
+  projectProperties?.data['ps_footer'].gc_linklist.map(
+    (link: { data: { lt_text: string } }) => ({
+      name: link.data.lt_text,
+      route: '/' + link.data.lt_text.replaceAll(' ', '-')
+    })
+  )

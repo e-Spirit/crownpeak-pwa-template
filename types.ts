@@ -53,3 +53,8 @@ export enum FSXAApiErrors {
   MISSING_REMOTE_LOCALE = 'The specified remote project did not include a locale',
   MISSING_REMOTE_ID = 'The specified remote project did not include an id'
 }
+
+export type LegalLink = {
+  name: string
+  route: string
+}
