@@ -44,11 +44,6 @@ const { activeLocale, availableLocales } = useLocale()
 const { $fsxaApi } = useNuxtApp()
 const loading = ref(true)
 const { activeNavigationItem, setNavigationData } = useNavigationData()
-const {
-  setProjectProperties,
-  fetchProjectProperties,
-  cachedProjectProperties
-} = useProjectProperties()
 const { currentDataset } = useContent()
 
 const allLocales = availableLocales.value
@@ -67,14 +62,6 @@ async function changeLanguage(locale: string) {
     $fsxaApi,
     locale
   )
-
-  // fetch project properties for new locale
-  if (!cachedProjectProperties.value[locale]) {
-    const projectProperties = await fetchProjectProperties(locale)
-    if (projectProperties) {
-      setProjectProperties(projectProperties, locale)
-    }
-  }
 
   // find corresponding navigation item in new navigation data
   const activeNavigationItemId = activeNavigationItem.value!.id

@@ -24,6 +24,8 @@
 </template>
 
 <script setup lang="ts">
+import { getLegalLinks } from '~~/utils/fsxa'
+
 const { projectProperties } = useProjectProperties()
 
 const legalLinks = computed(() => getLegalLinks(projectProperties.value))
