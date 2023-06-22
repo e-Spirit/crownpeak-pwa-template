@@ -52,7 +52,7 @@ The tenantId is used by the PWA to distinguish between the different environment
 We distinguish between preview and release data. This is the traditional FirstSpirit way. Specify here which data should be loaded by the PWA.
 
 === CI
-We use husky to enforce branch protection rules to prevent direct commits and pushes to the alpha and main branches. On your local machine this variable is not needed, but in your CI it can be set to 1 to allow the semantic release plugin to do releases. This is done automatically by Github.
+We use husky to enforce branch protection rules to prevent direct commits and pushes to the main branch. On your local machine this variable is not needed, but in your CI it can be set to 1 to allow the semantic release plugin to do releases. This is done automatically by Github.
 
 === NUXT_PUBLIC_BASE_URL `string` (_optional_ but recommended)
 
