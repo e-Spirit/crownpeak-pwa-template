@@ -1,0 +1,78 @@
+= Composables
+
+In Vue 3 applications link:https://vuejs.org/guide/reusability/composables.html[composables] are used to encapsulate and reuse stateful logic. We use composables here to handle
+
+* localization settings,
+* navigation data,
+* page content,
+* and project properties.
+
+
+For in depth information on how to use composables in your Nuxt project check out the official link:https://nuxt.com/docs/guide/directory-structure/composables[Nuxt documentation on composables].
+
+== ShowDev
+
+Stores whether to show the `Dev` overlay on components.
+
+== Locale
+
+The locale composable (`~/composables/locale.ts`) is used to handle the localization state of the PWA. First, you can define the available locales in static config:
+
+[source, typescript]
+const defaultConfig: LocaleConfig = {
+  defaultLocale: "de_DE",
+  allLocales: getAllLocales(),
+};
+
+`getAllLocales` returns a hard-coded array (`[ { name: "Deutsch", identifier: "de_DE" },{ name: "English", identifier: "en_GB" },]`) as default, but can be implemented to dynamically fetch available languages from the CaaS.
+
+The composable can be imported in any component to read or set the locale:
+
+[source, javascript]
+<script setup lang="ts">
+const { config, setActiveLocale } = useLocale();
+</script>
+
+The config contains the default locale, as well as all possible locales. `setActiveLocale` can be used to implement a language switch component. Keep in mind though, that in order to create a fully functional language switch it is not enough to only update the active locale. You can check out our example implementation under `~/components/AppLayout/LanguageSwitch.vue` for that.
+
+== Navigation Data
+
+The navigation data provided by the Navigation Service can be accessed through `useNavigation` (`~/composables/navigation.ts`). This composable can be used to get or set the `activeNavigationItem`, which is further described in the xref:Routing.adoc[routing documentation] or shown in `~/components/InternalLink.vue`.
+
+[source, javascript]
+const { setActiveNavigationItem } = useNavigationData();
+
+You can also access the raw `navigationData` of type `NavigationData` to render the navigation tree, as shown in `~/components/AppLayout/Navigation.vue`.
+
+[source, javascript]
+const { navigationData } = useNavigationData();
+
+The index route / is handled separately in the Navigation Service and the corresponding route can be accessed with `getIndexRoute()`.
+
+Navigation data, as well as project properties are fetched server side when the app layout is loaded or the locale changes. In this reference PWA we also implemented a caching layer inside the `navigation` composable. This greatly increases page loading speed.
+
+== Content
+The CaaS content of the current route can be accessed by using the `useContent` (`~/composables/content.ts`) composable.
+
+[source, javascript]
+const { content: page } = useContent();
+
+When we are talking about `content` here, we are refering to 
+
+- the current page data which is of type `Page` and contains basic information like what sections the page contains or what page layout to be used
+- the current dataset of type `Dataset` for the page, which only exists on content projections
+- and in this case an array of `Products`, which are fetched from the `ProductCategory.vue` component on product overview pages.
+
+
+Content is fetched inside the `~/pages/[...slug].vue` page when the page is loaded or directly inside components like it is the case for `ProductCategory.vue`. For all content items, we also implemented a caching layer in order to increase loading speed for internal page transistions.
+
+
+== Project Properties
+Project properties are accessed by using the `useProjectProperties` (`~/composables/projectProperties.ts`) composable.
+
+[source, javascript]
+const { projectProperties } = useProjectProperties();
+
+Like navigation data, project properties are fetched when the app layout is loaded or when the locale changes and cached for every corresponding locale.
+
+For more information about what project properties are and how to work with them read xref:ProjectProperties.adoc[this short guide].

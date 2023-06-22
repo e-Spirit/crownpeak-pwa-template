@@ -1,9 +1,9 @@
-import { Dataset } from "fsxa-api";
-import { faker } from "@faker-js/faker";
+import { Dataset } from 'fsxa-api'
+import { faker } from '@faker-js/faker'
 
 export function createDataset(optionalDataset?: Partial<Dataset>): Dataset {
   const dataset: Dataset = {
-    type: "Dataset",
+    type: 'Dataset',
     id: faker.datatype.uuid(),
     previewId: faker.datatype.uuid(),
     schema: faker.name.firstName(),
@@ -13,7 +13,7 @@ export function createDataset(optionalDataset?: Partial<Dataset>): Dataset {
     routes: [],
     locale: faker.random.locale(),
     data: {},
-    children: [],
-  };
-  return { ...dataset, ...optionalDataset };
+    children: []
+  }
+  return { ...dataset, ...optionalDataset }
 }

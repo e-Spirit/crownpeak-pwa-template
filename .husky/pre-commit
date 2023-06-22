@@ -3,9 +3,16 @@
 
 branch="$(git rev-parse --abbrev-ref HEAD)"
 
-if [ "$branch" = "main" -a "$CI" != "true" ]; then
+echo "branch: $branch"
+echo "CI: $CI"
+
+if [ "$branch" = "main" -a "$CI" != 1 ]; then
   echo "You can't commit directly to main branch"
   exit 1
 fi
 
+if [ "$branch" = "alpha" -a "$CI" != 1 ]; then
+  echo "You can't commit directly to alpha branch"
+  exit 1
+fi
 

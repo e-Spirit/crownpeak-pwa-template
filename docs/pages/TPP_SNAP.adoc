@@ -1,0 +1,67 @@
+= TPP-Snap
+
+TPP-Snap from the https://docs.e-spirit.com/tpp/index.html.en[OmnichannelManager] is a JavaScript library designed to connect the FirstSpirit ContentCreator UI with dynamically generated HTML elements (like in a PWA). This connection is achieved using preview ids. When you add a known preview id as an attribute to an HTML element, the Snap library will automatically decorate it using borders and buttons when your PWA is viewed in the FirstSpirit ContentCreator. This allows editors to edit the contents of dynamically generated HTML Elements. The library also offers the tools to add your own buttons to the UI as you see fit. To enable this functionality, you MUST set the environment variable NUXT_PUBLIC_MODE to "preview".
+
+There are some configurations you could customize, like xref:Configuration.adoc#firstspirit-omnichannel-manager-api-version[event-hooks].
+
+== Nested Elements
+
+At layout and section level, https://docs.e-spirit.com/tpp/snap/[TPP_SNAP] takes care of enriching the UI with borders and buttons that provide the editing functionality in the ContentCreator. However, as soon as we have nested elements within a dataset or a section, there is currently no automatism for adding these editorial UI elements. So you have to take action here that your child sections can also be edited in the ContentCreator.
+
+To enable the editing of such nested components, make sure to provide a custom preview id for both the nested component and the parent component using the syntax \#PARENT_COMPONENT_NAME and #NESTED_COMPONENT_INDEX as the following example shows. The example is a snippet from the `InterestingFacts` component located at `~/components/Section`. The parent component name is `st_counters` so the data preview id will be`#st_counters`, the child's preview id will be set dynamically to `#${index}`
+
+=== Example
+
+[source,xml]
+---
+<template>
+    <div
+      class="grid grid-cols-3 gap-6"
+      data-preview-id="#st_counters"
+      data-inedit
+    >
+      <div
+        v-for="(counter, index) in data.st_counters"
+        :key="counter.id"
+        :data-preview-id="`#${index}`"
+      >
+        <div
+          class="text-4xl font-bold text-yellow-500"
+          data-inedit
+          data-preview-id="#st_number"
+        >
+          {{ counter.data.st_number }}
+        </div>
+        <div class="border-t-2 text-gray-300" data-preview-id="#st_text">
+          {{ counter.data.st_text }}
+        </div>
+      </div>
+    </div>
+</template>
+
+---
+
+Further information can be found in the documentation for the https://docs.e-spirit.com/tpp/snap/index.html#nested-components[TPP-Snap] library, which is automatically integrated in the preview mode and enables these functionalities.
+
+== TPP_SNAP Hooks
+
+The communication between the application itself and the editor is done via hooks. These hooks are event listeners that can be registered and implemented in the tpp client plugin (`~/plugins/3.tpp.client.ts`). This plugin is already implementing the minimum required hooks to make the TPP-Snap library work. However, you can implement your own hooks to extend the functionality of the TPP-Snap library.
+Currently, 3 hooks are implemented:
+
+1. onRequestPreviewElement: This hook is called for example when the user selects a page in the editor search bar. This is the hook that is mainly responsible for the navigation
+
+2. onRerenderView: This hook updates the content (both dataset and page) if the user changed something in the editor. This hooks also waits for the CaaS events to make sure that the update is completed before trying to fetch content. This is possible, because the hook is called before the CaaS even starts writing the content to the database.
+
+3. onNavigationChange: This hook is called when a new page is added, deleted or the navigation structure changes in any other way. It is possible that both the onRequestPreviewElement and onNavigationChange hook is called when a new page is added, making it important to only handle that case in one of the hooks.
+
+4. onContentChange: This is a hook that has NOT been implemented and is not required. onContentChange gets called before onRerenderView and provides both the previewId, the DOM node and the changed content. This can allow you to skip the data fetching done in onRerenderView and instead update the DOM node directly. However, this is a small optimization and is not required.
+
+== CaaS Events
+
+CaaS events are sent on every change to your CaaS database and sent as a webhook to the Nuxt Server. There the `CaaSEventListenerSingleton` will be initialized and receive and further process the webhook.
+
+We initialize the CaasEventListenerSingleton in `~/server/middleware/InitCaasEventListener.ts`, and use in `~/server/api/[endpoint].get.ts`.
+
+The communication between the Nuxt server and frontend is also defined in the endpoint and is done over EventStreams. This logic is mostly handled by the TPP_SNAP library, the rest can be found in `~/utils/tpp.ts`, specifically the `waitForPreviewId` function.
+
+CaasEvents are optional, instead of waiting for the event a well-timed timeout can be used to make sure that the content is updated before the application tries to fetch it.

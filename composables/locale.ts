@@ -1,29 +1,69 @@
+import { getAvailableLocales } from 'fsxa-api'
+import { getLanguageNamesFromLocales } from '../utils/misc'
+
 type LocaleConfig = {
-  activeLocale: string | undefined; // undefined if the user has not selected a locale yet or we have not extracted the locale from the deeplink
-  defaultLocale: string;
-  allLocales: string[];
-};
+  defaultLocale: string
+}
 
-// TODO: Implement this function however you want
-// You might want to use the CaaS to get all available locales
-const getAllLocales = () => ["de_DE", "en_GB"];
+export type LocaleType = {
+  // it can be null in case it is not used ISO format
+  name: string | null
+  identifier: string
+}
 
-const defaultConfig: LocaleConfig = {
-  activeLocale: undefined,
-  defaultLocale: "de_DE",
-  allLocales: getAllLocales(),
-};
+const defaultLocaleConfig: LocaleConfig = {
+  defaultLocale: 'de_DE'
+}
 
 export function useLocale() {
-  const config = useState<LocaleConfig>("localeConfig", () => defaultConfig);
+  const runtimeConfig = useRuntimeConfig()
+  const {
+    public: { defaultLocale: runtimeConfigDefaultLocale }
+  } = runtimeConfig
+  const { defaultLocale: appConfigDefaultLocale } = useAppConfig()
+
+  defaultLocaleConfig.defaultLocale =
+    runtimeConfigDefaultLocale ||
+    appConfigDefaultLocale ||
+    defaultLocaleConfig.defaultLocale
+
+  const config = useState<LocaleConfig>(
+    'localeConfig',
+    () => defaultLocaleConfig
+  )
+  const activeLocale = useState<string | undefined>('activeLocale')
+  const availableLocales = useState<LocaleType[]>('availableLocales')
+  /**
+   * Sets the active locale. Gets called when:
+   * 1. the user changes the locale or
+   * 2. the user opens a deeplink and we extract the locale from the navigation data
+   * @param locale
+   */
+  function setActiveLocale(locale: string) {
+    activeLocale.value = locale
+  }
+
+  function setAvailableLocales(identifiers: string[]) {
+    availableLocales.value = getLanguageNamesFromLocales(identifiers)
+  }
+
+  async function fetchAvailableLocales() {
+    if (process.server) {
+      const availableLocales = await getAvailableLocales({
+        navigationServiceURL: runtimeConfig.private.navigationService,
+        projectId: runtimeConfig.private.projectId,
+        contentMode: runtimeConfig.public.mode
+      })
+      setAvailableLocales(availableLocales)
+    }
+  }
 
   return {
     config,
-    // This gets called when:
-    // 1. the user changes the locale or
-    // 2. the user opens a deeplink and we extract the locale from the navigation data
-    setLocale: (activeLocale: string) => {
-      config.value = { ...config.value, activeLocale };
-    },
-  };
+    setActiveLocale,
+    activeLocale,
+    availableLocales,
+    setAvailableLocales,
+    fetchAvailableLocales
+  }
 }

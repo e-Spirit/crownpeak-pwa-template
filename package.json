@@ -6,7 +6,11 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Wimadev/fsxa-nuxt3-pwa.git"
+    "url": "https://github.com/e-Spirit/fsxa-nuxt3-pwa.git"
+  },
+  "engines": {
+    "npm": "8.19.3",
+    "node": "18.13.0"
   },
   "scripts": {
     "build": "nuxt build",
@@ -25,36 +29,37 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3",
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
     "@faker-js/faker": "^7.6.0",
-    "@nuxt/webpack-builder": "^3.0.0",
-    "@nuxtjs/eslint-config-typescript": "^10.0.0",
+    "@nuxt/webpack-builder": "^3.2.3",
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@testing-library/vue": "^6.6.1",
-    "autoprefixer": "^10.4.8",
-    "commitizen": "^4.2.5",
-    "cypress": "^12.1.0",
+    "@types/ws": "^8.5.4",
+    "autoprefixer": "^10.4.13",
+    "commitizen": "^4.3.0",
+    "cypress": "^12.7.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.21.0",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-chai-friendly": "^0.7.2",
-    "eslint-plugin-nuxt": "^3.2.0",
+    "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-vue": "^9.3.0",
-    "husky": "^8.0.1",
+    "eslint-plugin-vue": "^9.9.0",
+    "husky": "^8.0.3",
     "jsdom": "^21.1.0",
-    "nuxt": "^3.0.0",
-    "postcss": "^8.4.14",
-    "prettier": "^2.8.3",
-    "prettier-plugin-tailwindcss": "^0.2.2",
+    "nuxt": "^3.2.3",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
+    "prettier-plugin-tailwindcss": "^0.2.3",
     "rollup-plugin-node-polyfills": "^0.2.1",
-    "semantic-release": "^19.0.3",
-    "tailwindcss": "^3.1.7",
-    "typescript": "^4.7.4",
-    "unplugin-auto-import": "^0.12.1",
-    "vite-plugin-eslint": "^1.7.0",
-    "vitest": "^0.27.2",
-    "vue-tsc": "^0.40.13"
+    "semantic-release": "^20.1.1",
+    "tailwindcss": "^3.2.7",
+    "typescript": "^4.9.5",
+    "unplugin-auto-import": "^0.15.0",
+    "vite-plugin-eslint": "^1.8.1",
+    "vitest": "^0.29.2",
+    "vue-tsc": "^1.2.0"
   },
   "config": {
     "commitizen": {
@@ -72,6 +77,10 @@
     ]
   },
   "dependencies": {
-    "fsxa-api": "^10.7.0"
+    "fs-tpp-api": "^2.4.7",
+    "fsxa-api": "^10.13.1",
+    "highlight.js": "^11.7.0",
+    "reconnecting-websocket": "^4.4.0",
+    "ws": "^8.12.1"
   }
 }

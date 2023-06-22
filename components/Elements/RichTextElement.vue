@@ -1,29 +1,52 @@
 <template>
-  <component
-    :is="richtTextElementComponent"
-    class=""
-    :rich-text-element="richTextElement"
-    :richtext="richTextElement.content"
-  />
+  <span :class="richTextElementClasses">
+    <component
+      :is="richTextElementComponent"
+      v-if="Array.isArray(richTextElement.content)"
+      class=""
+      :rich-text-element="richTextElement"
+      :richtext="richTextElement.content"
+    />
+    <span v-else v-html="richTextElement.content" />
+  </span>
 </template>
 
 <script lang="ts" setup>
-import { RichTextElement } from "fsxa-api";
-// TODO: remove all data any types
-const props = defineProps<{ richTextElement: RichTextElement }>();
+import { RichTextElement } from 'fsxa-api'
+const props = defineProps<{ richTextElement: RichTextElement }>()
 
-const richtTextElementComponent = computed(() => {
+const richTextElementComponent = computed(() => {
   switch (props.richTextElement.type) {
-    case "text":
-      return resolveComponent("ElementsText");
-    case "link":
-      return resolveComponent("ElementsLink");
-    case "block":
-      return resolveComponent("ElementsRichText");
-    case "linebreak":
-      return resolveComponent("br");
+    case 'text':
+      return resolveComponent('ElementsRichText')
+    case 'link':
+      return resolveComponent('ElementsLink')
+    case 'list':
+      return resolveComponent('ElementsUnorderedList')
+    case 'block':
+      return resolveComponent('ElementsRichText')
+    case 'paragraph':
+      return resolveComponent('ElementsRichText')
+    case 'linebreak':
+      return resolveComponent('ElementsLinebreak')
+    case 'u':
+      return resolveComponent('ElementsUnderlined')
     default:
-      return resolveComponent("unknown");
+      return resolveComponent('ElementsUnknownRichtextElement')
   }
-});
+})
+
+const richTextElementClasses = computed(() => {
+  const fsStyle = (props.richTextElement.data as Record<string, unknown>)[
+    'data-fs-style'
+  ]
+  switch (fsStyle) {
+    case 'format.span_yellow_text':
+      return 'text-yellow-500'
+    case 'format.standard':
+      return ''
+    default:
+      return ''
+  }
+})
 </script>

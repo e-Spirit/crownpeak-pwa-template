@@ -1,0 +1,59 @@
+= Development Mode
+
+:moduledir: ..
+:imagesdir: {moduledir}/images
+
+. <<Introduction>>
+. <<Missing Components>>
+. <<Info Box>>
+
+- <<Current Dataset>>
+- <<Products>>
+. <<Page Info>>
+
+== Introduction
+
+The Crownpeak PWA Template features a development mode that helps you to easily map the content coming from the CaaS to your components.
+
+To enable the development mode, the variable `devMode` must be set to `true` in the `app.config.ts` file. This file is also checked into git. So be sure to change the variable back to `false` before deploying to production. Alternatively you can enable devMode by setting the `NUXT_PRIVATE_DEV_MODE` environment variable.
+
+== Missing Components
+
+If you are in development mode and a component on the page has not been developed yet, an `unknown` compoent is rendered.
+
+image:DevMode/Missing_teaser.png[Missing Teaser]
+
+By hovering it and clicking on the question mark you can see exactly which component is missing and what information can be addressed.
+
+image:DevMode/DevMode_teaser.png[Dev Mode]
+
+== Info Box
+
+If you have already implemented a component, you will also see a question mark icon when hovering over the element.
+
+image:DevMode/Questionmark.png[Questionmark]
+
+Clicking on this question mark will provide you with the same information as if you clicked on an unknown component. You will see which component is being displayed and what data is available.
+
+=== Current Dataset
+
+On content projections the Dev component shows another tab, called `Current Dataset`. Here you can find additional information about what dataset is loaded for the current page.
+
+image:DevMode/DevMode_dataset.png[Infobox Dataset]
+
+
+=== Page Info
+
+To get general information about the page that is loaded click on a question mark that is displayed in the top right corner on any section of the page, if the `devMode` is enabled.
+
+image:DevMode/Questionmark.png[Questionmark]
+
+Inside the infobox you can then get general information about what content is in the page by clicking on the "Current Page" tab. Here you can also find information about what layout the page should be displayed in.
+
+image:DevMode/DevMode_page.png[Infobox Page]
+
+=== Additional Data
+
+In our example application we are dealing with product data and therefore extended the functionality of the dev component to also list all cached products. The `Products` tab shows what products have been loaded for the current route.
+
+image:DevMode/DevMode_products.png[Infobox Products]

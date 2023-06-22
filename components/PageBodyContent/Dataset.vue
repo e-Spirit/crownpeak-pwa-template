@@ -1,22 +1,28 @@
 <template>
   <div data-testid="dataset">
     <component
-      :is="sectionComponent"
-      :data-preview-id="content.previewId"
+      :is="datasetComponent"
+      v-if="datasetComponent"
       :content="content"
+    />
+    <Unknown
+      v-if="!datasetComponent && $isPreviewMode"
+      :content="content"
+      :data="content.data"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { Dataset } from "fsxa-api";
-const props = defineProps<{ content: Dataset }>();
+import { Dataset } from 'fsxa-api'
+const props = defineProps<{ content: Dataset }>()
 
-const sectionComponent = computed(() => {
+const { $isPreviewMode } = useNuxtApp()
+
+const datasetComponent = computed(() => {
   switch (props.content.template) {
-    // TODO
     default:
-      return resolveComponent("Unknown");
+      return undefined
   }
-});
+})
 </script>

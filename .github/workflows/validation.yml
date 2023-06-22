@@ -2,7 +2,7 @@ name: Validation
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, alpha]
 
 jobs:
   validation:
@@ -14,7 +14,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version-file: '.nvmrc'
 
       - name: use cache if package-lock has not changed
         uses: actions/cache@v3

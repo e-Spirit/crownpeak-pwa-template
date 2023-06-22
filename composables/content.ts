@@ -1,24 +1,84 @@
+import { Page, Dataset } from 'fsxa-api'
+
 export function useContent() {
-  const { $fsxaApi } = useNuxtApp();
-  const { config: localeConfig } = useLocale();
-  const { activeNavigationItem } = useNavigationData();
+  const currentDataset = useState<Dataset | null>('currentDataset')
+  const cachedDatasets = useState<{
+    [caasId: string]: Dataset
+  }>('cachedDatasets', () => ({}))
+  /**
+   * Find dataset in cache by route
+   * @param route Route
+   * @returns Dataset or undefined
+   */
+  function findCachedDatasetByRoute(route: string) {
+    return cachedDatasets.value[route]
+  }
+  /**
+   * Add dataset to cache for given route if it has not been cached yet
+   * @param route Route
+   * @param data Dataset
+   * @returns
+   */
+  function addToCachedDatasets(route: string, data: Dataset) {
+    if (!cachedDatasets.value[route]) cachedDatasets.value[route] = data
+  }
 
-  const data = useAsyncData(
-    () => {
-      // This state should not be possible.
-      // The middleware should have figured out both the locale and our current navigation item
-      if (!activeNavigationItem.value || !localeConfig.value.activeLocale)
-        throw new Error("No navigation item found");
+  const currentPage = useState<Page | null>('currentPage')
+  const cachedPages = useState<{
+    [caasId: string]: Page
+  }>('cachedPages', () => ({}))
+  /**
+   * Find page in cache by route
+   * @param route Route
+   * @returns page or undefined
+   */
+  function findCachedPageByRoute(route: string) {
+    return cachedPages.value[route]
+  }
+  /**
+   * Add page to cache for given route if it has not been cached yet
+   * @param route Route
+   * @param page Page
+   * @returns
+   */
+  function addToCachedPages(route: string, data: Page) {
+    if (!cachedPages.value[route]) cachedPages.value[route] = data
+  }
 
-      return fetchContentFromNavigationItem(
-        $fsxaApi,
-        activeNavigationItem.value,
-        localeConfig.value.activeLocale
-      );
-    },
-    // automatically refetch when the navigation item changes
-    { watch: [activeNavigationItem, localeConfig] }
-  );
+  const cachedProducts = useState<{
+    [caasId: string]: Dataset[]
+  }>('cachedProducts', () => ({}))
 
-  return data;
+  /**
+   * Find products in cache by route
+   * @param route Route
+   * @returns products or undefined
+   */
+  function findCachedProductsByRoute(route: string) {
+    return cachedProducts.value[route]
+  }
+
+  /**
+   * Add products to cache for given route if they have not been cached yet
+   * @param route Route
+   * @param data Dataset[]
+   * @returns
+   */
+  function addToCachedProducts(route: string, data: Dataset[]) {
+    if (!cachedProducts.value[route]) cachedProducts.value[route] = data
+  }
+
+  return {
+    currentPage,
+    currentDataset,
+    cachedPages,
+    cachedDatasets,
+    cachedProducts,
+    addToCachedPages,
+    addToCachedDatasets,
+    addToCachedProducts,
+    findCachedPageByRoute,
+    findCachedDatasetByRoute,
+    findCachedProductsByRoute
+  }
 }

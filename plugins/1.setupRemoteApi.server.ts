@@ -3,12 +3,16 @@ import {
   FSXARemoteApi,
   FSXARemoteApiConfig,
   FSXAContentMode,
-  LogLevel,
-} from "fsxa-api";
+  LogLevel
+} from 'fsxa-api'
 
 export default defineNuxtPlugin(() => {
-  const runtimeConfig = useRuntimeConfig(); // .env
-  const appConfig = useAppConfig(); // app.config.ts
+  const runtimeConfig = useRuntimeConfig() // .env
+  const appConfig = useAppConfig() // app.config.ts
+
+  const { showDev } = useDev()
+  showDev.value =
+    appConfig?.devMode || runtimeConfig?.private?.devMode === 'true'
 
   const remoteApiConfig: FSXARemoteApiConfig = {
     apikey: runtimeConfig.private.apiKey,
@@ -16,26 +20,24 @@ export default defineNuxtPlugin(() => {
     navigationServiceURL: runtimeConfig.private.navigationService,
     tenantID: runtimeConfig.private.tenantId,
     maxReferenceDepth:
-      runtimeConfig.private["maxReferenceDepth"] || appConfig.maxReferenceDepth,
+      parseInt(runtimeConfig.private['maxReferenceDepth']) ||
+      appConfig.maxReferenceDepth,
     projectID: runtimeConfig.private.projectId,
     remotes: runtimeConfig.private.remotes
-      ? JSON.parse(runtimeConfig.private.remotes)
+      ? typeof runtimeConfig.private.remotes === 'string'
+        ? JSON.parse(runtimeConfig.private.remotes)
+        : runtimeConfig.private.remotes
       : {},
-    contentMode: runtimeConfig.private.mode as FSXAContentMode,
-    // TODO:
-    // filterOptions: {
-    //   navigationItemFilter: serverAccessControlConfig?.navigationItemFilter,
-    //   caasItemFilter: serverAccessControlConfig?.caasItemFilter,
-    // },
+    contentMode: runtimeConfig.public.mode as FSXAContentMode,
     logLevel:
-      Number.parseInt(runtimeConfig.public["logLevel"]) ||
+      Number.parseInt(runtimeConfig.public['logLevel']) ||
       appConfig.logLevel ||
       LogLevel.NONE,
     enableEventStream:
-      runtimeConfig.private["enableEventStream"] ||
+      !!runtimeConfig.public['enableEventStream'] ||
       appConfig.enableEventStream ||
-      false,
-  };
+      false
+  }
 
-  FSXAApiSingleton.init(new FSXARemoteApi(remoteApiConfig));
-});
+  FSXAApiSingleton.init(new FSXARemoteApi(remoteApiConfig))
+})

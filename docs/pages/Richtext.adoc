@@ -1,0 +1,128 @@
+= Working with RichText
+
+:moduledir: ..
+:imagesdir: {moduledir}/images
+
+RichText allows you to display information in the FirstSpirit context using great and customizable formatting. This brings with it a certain complexity.
+
+Here you can see some example code of how RichText data could look like: 
+
+[source,json]
+----
+[
+  {
+    "data": {
+      "data-fs-style": "format.standard"
+    },
+    "content": [
+      {
+        "type": "text",
+        "content": "Life made ",
+        "data": {}
+      },
+      {
+        "data": {
+          "data.fs-style": "format.span_yellow_text"
+        },
+        "content": [
+          {
+            "type": "text",
+            "content": "easier",
+            "data": {}
+          }
+        ],
+        "type": "paragraph"
+      }
+    ],
+    "type": "paragraph"
+  }
+]
+----
+
+
+
+In order to extend the richtext functionality with custom components, you must add a corresponding component to the pwa project. In our example we placed all richtext elements inside the `~/components/Elements` folder. Additionally if you add a new RichtextElement you also have to adjust the `RichTextElement.vue` file and include your custom component like shown below.
+
+CustomRichtextComponent.vue
+
+[source,xml]
+----
+<template>
+  <div>
+    Custom Richtext component data: {{ richTextElement }}
+  </div>
+</template>
+
+<script setup lang="ts">
+interface CustomRichtextComponent {
+  // implement your custom structure here
+}
+
+defineProps<{ richTextElement: CustomRichtextComponent }>();
+</script>
+----
+
+
+RichtextElement.vue
+
+[source,xml]
+----
+<template>
+  <span :class="richTextElementClasses">
+    <component
+      :is="richTextElementComponent"
+      v-if="Array.isArray(richTextElement.content)"
+      class=""
+      :rich-text-element="richTextElement"
+      :richtext="richTextElement.content"
+    />
+    <span v-else>{{ richTextElement.content }}</span>
+  </span>
+</template>
+
+<script setup lang="ts">
+const props = defineProps<{ richTextElement: RichTextElement }>();
+
+const richTextElementComponent = computed(() => {
+  switch (props.richTextElement.type) {
+    // add this case
+    case "customRichtextElement":
+      return resolveComponent("ElementsCustomRichtextComponent");
+    default:
+      return resolveComponent("ElementsUnknownRichtextElement");
+  }
+});
+
+const richTextElementClasses = computed(() => {
+  const fsStyle = (props.richTextElement.data as Record<string, unknown>)[
+    "data-fs-style"
+  ];
+  switch (fsStyle) {
+    case "format.span_yellow_text":
+      return "text-yellow-500";
+    case "format.standard":
+      return "";
+    default:
+      return "";
+  }
+});
+
+// ...
+</script>
+
+----
+
+In our Crownpeak PWA Template we have already included some sample components, which you can of course use, adapt or extend. 
+
+Over the course of time, however, it may happen that you use formatting that does not yet have a frontend component as a counterpart or that you adapt existing formatting.
+
+If the xref:DevMode.adoc[DevMode] is activated, useful information about RichText components that are still missing is displayed.
+
+
+image:RichText/Unknown_linebreak.png[Missing Linebreak]
+
+Hovering over it and clicking on the question mark will show you further information about the missing component.
+
+image:RichText/DevMode_linebreak.png[Infobox Linebreak]
+
+
