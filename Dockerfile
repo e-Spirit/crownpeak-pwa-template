@@ -1,4 +1,4 @@
-FROM node:18-alpine3.17 as build
+FROM node:18.13.0-alpine3.17 as build
 WORKDIR /usr/fsxa-pwa
 
 
@@ -10,7 +10,7 @@ COPY . .
 ENV NODE_ENV production
 RUN npm run build
 
-FROM node:18-alpine3.17 as production
+FROM node:18.13.0-alpine3.17 as production
 RUN apk update && apk add dumb-init
 
 ENV NODE_ENV production
