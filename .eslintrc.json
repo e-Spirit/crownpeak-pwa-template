@@ -20,6 +20,7 @@
     "vue/script-setup-uses-vars": "error",
     "vue/no-v-html": "off",
     "dot-notation": "off",
-    "@typescript-eslint/dot-notation": "off"
+    "@typescript-eslint/dot-notation": "off",
+    "no-console": "off"
   }
 }

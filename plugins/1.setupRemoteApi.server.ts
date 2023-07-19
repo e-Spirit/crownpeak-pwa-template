@@ -38,6 +38,6 @@ export default defineNuxtPlugin(() => {
       appConfig.enableEventStream ||
       false
   }
-
+  console.warn('plugin singleton init')
   FSXAApiSingleton.init(new FSXARemoteApi(remoteApiConfig))
 })

@@ -6,6 +6,8 @@ import { CaasEventListenerSingleton } from '../CaasEventListenerSingleton'
 export default defineEventHandler((_event) => {
   try {
     const instance = CaasEventListenerSingleton.instance
-    if (!instance) CaasEventListenerSingleton.init()
+    if (!instance) {
+      CaasEventListenerSingleton.init()
+    }
   } catch (e) {}
 })

@@ -10,6 +10,7 @@ export class CaasEventListenerSingleton {
   private static _lastMessages: string[] = []
 
   public static init() {
+    console.warn('CaaSEventListenerSingleton init')
     if (!this._instance) {
       const remoteApi = FSXAApiSingleton.instance as FSXARemoteApi
 
