@@ -2,6 +2,7 @@ import eslintPlugin from 'vite-plugin-eslint'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  ssr: false,
   css: ['@/assets/css/main.css', '@/assets/css/transitions.css'],
   postcss: {
     plugins: {
