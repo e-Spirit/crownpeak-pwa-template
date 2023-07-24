@@ -1,8 +1,39 @@
-import { FSXAApiSingleton } from 'fsxa-api'
+import {
+  FSXAApiSingleton,
+  FSXARemoteApi,
+  FSXARemoteApiConfig,
+  FSXAContentMode,
+  LogLevel
+} from 'fsxa-api'
 import { ServerErrors, FSXAProxyRoutes, FSXAApiErrors } from '~/types'
+
+const initSingleton = () => {
+  const runtimeConfig = useRuntimeConfig() // .env
+
+  const remoteApiConfig: FSXARemoteApiConfig = {
+    apikey: runtimeConfig.private.apiKey,
+    caasURL: runtimeConfig.private.caas,
+    navigationServiceURL: runtimeConfig.private.navigationService,
+    tenantID: runtimeConfig.private.tenantId,
+    maxReferenceDepth: parseInt(runtimeConfig.private['maxReferenceDepth']),
+    projectID: runtimeConfig.private.projectId,
+    remotes: runtimeConfig.private.remotes
+      ? typeof runtimeConfig.private.remotes === 'string'
+        ? JSON.parse(runtimeConfig.private.remotes)
+        : runtimeConfig.private.remotes
+      : {},
+    contentMode: runtimeConfig.public.mode as FSXAContentMode,
+    logLevel:
+      Number.parseInt(runtimeConfig.public['logLevel']) || LogLevel.NONE,
+    enableEventStream: !!runtimeConfig.public['enableEventStream'] || false
+  }
+  // TODO: initialize this either in server middleware or at each endpoint
+  FSXAApiSingleton.init(new FSXARemoteApi(remoteApiConfig))
+}
 
 export default defineEventHandler(async (event) => {
   console.warn('are we initialized yet?')
+  initSingleton()
   const remoteApi = FSXAApiSingleton.instance // throws error if undefined
   const body = await readBody(event)
   const endpoint = event.context['params']?.['endpoint']
