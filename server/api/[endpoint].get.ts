@@ -2,9 +2,21 @@ import { randomUUID } from 'crypto'
 import { FSXAProxyRoutes } from 'fsxa-api'
 import { CaasEventListenerSingleton } from '~~/server/CaasEventListenerSingleton'
 import { ServerErrors } from '~~/types'
+import { HEALTH_CHECK_ENDPOINT } from '~~/utils/contants'
 
 export default defineEventHandler(async (event) => {
   const endpoint = event.context['params']?.['endpoint']
+
+  if (`${endpoint}` === HEALTH_CHECK_ENDPOINT) {
+    event.node.res.writeHead(200, {
+      'Cache-Control': 'no-cache',
+      Connection: 'keep-alive',
+      'Content-Type': 'text/plain',
+      Accept: '*/*'
+    })
+    event.node.res.write('ok')
+    event.node.res.end()
+  }
 
   if (`/${endpoint}` === FSXAProxyRoutes.STREAM_CHANGE_EVENTS_ROUTE) {
     // caasEventListener is already set by middleware
