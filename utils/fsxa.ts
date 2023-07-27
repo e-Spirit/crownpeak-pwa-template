@@ -237,7 +237,7 @@ export const fetchPageRoute = async (
 export const getLegalLinks = (
   projectProperties: ProjectProperties | null
 ): LegalLink[] =>
-  projectProperties?.data['ps_footer'].gc_linklist.map(
+  projectProperties?.data['ps_footer']?.gc_linklist.map(
     (link: { data: { lt_text: string } }) => ({
       name: link.data.lt_text,
       route: '/' + link.data.lt_text.replaceAll(' ', '-')
