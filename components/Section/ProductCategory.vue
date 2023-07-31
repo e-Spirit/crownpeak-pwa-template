@@ -18,7 +18,7 @@
           </div>
           <ElementsImage
             v-if="product.data['tt_teaser_image']"
-            class="absolute top-0 left-0 h-40 w-full object-cover"
+            class="absolute left-0 top-0 h-40 w-full object-cover"
             :image="product.data['tt_teaser_image']"
           />
         </div>

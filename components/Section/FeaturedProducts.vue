@@ -5,7 +5,7 @@
     />
     <div class="w-1/3 text-gray-400 sm:px-2 md:px-8">
       <h2
-        class="mt-4 ml-4 text-4xl uppercase"
+        class="ml-4 mt-4 text-4xl uppercase"
         data-preview-id="#st_featured_products_title"
       >
         {{ data.st_featured_products_title }}
