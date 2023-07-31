@@ -9,8 +9,8 @@
     "url": "https://github.com/e-Spirit/fsxa-nuxt3-pwa.git"
   },
   "engines": {
-    "npm": "8.19.3",
-    "node": "18.13.0"
+    "node": ">=18.13.0 <19.0.0",
+    "npm": ">=8.19.3 <= 9.0.0"
   },
   "scripts": {
     "build": "nuxt build",
