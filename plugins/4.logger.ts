@@ -6,7 +6,7 @@ export default defineNuxtPlugin(() => {
     public: { logLevel: logLevelEnv }
   } = useRuntimeConfig()
 
-  const logLevel = Number(logLevelEnv) || logLevelFileConfig || LogLevel.NONE
+  const logLevel = Number(logLevelEnv) ?? logLevelFileConfig ?? LogLevel.NONE
 
   const logger = new Logger(logLevel, 'crownpeak-pwa-template')
   return {
