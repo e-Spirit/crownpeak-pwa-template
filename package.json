@@ -73,7 +73,7 @@
   },
   "release": {
     "branches": [
-      "feat/TNG-1308-workflows"
+      "alpha"
     ]
   },
   "dependencies": {
