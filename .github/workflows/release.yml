@@ -14,7 +14,6 @@ env:
   NUXT_PRIVATE_PROJECT_ID: ${{ secrets.NUXT_PRIVATE_PROJECT_ID }}
   NUXT_PRIVATE_TENANT_ID: ${{ secrets.NUXT_PRIVATE_TENANT_ID }}
 
-
 jobs:
   release:
     runs-on: ubuntu-latest

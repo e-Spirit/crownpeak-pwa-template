@@ -17,7 +17,7 @@
 
     <div
       data-testid="languagesDropdown"
-      class="absolute top-10 right-0 hidden divide-y bg-white shadow-lg group-hover:block"
+      class="absolute right-0 top-10 hidden divide-y bg-white shadow-lg group-hover:block"
     >
       <ul>
         <li v-for="locale of allLocales" :key="locale.identifier">
@@ -28,7 +28,7 @@
             :class="{
               underline: locale.identifier === activeLocale
             }"
-            class="w-full py-3 px-4 hover:bg-gray-200"
+            class="w-full px-4 py-3 hover:bg-gray-200"
             @click="changeLanguage(locale.identifier)"
           >
             {{ locale.name }}

@@ -20,8 +20,8 @@ export default defineNuxtPlugin(() => {
     navigationServiceURL: runtimeConfig.private.navigationService,
     tenantID: runtimeConfig.private.tenantId,
     maxReferenceDepth:
-      parseInt(runtimeConfig.private['maxReferenceDepth']) ||
-      appConfig.maxReferenceDepth,
+      parseInt(runtimeConfig.private['maxReferenceDepth']) ??
+      appConfig['maxReferenceDepth'],
     projectID: runtimeConfig.private.projectId,
     remotes: runtimeConfig.private.remotes
       ? typeof runtimeConfig.private.remotes === 'string'

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed inset-0 top-0 left-0 -z-10 w-full border bg-white pt-16 text-gray-800"
+    class="fixed inset-0 left-0 top-0 -z-10 w-full border bg-white pt-16 text-gray-800"
     data-testid="mobileNavigation"
   >
     <div class="container mx-auto h-screen w-full bg-white p-2">
@@ -11,7 +11,7 @@
             :key="navItem?.id"
             class="w-full"
           >
-            <div class="flex items-center justify-between py-3 px-2 font-bold">
+            <div class="flex items-center justify-between px-2 py-3 font-bold">
               <InternalLink :nav-item="navItem" @click="emit('close')" />
               <button
                 v-if="
@@ -53,7 +53,7 @@
               <li
                 v-for="subNavItem of getSubNavigation(navItem)"
                 :key="subNavItem?.id"
-                class="w-full py-3 px-2"
+                class="w-full px-2 py-3"
               >
                 <InternalLink :nav-item="subNavItem" @click="emit('close')" />
               </li>
