@@ -1,6 +1,5 @@
 {
   "public": {
-    "baseURL": "http://localhost:3000",
     "logLevel": 0,
     "mode": "preview"
   },
@@ -10,7 +9,6 @@
     "caas": "http://testcaas.de",
     "projectId": "testprojectid",
     "tenantId": "testtenantid",
-
     "snapUrl": "http://testsnapurl.de"
   }
 }

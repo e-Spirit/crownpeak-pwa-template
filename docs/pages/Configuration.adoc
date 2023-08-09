@@ -54,10 +54,6 @@ We distinguish between preview and release data. This is the traditional FirstSp
 === CI
 We use husky to enforce branch protection rules to prevent direct commits and pushes to the main branch. On your local machine this variable is not needed, but in your CI it can be set to 1 to allow the semantic release plugin to do releases. This is done automatically by Github.
 
-=== NUXT_PUBLIC_BASE_URL `string` (_optional_ but recommended)
-
-Default is set to `http://localhost:3000`.
-
 === NUXT_PUBLIC_SNAP_URL `string` (_optional_ but recommended)
 
 Snap Library is an external dependency which offers a lot of LiveEdit features in the authoring environment to edit sections, images, datasets, etc. in place.

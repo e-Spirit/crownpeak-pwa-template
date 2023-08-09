@@ -20,8 +20,8 @@ export default defineNuxtPlugin(() => {
     navigationServiceURL: runtimeConfig.private.navigationService,
     tenantID: runtimeConfig.private.tenantId,
     maxReferenceDepth:
-      parseInt(runtimeConfig.private['maxReferenceDepth']) ??
-      appConfig['maxReferenceDepth'],
+      (parseInt(runtimeConfig.private['maxReferenceDepth']) || null) ??
+      (appConfig?.['maxReferenceDepth'] as number | undefined),
     projectID: runtimeConfig.private.projectId,
     remotes: runtimeConfig.private.remotes
       ? typeof runtimeConfig.private.remotes === 'string'
@@ -30,8 +30,8 @@ export default defineNuxtPlugin(() => {
       : {},
     contentMode: runtimeConfig.public.mode as FSXAContentMode,
     logLevel:
-      Number.parseInt(runtimeConfig.public['logLevel']) ||
-      appConfig.logLevel ||
+      parseInt(runtimeConfig.public['logLevel']) ??
+      appConfig.logLevel ??
       LogLevel.NONE,
     enableEventStream:
       !!runtimeConfig.public['enableEventStream'] ||
