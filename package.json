@@ -73,7 +73,10 @@
   },
   "release": {
     "branches": [
-      "alpha"
+      "alpha",
+      "main",
+      "next",
+      "beta"
     ]
   },
   "dependencies": {
