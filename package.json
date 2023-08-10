@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/e-Spirit/fsxa-nuxt3-pwa.git"
+    "url": "https://github.com/e-Spirit/crownpeak-pwa-template.git"
   },
   "engines": {
     "npm": "8.19.3",
@@ -63,7 +63,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "cz-conventional-changelog"
+      "path": "node_modules/cz-conventional-changelog"
     }
   },
   "commitlint": {
@@ -73,7 +73,7 @@
   },
   "release": {
     "branches": [
-      "feat/TNG-1308-workflows"
+      "alpha"
     ]
   },
   "dependencies": {
