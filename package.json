@@ -1,5 +1,5 @@
 {
-  "version": "0.0.0",
+  "version": "1.7.0",
   "name": "fsxa-nuxt3-pwa",
   "private": true,
   "description": "Demo PWA built with Nuxt 3 and FSXA",
@@ -79,14 +79,6 @@
         "always",
         500
       ]
-    }
-  },
-  "lint-staged": {
-    "*.{js,vue,ts,tsx}": "npm run lint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
