@@ -39,6 +39,8 @@ export default defineNuxtRouteMiddleware(async (to) => {
       await determineNavigationStateFromRoute(route)
     }
   } catch (_error: unknown) {
+    $logger.error('Error while determining navigation state from route.')
+    $logger.error(_error)
     // TODO: TNG-1263 - Improve error handling with status codes
     if (_error instanceof Error && _error.message === FSXAApiErrors.NOT_FOUND) {
       $logger.error('Server error or page not found.')
