@@ -73,6 +73,14 @@
       "@commitlint/config-conventional"
     ]
   },
+  "lint-staged": {
+    "*.{js,vue,ts,tsx}": "npm run lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "dependencies": {
     "@semantic-release/commit-analyzer": "^10.0.1",
     "@semantic-release/github": "^9.0.4",
