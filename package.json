@@ -22,6 +22,7 @@
     "lint": "eslint --ext .js,.vue,.ts,.tsx --ignore-path .gitignore .",
     "postinstall": "husky install",
     "preview": "nuxt preview",
+    "commitmsg": "commitlint -E HUSKY_GIT_PARAMS",
     "semantic-release": "semantic-release",
     "semantic-release:dry-run": "semantic-release --dry-run",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
