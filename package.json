@@ -73,14 +73,6 @@
       "@commitlint/config-conventional"
     ]
   },
-  "release": {
-    "branches": [
-      "alpha",
-      "main",
-      "next",
-      "beta"
-    ]
-  },
   "dependencies": {
     "@semantic-release/commit-analyzer": "^10.0.1",
     "@semantic-release/github": "^9.0.4",
