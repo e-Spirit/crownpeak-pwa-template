@@ -72,7 +72,14 @@
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
-    ]
+    ],
+    "rules": {
+      "footer-max-line-length": [
+        2,
+        "always",
+        500
+      ]
+    }
   },
   "lint-staged": {
     "*.{js,vue,ts,tsx}": "npm run lint"
