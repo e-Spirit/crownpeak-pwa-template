@@ -65,7 +65,7 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_BY_FILTER_ROUTE}`, () => {
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_BY_FILTER_ROUTE}`,
       body: {
         locale: 'de_DE',
-        filter: [
+        filters: [
           {
             value: id,
             field: 'identifier',
@@ -86,7 +86,7 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_BY_FILTER_ROUTE}`, () => {
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_BY_FILTER_ROUTE}`,
       body: {
         locale: 'de_DE',
-        filter: [
+        filters: [
           {
             value: id,
             field: 'identifier',
@@ -106,7 +106,7 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_BY_FILTER_ROUTE}`, () => {
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_BY_FILTER_ROUTE}`,
       body: {
         locale: 'de_DE',
-        filter: [
+        filters: [
           {
             field: 'identifier',
             operator: ComparisonQueryOperatorEnum.EQUALS
