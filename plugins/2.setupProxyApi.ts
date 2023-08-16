@@ -2,7 +2,7 @@ import { FSXAContentMode, FSXAProxyApi, LogLevel } from 'fsxa-api'
 
 export default defineNuxtPlugin(() => {
   const runtimeConfig = useRuntimeConfig()
-  const baseUrl = runtimeConfig.public['baseUrl']
+  const baseUrl = runtimeConfig.public['baseUrl'] as string
   const appConfig = useAppConfig()
   const { $logger } = useNuxtApp()
   const clientUrl = '/api'
