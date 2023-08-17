@@ -1,6 +1,6 @@
 // This middleware is getting called whenever the route changes. (Internal links and deeplinks)
 
-import { FSXAApiErrors } from '~~/types'
+import { HttpError } from 'fsxa-api'
 
 // This can happen on both the client and the server.
 export default defineNuxtRouteMiddleware(async (to) => {
@@ -42,21 +42,14 @@ export default defineNuxtRouteMiddleware(async (to) => {
     $logger.error('Error while determining navigation state from route.')
     $logger.error(_error)
     // TODO: TNG-1263 - Improve error handling with status codes
-    if (_error instanceof Error && _error.message === FSXAApiErrors.NOT_FOUND) {
-      $logger.error('Server error or page not found.')
+    if (_error instanceof HttpError) {
+      $logger.error(_error.message)
       throw createError({
-        statusCode: 404,
-        message: 'Page not found',
+        statusCode: _error.statusCode,
+        message: _error.message,
         fatal: true
       })
     }
-
-    $logger.error('Internal server error.')
-    throw createError({
-      statusCode: 500,
-      message: 'Internal server error',
-      fatal: true
-    })
   }
 
   // If the route is not a deeplink, we do not need to do anything, since the activeNavigationItem and activeLocale are already set by the component.
