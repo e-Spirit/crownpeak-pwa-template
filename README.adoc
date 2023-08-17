@@ -49,7 +49,7 @@ in the context of the FirstSpirit headless approach.
 
 == Legal Notices
 
-Crownpeak PWA Template is a product of http://www.e-spirit.com[Crownpeak Technology GmbH], Dortmund, Germany.
+Crownpeak PWA Template is a reference product of http://www.e-spirit.com[Crownpeak Technology GmbH], Dortmund, Germany.
 The Crownpeak PWA Template is subject to the Apache-2.0 license.
 
 == Disclaimer
