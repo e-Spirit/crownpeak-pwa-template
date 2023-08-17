@@ -78,7 +78,7 @@
   },
   "dependencies": {
     "fs-tpp-api": "^2.4.7",
-    "fsxa-api": "^10.13.1",
+    "fsxa-api": "^10.16.2",
     "highlight.js": "^11.7.0",
     "reconnecting-websocket": "^4.4.0",
     "ws": "^8.12.1"
