@@ -36,7 +36,11 @@
     "@nuxt/webpack-builder": "^3.2.3",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^10.0.1",
     "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.0.4",
+    "@semantic-release/npm": "^10.0.4",
+    "@semantic-release/release-notes-generator": "^11.0.4",
     "@testing-library/vue": "^6.6.1",
     "@types/ws": "^8.5.4",
     "autoprefixer": "^10.4.13",
@@ -90,10 +94,6 @@
     }
   },
   "dependencies": {
-    "@semantic-release/commit-analyzer": "^10.0.1",
-    "@semantic-release/github": "^9.0.4",
-    "@semantic-release/npm": "^10.0.4",
-    "@semantic-release/release-notes-generator": "^11.0.4",
     "fs-tpp-api": "^2.4.7",
     "fsxa-api": "^10.16.1",
     "highlight.js": "^11.7.0",
