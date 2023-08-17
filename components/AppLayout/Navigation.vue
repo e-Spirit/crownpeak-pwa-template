@@ -9,12 +9,12 @@
         <InternalLink :nav-item="navItem" />
         <ul
           v-if="getSubNavigation(navItem).length > 0"
-          class="absolute top-6 right-0 hidden divide-y bg-white shadow-lg group-hover:block"
+          class="absolute right-0 top-6 hidden divide-y bg-white shadow-lg group-hover:block"
         >
           <li
             v-for="subNavItem of getSubNavigation(navItem)"
             :key="subNavItem?.id"
-            class="w-full py-3 px-4"
+            class="w-full px-4 py-3"
           >
             <InternalLink :nav-item="subNavItem" />
           </li>

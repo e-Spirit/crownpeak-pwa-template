@@ -79,6 +79,7 @@ const { pending } = useAsyncData(async () => {
     }
     // get pageRefId from dataset
     const firstRoute = currentDataset.value.routes?.[0]
+    $logger.debug(JSON.stringify(currentDataset.value, null, 2))
 
     if (!firstRoute) {
       $logger.error('Dataset has no matching route')

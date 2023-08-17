@@ -16,9 +16,7 @@ import { FSXAApiSingleton } from "fsxa-api";
 
 export default defineEventHandler(async (event) => {
   const remoteApi = FSXAApiSingleton.instance;
-  const {
-    public: { baseURL },
-  } = useRuntimeConfig();
+  const baseURL = getRequestURL(event).origin
   const navigationData = await remoteApi.fetchNavigation({ locale: "de_DE" });
   const seoRoutes = Object.keys(navigationData?.seoRouteMap || []);
   const xmlString = `<?xml version="1.0" encoding="UTF-8"?>
