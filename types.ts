@@ -1,24 +1,3 @@
-import { LogLevel } from 'fsxa-api'
-
-export interface AppFileConfig {
-  defaultLocale?: string
-  logLevel?: LogLevel
-  devMode?: boolean
-  contentMode?: 'preview' | 'release'
-  snapUrl?: string
-  maxReferenceDepth?: number
-  remotes?: Record<
-    string,
-    {
-      id: string
-      locale: string
-    }
-  >
-  enableEventStream?: boolean
-  pathToServerAccessControlConfig?: string // EXPERIMENTAL optional path to file that exports server access control
-  pathToClientAccessControlConfig?: string // EXPERIMENTAL optional path to file that exports client access conrtol
-}
-
 export enum ServerErrors {
   MISSING_LOCALE = 'Please specify a locale in the body through: e.g. "locale": "de_DE" ',
   UNKNOWN_ROUTE = 'Could not map given route and method.',
