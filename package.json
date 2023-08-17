@@ -87,11 +87,6 @@
         2,
         "always",
         500
-      ],
-      "header-max-line-length": [
-        2,
-        "always",
-        500
       ]
     }
   },
