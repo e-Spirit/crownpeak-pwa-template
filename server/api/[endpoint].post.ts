@@ -6,10 +6,6 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event)
   const endpoint = event.context['params']?.['endpoint']
 
-  // TODO: This is because of a mismatch between the FSXA API and the FSXA Proxy API,
-  // should be fixed in a future ticket (TNG-1267)
-  body.filters = body.filter
-
   try {
     switch (`/${endpoint}`) {
       case FSXAProxyRoutes.FETCH_ELEMENT_ROUTE:

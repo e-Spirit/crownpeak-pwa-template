@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute top-0 right-0 z-20 bg-white"
+    class="absolute right-0 top-0 z-20 bg-white"
     :class="{ 'z-40': devComponentVisible }"
   >
     <div>
@@ -25,7 +25,7 @@
 
     <div
       v-if="devComponentVisible"
-      class="fixed top-1/2 left-1/2 z-20 flex h-4/5 w-full max-w-4xl -translate-y-1/2 -translate-x-1/2 transform flex-col rounded-lg border bg-white shadow"
+      class="fixed left-1/2 top-1/2 z-20 flex h-4/5 w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 transform flex-col rounded-lg border bg-white shadow"
     >
       <div class="flex p-4 text-gray-800">
         <div>
