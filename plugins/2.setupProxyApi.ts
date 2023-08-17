@@ -5,10 +5,9 @@ export default defineNuxtPlugin(() => {
   const baseUrl = runtimeConfig.public['baseURL'] as string
   const appConfig = useAppConfig()
   const clientUrl = '/api'
-  const serverUrl = baseUrl ?? 'http://0.0.0.0:3000/api'
+  const serverUrl =
+    baseUrl && baseUrl !== '' ? baseUrl : 'http://0.0.0.0:3000/api'
   const proxyUrl = process.client ? clientUrl : serverUrl
-  // eslint-disable-next-line no-console
-  console.debug('Proxy API initialized with URL: ', proxyUrl)
   const fsxaApi = new FSXAProxyApi(
     proxyUrl,
     Number.parseInt(runtimeConfig.public['logLevel']) ||
