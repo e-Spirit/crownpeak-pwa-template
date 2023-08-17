@@ -1,12 +1,12 @@
 {
-  "version": "0.0.0",
+  "version": "1.0.0",
   "name": "fsxa-nuxt3-pwa",
   "private": true,
   "description": "Demo PWA built with Nuxt 3 and FSXA",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/e-Spirit/fsxa-nuxt3-pwa.git"
+    "url": "https://github.com/e-Spirit/crownpeak-pwa-template.git"
   },
   "engines": {
     "npm": "8.19.3",
@@ -22,6 +22,7 @@
     "lint": "eslint --ext .js,.vue,.ts,.tsx --ignore-path .gitignore .",
     "postinstall": "husky install",
     "preview": "nuxt preview",
+    "commitmsg": "commitlint -E HUSKY_GIT_PARAMS",
     "semantic-release": "semantic-release",
     "semantic-release:dry-run": "semantic-release --dry-run",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
@@ -34,6 +35,12 @@
     "@faker-js/faker": "^7.6.0",
     "@nuxt/webpack-builder": "^3.2.3",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^10.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.0.4",
+    "@semantic-release/npm": "^10.0.4",
+    "@semantic-release/release-notes-generator": "^11.0.4",
     "@testing-library/vue": "^6.6.1",
     "@types/ws": "^8.5.4",
     "autoprefixer": "^10.4.13",
@@ -53,7 +60,7 @@
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.3",
     "rollup-plugin-node-polyfills": "^0.2.1",
-    "semantic-release": "^20.1.1",
+    "semantic-release": "^21.0.7",
     "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5",
     "unplugin-auto-import": "^0.15.0",
@@ -63,18 +70,33 @@
   },
   "config": {
     "commitizen": {
-      "path": "cz-conventional-changelog"
+      "path": "node_modules/cz-conventional-changelog"
     }
   },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
-    ]
+    ],
+    "rules": {
+      "footer-max-line-length": [
+        2,
+        "always",
+        500
+      ],
+      "body-max-line-length": [
+        2,
+        "always",
+        500
+      ]
+    }
   },
-  "release": {
-    "branches": [
-      "main"
-    ]
+  "lint-staged": {
+    "*.{js,vue,ts,tsx}": "npm run lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
     "fs-tpp-api": "^2.4.7",
