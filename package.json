@@ -102,7 +102,9 @@
     "fs-tpp-api": "^2.4.7",
     "fsxa-api": "^10.16.2",
     "highlight.js": "^11.7.0",
+    "minipass": "^6.0.2",
     "reconnecting-websocket": "^4.4.0",
+    "signal-exit": "^4.1.0",
     "ws": "^8.12.1"
   }
 }
