@@ -1,6 +1,15 @@
 // This middleware is getting called whenever the route changes. (Internal links and deeplinks)
 
-import { HttpError } from 'fsxa-api'
+// TODO: import this from a future version of fsxa-api
+class HttpError extends Error {
+  statusCode: number
+
+  constructor(message: string, statusCode: number) {
+    super(message)
+    this.name = 'HttpError'
+    this.statusCode = statusCode
+  }
+}
 
 // This can happen on both the client and the server.
 export default defineNuxtRouteMiddleware(async (to) => {
