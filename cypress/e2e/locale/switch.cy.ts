@@ -1,3 +1,5 @@
+export {}
+
 describe(`locale switching`, () => {
   const baseURL = Cypress.env('cyBaseURL')
   beforeEach(() => {
