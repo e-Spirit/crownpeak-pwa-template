@@ -26,6 +26,9 @@ export default defineNuxtConfig({
       }
     }
   },
+  app: {
+    baseURL: '/'
+  },
   typescript: {
     typeCheck: true
   },
