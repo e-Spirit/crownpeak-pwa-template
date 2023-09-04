@@ -1,6 +1,6 @@
 import { it, expect, vi } from 'vitest'
 import { FSXAApiSingleton } from 'fsxa-api'
-import setupRemoteApi from '~/plugins/1.setupRemoteApi.server'
+import setupRemoteApi from 'plugins/2.setupRemoteApi.server'
 import runtimeConfig from '~/tests/fixtures/runtimeConfig.json'
 import appConfig from '~/tests/fixtures/appConfig.json'
 
