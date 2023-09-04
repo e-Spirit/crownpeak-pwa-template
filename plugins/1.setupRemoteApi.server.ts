@@ -39,5 +39,7 @@ export default defineNuxtPlugin(() => {
       false
   }
 
-  FSXAApiSingleton.init(new FSXARemoteApi(remoteApiConfig))
+  const remoteApi = new FSXARemoteApi(remoteApiConfig)
+
+  FSXAApiSingleton.init(remoteApi)
 })
