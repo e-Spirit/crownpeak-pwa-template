@@ -40,7 +40,8 @@ export default defineNuxtConfig({
       mode: process.env['NUXT_PUBLIC_MODE'],
       snapUrl: process.env['NUXT_PUBLIC_SNAP_URL'],
       enableEventStream: process.env['NUXT_PUBLIC_ENABLE_EVENT_STREAM'],
-      defaultLocale: process.env['NUXT_PUBLIC_DEFAULT_LOCALE']
+      defaultLocale: process.env['NUXT_PUBLIC_DEFAULT_LOCALE'],
+      kubernetesURL: process.env['NUXT_PUBLIC_KUBERNETES_URL']
     },
     private: {
       apiKey: process.env['NUXT_PRIVATE_API_KEY'],
