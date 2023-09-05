@@ -2,6 +2,8 @@ import { FSXAApiSingleton } from 'fsxa-api'
 import { ServerErrors, FSXAProxyRoutes, FSXAApiErrors } from '~/types'
 
 export default defineEventHandler(async (event) => {
+  // eslint-disable-next-line no-console
+  console.log('I AM API SINGLETON: ' + FSXAApiSingleton.instance)
   const remoteApi = FSXAApiSingleton.instance // throws error if undefined
   const body = await readBody(event)
   const endpoint = event.context['params']?.['endpoint']
