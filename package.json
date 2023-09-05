@@ -55,7 +55,7 @@
     "eslint-plugin-vue": "^9.9.0",
     "husky": "^8.0.3",
     "jsdom": "^21.1.0",
-    "nuxt": "^3.6.5",
+    "nuxt": "^3.7.0",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.3",

@@ -1,0 +1,8 @@
+# netlify.toml
+[functions]
+included_files = [
+    # For some reason this works to fix "bufferutil" error on
+    # Netlify Function and external_node_modules does not
+    "node_modules/bufferutil/**",
+    "node_modules/utf-8-validate/**"
+]

@@ -14,10 +14,9 @@ export default defineNuxtPlugin(() => {
   )
   if (!process.client) {
     // eslint-disable-next-line no-console
-    console.log('NWInterfaces: ' + os.networkInterfaces())
-  } else {
-    // eslint-disable-next-line no-console
-    console.log('I CLIENTSITE')
+    console.log(
+      'NWInterfaces: ' + JSON.stringify(os.networkInterfaces(), null, 2)
+    )
   }
   return {
     provide: {
