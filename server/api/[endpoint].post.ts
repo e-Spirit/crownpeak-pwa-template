@@ -20,8 +20,10 @@ export default defineEventHandler(async (event) => {
         throw new Error(ServerErrors.UNKNOWN_ROUTE)
     }
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.log('some err somewhere on post')
     if (!(err instanceof Error)) {
+      // eslint-disable-next-line no-console
       console.log('I GOT A STRANGE ERROR WITHOUT MESSAGE')
       throw createError({
         statusCode: 500,

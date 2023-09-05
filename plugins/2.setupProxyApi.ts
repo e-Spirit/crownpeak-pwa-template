@@ -13,8 +13,10 @@ export default defineNuxtPlugin(() => {
       LogLevel.NONE
   )
   if (!process.client) {
+    // eslint-disable-next-line no-console
     console.log('NWInterfaces: ' + os.networkInterfaces())
   } else {
+    // eslint-disable-next-line no-console
     console.log('I CLIENTSITE')
   }
   return {
