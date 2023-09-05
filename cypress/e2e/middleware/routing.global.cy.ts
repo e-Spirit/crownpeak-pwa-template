@@ -1,3 +1,5 @@
+export {}
+
 const baseURL = Cypress.env('cyBaseURL')
 
 describe(`routing.global.ts`, () => {
