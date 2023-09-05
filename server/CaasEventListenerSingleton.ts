@@ -11,6 +11,7 @@ export class CaasEventListenerSingleton {
 
   public static init() {
     if (!this._instance) {
+      //TODO: instantiate instance, when not set
       const remoteApi = FSXAApiSingleton.instance as FSXARemoteApi
 
       const createSocketUrl = async () => {

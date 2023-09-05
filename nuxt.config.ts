@@ -35,6 +35,7 @@ export default defineNuxtConfig({
     // they need to be: NUXT_PUBLIC_<KEY> or NUXT_PRIVATE_<KEY>, where KEY is the capitalized key of the object key (logLevel -> NUXT_PUBLIC_LOG_LEVEL)
     // If you change baseUrl: process.env['NUXT_PUBLIC_SOMETHING_ELSE'], setting NUXT_PUBLIC_SOMETHING_ELSE will only work during build time
     public: {
+      baseUrl: process.env['NUXT_PUBLIC_BASE_URL'],
       logLevel: process.env['NUXT_PUBLIC_LOG_LEVEL'],
       mode: process.env['NUXT_PUBLIC_MODE'],
       snapUrl: process.env['NUXT_PUBLIC_SNAP_URL'],
