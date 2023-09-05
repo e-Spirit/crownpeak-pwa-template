@@ -5,7 +5,7 @@ export default defineNuxtPlugin(() => {
   const runtimeConfig = useRuntimeConfig()
   const appConfig = useAppConfig()
   const clientUrl = '/api'
-  const serverUrl = 'http://127.0.0.1:3000/api'
+  const serverUrl = 'http://localhost:3000/api'
   const fsxaApi = new FSXAProxyApi(
     process.client ? clientUrl : serverUrl,
     Number.parseInt(runtimeConfig.public['logLevel']) ||
@@ -14,6 +14,8 @@ export default defineNuxtPlugin(() => {
   )
   if (!process.client) {
     console.log('NWInterfaces: ' + os.networkInterfaces())
+  } else {
+    console.log('I CLIENTSITE')
   }
   return {
     provide: {

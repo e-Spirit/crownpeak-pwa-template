@@ -20,7 +20,9 @@ export default defineEventHandler(async (event) => {
         throw new Error(ServerErrors.UNKNOWN_ROUTE)
     }
   } catch (err) {
+    console.log('some err somewhere on post')
     if (!(err instanceof Error)) {
+      console.log('I GOT A STRANGE ERROR WITHOUT MESSAGE')
       throw createError({
         statusCode: 500,
         message: ServerErrors.UNKNOWN

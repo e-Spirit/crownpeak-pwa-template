@@ -42,6 +42,7 @@ export default defineEventHandler(async (event) => {
       })
     })
   } else {
+    console.log('some err somewhere on get')
     throw createError({
       statusCode: 500,
       message: ServerErrors.UNKNOWN_ROUTE
