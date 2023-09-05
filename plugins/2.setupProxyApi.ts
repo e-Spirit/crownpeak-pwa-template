@@ -5,7 +5,7 @@ export default defineNuxtPlugin(() => {
   const runtimeConfig = useRuntimeConfig()
   const appConfig = useAppConfig()
   const clientUrl = '/api'
-  const serverUrl = 'http://localhost:3000/api'
+  const serverUrl = 'https://dp-reference-pwa-feature-edit.netlify.app/api'
   const fsxaApi = new FSXAProxyApi(
     process.client ? clientUrl : serverUrl,
     Number.parseInt(runtimeConfig.public['logLevel']) ||
