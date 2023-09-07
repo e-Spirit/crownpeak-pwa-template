@@ -1,15 +1,16 @@
 import {
-  FSXAProxyApi,
-  NavigationItem,
-  ComparisonQueryOperatorEnum,
-  LogicalQueryOperatorEnum,
-  Dataset,
-  Page,
-  QueryBuilderQuery,
   CaaSApi_Dataset as CaasDataset,
-  ProjectProperties
+  ComparisonQueryOperatorEnum,
+  Dataset,
+  FSXAProxyApi,
+  LogicalQueryOperatorEnum,
+  NavigationItem,
+  Page,
+  ProjectProperties,
+  QueryBuilderQuery
 } from 'fsxa-api'
 import { LegalLink } from '~~/types'
+
 /**
  * Fetch dataset through the FSXA Api by route
  * @param fsxaApi Instance of the FSXA Api
@@ -116,10 +117,16 @@ export const fetchNavigationItemFromRoute = async (
   route: string
 ) => {
   // This could also be cached
-  const data = await fsxaApi.fetchNavigation({
-    initialPath: route,
-    locale: ''
-  })
+  let data = null
+  try {
+    data = await fsxaApi.fetchNavigation({
+      initialPath: route,
+      locale: ''
+    })
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.log(`bad things happened for route ${route}... `, JSON.stringify(e))
+  }
   if (!data) throw new Error('No navigation data found')
 
   // If any of the following lines throw an error, the Navigation Service is probably broken?
