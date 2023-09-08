@@ -55,7 +55,7 @@
     "eslint-plugin-vue": "^9.9.0",
     "husky": "^8.0.3",
     "jsdom": "^21.1.0",
-    "nuxt": "^3.7.1",
+    "nuxt": "^3.6.5",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.3",
@@ -99,12 +99,12 @@
     }
   },
   "dependencies": {
-    "bufferutil": "^4.0.7",
     "fs-tpp-api": "^2.4.7",
     "fsxa-api": "^10.16.2",
     "highlight.js": "^11.7.0",
     "reconnecting-websocket": "^4.4.0",
     "utf-8-validate": "^5.0.10",
-    "ws": "^8.12.1"
+    "ws": "^8.12.1",
+    "bufferutil": "^4.0.7"
   }
 }
