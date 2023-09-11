@@ -107,6 +107,8 @@ export const fetchPageById = async (
 
   return page ?? null
 }
+
+// TODO write some tests
 export const createApi: () => FSXAProxyApi | FSXARemoteApi = () => {
   // eslint-disable-next-line no-console
   console.log('creating API...')
