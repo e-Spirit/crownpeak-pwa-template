@@ -40,8 +40,10 @@
 </template>
 
 <script setup lang="ts">
+import { FSXAProxyApi } from 'fsxa-api'
+
 const { activeLocale, availableLocales } = useLocale()
-const { $fsxaApi } = useNuxtApp()
+const $fsxaApi = createApi() as FSXAProxyApi
 const loading = ref(true)
 const { activeNavigationItem, setNavigationData } = useNavigationData()
 const { currentDataset } = useContent()

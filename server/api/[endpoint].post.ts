@@ -1,4 +1,3 @@
-import { FSXAApiSingleton } from 'fsxa-api'
 import { ServerErrors, FSXAProxyRoutes, FSXAApiErrors } from '~/types'
 import { createApi } from '~/utils/fsxa'
 

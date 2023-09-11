@@ -12,6 +12,8 @@
 </template>
 
 <script setup lang="ts">
+import { FSXAProxyApi } from 'fsxa-api'
+
 const {
   currentPage,
   currentDataset,
@@ -20,7 +22,8 @@ const {
   findCachedPageByRoute,
   findCachedDatasetByRoute
 } = useContent()
-const { $fsxaApi, $setPreviewId, $logger } = useNuxtApp()
+const { $setPreviewId, $logger } = useNuxtApp()
+const $fsxaApi = createApi() as FSXAProxyApi
 const { activeLocale, fetchAvailableLocales } = useLocale()
 const { activeNavigationItem } = useNavigationData()
 const currentRoute = decodeURIComponent(useRoute().path)

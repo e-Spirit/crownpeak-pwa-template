@@ -55,7 +55,7 @@ export const waitForPreviewId = (
  * @param pageId PageId to navigate to
  */
 export const navigateToPageId = async (pageId: string) => {
-  const { $fsxaApi } = useNuxtApp()
+  const $fsxaApi = createApi() as FSXAProxyApi
   const { activeLocale } = useLocale()
   const router = useRouter()
   await waitForPreviewId($fsxaApi, pageId)
@@ -107,7 +107,7 @@ export const onRerenderViewHandler: OnRerenderViewHandler = async () => {
 
   if (!pageId || !locale) return
 
-  const { $fsxaApi } = useNuxtApp()
+  const $fsxaApi = createApi() as FSXAProxyApi
   const { activeNavigationItem } = useNavigationData()
 
   // Wait for the CaaS to update the content

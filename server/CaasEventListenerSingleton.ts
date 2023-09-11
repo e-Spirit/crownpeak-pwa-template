@@ -1,6 +1,6 @@
-import { FSXAApiSingleton, FSXARemoteApi } from 'fsxa-api'
+import { FSXARemoteApi } from 'fsxa-api'
 import ReconnectingWebSocket from 'reconnecting-websocket'
-import { createApi } from "~/utils/fsxa";
+import { createApi } from '~/utils/fsxa'
 
 /**
  * The CaasEventListenerSingleton holds a websocket connection to the CaaS and listens for content changes there.
