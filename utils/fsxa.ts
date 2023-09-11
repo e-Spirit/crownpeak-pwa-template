@@ -2,13 +2,15 @@ import {
   CaaSApi_Dataset as CaasDataset,
   ComparisonQueryOperatorEnum,
   Dataset,
-  FSXAProxyApi,
+  FSXAApi, FSXAApiSingleton, FSXAContentMode,
+  FSXAProxyApi, FSXARemoteApi, FSXARemoteApiConfig,
   LogicalQueryOperatorEnum,
+  LogLevel,
   NavigationItem,
   Page,
   ProjectProperties,
   QueryBuilderQuery
-} from 'fsxa-api'
+} from "fsxa-api";
 import { LegalLink } from '~~/types'
 
 /**
@@ -102,6 +104,58 @@ export const fetchPageById = async (
   })
 
   return page ?? null
+}
+export const createApi: () => FSXAProxyApi | FSXARemoteApi = () => {
+  const runtimeConfig = useRuntimeConfig() // .env
+  const appConfig = useAppConfig() // app.config.ts
+  if (process.client) {
+    // eslint-disable-next-line no-console
+    console.log('create proxy api')
+    const clientUrl = '/api'
+    const serverUrl = runtimeConfig.public['baseUrl'] + '/api'
+    return new FSXAProxyApi(
+      process?.client ? clientUrl : serverUrl,
+      Number.parseInt(runtimeConfig.public['logLevel']) ||
+        appConfig.logLevel ||
+        LogLevel.NONE
+    )
+  } else {
+    // eslint-disable-next-line no-console
+    console.log('create remote api')
+    const { showDev } = useDev()
+    showDev.value =
+      appConfig?.devMode || runtimeConfig?.private?.devMode === 'true'
+
+    const remoteApiConfig: FSXARemoteApiConfig = {
+      apikey: runtimeConfig.private.apiKey,
+      caasURL: runtimeConfig.private.caas,
+      navigationServiceURL: runtimeConfig.private.navigationService,
+      tenantID: runtimeConfig.private.tenantId,
+      maxReferenceDepth:
+        (parseInt(runtimeConfig.private['maxReferenceDepth']) || null) ??
+        (appConfig?.['maxReferenceDepth'] as number | undefined),
+      projectID: runtimeConfig.private.projectId,
+      remotes: runtimeConfig.private.remotes
+        ? typeof runtimeConfig.private.remotes === 'string'
+          ? JSON.parse(runtimeConfig.private.remotes)
+          : runtimeConfig.private.remotes
+        : {},
+      contentMode: runtimeConfig.public.mode as FSXAContentMode,
+      logLevel:
+        parseInt(runtimeConfig.public['logLevel']) ??
+        appConfig.logLevel ??
+        LogLevel.NONE,
+      enableEventStream:
+        !!runtimeConfig.public['enableEventStream'] ||
+        appConfig.enableEventStream ||
+        false
+    }
+
+    // eslint-disable-next-line no-console
+    console.log(`setup Remote API - Is client? ${process?.client} - mode: 
+    ${process?.mode}`)
+    return new FSXARemoteApi(remoteApiConfig)
+  }
 }
 
 /**

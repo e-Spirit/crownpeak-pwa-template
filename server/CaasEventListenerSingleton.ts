@@ -1,5 +1,6 @@
 import { FSXAApiSingleton, FSXARemoteApi } from 'fsxa-api'
 import ReconnectingWebSocket from 'reconnecting-websocket'
+import { createApi } from "~/utils/fsxa";
 
 /**
  * The CaasEventListenerSingleton holds a websocket connection to the CaaS and listens for content changes there.
@@ -11,8 +12,7 @@ export class CaasEventListenerSingleton {
 
   public static init() {
     if (!this._instance) {
-      //TODO: instantiate instance, when not set
-      const remoteApi = FSXAApiSingleton.instance as FSXARemoteApi
+      const remoteApi = createApi() as FSXARemoteApi
 
       const createSocketUrl = async () => {
         const caasUrl = remoteApi.buildCaaSUrl().split('?')[0]

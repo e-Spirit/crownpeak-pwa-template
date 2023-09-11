@@ -1,22 +1,23 @@
 import { FSXAApiSingleton } from 'fsxa-api'
 import { ServerErrors, FSXAProxyRoutes, FSXAApiErrors } from '~/types'
+import { createApi } from '~/utils/fsxa'
 
 export default defineEventHandler(async (event) => {
-  //TODO: instantiate instance, when not set
-  const remoteApi = FSXAApiSingleton.instance // throws error if undefined
+  // TODO: instantiate instance, when not set
+  const fsxaApi = createApi() // throws error if undefined
   const body = await readBody(event)
   const endpoint = event.context['params']?.['endpoint']
 
   try {
     switch (`/${endpoint}`) {
       case FSXAProxyRoutes.FETCH_ELEMENT_ROUTE:
-        return await remoteApi.fetchElement(body)
+        return await fsxaApi.fetchElement(body)
       case FSXAProxyRoutes.FETCH_BY_FILTER_ROUTE:
-        return await remoteApi.fetchByFilter(body)
+        return await fsxaApi.fetchByFilter(body)
       case FSXAProxyRoutes.FETCH_NAVIGATION_ROUTE:
-        return await remoteApi.fetchNavigation(body)
+        return await fsxaApi.fetchNavigation(body)
       case FSXAProxyRoutes.FETCH_PROPERTIES_ROUTE:
-        return await remoteApi.fetchProjectProperties(body)
+        return await fsxaApi.fetchProjectProperties(body)
       default:
         throw new Error(ServerErrors.UNKNOWN_ROUTE)
     }
