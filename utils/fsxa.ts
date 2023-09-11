@@ -126,10 +126,6 @@ export const createApi: () => FSXAProxyApi | FSXARemoteApi = () => {
   } else {
     // eslint-disable-next-line no-console
     console.log('create remote api')
-    const { showDev } = useDev()
-    showDev.value =
-      appConfig?.devMode || runtimeConfig?.private?.devMode === 'true'
-
     const remoteApiConfig: FSXARemoteApiConfig = {
       apikey: runtimeConfig.private.apiKey,
       caasURL: runtimeConfig.private.caas,
