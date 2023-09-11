@@ -1,4 +1,4 @@
-import { FSXAContentMode, FSXAProxyApi, LogLevel } from 'fsxa-api'
+import { FSXAApiSingleton, FSXAContentMode, FSXAProxyApi, LogLevel } from "fsxa-api";
 
 export default defineNuxtPlugin(() => {
   const runtimeConfig = useRuntimeConfig()
@@ -11,6 +11,16 @@ export default defineNuxtPlugin(() => {
       appConfig.logLevel ||
       LogLevel.NONE
   )
+
+  // eslint-disable-next-line no-console
+  console.log(`setup Proxy API - Is client? ${process.client} - mode: 
+    ${process.mode}`)
+  if (process.client) {
+    // eslint-disable-next-line no-console
+    console.log("if you see me, I'm on a client!")
+    FSXAApiSingleton.init(fsxaApi)
+  }
+
   return {
     provide: {
       fsxaApi,

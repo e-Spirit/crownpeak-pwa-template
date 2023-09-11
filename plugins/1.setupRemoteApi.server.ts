@@ -39,5 +39,8 @@ export default defineNuxtPlugin(() => {
       false
   }
 
+  // eslint-disable-next-line no-console
+  console.log(`setup Remote API - Is client? ${process.client} - mode: 
+    ${process.mode}`)
   FSXAApiSingleton.init(new FSXARemoteApi(remoteApiConfig))
 })
