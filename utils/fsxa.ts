@@ -108,6 +108,8 @@ export const fetchPageById = async (
   return page ?? null
 }
 export const createApi: () => FSXAProxyApi | FSXARemoteApi = () => {
+  // eslint-disable-next-line no-console
+  console.log('creating API...')
   const runtimeConfig = useRuntimeConfig() // .env
   const appConfig = useAppConfig() // app.config.ts
   if (process.client) {
@@ -116,7 +118,7 @@ export const createApi: () => FSXAProxyApi | FSXARemoteApi = () => {
     const clientUrl = '/api'
     const serverUrl = runtimeConfig.public['baseUrl'] + '/api'
     return new FSXAProxyApi(
-      process?.client ? clientUrl : serverUrl,
+      process.client ? clientUrl : serverUrl,
       Number.parseInt(runtimeConfig.public['logLevel']) ||
         appConfig.logLevel ||
         LogLevel.NONE
@@ -152,10 +154,6 @@ export const createApi: () => FSXAProxyApi | FSXARemoteApi = () => {
         appConfig.enableEventStream ||
         false
     }
-
-    // eslint-disable-next-line no-console
-    console.log(`setup Remote API - Is client? ${process?.client} - mode: 
-    ${process?.mode}`)
     return new FSXARemoteApi(remoteApiConfig)
   }
 }
