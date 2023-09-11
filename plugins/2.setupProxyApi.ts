@@ -1,4 +1,9 @@
-import { FSXAApiSingleton, FSXAContentMode, FSXAProxyApi, LogLevel } from "fsxa-api";
+import {
+  FSXAApiSingleton,
+  FSXAContentMode,
+  FSXAProxyApi,
+  LogLevel
+} from 'fsxa-api'
 
 export default defineNuxtPlugin(() => {
   const runtimeConfig = useRuntimeConfig()
