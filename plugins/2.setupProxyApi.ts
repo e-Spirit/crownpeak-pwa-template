@@ -1,5 +1,4 @@
 import { FSXAContentMode } from 'fsxa-api'
-import { createApi } from '~/utils/fsxa'
 
 export default defineNuxtPlugin(() => {
   const runtimeConfig = useRuntimeConfig()
