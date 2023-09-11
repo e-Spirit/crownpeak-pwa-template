@@ -2,15 +2,17 @@ import {
   CaaSApi_Dataset as CaasDataset,
   ComparisonQueryOperatorEnum,
   Dataset,
-  FSXAApi, FSXAApiSingleton, FSXAContentMode,
-  FSXAProxyApi, FSXARemoteApi, FSXARemoteApiConfig,
+  FSXAContentMode,
+  FSXAProxyApi,
+  FSXARemoteApi,
+  FSXARemoteApiConfig,
   LogicalQueryOperatorEnum,
   LogLevel,
   NavigationItem,
   Page,
   ProjectProperties,
   QueryBuilderQuery
-} from "fsxa-api";
+} from 'fsxa-api'
 import { LegalLink } from '~~/types'
 
 /**
