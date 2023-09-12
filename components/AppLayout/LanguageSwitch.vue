@@ -43,7 +43,9 @@
 import { FSXAProxyApi } from 'fsxa-api'
 
 const { activeLocale, availableLocales } = useLocale()
-const $fsxaApi = createApi() as FSXAProxyApi
+
+const { $createContentApi } = useNuxtApp()
+const fsxaApi = $createContentApi() as FSXAProxyApi
 const loading = ref(true)
 const { activeNavigationItem, setNavigationData } = useNavigationData()
 const { currentDataset } = useContent()
@@ -61,7 +63,7 @@ async function changeLanguage(locale: string) {
 
   // fetch navigation data for new locale
   const navigationDataAfterLocaleChange = await fetchTopLevelNavigation(
-    $fsxaApi,
+    fsxaApi,
     locale
   )
 
@@ -82,7 +84,7 @@ async function changeLanguage(locale: string) {
   if (isProjection) {
     const currentDatasetId = currentDataset.value!.id
     const pageId = navigationItemAfterLocaleChange.caasDocumentId
-    const dataset = await fetchDatasetById($fsxaApi, currentDatasetId, locale)
+    const dataset = await fetchDatasetById(fsxaApi, currentDatasetId, locale)
     if (!dataset) throw createError('No dataset')
     translatedRoute = dataset.routes.find(
       (route) => route.pageRef === pageId

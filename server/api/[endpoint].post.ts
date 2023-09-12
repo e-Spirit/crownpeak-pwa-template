@@ -1,9 +1,8 @@
 import { ServerErrors, FSXAProxyRoutes, FSXAApiErrors } from '~/types'
-import { createApi } from '~/utils/fsxa'
 
 export default defineEventHandler(async (event) => {
-  // TODO: instantiate instance, when not set
-  const fsxaApi = createApi() // throws error if undefined
+  const { $createContentApi } = useNuxtApp()
+  const fsxaApi = $createContentApi() // throws error if undefined
   const body = await readBody(event)
   const endpoint = event.context['params']?.['endpoint']
 

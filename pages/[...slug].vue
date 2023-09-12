@@ -22,8 +22,8 @@ const {
   findCachedPageByRoute,
   findCachedDatasetByRoute
 } = useContent()
-const { $setPreviewId, $logger } = useNuxtApp()
-const $fsxaApi = createApi() as FSXAProxyApi
+const { $createContentApi, $setPreviewId, $logger } = useNuxtApp()
+const fsxaApi = $createContentApi() as FSXAProxyApi
 const { activeLocale, fetchAvailableLocales } = useLocale()
 const { activeNavigationItem } = useNavigationData()
 const currentRoute = decodeURIComponent(useRoute().path)
@@ -64,7 +64,7 @@ const { pending } = useAsyncData(async () => {
         'Dataset not cached yet. Trying to fetch dataset with fsxa api'
       )
       currentDataset.value = await fetchDatasetByRoute(
-        $fsxaApi,
+        fsxaApi,
         currentRoute,
         activeLocale.value
       )
@@ -98,11 +98,7 @@ const { pending } = useAsyncData(async () => {
   currentPage.value = findCachedPageByRoute(currentRoute) || null
   if (!currentPage.value) {
     $logger.info('Page data not cached yet. Trying to fetch with fsxa api...')
-    currentPage.value = await fetchPageById(
-      $fsxaApi,
-      pageId,
-      activeLocale.value
-    )
+    currentPage.value = await fetchPageById(fsxaApi, pageId, activeLocale.value)
     addToCachedPages(currentRoute, currentPage.value)
   }
 

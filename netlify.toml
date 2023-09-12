@@ -1,5 +1,6 @@
 # netlify.toml
 [functions]
+# TODO: verify we need the included files
 included_files = [
     # For some reason this works to fix "bufferutil" error on
     # Netlify Function and external_node_modules does not

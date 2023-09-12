@@ -7,8 +7,8 @@ export function useProjectProperties() {
   const cachedProjectProperties = useState<{
     [locale: string]: ProjectProperties
   }>('cachedProjectProperties', () => ({}))
-
-  const $fsxaApi = createApi()
+  const { $createContentApi } = useNuxtApp()
+  const fsxaApi = $createContentApi()
 
   /**
    * Sets projectProperties composable and stores it in under its locale in cachedProjectProperties
@@ -30,7 +30,7 @@ export function useProjectProperties() {
     try {
       return (
         cachedProjectProperties.value[locale] ||
-        (await ($fsxaApi as FSXAProxyApi).fetchProjectProperties({ locale }))
+        (await (fsxaApi as FSXAProxyApi).fetchProjectProperties({ locale }))
       )
     } catch (error) {
       return null

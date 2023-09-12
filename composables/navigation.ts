@@ -9,7 +9,8 @@ export function useNavigationData() {
     'activeNavigationItem'
   )
   const { config: localeConfig, activeLocale, setActiveLocale } = useLocale()
-  const $fsxaApi = createApi()
+  const { $createContentApi } = useNuxtApp()
+  const fsxaApi = $createContentApi()
 
   /**
    * Get's navigation data from cache if it exists, otherwise fetches it from the FSXA Api
@@ -19,7 +20,7 @@ export function useNavigationData() {
   async function fetchNavigationData(locale: string) {
     return (
       cachedNavigationData.value[locale] ||
-      (await $fsxaApi.fetchNavigation({ locale }))
+      (await fsxaApi.fetchNavigation({ locale }))
     )
   }
 
@@ -61,7 +62,7 @@ export function useNavigationData() {
   async function determineNavigationStateFromRoute(route: string) {
     const item =
       findNavigationItemByRoute(route) ||
-      (await fetchNavigationItemFromRoute($fsxaApi as FSXAProxyApi, route))
+      (await fetchNavigationItemFromRoute(fsxaApi as FSXAProxyApi, route))
     const locale = getLocaleFromNavigationItem(item)
     // eslint-disable-next-line no-console
     console.log(`I determined locale: ${locale}`)
@@ -76,7 +77,7 @@ export function useNavigationData() {
   async function getIndexRoute() {
     if (!navigationData.value) {
       navigationData.value = await fetchTopLevelNavigation(
-        $fsxaApi as FSXAProxyApi,
+        fsxaApi as FSXAProxyApi,
         activeLocale.value ?? localeConfig.value.defaultLocale
       )
     }
