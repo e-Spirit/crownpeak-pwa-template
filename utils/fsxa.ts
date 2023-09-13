@@ -267,6 +267,11 @@ export const createRemoteApi = (
   runtimeConfig: RuntimeConfig,
   appConfig: AppConfig
 ) => {
+  if (process.client) {
+    throw new Error(
+      'FSXARemoteApi may leak secrets when created on client side'
+    )
+  }
   const logLevel =
     Number.parseInt(runtimeConfig.public['logLevel']) ||
     appConfig.logLevel ||
