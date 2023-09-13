@@ -17,7 +17,8 @@ import {
   fetchProducts,
   getLocaleFromNavigationItem,
   fetchDatasetById,
-  fetchPageById
+  fetchPageById,
+  createProxyApi
 } from '../../utils/fsxa'
 
 let mockedState: any = {}
@@ -48,21 +49,21 @@ export function useState<T>(key: string, init?: () => T) {
 }
 
 export function useNuxtApp() {
+  const fsxaApi = {
+    fetchNavigation: ({ locale }: { locale: string }) =>
+      locale === 'de_DE' ? toplevelDE : toplevelEN,
+    fetchProjectProperties: (_config: { locale: string }) => projectProperties,
+    fetchElement: (_config: FetchElementParams) => page,
+    fetchByFilter: (_config: FetchByFilterParams) => ({
+      items: []
+    }),
+    connectEventStream: () => ({
+      close: () => null,
+      addEventListener: (_event: string, _cb: (data: any) => void) => null
+    })
+  }
   return {
-    $fsxaApi: {
-      fetchNavigation: ({ locale }: { locale: string }) =>
-        locale === 'de_DE' ? toplevelDE : toplevelEN,
-      fetchProjectProperties: (_config: { locale: string }) =>
-        projectProperties,
-      fetchElement: (_config: FetchElementParams) => page,
-      fetchByFilter: (_config: FetchByFilterParams) => ({
-        items: []
-      }),
-      connectEventStream: () => ({
-        close: () => null,
-        addEventListener: (_event: string, _cb: (data: any) => void) => null
-      })
-    },
+    $createContentApi: () => fsxaApi,
     $isPreviewMode: true,
     $logger: () => null
   }
@@ -119,5 +120,6 @@ export {
   useContent,
   useNavigationData,
   useProjectProperties,
-  getLocaleFromNavigationItem
+  getLocaleFromNavigationItem,
+  createProxyApi
 }
