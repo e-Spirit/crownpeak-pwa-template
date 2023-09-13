@@ -33,6 +33,11 @@ export function useLocale() {
   )
   const activeLocale = useState<string | undefined>('activeLocale')
   const availableLocales = useState<LocaleType[]>('availableLocales')
+
+  // eslint-disable-next-line no-console
+  console.log('client:', process.client)
+  // eslint-disable-next-line no-console
+  console.log('availableLocales', availableLocales.value)
   /**
    * Sets the active locale. Gets called when:
    * 1. the user changes the locale or

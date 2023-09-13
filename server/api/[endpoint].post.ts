@@ -1,8 +1,10 @@
 import { ServerErrors, FSXAProxyRoutes, FSXAApiErrors } from '~/types'
+import { createRemoteApi } from '~/utils/fsxa'
 
 export default defineEventHandler(async (event) => {
-  const { $createContentApi } = useNuxtApp()
-  const fsxaApi = $createContentApi() // throws error if undefined
+  const runtimeConfig = useRuntimeConfig()
+  const appConfig = useAppConfig()
+  const fsxaApi = createRemoteApi(runtimeConfig, appConfig) // throws error if undefined
   const body = await readBody(event)
   const endpoint = event.context['params']?.['endpoint']
 

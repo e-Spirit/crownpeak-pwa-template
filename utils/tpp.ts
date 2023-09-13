@@ -55,8 +55,7 @@ export const waitForPreviewId = (
  * @param pageId PageId to navigate to
  */
 export const navigateToPageId = async (pageId: string) => {
-  const { $createContentApi } = useNuxtApp()
-  const fsxaApi = $createContentApi() as FSXAProxyApi
+  const fsxaApi = createProxyApi()
   const { activeLocale } = useLocale()
   const router = useRouter()
   await waitForPreviewId(fsxaApi, pageId)

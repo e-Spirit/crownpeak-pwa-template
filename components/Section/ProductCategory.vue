@@ -28,10 +28,10 @@
 </template>
 
 <script setup lang="ts">
-import { DataEntries, Dataset, FSXAProxyApi } from 'fsxa-api'
+import { DataEntries, Dataset } from 'fsxa-api'
 const props = defineProps<{ data: DataEntries }>()
 const { $createContentApi } = useNuxtApp()
-const fsxaApi = $createContentApi() as FSXAProxyApi
+const fsxaApi = $createContentApi()
 const { activeLocale } = useLocale()
 const { findCachedProductsByRoute, addToCachedProducts } = useContent()
 const currentRoute = decodeURIComponent(useRoute().path)

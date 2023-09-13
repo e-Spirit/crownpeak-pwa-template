@@ -2,13 +2,18 @@ import {
   CaaSApi_Dataset as CaasDataset,
   ComparisonQueryOperatorEnum,
   Dataset,
+  FSXAContentMode,
   FSXAProxyApi,
+  FSXARemoteApi,
+  FSXARemoteApiConfig,
   LogicalQueryOperatorEnum,
+  LogLevel,
   NavigationItem,
   Page,
   ProjectProperties,
   QueryBuilderQuery
 } from 'fsxa-api'
+import { AppConfig, RuntimeConfig } from 'nuxt/schema'
 import { LegalLink } from '~~/types'
 
 /**
@@ -20,7 +25,7 @@ import { LegalLink } from '~~/types'
  * @returns Dataset or null
  */
 export const fetchDatasetByRoute = async (
-  fsxaApi: FSXAProxyApi,
+  fsxaApi: FSXAProxyApi | FSXARemoteApi,
   route: string,
   locale: string
 ) => {
@@ -65,7 +70,7 @@ export const fetchDatasetByRoute = async (
  * @returns Dataset or null
  */
 export const fetchDatasetById = async (
-  fsxaApi: FSXAProxyApi,
+  fsxaApi: FSXAProxyApi | FSXARemoteApi,
   id: string,
   locale: string
 ) => {
@@ -92,7 +97,7 @@ export const fetchDatasetById = async (
  * @returns Page or null
  */
 export const fetchPageById = async (
-  fsxaApi: FSXAProxyApi,
+  fsxaApi: FSXAProxyApi | FSXARemoteApi,
   id: string,
   locale: string
 ) => {
@@ -113,7 +118,7 @@ export const fetchPageById = async (
  * @returns Navigation Item
  */
 export const fetchNavigationItemFromRoute = async (
-  fsxaApi: FSXAProxyApi,
+  fsxaApi: FSXAProxyApi | FSXARemoteApi,
   route: string
 ) => {
   // This could also be cached
@@ -163,7 +168,7 @@ export const getLocaleFromNavigationItem = (navigationItem: NavigationItem) => {
  * @returns Navigation Data
  */
 export const fetchTopLevelNavigation = (
-  fsxaApi: FSXAProxyApi,
+  fsxaApi: FSXAProxyApi | FSXARemoteApi,
   locale: string
 ) => {
   return fsxaApi.fetchNavigation({
@@ -180,7 +185,7 @@ export const fetchTopLevelNavigation = (
  * @returns Products
  */
 export const fetchProducts = async (
-  fsxaApi: FSXAProxyApi,
+  fsxaApi: FSXAProxyApi | FSXARemoteApi,
   locale: string,
   category?: string
 ) => {
@@ -214,7 +219,7 @@ export const fetchProducts = async (
 }
 
 export const fetchPageRoute = async (
-  fsxaApi: FSXAProxyApi,
+  fsxaApi: FSXAProxyApi | FSXARemoteApi,
   locale: string,
   id: string
 ) => {
@@ -250,3 +255,42 @@ export const getLegalLinks = (
       route: '/' + link.data.lt_text.replaceAll(' ', '-')
     })
   )
+export const createProxyApi = () => {
+  const { $logger } = useNuxtApp()
+  const logLevel = $logger.logLevel
+  if (!process.client) {
+    throw new Error('ProxyAPI shall not pass')
+  }
+  return new FSXAProxyApi('/api', logLevel)
+}
+export const createRemoteApi = (
+  runtimeConfig: RuntimeConfig,
+  appConfig: AppConfig
+) => {
+  const logLevel =
+    Number.parseInt(runtimeConfig.public['logLevel']) ||
+    appConfig.logLevel ||
+    LogLevel.NONE
+  const remoteApiConfig: FSXARemoteApiConfig = {
+    apikey: runtimeConfig.private.apiKey,
+    caasURL: runtimeConfig.private.caas,
+    navigationServiceURL: runtimeConfig.private.navigationService,
+    tenantID: runtimeConfig.private.tenantId,
+    maxReferenceDepth:
+      (parseInt(runtimeConfig.private['maxReferenceDepth']) || null) ??
+      (appConfig?.['maxReferenceDepth'] as number | undefined),
+    projectID: runtimeConfig.private.projectId,
+    remotes: runtimeConfig.private.remotes
+      ? typeof runtimeConfig.private.remotes === 'string'
+        ? JSON.parse(runtimeConfig.private.remotes)
+        : runtimeConfig.private.remotes
+      : {},
+    contentMode: runtimeConfig.public.mode as FSXAContentMode,
+    logLevel,
+    enableEventStream:
+      !!runtimeConfig.public['enableEventStream'] ||
+      appConfig.enableEventStream ||
+      false
+  }
+  return new FSXARemoteApi(remoteApiConfig)
+}

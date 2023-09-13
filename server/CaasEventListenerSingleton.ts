@@ -1,4 +1,3 @@
-import { FSXARemoteApi } from 'fsxa-api'
 import ReconnectingWebSocket from 'reconnecting-websocket'
 
 /**
@@ -11,8 +10,7 @@ export class CaasEventListenerSingleton {
 
   public static init() {
     if (!this._instance) {
-      const { $createContentApi } = useNuxtApp()
-      const remoteApi = $createContentApi() as FSXARemoteApi
+      const remoteApi = createRemoteApi(useRuntimeConfig(), useAppConfig())
 
       const createSocketUrl = async () => {
         const caasUrl = remoteApi.buildCaaSUrl().split('?')[0]

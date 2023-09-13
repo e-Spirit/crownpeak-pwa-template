@@ -1,4 +1,4 @@
-import { FSXAProxyApi, NavigationData, NavigationItem } from 'fsxa-api'
+import { NavigationData, NavigationItem } from 'fsxa-api'
 
 export function useNavigationData() {
   const navigationData = useState<NavigationData | null>('navigationData')
@@ -62,7 +62,7 @@ export function useNavigationData() {
   async function determineNavigationStateFromRoute(route: string) {
     const item =
       findNavigationItemByRoute(route) ||
-      (await fetchNavigationItemFromRoute(fsxaApi as FSXAProxyApi, route))
+      (await fetchNavigationItemFromRoute(fsxaApi, route))
     const locale = getLocaleFromNavigationItem(item)
     // eslint-disable-next-line no-console
     console.log(`I determined locale: ${locale}`)
@@ -77,7 +77,7 @@ export function useNavigationData() {
   async function getIndexRoute() {
     if (!navigationData.value) {
       navigationData.value = await fetchTopLevelNavigation(
-        fsxaApi as FSXAProxyApi,
+        fsxaApi,
         activeLocale.value ?? localeConfig.value.defaultLocale
       )
     }

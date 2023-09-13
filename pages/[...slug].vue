@@ -12,8 +12,6 @@
 </template>
 
 <script setup lang="ts">
-import { FSXAProxyApi } from 'fsxa-api'
-
 const {
   currentPage,
   currentDataset,
@@ -23,7 +21,7 @@ const {
   findCachedDatasetByRoute
 } = useContent()
 const { $createContentApi, $setPreviewId, $logger } = useNuxtApp()
-const fsxaApi = $createContentApi() as FSXAProxyApi
+const fsxaApi = $createContentApi()
 const { activeLocale, fetchAvailableLocales } = useLocale()
 const { activeNavigationItem } = useNavigationData()
 const currentRoute = decodeURIComponent(useRoute().path)
@@ -99,7 +97,15 @@ const { pending } = useAsyncData(async () => {
   if (!currentPage.value) {
     $logger.info('Page data not cached yet. Trying to fetch with fsxa api...')
     currentPage.value = await fetchPageById(fsxaApi, pageId, activeLocale.value)
-    addToCachedPages(currentRoute, currentPage.value)
+    if (currentPage.value) {
+      addToCachedPages(currentRoute, currentPage.value)
+    } else {
+      $logger.error('Page could not be fetched!')
+      throw showError({
+        statusMessage: 'Page not found',
+        statusCode: 404
+      })
+    }
   }
 
   // Only available on client side and only relevant if preview mode is enabled
