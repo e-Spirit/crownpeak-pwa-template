@@ -17,8 +17,7 @@ import {
   fetchProducts,
   getLocaleFromNavigationItem,
   fetchDatasetById,
-  fetchPageById,
-  createProxyApi
+  fetchPageById
 } from '../../utils/fsxa'
 
 let mockedState: any = {}
@@ -107,7 +106,9 @@ export function useRouter() {
     }
   }
 }
-
+export function createProxyApi() {
+  return 'hello world'
+}
 export {
   useDev,
   useLocale,
@@ -120,6 +121,5 @@ export {
   useContent,
   useNavigationData,
   useProjectProperties,
-  getLocaleFromNavigationItem,
-  createProxyApi
+  getLocaleFromNavigationItem
 }
