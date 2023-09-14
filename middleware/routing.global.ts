@@ -39,10 +39,6 @@ export default defineNuxtRouteMiddleware(async (to) => {
       await determineNavigationStateFromRoute(route)
     }
   } catch (_error: unknown) {
-    // TODO: Logging schön machen
-    // eslint-disable-next-line no-console
-    console.log('error in globalrouting: ' + JSON.stringify(_error))
-    // TODO: TNG-1263 - Improve error handling with status codes
     if (_error instanceof Error && _error.message === FSXAApiErrors.NOT_FOUND) {
       $logger.error('Server error or page not found.')
       throw createError({

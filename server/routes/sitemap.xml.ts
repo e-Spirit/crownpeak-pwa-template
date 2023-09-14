@@ -1,6 +1,7 @@
+import { createRemoteApi } from '~/utils/fsxa'
+
 export default defineEventHandler(async (event) => {
-  const { $createContentApi } = useNuxtApp()
-  const remoteApi = $createContentApi()
+  const remoteApi = createRemoteApi(useRuntimeConfig(), useAppConfig())
   const baseURL = getRequestURL(event).origin
   const navigationData = await remoteApi.fetchNavigation({ locale: 'de_DE' })
   const seoRoutes = Object.keys(navigationData?.seoRouteMap || [])

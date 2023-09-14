@@ -123,15 +123,12 @@ export const fetchNavigationItemFromRoute = async (
 ) => {
   // This could also be cached
   let data = null
-  try {
-    data = await fsxaApi.fetchNavigation({
-      initialPath: route,
-      locale: ''
-    })
-  } catch (e) {
-    // eslint-disable-next-line no-console
-    console.log(`bad things happened for route ${route}... `, JSON.stringify(e))
-  }
+
+  data = await fsxaApi.fetchNavigation({
+    initialPath: route,
+    locale: ''
+  })
+
   if (!data) throw new Error('No navigation data found')
 
   // If any of the following lines throw an error, the Navigation Service is probably broken?
