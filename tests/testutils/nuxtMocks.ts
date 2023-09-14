@@ -1,4 +1,5 @@
 import { FetchByFilterParams, FetchElementParams } from 'fsxa-api'
+import { RuntimeConfig } from 'nuxt/schema'
 import appConfig from '../fixtures/appConfig.json'
 import runtimeConfig from '../fixtures/runtimeConfig.json'
 import toplevelDE from '../fixtures/toplevelNavigation_de_DE.json'
@@ -31,7 +32,7 @@ export function defineNuxtPlugin(fun: Function) {
 }
 
 export function useRuntimeConfig() {
-  return runtimeConfig
+  return runtimeConfig as unknown as RuntimeConfig
 }
 
 export function useAppConfig() {

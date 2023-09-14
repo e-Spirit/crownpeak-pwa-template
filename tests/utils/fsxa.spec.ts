@@ -1,5 +1,9 @@
 import { it, expect, describe, vi } from 'vitest'
-import { ComparisonQueryOperatorEnum } from 'fsxa-api'
+import {
+  ComparisonQueryOperatorEnum,
+  FSXAProxyApi,
+  FSXARemoteApi
+} from 'fsxa-api'
 import createContentApi from '../../plugins/5.createContentApi'
 import {
   fetchTopLevelNavigation,
@@ -8,11 +12,14 @@ import {
   fetchDatasetByRoute,
   fetchNavigationItemFromRoute,
   fetchDatasetById,
-  fetchProducts
+  fetchProducts,
+  createProxyApi,
+  createRemoteApi
 } from '../../utils/fsxa'
 import navigationData from '../fixtures/navigationDataSeoRoute.json'
 import navigationItem from '../fixtures/navigationItem.json'
 import datasetsFilter from '../fixtures/datasetsFilter.json'
+import { useAppConfig, useRuntimeConfig } from 'tests/testutils/nuxtMocks'
 
 describe('fsxa utils', () => {
   describe('fetchTopLevelNavigation', () => {
@@ -171,6 +178,33 @@ describe('fsxa utils', () => {
           ]
         })
       )
+    })
+  })
+  describe('createContentApi', () => {
+    describe('createProxyApi', () => {
+      // fails because it's not run on the client, maybe we can mock the response to process.client
+      it('call from client without params => return FSXAProxyApi', () => {
+        process.client = true
+        expect(createProxyApi()).toBeInstanceOf(FSXAProxyApi)
+      })
+      it('call from server without params => throw error', () => {
+        process.client = false
+        expect(() => createProxyApi()).toThrow()
+      })
+    })
+    describe('createRemoteApi', () => {
+      it('call from server with correct params => return FSXARemoteApi', () => {
+        process.client = false
+        expect(
+          createRemoteApi(useRuntimeConfig(), useAppConfig())
+        ).toBeInstanceOf(FSXARemoteApi)
+      })
+      it('call from client with correct params => throw error', () => {
+        process.client = true
+        expect(() =>
+          createRemoteApi(useRuntimeConfig(), useAppConfig())
+        ).toThrow()
+      })
     })
   })
 })
