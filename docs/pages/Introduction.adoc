@@ -19,9 +19,6 @@ The Crownpeak PWA Template connects to several other projects:
 The following image illustrates the general architecture:
 image:pwa-template-architecture.png[Crownpeak PWA Template architecture]
 
-//// TODO: remove fsxa-api from image
-
-
 === Content API
 
 In headless environments, the editorial content from FirstSpirit is provided via the CaaS. Additionally, the site’s structure can be accessed via the Navigation Service (here considered part of the CaaS).
