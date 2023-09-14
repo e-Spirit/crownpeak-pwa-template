@@ -1,4 +1,3 @@
-// TODO write some tests
 import { FSXAProxyApi, FSXARemoteApi } from 'fsxa-api'
 
 export default defineNuxtPlugin(() => {

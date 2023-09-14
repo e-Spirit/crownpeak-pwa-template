@@ -1,5 +1,9 @@
-import { ComparisonQueryOperatorEnum } from 'fsxa-api'
-import { ServerErrors, FSXAProxyRoutes, FSXAApiErrors } from '../../../../types'
+import {
+  ComparisonQueryOperatorEnum,
+  FSXAProxyRoutes,
+  FSXAApiErrors
+} from 'fsxa-api'
+import { ServerErrors } from '../../../../types'
 
 const baseURL = Cypress.env('cyBaseURL')
 

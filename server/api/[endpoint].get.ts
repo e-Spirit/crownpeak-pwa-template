@@ -42,8 +42,6 @@ export default defineEventHandler(async (event) => {
       })
     })
   } else {
-    // eslint-disable-next-line no-console
-    console.log('some err somewhere on get')
     throw createError({
       statusCode: 500,
       message: ServerErrors.UNKNOWN_ROUTE

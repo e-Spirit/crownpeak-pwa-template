@@ -64,8 +64,6 @@ export function useNavigationData() {
       findNavigationItemByRoute(route) ||
       (await fetchNavigationItemFromRoute(fsxaApi, route))
     const locale = getLocaleFromNavigationItem(item)
-    // eslint-disable-next-line no-console
-    console.log(`I determined locale: ${locale}`)
     setActiveLocale(locale)
     activeNavigationItem.value = item
   }

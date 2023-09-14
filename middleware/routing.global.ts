@@ -1,6 +1,6 @@
 // This middleware is getting called whenever the route changes. (Internal links and deeplinks)
 
-import { FSXAApiErrors } from '~~/types'
+import { FSXAApiErrors } from 'fsxa-api'
 
 // This can happen on both the client and the server.
 export default defineNuxtRouteMiddleware(async (to) => {
