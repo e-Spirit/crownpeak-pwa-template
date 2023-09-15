@@ -2,6 +2,7 @@ import {
   CaaSApi_Dataset as CaasDataset,
   ComparisonQueryOperatorEnum,
   Dataset,
+  FSXAApi,
   FSXAContentMode,
   FSXAProxyApi,
   FSXARemoteApi,
@@ -25,7 +26,7 @@ import { LegalLink } from '~~/types'
  * @returns Dataset or null
  */
 export const fetchDatasetByRoute = async (
-  fsxaApi: FSXAProxyApi | FSXARemoteApi,
+  fsxaApi: FSXAApi,
   route: string,
   locale: string
 ) => {
@@ -70,7 +71,7 @@ export const fetchDatasetByRoute = async (
  * @returns Dataset or null
  */
 export const fetchDatasetById = async (
-  fsxaApi: FSXAProxyApi | FSXARemoteApi,
+  fsxaApi: FSXAApi,
   id: string,
   locale: string
 ) => {
@@ -97,7 +98,7 @@ export const fetchDatasetById = async (
  * @returns Page or null
  */
 export const fetchPageById = async (
-  fsxaApi: FSXAProxyApi | FSXARemoteApi,
+  fsxaApi: FSXAApi,
   id: string,
   locale: string
 ) => {
@@ -118,7 +119,7 @@ export const fetchPageById = async (
  * @returns Navigation Item
  */
 export const fetchNavigationItemFromRoute = async (
-  fsxaApi: FSXAProxyApi | FSXARemoteApi,
+  fsxaApi: FSXAApi,
   route: string
 ) => {
   // This could also be cached
@@ -164,10 +165,7 @@ export const getLocaleFromNavigationItem = (navigationItem: NavigationItem) => {
  * @param locale Locale
  * @returns Navigation Data
  */
-export const fetchTopLevelNavigation = (
-  fsxaApi: FSXAProxyApi | FSXARemoteApi,
-  locale: string
-) => {
+export const fetchTopLevelNavigation = (fsxaApi: FSXAApi, locale: string) => {
   return fsxaApi.fetchNavigation({
     locale
   })
@@ -182,7 +180,7 @@ export const fetchTopLevelNavigation = (
  * @returns Products
  */
 export const fetchProducts = async (
-  fsxaApi: FSXAProxyApi | FSXARemoteApi,
+  fsxaApi: FSXAApi,
   locale: string,
   category?: string
 ) => {
@@ -216,7 +214,7 @@ export const fetchProducts = async (
 }
 
 export const fetchPageRoute = async (
-  fsxaApi: FSXAProxyApi | FSXARemoteApi,
+  fsxaApi: FSXAApi,
   locale: string,
   id: string
 ) => {

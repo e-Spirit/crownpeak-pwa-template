@@ -31,22 +31,33 @@ export function useProjectProperties() {
    * @returns project properties or null
    */
   async function fetchProjectProperties(locale: string) {
+    if (cachedProjectProperties.value[locale]) {
+      return cachedProjectProperties.value[locale]
+    }
+    const isNormalizedProjectPropertyResponse = (
+      projectPropertiesResponse:
+        | ProjectProperties
+        | NormalizedProjectPropertyResponse
+        | null
+    ) => {
+      return (
+        projectPropertiesResponse &&
+        Object.hasOwn(projectPropertiesResponse as Object, 'projectProperty')
+      )
+    }
     try {
       const projectPropertiesResponse = await fsxaApi.fetchProjectProperties({
         locale
       })
       let projectProperties = null
-      if (
-        projectPropertiesResponse &&
-        Object.hasOwn(projectPropertiesResponse as Object, 'projectProperty')
-      ) {
+      if (isNormalizedProjectPropertyResponse(projectPropertiesResponse)) {
         projectProperties = (
           projectPropertiesResponse as NormalizedProjectPropertyResponse
         ).projectProperties
       }
       projectProperties = projectPropertiesResponse as ProjectProperties
 
-      return cachedProjectProperties.value[locale] || projectProperties
+      return projectProperties
     } catch (error) {
       return null
     }
