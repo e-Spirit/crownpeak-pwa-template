@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/e-Spirit/crownpeak-pwa-template/compare/v1.0.0...v1.0.1) (2023-09-15)
+
+
+### Bug Fixes
+
+* **project:** repair netlify hosting preconditions  ([#123](https://github.com/e-Spirit/crownpeak-pwa-template/issues/123)) ([538cccd](https://github.com/e-Spirit/crownpeak-pwa-template/commit/538cccd437be2fe9aeff0b24df00a66ee85d374f))
+
 # 1.0.0 (2023-08-17)
 
 
