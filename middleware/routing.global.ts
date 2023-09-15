@@ -1,6 +1,6 @@
 // This middleware is getting called whenever the route changes. (Internal links and deeplinks)
 
-import { FSXAApiErrors } from '~~/types'
+import { FSXAApiErrors } from 'fsxa-api'
 
 // This can happen on both the client and the server.
 export default defineNuxtRouteMiddleware(async (to) => {
@@ -39,7 +39,6 @@ export default defineNuxtRouteMiddleware(async (to) => {
       await determineNavigationStateFromRoute(route)
     }
   } catch (_error: unknown) {
-    // TODO: TNG-1263 - Improve error handling with status codes
     if (_error instanceof Error && _error.message === FSXAApiErrors.NOT_FOUND) {
       $logger.error('Server error or page not found.')
       throw createError({

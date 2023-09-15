@@ -55,10 +55,11 @@ export const waitForPreviewId = (
  * @param pageId PageId to navigate to
  */
 export const navigateToPageId = async (pageId: string) => {
-  const { $fsxaApi } = useNuxtApp()
+  const { $createContentApi } = useNuxtApp()
+  const fsxaApi = $createContentApi() as FSXAProxyApi // TODO: eliminate this typecast
   const { activeLocale } = useLocale()
   const router = useRouter()
-  await waitForPreviewId($fsxaApi, pageId)
+  await waitForPreviewId(fsxaApi, pageId)
 
   const { navigationData, setActiveNavigationItem } = useNavigationData()
 
@@ -69,7 +70,7 @@ export const navigateToPageId = async (pageId: string) => {
     router.push(page.seoRoute)
   } else {
     router.push(
-      (await fetchPageRoute($fsxaApi, activeLocale.value!, pageId)) ?? '/'
+      (await fetchPageRoute(fsxaApi, activeLocale.value!, pageId)) ?? '/'
     )
   }
 }
@@ -106,19 +107,19 @@ export const onRerenderViewHandler: OnRerenderViewHandler = async () => {
   const [pageId, locale] = previewId.split('.')
 
   if (!pageId || !locale) return
-
-  const { $fsxaApi } = useNuxtApp()
+  const { $createContentApi } = useNuxtApp()
+  const fsxaApi = $createContentApi() as FSXAProxyApi // TODO: eliminate this typecast
   const { activeNavigationItem } = useNavigationData()
 
   // Wait for the CaaS to update the content
-  await waitForPreviewId($fsxaApi, previewId)
+  await waitForPreviewId(fsxaApi, previewId)
   const { currentPage, currentDataset } = useContent()
 
   // If our current page is a dataset, we need to fetch the dataset instead of the page
   if (activeNavigationItem.value?.seoRouteRegex !== null) {
-    currentDataset.value = await fetchDatasetById($fsxaApi, pageId, locale)
+    currentDataset.value = await fetchDatasetById(fsxaApi, pageId, locale)
   } else {
-    currentPage.value = await fetchPageById($fsxaApi, pageId, locale)
+    currentPage.value = await fetchPageById(fsxaApi, pageId, locale)
   }
 }
 

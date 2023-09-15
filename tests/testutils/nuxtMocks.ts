@@ -1,4 +1,5 @@
 import { FetchByFilterParams, FetchElementParams } from 'fsxa-api'
+import { RuntimeConfig } from 'nuxt/schema'
 import appConfig from '../fixtures/appConfig.json'
 import runtimeConfig from '../fixtures/runtimeConfig.json'
 import toplevelDE from '../fixtures/toplevelNavigation_de_DE.json'
@@ -31,7 +32,7 @@ export function defineNuxtPlugin(fun: Function) {
 }
 
 export function useRuntimeConfig() {
-  return runtimeConfig
+  return runtimeConfig as unknown as RuntimeConfig
 }
 
 export function useAppConfig() {
@@ -48,21 +49,21 @@ export function useState<T>(key: string, init?: () => T) {
 }
 
 export function useNuxtApp() {
+  const fsxaApi = {
+    fetchNavigation: ({ locale }: { locale: string }) =>
+      locale === 'de_DE' ? toplevelDE : toplevelEN,
+    fetchProjectProperties: (_config: { locale: string }) => projectProperties,
+    fetchElement: (_config: FetchElementParams) => page,
+    fetchByFilter: (_config: FetchByFilterParams) => ({
+      items: []
+    }),
+    connectEventStream: () => ({
+      close: () => null,
+      addEventListener: (_event: string, _cb: (data: any) => void) => null
+    })
+  }
   return {
-    $fsxaApi: {
-      fetchNavigation: ({ locale }: { locale: string }) =>
-        locale === 'de_DE' ? toplevelDE : toplevelEN,
-      fetchProjectProperties: (_config: { locale: string }) =>
-        projectProperties,
-      fetchElement: (_config: FetchElementParams) => page,
-      fetchByFilter: (_config: FetchByFilterParams) => ({
-        items: []
-      }),
-      connectEventStream: () => ({
-        close: () => null,
-        addEventListener: (_event: string, _cb: (data: any) => void) => null
-      })
-    },
+    $createContentApi: () => fsxaApi,
     $isPreviewMode: true,
     $logger: () => null
   }
@@ -106,7 +107,9 @@ export function useRouter() {
     }
   }
 }
-
+export function createProxyApi() {
+  return 'hello world'
+}
 export {
   useDev,
   useLocale,

@@ -22,6 +22,7 @@ const { pending } = useAsyncData(
   async () => {
     // fetch project properties
     const projectProperties = await fetchProjectProperties(activeLocale.value!)
+
     if (!projectProperties) {
       $logger.error(
         'Project properties could not be fetched for locale: ',

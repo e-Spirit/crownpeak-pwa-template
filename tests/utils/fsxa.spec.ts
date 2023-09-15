@@ -1,6 +1,10 @@
 import { it, expect, describe, vi } from 'vitest'
-import { ComparisonQueryOperatorEnum } from 'fsxa-api'
-import setupProxyApi from '../../plugins/2.setupProxyApi'
+import {
+  ComparisonQueryOperatorEnum,
+  FSXAProxyApi,
+  FSXARemoteApi
+} from 'fsxa-api'
+import createContentApi from '../../plugins/5.createContentApi'
 import {
   fetchTopLevelNavigation,
   getLocaleFromNavigationItem,
@@ -8,19 +12,19 @@ import {
   fetchDatasetByRoute,
   fetchNavigationItemFromRoute,
   fetchDatasetById,
-  fetchProducts
+  fetchProducts,
+  createProxyApi,
+  createRemoteApi
 } from '../../utils/fsxa'
 import navigationData from '../fixtures/navigationDataSeoRoute.json'
 import navigationItem from '../fixtures/navigationItem.json'
 import datasetsFilter from '../fixtures/datasetsFilter.json'
+import { useAppConfig, useRuntimeConfig } from 'tests/testutils/nuxtMocks'
 
 describe('fsxa utils', () => {
   describe('fetchTopLevelNavigation', () => {
     it('call with valid locale => get navigation data, call fsxaApi.fetchNavigation with locale', async () => {
-      const {
-        provide: { fsxaApi }
-      } = setupProxyApi()
-
+      const fsxaApi = createContentApi()
       fsxaApi.fetchNavigation = vi.fn().mockReturnValue(navigationData)
 
       expect(await fetchTopLevelNavigation(fsxaApi, 'de_DE')).toStrictEqual(
@@ -51,9 +55,7 @@ describe('fsxa utils', () => {
 
   describe('fetchPageById', () => {
     it('call with valid locale and id => call fsxaApi.fetchElement with locale and id, return element', async () => {
-      const {
-        provide: { fsxaApi }
-      } = setupProxyApi()
+      const fsxaApi = createContentApi()
 
       fsxaApi.fetchElement = vi.fn().mockReturnValue({})
 
@@ -68,9 +70,7 @@ describe('fsxa utils', () => {
 
   describe('fetchDatasetByRoute', () => {
     it('call with valid params => call fsxaApi.fetchByFilter with same params, return filtered items', async () => {
-      const {
-        provide: { fsxaApi }
-      } = setupProxyApi()
+      const fsxaApi = createContentApi()
 
       fsxaApi.fetchByFilter = vi.fn().mockReturnValue(datasetsFilter)
 
@@ -89,9 +89,7 @@ describe('fsxa utils', () => {
 
   describe('fetchDatasetById', () => {
     it('call with valid params => call fsxaApi.fetchByFilter with same params, return filtered items', async () => {
-      const {
-        provide: { fsxaApi }
-      } = setupProxyApi()
+      const fsxaApi = createContentApi()
 
       fsxaApi.fetchByFilter = vi.fn().mockReturnValue(datasetsFilter)
 
@@ -116,9 +114,7 @@ describe('fsxa utils', () => {
 
   describe('fetchNavigationItemFromRoute', () => {
     it('call with valid data => return the navigation item', async () => {
-      const {
-        provide: { fsxaApi }
-      } = setupProxyApi()
+      const fsxaApi = createContentApi()
 
       fsxaApi.fetchNavigation = vi.fn().mockReturnValue(navigationData)
 
@@ -128,9 +124,7 @@ describe('fsxa utils', () => {
     })
 
     it('call with / => return the index navigation item', async () => {
-      const {
-        provide: { fsxaApi }
-      } = setupProxyApi()
+      const fsxaApi = createContentApi()
 
       fsxaApi.fetchNavigation = vi.fn().mockReturnValue(navigationData)
 
@@ -142,9 +136,7 @@ describe('fsxa utils', () => {
     })
 
     it('call with missing route => throw', () => {
-      const {
-        provide: { fsxaApi }
-      } = setupProxyApi()
+      const fsxaApi = createContentApi()
 
       fsxaApi.fetchNavigation = vi.fn().mockReturnValue(navigationData)
 
@@ -156,9 +148,7 @@ describe('fsxa utils', () => {
 
   describe('fetchProducts', () => {
     it('call with valid params => call fsxaApi.fetchByFilter with same params, return filtered items', async () => {
-      const {
-        provide: { fsxaApi }
-      } = setupProxyApi()
+      const fsxaApi = createContentApi()
 
       fsxaApi.fetchByFilter = vi.fn().mockReturnValue(datasetsFilter)
 
@@ -188,6 +178,33 @@ describe('fsxa utils', () => {
           ]
         })
       )
+    })
+  })
+  describe('createContentApi', () => {
+    describe('createProxyApi', () => {
+      // fails because it's not run on the client, maybe we can mock the response to process.client
+      it('call from client without params => return FSXAProxyApi', () => {
+        process.client = true
+        expect(createProxyApi()).toBeInstanceOf(FSXAProxyApi)
+      })
+      it('call from server without params => throw error', () => {
+        process.client = false
+        expect(() => createProxyApi()).toThrow()
+      })
+    })
+    describe('createRemoteApi', () => {
+      it('call from server with correct params => return FSXARemoteApi', () => {
+        process.client = false
+        expect(
+          createRemoteApi(useRuntimeConfig(), useAppConfig())
+        ).toBeInstanceOf(FSXARemoteApi)
+      })
+      it('call from client with correct params => throw error', () => {
+        process.client = true
+        expect(() =>
+          createRemoteApi(useRuntimeConfig(), useAppConfig())
+        ).toThrow()
+      })
     })
   })
 })

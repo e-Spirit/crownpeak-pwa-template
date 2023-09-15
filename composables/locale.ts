@@ -33,6 +33,7 @@ export function useLocale() {
   )
   const activeLocale = useState<string | undefined>('activeLocale')
   const availableLocales = useState<LocaleType[]>('availableLocales')
+
   /**
    * Sets the active locale. Gets called when:
    * 1. the user changes the locale or

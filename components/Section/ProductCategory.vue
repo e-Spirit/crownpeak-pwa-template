@@ -30,7 +30,8 @@
 <script setup lang="ts">
 import { DataEntries, Dataset } from 'fsxa-api'
 const props = defineProps<{ data: DataEntries }>()
-const { $fsxaApi } = useNuxtApp()
+const { $createContentApi } = useNuxtApp()
+const fsxaApi = $createContentApi()
 const { activeLocale } = useLocale()
 const { findCachedProductsByRoute, addToCachedProducts } = useContent()
 const currentRoute = decodeURIComponent(useRoute().path)
@@ -42,7 +43,7 @@ const { data: products, pending } = useAsyncData(async () => {
   const filterParams = props.data['filterParams']
 
   const items = await fetchProducts(
-    $fsxaApi,
+    fsxaApi,
     activeLocale.value!,
     filterParams?.category
   )

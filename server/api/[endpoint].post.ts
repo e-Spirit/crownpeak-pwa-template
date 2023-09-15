@@ -1,8 +1,11 @@
-import { FSXAApiSingleton } from 'fsxa-api'
-import { ServerErrors, FSXAProxyRoutes, FSXAApiErrors } from '~/types'
+import { FSXAApiErrors, FSXAProxyRoutes } from 'fsxa-api'
+import { ServerErrors } from '~/types'
+import { createRemoteApi } from '~/utils/fsxa'
 
 export default defineEventHandler(async (event) => {
-  const remoteApi = FSXAApiSingleton.instance // throws error if undefined
+  const runtimeConfig = useRuntimeConfig()
+  const appConfig = useAppConfig()
+  const remoteApi = createRemoteApi(runtimeConfig, appConfig)
   const body = await readBody(event)
   const endpoint = event.context['params']?.['endpoint']
 

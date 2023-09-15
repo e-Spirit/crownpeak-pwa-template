@@ -11,7 +11,7 @@ The Crownpeak PWA Template is a project that demonstrates how to build a _Progre
 
 The Crownpeak PWA Template connects to several other projects:
 
-* https://github.com/e-Spirit/fsxa-api[FSXA-API]
+* https://github.com/e-Spirit/javascript-content-api-library/[Content API]
 * https://docs.e-spirit.com/tpp/[Omnichannel Manager]
 * https://docs.e-spirit.com/module/caas-platform/CaaS_Platform_Documentation_EN.html[FirstSpirit CaaS]
 * https://navigationservice.e-spirit.cloud/docs/user/en/documentation.html[Navigation Service]
@@ -19,11 +19,11 @@ The Crownpeak PWA Template connects to several other projects:
 The following image illustrates the general architecture:
 image:pwa-template-architecture.png[Crownpeak PWA Template architecture]
 
-=== FSXA API
+=== Content API
 
 In headless environments, the editorial content from FirstSpirit is provided via the CaaS. Additionally, the site’s structure can be accessed via the Navigation Service (here considered part of the CaaS).
 
-To make using these two services as easy as possible, we have developed the FSXA API. This project already provides a rich API to communicate with both services in a standardized way. It also transforms the responses of the CaaS and the Navigation Service and enriches them with other useful data.
+To make using these two services as easy as possible, we have developed the Content API. This project already provides a rich API to communicate with both services in a standardized way. It also transforms the responses of the CaaS and the Navigation Service and enriches them with other useful data.
 
 For example, it converts the Navigation Service tree structure into easy to use maps and also extracts the start page directly.
 

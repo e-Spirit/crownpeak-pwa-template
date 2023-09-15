@@ -20,7 +20,8 @@ const {
   findCachedPageByRoute,
   findCachedDatasetByRoute
 } = useContent()
-const { $fsxaApi, $setPreviewId, $logger } = useNuxtApp()
+const { $createContentApi, $setPreviewId, $logger } = useNuxtApp()
+const fsxaApi = $createContentApi()
 const { activeLocale, fetchAvailableLocales } = useLocale()
 const { activeNavigationItem } = useNavigationData()
 const currentRoute = decodeURIComponent(useRoute().path)
@@ -61,7 +62,7 @@ const { pending } = useAsyncData(async () => {
         'Dataset not cached yet. Trying to fetch dataset with fsxa api'
       )
       currentDataset.value = await fetchDatasetByRoute(
-        $fsxaApi,
+        fsxaApi,
         currentRoute,
         activeLocale.value
       )
@@ -95,12 +96,16 @@ const { pending } = useAsyncData(async () => {
   currentPage.value = findCachedPageByRoute(currentRoute) || null
   if (!currentPage.value) {
     $logger.info('Page data not cached yet. Trying to fetch with fsxa api...')
-    currentPage.value = await fetchPageById(
-      $fsxaApi,
-      pageId,
-      activeLocale.value
-    )
-    addToCachedPages(currentRoute, currentPage.value)
+    currentPage.value = await fetchPageById(fsxaApi, pageId, activeLocale.value)
+    if (currentPage.value) {
+      addToCachedPages(currentRoute, currentPage.value)
+    } else {
+      $logger.error('Page could not be fetched!')
+      throw showError({
+        statusMessage: 'Page not found',
+        statusCode: 404
+      })
+    }
   }
 
   // Only available on client side and only relevant if preview mode is enabled

@@ -1,7 +1,7 @@
-import { FSXAApiSingleton } from 'fsxa-api'
+import { createRemoteApi } from '~/utils/fsxa'
 
 export default defineEventHandler(async (event) => {
-  const remoteApi = FSXAApiSingleton.instance
+  const remoteApi = createRemoteApi(useRuntimeConfig(), useAppConfig())
   const baseURL = getRequestURL(event).origin
   const navigationData = await remoteApi.fetchNavigation({ locale: 'de_DE' })
   const seoRoutes = Object.keys(navigationData?.seoRouteMap || [])
