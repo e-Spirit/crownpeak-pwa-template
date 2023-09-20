@@ -7,7 +7,7 @@
 
 == FirstSpirit Navigation Service
 
-The Crownpeak PWA Template directly maps the navigation structure of the underlying FirstSpirit project into the predefined navigation component. This is achieved using the navigation service which maps all the routes as defined in FirstSpirit to CaaS URLs. The data is fetched by the https://github.com/e-Spirit/fsxa-api[FSXA-API]. Here is an example of navigation data.
+The Crownpeak PWA Template directly maps the navigation structure of the underlying FirstSpirit project into the predefined navigation component. This is achieved using the navigation service which maps all the routes as defined in FirstSpirit to CaaS URLs. The data is fetched by the https://github.com/e-Spirit/javascript-content-api-library[Content API]. Here is an example of navigation data.
 
 [source,json]
 ----

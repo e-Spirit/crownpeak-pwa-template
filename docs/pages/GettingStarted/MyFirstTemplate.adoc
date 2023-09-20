@@ -21,8 +21,8 @@ This chapter describes how to set up the project and complete the first steps.
 
 [arabic]
 . Open the terminal and if needed, navigate to your preferred directory where the project should be saved.
-. Clone the project using the terminal command `git clone https://github.com/e-Spirit/crownpeak-pwa-template.git`. The project should be downloaded into a folder called `fsxa-nuxt3-pwa`.
-. Navigate to the newly created folder with `cd fsxa-nuxt3-pwa`.
+. Clone the project using the terminal command `git clone https://github.com/e-Spirit/crownpeak-pwa-template.git`. The project should be downloaded into a folder called `my-nuxt3-pwa`.
+. Navigate to the newly created folder with `cd my-nuxt3-pwa`.
 . Copy the existing `.env.template` file and paste it with the new name `.env` or run the command `cp .env.template .env`. Some values from the `env.template` file are optional see link:../Configuration{outfilesuffix}[configuration page].
 . The `.env` file must contain all the information you need to access your own system. You can get this information from your contact at Crownpeak Technology GmbH. By default, this file is located in the `.gitignore` and is therefore not persisted. Each required attribute is explained briefly, for a more detailed description please check the link:../Configuration{outfilesuffix}[configuration page].
 . To install the needed dependencies run the command `npm install`.

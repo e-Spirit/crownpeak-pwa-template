@@ -76,7 +76,7 @@ ENV variable will take the priority if set, e.x.
 
 === NUXT_PRIVATE_MAX_REFERENCE_DEPTH `number` _optional_
 
-Due to performance reasons content references in your project get resolved up to a maximum reference depth of 10. Meaning a dataset refering to a dataset refering to a dataset ... and so on. You can increase that number by specifying the `FSXA_MAX_REFERENCE_DEPTH` variable.
+Due to performance reasons content references in your project get resolved up to a maximum reference depth of 10. Meaning a dataset refering to a dataset refering to a dataset ... and so on. You can increase that number by specifying the `NUXT_PRIVATE_MAX_REFERENCE_DEPTH` variable.
 
 === NUXT_PUBLIC_ENABLE_EVENT_STREAM `boolean` _optional_
 
@@ -84,7 +84,7 @@ When enabled, events for `insert`, `replace` and `delete` CaaS documents can be 
 
 === NUXT_PUBLIC_DEFAULT_LOCALE `string` _optional_
 
-Normally the current URL is used to find out the language. If this is not possible (for example, when a user calls `/`) the `defaultLocale` is used to retrieve the navigation data via the `FSXA API`. With this variable you can override the `defaultLocale` config from your `app.config.ts` file. The environment variable will take the priority.
+Normally the current URL is used to find out the language. If this is not possible (for example, when a user calls `/`) the `defaultLocale` is used to retrieve the navigation data via the `Content API`. With this variable you can override the `defaultLocale` config from your `app.config.ts` file. The environment variable will take the priority.
 
 
 == app.config.ts file
@@ -93,7 +93,7 @@ The following settings allow easy configuration of the PWA through the `app.conf
 
 === defaultLocale `string`
 
-Normally the current URL is used to find out the language. If this is not possible (for example, when a user calls `/`) the `defaultLocale` is used to retrieve the navigation data via the `FSXA API`. This property is required.
+Normally the current URL is used to find out the language. If this is not possible (for example, when a user calls `/`) the `defaultLocale` is used to retrieve the navigation data via the `Content API`. This property is required.
 
 === devMode `boolean` _optional_
 
