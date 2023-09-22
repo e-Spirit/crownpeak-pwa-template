@@ -1,7 +1,8 @@
 import {
   FSXAApi,
   NormalizedProjectPropertyResponse,
-  ProjectProperties
+  ProjectProperties,
+  HttpError
 } from 'fsxa-api'
 
 export function useProjectProperties() {
@@ -11,7 +12,7 @@ export function useProjectProperties() {
   const cachedProjectProperties = useState<{
     [locale: string]: ProjectProperties
   }>('cachedProjectProperties', () => ({}))
-  const { $createContentApi } = useNuxtApp()
+  const { $createContentApi, $logger } = useNuxtApp()
   const fsxaApi: FSXAApi = $createContentApi()
 
   /**
@@ -59,7 +60,20 @@ export function useProjectProperties() {
 
       return projectProperties
     } catch (error) {
-      return null
+      if (error instanceof HttpError) {
+        $logger.error(error.message)
+        throw createError({
+          statusCode: error.statusCode,
+          message: error.message,
+          fatal: true
+        })
+      }
+      $logger.error('Internal server error.')
+      throw createError({
+        statusCode: 500,
+        message: 'Internal server error',
+        fatal: true
+      })
     }
   }
   return {
