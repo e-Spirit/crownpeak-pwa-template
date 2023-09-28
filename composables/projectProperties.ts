@@ -5,13 +5,24 @@ import {
 } from 'fsxa-api'
 
 export function useProjectProperties() {
+  // eslint-disable-next-line no-console
+  console.time('useProjectPropertiesAll')
+  // eslint-disable-next-line no-console
+  console.time('useStatefetchingProjectProperties')
   const projectProperties = useState<ProjectProperties | null>(
     'projectProperties'
   )
+  // eslint-disable-next-line no-console
+  console.timeEnd('useStatefetchingProjectProperties')
   const cachedProjectProperties = useState<{
     [locale: string]: ProjectProperties
   }>('cachedProjectProperties', () => ({}))
+
+  // eslint-disable-next-line no-console
+  console.time('useNuxtAppfetchingProjectProperties')
   const { $createContentApi } = useNuxtApp()
+  // eslint-disable-next-line no-console
+  console.timeEnd('useNuxtAppfetchingProjectProperties')
   const fsxaApi: FSXAApi = $createContentApi()
 
   /**
@@ -31,9 +42,15 @@ export function useProjectProperties() {
    * @returns project properties or null
    */
   async function fetchProjectProperties(locale: string) {
-    if (cachedProjectProperties.value[locale]) {
-      return cachedProjectProperties.value[locale]
-    }
+    // eslint-disable-next-line no-console
+    console.time('fetchProjectPropsComposable')
+    // if (cachedProjectProperties.value[locale]) {
+    //   // eslint-disable-next-line no-console
+    //   console.log('cached result!')
+    //   // eslint-disable-next-line no-console
+    //   console.timeEnd('fetchProjectPropsComposable')
+    //   return cachedProjectProperties.value[locale]
+    // }
     const isNormalizedProjectPropertyResponse = (
       projectPropertiesResponse:
         | ProjectProperties
@@ -56,12 +73,19 @@ export function useProjectProperties() {
         ).projectProperties
       }
       projectProperties = projectPropertiesResponse as ProjectProperties
-
+      // eslint-disable-next-line no-console
+      console.log(`regular fetch! isClient: ${process.client}`)
+      // eslint-disable-next-line no-console
+      console.timeEnd('fetchProjectPropsComposable')
       return projectProperties
     } catch (error) {
+      // eslint-disable-next-line no-console
+      console.timeEnd('fetchProjectPropsComposable')
       return null
     }
   }
+  // eslint-disable-next-line no-console
+  console.timeEnd('useProjectPropertiesAll')
   return {
     projectProperties,
     cachedProjectProperties,

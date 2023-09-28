@@ -8,7 +8,6 @@ import {
   FSXARemoteApi,
   FSXARemoteApiConfig,
   LogicalQueryOperatorEnum,
-  LogLevel,
   NavigationItem,
   Page,
   ProjectProperties,
@@ -267,10 +266,7 @@ export const createRemoteApi = (
       'FSXARemoteApi may leak secrets when created on client side'
     )
   }
-  const logLevel =
-    Number.parseInt(runtimeConfig.public['logLevel']) ||
-    appConfig.logLevel ||
-    LogLevel.NONE
+  const logLevel = 0
   const remoteApiConfig: FSXARemoteApiConfig = {
     apikey: runtimeConfig.private.apiKey,
     caasURL: runtimeConfig.private.caas,
