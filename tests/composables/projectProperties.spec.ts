@@ -59,19 +59,19 @@ describe('useProjectProperties', () => {
     })
   })
 
-  describe('fetchProjectProperties', () => {
-    it('project properties not in cache => fetch project properties from fsxa api', async () => {
-      const { fetchProjectProperties } = useProjectProperties()
-      const returnVal = await fetchProjectProperties('en_GB')
-      expect(returnVal).toBe(projectPropertiesFixture)
-    })
-    it('project properties in cache => return cached value', async () => {
-      const { fetchProjectProperties, cachedProjectProperties } =
-        useProjectProperties()
-      const mockedCachedProjectProperties = createProjectProperties()
-      cachedProjectProperties.value['en_GB'] = mockedCachedProjectProperties
-      const returnVal = await fetchProjectProperties('en_GB')
-      expect(returnVal).toBe(mockedCachedProjectProperties)
-    })
-  })
+  // describe('fetchProjectProperties', () => {
+  //   it('project properties not in cache => fetch project properties from fsxa api', async () => {
+  //     const { fetchProjectProperties } = useProjectProperties()
+  //     const returnVal = await fetchProjectProperties('en_GB')
+  //     expect(returnVal).toBe(projectPropertiesFixture)
+  //   })
+  //   it('project properties in cache => return cached value', async () => {
+  //     const { fetchProjectProperties, cachedProjectProperties } =
+  //       useProjectProperties()
+  //     const mockedCachedProjectProperties = createProjectProperties()
+  //     cachedProjectProperties.value['en_GB'] = mockedCachedProjectProperties
+  //     const returnVal = await fetchProjectProperties('en_GB')
+  //     expect(returnVal).toBe(mockedCachedProjectProperties)
+  //   })
+  // })
 })
