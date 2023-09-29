@@ -1,8 +1,12 @@
-import { it, expect, describe, beforeEach } from 'vitest'
+import { it, expect, describe, beforeEach, afterEach, vi } from 'vitest'
+import { HttpError } from 'fsxa-api'
 import { createProjectProperties } from '~/tests/testutils/createProjectProperties'
 import { clearMockedState } from '~/tests/testutils/nuxtMocks'
 import projectPropertiesFixture from '~/tests/fixtures/projectProperties.json'
-import { useProjectProperties } from '~/composables/projectProperties'
+import {
+  useProjectProperties,
+  handleFetchProjectPropertiesError
+} from '~/composables/projectProperties'
 
 describe('useProjectProperties', () => {
   beforeEach(() => {
@@ -72,6 +76,27 @@ describe('useProjectProperties', () => {
       cachedProjectProperties.value['en_GB'] = mockedCachedProjectProperties
       const returnVal = await fetchProjectProperties('en_GB')
       expect(returnVal).toBe(mockedCachedProjectProperties)
+    })
+    describe('error handling', () => {
+      afterEach(() => {
+        vi.restoreAllMocks()
+      })
+      it('throws an error 500 internal server error if it catches a generic error of type Error', () => {
+        try {
+          handleFetchProjectPropertiesError(new Error('Generic error'))
+        } catch (error: any) {
+          expect(error.message).toBe('Internal server error')
+          expect(error.statusCode).toBe(500)
+        }
+      })
+      it('forwards the error if it catches an error of type HttpError', () => {
+        try {
+          handleFetchProjectPropertiesError(new HttpError('Not found', 404))
+        } catch (error: any) {
+          expect(error.message).toBe('Not found')
+          expect(error.statusCode).toBe(404)
+        }
+      })
     })
   })
 })

@@ -1,4 +1,4 @@
-import { FetchByFilterParams, FetchElementParams } from 'fsxa-api'
+import { FetchByFilterParams, FetchElementParams, HttpError } from 'fsxa-api'
 import { RuntimeConfig } from 'nuxt/schema'
 import appConfig from '../fixtures/appConfig.json'
 import runtimeConfig from '../fixtures/runtimeConfig.json'
@@ -80,11 +80,8 @@ export function useHead() {}
 
 export function navigateTo(_args: unknown) {}
 
-export function createError(err: {
-  statusCode: number
-  statusMessage: string
-}) {
-  return new Error(err.statusMessage)
+export function createError(err: { statusCode: number; message: string }) {
+  return new HttpError(err.message, err.statusCode)
 }
 
 export function useRoute() {
