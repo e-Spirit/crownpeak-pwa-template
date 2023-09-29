@@ -254,7 +254,9 @@ export const createProxyApi = () => {
   const { $logger } = useNuxtApp()
   const logLevel = $logger.logLevel
   if (!process.client) {
-    throw new Error('ProxyAPI shall not pass')
+    throw new Error(
+      'createProxyApi() is forbiddenOn server side. Please use createRemoteApi() instead.'
+    )
   }
   return new FSXAProxyApi('/api', logLevel)
 }
@@ -267,10 +269,18 @@ export const createRemoteApi = (
       'FSXARemoteApi may leak secrets when created on client side'
     )
   }
-  const logLevel =
-    Number.parseInt(runtimeConfig.public['logLevel']) ||
-    appConfig.logLevel ||
-    LogLevel.NONE
+
+  function determineLogLevel() {
+    const runtimeLogLevel = Number.parseInt(runtimeConfig.public['logLevel'])
+    if (Number.isInteger(runtimeLogLevel)) {
+      return runtimeLogLevel
+    }
+    if (Number.isInteger(appConfig.logLevel)) {
+      return appConfig.logLevel
+    }
+    return LogLevel.NONE
+  }
+  const logLevel = determineLogLevel()
   const remoteApiConfig: FSXARemoteApiConfig = {
     apikey: runtimeConfig.private.apiKey,
     caasURL: runtimeConfig.private.caas,

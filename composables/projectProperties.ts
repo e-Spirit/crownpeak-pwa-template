@@ -56,7 +56,6 @@ export function useProjectProperties() {
         ).projectProperties
       }
       projectProperties = projectPropertiesResponse as ProjectProperties
-
       return projectProperties
     } catch (error) {
       return null
