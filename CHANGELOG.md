@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/e-Spirit/crownpeak-pwa-template/compare/v1.0.1...v1.0.2) (2023-09-29)
+
+
+### Bug Fixes
+
+* **pagespeed:** improve page speed ([#122](https://github.com/e-Spirit/crownpeak-pwa-template/issues/122)) ([705eae3](https://github.com/e-Spirit/crownpeak-pwa-template/commit/705eae36ec14bc013953a7d8ddbbadf876a6bc5d))
+
 ## [1.0.1](https://github.com/e-Spirit/crownpeak-pwa-template/compare/v1.0.0...v1.0.1) (2023-09-15)
 
 
