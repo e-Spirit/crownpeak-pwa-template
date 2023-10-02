@@ -7,7 +7,9 @@
     <div class="container relative mx-auto flex-grow">
       <slot />
     </div>
-    <AppLayoutFooter />
+    <ClientOnly>
+      <AppLayoutFooter />
+    </ClientOnly>
   </div>
 </template>
 
