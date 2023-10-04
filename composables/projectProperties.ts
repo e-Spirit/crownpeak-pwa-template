@@ -3,7 +3,7 @@ import {
   NormalizedProjectPropertyResponse,
   ProjectProperties
 } from 'fsxa-api'
-import { isHttpError } from 'utils/fsxa'
+import { isHttpError } from '~/utils/fsxa'
 
 export function handleFetchProjectPropertiesError(error: unknown): void {
   if (error instanceof Error && isHttpError(error)) {
@@ -76,6 +76,7 @@ export function useProjectProperties() {
     } catch (error) {
       handleFetchProjectPropertiesError(error)
     }
+    return null
   }
   return {
     projectProperties,
