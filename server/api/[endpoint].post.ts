@@ -1,6 +1,6 @@
-import { FSXAApiErrors, FSXAProxyRoutes } from 'fsxa-api'
+import { FSXAProxyRoutes } from 'fsxa-api'
 import { ServerErrors } from '~/types'
-import { createRemoteApi } from '~/utils/fsxa'
+import { createRemoteApi, isHttpError } from '~/utils/fsxa'
 
 export default defineEventHandler(async (event) => {
   const runtimeConfig = useRuntimeConfig()
@@ -23,25 +23,9 @@ export default defineEventHandler(async (event) => {
         throw new Error(ServerErrors.UNKNOWN_ROUTE)
     }
   } catch (err) {
-    if (!(err instanceof Error)) {
-      throw createError({
-        statusCode: 500,
-        message: ServerErrors.UNKNOWN
-      })
-    } else if (
-      err.message === FSXAApiErrors.NOT_FOUND ||
-      err.message === FSXAApiErrors.UNKNOWN_REMOTE
-    ) {
-      throw createError({
-        statusCode: 404,
-        message: err.message
-      })
-    } else if (FSXAApiErrors.NOT_AUTHORIZED === err.message) {
-      throw createError({
-        statusCode: 401,
-        message: err.message
-      })
-    } else {
+    if (err instanceof Error && isHttpError(err)) {
+      throw createError({ statusCode: err.statusCode, message: err.message })
+    } else if (err instanceof Error) {
       throw createError({
         statusCode: 500,
         message: err.message || ServerErrors.UNKNOWN
