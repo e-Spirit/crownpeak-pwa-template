@@ -169,7 +169,7 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_NAVIGATION_ROUTE}`, () => {
       body: { locale: 'invalidLocaleFormat' },
       failOnStatusCode: false
     }).should((response) => {
-      expect(response.status).to.eq(500)
+      expect(response.status).to.eq(400)
       expect(response.body.message).to.exist
     })
   })
@@ -198,7 +198,7 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_PROPERTIES_ROUTE}`, () => {
       failOnStatusCode: false
     }).should((response) => {
       expect(response.body.message).to.exist
-      expect(response.status).to.eq(500)
+      expect(response.status).to.eq(400)
     })
   })
 })
