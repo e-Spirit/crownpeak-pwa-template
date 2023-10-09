@@ -12,7 +12,8 @@ import {
   NavigationItem,
   Page,
   ProjectProperties,
-  QueryBuilderQuery
+  QueryBuilderQuery,
+  HttpError
 } from 'fsxa-api'
 import { AppConfig, RuntimeConfig } from 'nuxt/schema'
 import { LegalLink } from '~~/types'
@@ -303,4 +304,7 @@ export const createRemoteApi = (
       false
   }
   return new FSXARemoteApi(remoteApiConfig)
+}
+export const isHttpError = (err: Error | HttpError): err is HttpError => {
+  return (err as HttpError).statusCode !== undefined
 }

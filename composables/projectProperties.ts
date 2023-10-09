@@ -3,7 +3,22 @@ import {
   NormalizedProjectPropertyResponse,
   ProjectProperties
 } from 'fsxa-api'
+import { isHttpError } from '~/utils/fsxa'
 
+export function handleFetchProjectPropertiesError(error: unknown): void {
+  if (error instanceof Error && isHttpError(error)) {
+    throw createError({
+      statusCode: error.statusCode,
+      message: error.message,
+      fatal: true
+    })
+  }
+  throw createError({
+    statusCode: 500,
+    message: 'Internal server error',
+    fatal: true
+  })
+}
 export function useProjectProperties() {
   const projectProperties = useState<ProjectProperties | null>(
     'projectProperties'
@@ -58,8 +73,9 @@ export function useProjectProperties() {
       projectProperties = projectPropertiesResponse as ProjectProperties
       return projectProperties
     } catch (error) {
-      return null
+      handleFetchProjectPropertiesError(error)
     }
+    return null
   }
   return {
     projectProperties,

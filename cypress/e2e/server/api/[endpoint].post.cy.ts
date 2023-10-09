@@ -162,14 +162,14 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_NAVIGATION_ROUTE}`, () => {
     })
   })
 
-  it(`body is invalid => return 500`, () => {
+  it(`body contains invalid locale format => return 400`, () => {
     cy.request({
       method: 'POST',
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_NAVIGATION_ROUTE}`,
       body: { locale: 'invalidLocaleFormat' },
       failOnStatusCode: false
     }).should((response) => {
-      expect(response.status).to.eq(500)
+      expect(response.status).to.eq(400)
       expect(response.body.message).to.exist
     })
   })
@@ -190,7 +190,7 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_PROPERTIES_ROUTE}`, () => {
     })
   })
 
-  it(`body is invalid => return 500`, () => {
+  it(`body contains invalid locale format => return 400`, () => {
     cy.request({
       method: 'POST',
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_PROPERTIES_ROUTE}`,
@@ -198,7 +198,7 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_PROPERTIES_ROUTE}`, () => {
       failOnStatusCode: false
     }).should((response) => {
       expect(response.body.message).to.exist
-      expect(response.status).to.eq(500)
+      expect(response.status).to.eq(400)
     })
   })
 })
