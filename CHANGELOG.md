@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/e-Spirit/crownpeak-pwa-template/compare/v1.0.2...v1.0.3) (2023-10-09)
+
+
+### Bug Fixes
+
+* **handleerror:** handle error on project properties ([#124](https://github.com/e-Spirit/crownpeak-pwa-template/issues/124)) ([0cc34e9](https://github.com/e-Spirit/crownpeak-pwa-template/commit/0cc34e955526f10f62eb998f62e913ea0109d0ed))
+
 ## [1.0.2](https://github.com/e-Spirit/crownpeak-pwa-template/compare/v1.0.1...v1.0.2) (2023-09-29)
 
 
