@@ -162,7 +162,7 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_NAVIGATION_ROUTE}`, () => {
     })
   })
 
-  it(`body is invalid => return 500`, () => {
+  it(`body contains invalid locale format => return 400`, () => {
     cy.request({
       method: 'POST',
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_NAVIGATION_ROUTE}`,
@@ -190,7 +190,7 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_PROPERTIES_ROUTE}`, () => {
     })
   })
 
-  it(`body is invalid => return 500`, () => {
+  it(`body contains invalid locale format => return 400`, () => {
     cy.request({
       method: 'POST',
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_PROPERTIES_ROUTE}`,
