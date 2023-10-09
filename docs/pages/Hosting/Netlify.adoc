@@ -1,0 +1,43 @@
+= Hosting with Netlify
+
+//TODO: Resolve URL to chapters (search for #)
+//TODO: place Netlify link
+The Introduction#Deployment chapter describes how to create and run the PWA template in a container. This is a good approach, which could also be used in production setups, but it does not fully utilize the capabilities of the Nuxt 3 framework.
+
+This section describes a serverless hosting solution based on our recommended hoster Netlify. It includes a detailed guide explaining how to create a PWA template deployment in a few steps.
+
+. <<Introduction>>
+- <<Preconditions>>
+- <<Disclaimer>>
+
+. <<Initial Setup Guide>>
+- <<Fork Repository>>
+- <<Create & Synchronize Netlify Account>>
+- <<Create & Configure Site>>
+- <<Initial Deployment>>
+
+== Introduction
+
+//TODO: rewrite
+We recommend Netlify hosting for the nuxt PWA-template. Netlify has some pretty nice features that make development on github a breeze, we haven't fully incorporated these features into our workflow yet, but we're getting there. The main reason is that we have had problems deploying to netlify until very recently so we're only getting started with using netlify in our development process.
+
+=== Preconditions
+//TODO: rewrite
+Github account with access to the Crownpeak-PWA-Template repo or any project you'd like to deploy.
+
+Go to Netlify, click sign up and choose to log in with your github account.
+
+=== Disclaimer
+//TODO: rewrite
+write disclaimer that netlify ui does not belong to us (- is subject to change)
+
+== Initial Setup Guide
+//TODO: fill with content
+=== Fork Repository
+//TODO: fill with content
+=== Create & Synchronize Netlify Account
+//TODO: fill with content
+=== Create & Configure Site
+//TODO: fill with content
+=== Initial Deployment
+//TODO: fill with content
