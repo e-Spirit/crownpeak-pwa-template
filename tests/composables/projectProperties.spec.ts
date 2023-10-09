@@ -81,6 +81,9 @@ describe('useProjectProperties', () => {
       afterEach(() => {
         vi.restoreAllMocks()
       })
+      it('throws', () => {
+        expect(() => handleFetchProjectPropertiesError('always')).toThrow()
+      })
       it('throws an error 500 internal server error if it catches a generic error of type Error', () => {
         try {
           handleFetchProjectPropertiesError(new Error('Generic error'))
