@@ -28,7 +28,12 @@ export default defineEventHandler(async (event) => {
     } else if (err instanceof Error) {
       throw createError({
         statusCode: 500,
-        message: err.message || ServerErrors.UNKNOWN
+        message: err.message
+      })
+    } else {
+      throw createError({
+        statusCode: 500,
+        message: ServerErrors.UNKNOWN
       })
     }
   }
