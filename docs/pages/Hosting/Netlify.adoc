@@ -1,5 +1,7 @@
 = Hosting with Netlify
 
+:moduledir: ../..
+:imagesdir: {moduledir}/images/Hosting
 //TODO: Resolve URL to chapters (search for #)
 //TODO: place Netlify link
 The Introduction#Deployment chapter describes how to create and run the PWA template in a container. This is a good approach, which could also be used in production setups, but it does not fully utilize the capabilities of the Nuxt 3 framework.
@@ -7,8 +9,7 @@ The Introduction#Deployment chapter describes how to create and run the PWA temp
 This section describes a serverless hosting solution based on our recommended hoster Netlify. It includes a detailed guide explaining how to create a PWA template deployment in a few steps.
 
 . <<Introduction>>
-- <<Preconditions>>
-- <<Disclaimer>>
+. <<Preconditions>>
 
 . <<Initial Setup Guide>>
 - <<Fork Repository>>
@@ -16,28 +17,41 @@ This section describes a serverless hosting solution based on our recommended ho
 - <<Create & Configure Site>>
 - <<Initial Deployment>>
 
+. <<Disclaimer>>
+
 == Introduction
+//TODO: link to edge functions
+Our reference PWA Template can be hosted very easily.
+Particularly good performance is achieved when the application uses Edge Functions.
+We recommend Netlify as a hosting partner, as the worldwide performance is particularly good here.
+Netlify is a cloud-based platform that simplifies and automates the process of deploying and managing websites and web applications. It offers a comprehensive set of tools and services that enable developers to build, deploy, and scale their projects quickly and efficiently.
+In this chapter we will explain step by step how our reference project on Github can be hosted on Netlify.
 
-//TODO: rewrite
-We recommend Netlify hosting for the nuxt PWA-template. Netlify has some pretty nice features that make development on github a breeze, we haven't fully incorporated these features into our workflow yet, but we're getting there. The main reason is that we have had problems deploying to netlify until very recently so we're only getting started with using netlify in our development process.
+== Preconditions
+//TODO: replace URLs and Product names
+In order to follow the guide below without any problems, there are some preconditions that must be met.
 
-=== Preconditions
-//TODO: rewrite
-Github account with access to the Crownpeak-PWA-Template repo or any project you'd like to deploy.
-
-Go to Netlify, click sign up and choose to log in with your github account.
-
-=== Disclaimer
-//TODO: rewrite
-write disclaimer that netlify ui does not belong to us (- is subject to change)
+. A GitHub account is required
+. Access to content in FirstSpirit CaaS is required
+. Matching data in Navigation Service is required
 
 == Initial Setup Guide
-//TODO: fill with content
+
 === Fork Repository
 //TODO: fill with content
+. navigate to https://github.com/e-Spirit/crownpeak-pwa-template/fork
+. select an owner and a repository name for your fork
+
+image:github-fork-repo.png[Create fork an GitHub]
+
 === Create & Synchronize Netlify Account
 //TODO: fill with content
 === Create & Configure Site
 //TODO: fill with content
 === Initial Deployment
 //TODO: fill with content
+
+== Disclaimer
+The guide here shows screenshots from the Netlify and GitHub UI.
+User interface representations are subject to change.
+Crownpeak therefore cannot guarantee the accuracy of any third-party UI elements shown here.

@@ -46,8 +46,10 @@ in the context of the FirstSpirit headless approach.
 . xref:docs/pages/TPP_SNAP.adoc[Working with TPP_SNAP]
 . xref:docs/pages/CustomSitemap.adoc[Creating a Sitemap]
 . xref:docs/pages/Hosting/Netlify.adoc[Hosting with Netlify]
-.. xref:docs/pages/Hosting/Netlify#introduction[Introduction]
-.. xref:docs/pages/Hosting/Netlify#initial-setup-guide.adoc[Initial Setup Guide]
+.. xref:docs/pages/Hosting/Netlify.adoc#introduction[Introduction]
+.. xref:docs/pages/Hosting/Netlify.adoc#preconditions[Preconditions]
+.. xref:docs/pages/Hosting/Netlify.adoc#initial-setup-guide[Initial Setup Guide]
+.. xref:docs/pages/Hosting/Netlify.adoc#disclaimer[Disclaimer]
 . xref:docs/pages/MetaTags.adoc[Meta Tags]
 
 == Legal Notices
