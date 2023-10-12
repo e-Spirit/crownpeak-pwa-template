@@ -36,6 +36,7 @@ In order to follow the guide below without any problems, there are some precondi
 
 == Initial Setup Guide
 After this guide, you are the owner of your own PWA Template repository which builds are hosted in Netlify.
+If you are missing contextual information to any step, you might find it here https://docs.netlify.com/get-started/.
 
 === Fork Repository
 . Navigate to https://github.com/e-Spirit/crownpeak-pwa-template/fork
@@ -83,6 +84,7 @@ The next chapter will cover the last steps.
 . Your build is using no runtime configuration - You can change this in _Site configuration_ -> _Environment variables_ -> _Add a variable_ -> _Import from a .env file_
 image:10-add-variable.png[Add environment variables]
 . Paste the content of the fork's .env file the matching input field and click `Import variables`
+. To get the values for your .env file, you can follow xref:docs/pages/Configuration.adoc[Configuration] chapter
 image:11-import-env.png[Import environment variables]
 . The changed configuration needs to be rolled out - Navigate to `Deploys`
 . Click on `Trigger deploy`
