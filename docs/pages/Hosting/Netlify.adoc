@@ -1,12 +1,13 @@
 = Hosting with Netlify
-
+:hide-uri-scheme:
 :moduledir: ../..
 :imagesdir: {moduledir}/images/Hosting
-//TODO: Resolve URL to chapters (search for #)
-//TODO: place Netlify link
-The Introduction#Deployment chapter describes how to create and run the PWA template in a container. This is a good approach, which could also be used in production setups, but it does not fully utilize the capabilities of the Nuxt 3 framework.
 
-This section describes a serverless hosting solution based on our recommended hoster Netlify. It includes a detailed guide explaining how to create a PWA template deployment in a few steps.
+The xref:docs/pages/Introduction.adoc#deployment[Deployment] chapter describes how to create and run the PWA template in a container.
+This is a good approach, which could also be used in production setups, but it does not fully utilize the capabilities of the https://nuxt.com[Nuxt 3] framework.
+
+This section describes a serverless hosting solution based on our recommended hoster https://www.netlify.com[Netlify].
+It includes a detailed guide explaining how to create a PWA template deployment in a few steps.
 
 . <<Introduction>>
 . <<Preconditions>>
@@ -14,32 +15,31 @@ This section describes a serverless hosting solution based on our recommended ho
 . <<Initial Setup Guide>>
 .. <<Fork Repository>>
 .. <<Create & Synchronize Netlify Account>>
-.. <<Create & Configure Site>>
-.. <<Initial Deployment>>
+.. <<Create Site>>
+.. <<Configure and deploy Site>>
 
 . <<Disclaimer>>
 
 == Introduction
-//TODO: link to edge functions
 Our reference PWA Template can be hosted very easily.
-Particularly good performance is achieved when the application uses Edge Functions.
+Particularly good performance is achieved when the application uses https://docs.netlify.com/edge-functions/overview/[Edge Functions].
 We recommend Netlify as a hosting partner, as the worldwide performance is particularly good here.
 Netlify is a cloud-based platform that simplifies and automates the process of deploying and managing websites and web applications. It offers a comprehensive set of tools and services that enable developers to build, deploy, and scale their projects quickly and efficiently.
 In this chapter we will explain step by step how our reference project on Github can be hosted on Netlify.
 
 == Preconditions
-//TODO: replace URLs and Product names
 In order to follow the guide below without any problems, there are some preconditions that must be met.
 
-. A GitHub account is required
-. Access to content in FirstSpirit CaaS is required
-. Matching data in Navigation Service is required
+. A https://github.com/[GitHub] account is required
+. Access to content in https://docs.e-spirit.com/module/caas-platform/CaaS_Platform_Documentation_EN.html[FirstSpirit CaaS] is required
+. Matching data in https://navigationservice.e-spirit.cloud/docs/user/en/documentation.html[Navigation Service] is required
 
 == Initial Setup Guide
+After this guide, you are the owner of your own PWA Template repository which builds are hosted in Netlify.
 
 === Fork Repository
 . Navigate to https://github.com/e-Spirit/crownpeak-pwa-template/fork
-. Login with your GitHub credentials
+. Login with your https://github.com/[GitHub] credentials
 . Select an owner and a repository name for your fork
 . You only need to fork the main branch, so keep this checkbox selected
 
@@ -47,12 +47,11 @@ In order to follow the guide below without any problems, there are some precondi
 image::github-fork-repo.png[Create fork on GitHub]
 
 === Create & Synchronize Netlify Account
-//TODO: place Netlify link
-After these steps, you will have a Netlify account, that is linked to your GitHub account.
+After these steps, you will have a https://www.netlify.com[Netlify] account, that is linked to your GitHub account.
 
 . Navigate to https://www.netlify.com and click to sign up
 . Select `Sign up with GitHub` and (login with your credentials, if required)
-. Authorize Netlify to access your GitHub account
+. Authorize Netlify to access your https://github.com/[GitHub] account
 image:01-auth.png[Authorize Netlify Auth]
 . Follow Netlify's UI until you can choose to deploy your first project
 
@@ -60,8 +59,8 @@ image:01-auth.png[Authorize Netlify Auth]
 .Screenshot - Deploy your first project
 image::02-deploy-from-github.png[Deploy your first project]
 
-=== Create & Configure Site
-This chapter lists items that are necessary to create a site on Netlify.
+=== Create Site
+This chapter lists items that are necessary to create a site on https://github.com/[GitHub].
 
 . Click on `Deploy with GitHub` (compare <<fig_deploy_from_github>>)
 . You need to `Authorize Netlify` to see what GitHub resources (e.g. which repositories) you have access to
@@ -75,11 +74,24 @@ image:08-build-settings.png[Build settings]
 . Click on `Deploy my-pwa-template` to initiate the first build
 . After a while you should see a successfully _Published_ build like in the picture below
 image:09-overview.png[Site Overview]
+
+At this point the site for your fork has been created, but it is still missing a working runtime configuration.
+The next chapter will cover the last steps.
+
+=== Configure and deploy Site
+. Open the `Site configuration` view of
 . Your build is using no runtime configuration - You can change this in _Site configuration_ -> _Environment variables_ -> _Add a variable_ -> _Import from a .env file_
 image:10-add-variable.png[Add environment variables]
+. Paste the content of the fork's .env file the matching input field and click `Import variables`
+image:11-import-env.png[Import environment variables]
+. The changed configuration needs to be rolled out - Navigate to `Deploys`
+. Click on `Trigger deploy`
+image:13-redeploy.png[Site deploys]
+. When the deployment finished successfully, you should be able to `Open production deploy`
+image:14-open-deploy.png[Published notification]
 
-=== Initial Deployment
-//TODO: fill with content
+Now you have created a site for your PWA template.
+You can use it as a playground or as a foundation for a company scale hosting solution.
 
 == Disclaimer
 The guide here shows screenshots from the Netlify and GitHub UI.
