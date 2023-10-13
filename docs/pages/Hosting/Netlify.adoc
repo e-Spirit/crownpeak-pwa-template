@@ -39,7 +39,7 @@ After this guide, you are the owner of your own PWA Template repository which bu
 If you are missing contextual information to any step, you might find it here https://docs.netlify.com/get-started/.
 The following button will deploy a PWA template instance on Netlify, streamlining the onboarding process for web developers and making it easier for them to get started. You can use it and continue to the guide at chapter <<Configure and deploy Site>>.
 
-image::https://www.netlify.com/img/deploy/button.svg[Deploy to Netlify, link="https://app.netlify.com/start/deploy?repository=https://github.com/e-Spirit/crownpeak-pwa-template.git"]
+image::https://www.netlify.com/img/deploy/button.svg[Deploy to Netlify, link="https://app.netlify.com/start/deploy?repository=https://github.com/e-Spirit/crownpeak-pwa-template"]
 
 === Fork Repository
 . Navigate to https://github.com/e-Spirit/crownpeak-pwa-template/fork
