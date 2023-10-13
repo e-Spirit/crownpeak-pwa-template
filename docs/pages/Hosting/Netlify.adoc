@@ -48,7 +48,7 @@ image::https://www.netlify.com/img/deploy/button.svg[Deploy to Netlify, link="ht
 . You only need to fork the main branch, so keep this checkbox selected
 
 .Screenshot - Create fork on GitHub
-image::github-fork-repo.png[Create fork on GitHub]
+image::00-github-fork-repo.png[Create fork on GitHub]
 
 === Create & Synchronize Netlify Account
 After these steps, you will have a https://www.netlify.com[Netlify] account, that is linked to your GitHub account.
