@@ -1,7 +1,7 @@
 = Netlify site configuration
 
 :moduledir: ..
-:imagesdir: {moduledir}/images/netlify
+:imagesdir: {moduledir}/images/Hosting
 
 . <<Introduction>>
 . <<Continuous Deployment>>
@@ -75,7 +75,7 @@ This variable should be set to the same value over all deployment contexts to av
 We recommend using sites to separate these two modes and name your sites accordingly.
 The main reason is that you cannot configure a site on netlify to generate two different deployments from the same branch.
 
-=== Other variables
+=== Other Variables
 
 Of the other environment variables the following are the ones that need to be set individually for each deployment context.
 
