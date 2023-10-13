@@ -1,6 +1,6 @@
 = Netlify site configuration
 
-:moduledir: ..
+:moduledir: ../..
 :imagesdir: {moduledir}/images/Hosting
 
 . <<Introduction>>
