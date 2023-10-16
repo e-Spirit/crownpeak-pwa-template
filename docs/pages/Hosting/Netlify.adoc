@@ -96,8 +96,7 @@ image:13-redeploy.png[Site deploys]
 image:14-open-deploy.png[Published notification]
 
 Now you have created a site for your PWA template.
-You can use it as a playground or as a foundation for a company scale hosting solution.
-//TODO: @Emre replace with correct chapter
+You can use it as a playground or as a foundation for a xref:./ProjectToSiteMapping.adoc[company scale hosting solution].
 
 To get more details on how to map your deployments for an enterprise scaled project, see chapter REPLACE ME.
 
