@@ -50,6 +50,10 @@ in the context of the FirstSpirit headless approach.
 .. xref:docs/pages/Hosting/Netlify.adoc#preconditions[Preconditions]
 .. xref:docs/pages/Hosting/Netlify.adoc#initial-setup-guide[Initial Setup Guide]
 .. xref:docs/pages/Hosting/Netlify.adoc#disclaimer[Disclaimer]
+. xref:docs/pages/Hosting/ProjectToSiteMapping.adoc[Mapping FirstSpirit Project Stages to Netlify Sites]
+.. xref:docs/pages/Hosting/ProjectToSiteMapping.adoc#introduction[Introduction]
+.. xref:docs/pages/Hosting/ProjectToSiteMapping.adoc#continuous-deployment[Continuous Deployment]
+.. xref:docs/pages/Hosting/ProjectToSiteMapping.adoc#environment-variables[Environment Variables]
 . xref:docs/pages/MetaTags.adoc[Meta Tags]
 
 == Legal Notices

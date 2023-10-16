@@ -1,4 +1,4 @@
-= Netlify site configuration
+= Mapping FirstSpirit Project Stages to Netlify Sites
 
 :moduledir: ../..
 :imagesdir: {moduledir}/images/Hosting
@@ -12,10 +12,11 @@
 
 == Introduction
 
-This page is an overview over the various site configuration options netlify offers. 
+This page provides an overview over the various site configuration options netlify offers. 
 We will go over the environment variables needed to deploy the PWA template as the configuration is already covered by the https://docs.netlify.com/[netlify documentation].
 We will also go over the continuous deployment configuration as it will be needed for mapping the various deployment stages (dev/qa/prod) of your FirstSpirit Projects to Netlify sites.
-We recommend using at least two sites one for edit or preview mode and one for release mode (as defined by the <<MODE>> environment variable).
+We recommend using at least two sites. 
+One for edit or preview mode and one for release mode (as defined by the <<MODE>> environment variable).
 You can model all of the stages using the netlify continuous deployment configurations in conjunction with setting the environment variables for each deployment context individually.
 image:NetlifySiteMapping.png[Overview over our recommended netlify deployment mapping architecture]
 The mapping relies on the deploy preview feature of netlify.
@@ -69,7 +70,7 @@ You can read all about these limits in the https://docs.netlify.com/edge-functio
 === MODE
 
 Set to `preview` the site will be deployed to pull data from the preview caas. 
-This is the site that contains and displays all the live data during editing.
+This is the site that contains and displays all of the preview data for editing.
 Set to `release` the site will be deployed to pull data from the released content. 
 This variable should be set to the same value over all deployment contexts to avoid confusion.
 We recommend using sites to separate these two modes and name your sites accordingly.
@@ -78,6 +79,7 @@ The main reason is that you cannot configure a site on netlify to generate two d
 === Other Variables
 
 Of the other environment variables the following are the ones that need to be set individually for each deployment context.
+xref:../Configuration.adoc[Netlify site configuration]
 
 - SNAP_URL
 - NAVIGATION_SERVICE
