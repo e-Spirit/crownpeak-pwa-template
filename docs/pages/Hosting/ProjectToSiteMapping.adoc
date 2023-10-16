@@ -78,8 +78,8 @@ The main reason is that you cannot configure a site on netlify to generate two d
 
 === Other Variables
 
-Of the other environment variables the following are the ones that need to be set individually for each deployment context.
-xref:../Configuration.adoc[Netlify site configuration]
+Of the other environment variables the following are the ones that need to be set individually for each deployment context. To find out what each of these variables represents please refer to the
+xref:../Configuration.adoc[configuration chapter]
 
 - SNAP_URL
 - NAVIGATION_SERVICE
