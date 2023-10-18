@@ -3,7 +3,24 @@
 The Crownpeak PWA Template is an example project and can be used as basis for developing your own PWA
 in the context of the FirstSpirit headless approach. 
 
-=== Table of contents
+. <<Disclaimer>>
+. <<Table of Contents>>
+. <<Legal Notices>>
+
+== Disclaimer
+
+This document is provided for information purposes only.
+Crownpeak Technology may change the contents hereof without notice.
+This document is not warranted to be error-free, nor subject to any
+other warranties or conditions, whether expressed orally or
+implied in law, including implied warranties and conditions of
+merchantability or fitness for a particular purpose. Crownpeak Technology
+specifically disclaims any liability with respect to this document
+and no contractual obligations are formed either directly or
+indirectly by this document. The technologies, functionality, services,
+and processes described herein are subject to change without notice.
+
+== Table of Contents
 
 . xref:docs/pages/Introduction.adoc[Introduction]
 .. xref:docs/pages/Introduction.adoc#general[General]
@@ -60,16 +77,3 @@ in the context of the FirstSpirit headless approach.
 
 Crownpeak PWA Template is a product of http://www.e-spirit.com[Crownpeak Technology GmbH], Dortmund, Germany.
 The Crownpeak PWA Template is subject to the Apache-2.0 license.
-
-== Disclaimer
-
-This document is provided for information purposes only.
-Crownpeak Technology may change the contents hereof without notice.
-This document is not warranted to be error-free, nor subject to any
-other warranties or conditions, whether expressed orally or
-implied in law, including implied warranties and conditions of
-merchantability or fitness for a particular purpose. Crownpeak Technology
-specifically disclaims any liability with respect to this document
-and no contractual obligations are formed either directly or
-indirectly by this document. The technologies, functionality, services,
-and processes described herein are subject to change without notice.

@@ -1,4 +1,5 @@
 = Hosting with Netlify
+
 :hide-uri-scheme:
 :moduledir: ../..
 :imagesdir: {moduledir}/images/Hosting
@@ -9,6 +10,7 @@ This is a good approach, which could also be used in production setups, but it d
 This section describes a serverless hosting solution based on our recommended hoster https://www.netlify.com[Netlify].
 It includes a detailed guide explaining how to create a PWA template deployment in a few steps.
 
+. <<Disclaimer>>
 . <<Introduction>>
 . <<Preconditions>>
 
@@ -18,7 +20,10 @@ It includes a detailed guide explaining how to create a PWA template deployment 
 .. <<Create Site>>
 .. <<Configure and deploy Site>>
 
-. <<Disclaimer>>
+== Disclaimer
+The guide here shows screenshots from the Netlify and GitHub UI.
+User interface representations are subject to change.
+Crownpeak therefore cannot guarantee the accuracy of any third-party UI elements shown here.
 
 == Introduction
 Our reference PWA Template can be hosted very easily.
@@ -83,24 +88,19 @@ At this point the site for your fork has been created, but it is still missing a
 The next chapter will cover the last steps.
 
 === Configure and deploy Site
-. Open the `Site configuration` view of
-. Your build is using no runtime configuration - You can change this in _Site configuration_ -> _Environment variables_ -> _Add a variable_ -> _Import from a .env file_
+. Open the `Site configuration` view of netlify.
+. Your build is using no runtime configuration - You can change this in _Site configuration_ -> _Environment variables_ -> _Add a variable_ -> _Import from a .env file_.
 image:10-add-variable.png[Add environment variables]
-. Paste the content of the fork's .env file the matching input field and click `Import variables`
-. To get the values for your .env file, you can follow xref:docs/pages/Configuration.adoc[Configuration] chapter
-image:11-import-env.png[Import environment variables]
-. The changed configuration needs to be rolled out - Navigate to `Deploys`
-. Click on `Trigger deploy`
-image:13-redeploy.png[Site deploys]
+. Paste the content of the fork's .env file the matching input field and click `Import variables`.
+. To get the values for your .env file, you can follow xref:docs/pages/Configuration.adoc[Configuration] chapter.
+image:11-import-env.png[Import environment variables].
+. The changed configuration needs to be rolled out - Navigate to `Deploys`.
+. Click on `Trigger deploy`.
+image:13-redeploy.png[Site deploys].
 . When the deployment finished successfully, you should be able to `Open production deploy`
-image:14-open-deploy.png[Published notification]
+image:14-open-deploy.png[Published notification].
 
 Now you have created a site for your PWA template.
-You can use it as a playground or as a foundation for a xref:./ProjectToSiteMapping.adoc[company scale hosting solution].
+You can use it as a playground or as a foundation for a company scale hosting solution.
 
-To get more details on how to map your deployments for an enterprise scaled project, see chapter REPLACE ME.
-
-== Disclaimer
-The guide here shows screenshots from the Netlify and GitHub UI.
-User interface representations are subject to change.
-Crownpeak therefore cannot guarantee the accuracy of any third-party UI elements shown here.
+To get more details on how to map your deployments for an enterprise scaled project, see chapter xref:./ProjectToSiteMapping.adoc[Mapping FirstSpirit Project Stages to Netlify Sites].
