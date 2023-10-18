@@ -18,10 +18,12 @@
           />
         </transition>
 
-        <AppLayoutLanguageSwitch
-          class="ml-2"
-          @language-switch="mobileNavigationVisible = false"
-        />
+        <ClientOnly>
+          <AppLayoutLanguageSwitch
+            class="ml-2"
+            @language-switch="mobileNavigationVisible = false"
+          />
+        </ClientOnly>
         <button
           class="md:hidden"
           data-testid="mobileMenuButton"
