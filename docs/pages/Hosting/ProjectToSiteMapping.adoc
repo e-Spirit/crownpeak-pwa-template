@@ -1,0 +1,87 @@
+= Mapping FirstSpirit Project Stages to Netlify Sites
+
+:moduledir: ../..
+:imagesdir: {moduledir}/images/Hosting
+
+. <<Introduction>>
+. <<Continuous Deployment>>
+. <<Environment Variables>>
+.. <<NITRO_PRESET>>
+.. <<MODE>>
+.. <<Other Variables>>
+
+== Introduction
+
+This page provides an overview over the various site configuration options netlify offers. 
+We will go over the environment variables needed to deploy the PWA template as the configuration is already covered by the https://docs.netlify.com/[netlify documentation].
+We will also go over the continuous deployment configuration as it will be needed for mapping the various deployment stages (dev/qa/prod) of your FirstSpirit Projects to Netlify sites.
+We recommend using at least two sites. 
+One for edit or preview mode and one for release mode (as defined by the <<MODE>> environment variable).
+You can model all of the stages using the netlify continuous deployment configurations in conjunction with setting the environment variables for each deployment context individually.
+image:NetlifySiteMapping.png[Overview over our recommended netlify deployment mapping architecture]
+
+== Continuous Deployment
+
+We recommend setting the following properties here
+
+- *Production branch:* This property states which branch should be used to deploy the site. 
+This should be set to your main branch on github. 
+Or whichever branch contains your production level code.
+Whenever a new commit gets pushed onto your production branch, this deployment will get triggered automatically.
+- *Branch deploys:* Allows to define whether any branches on github should also deployed as part of this site. 
+You can add individual branches to be deployed (eg. staging). 
+We recommend adding your staging or qa branch to the list of individual branches.
+Combined with the next deployment context this is key to setting up a dev stage as well as a qa stage.
+- *Deploy previews:* A preview is deployed whenever a pull request is made against the production branch *or* branch deployment branches.
+and redeployed whenever a new commit gets pushed onto the branch. 
+Deploy previews are not only useful because they let you test your current development branch in the netlify environment.
+They also provide access to some of githubs collaboration tools as an overlay when visiting the deployed PWA.
+You can read more about the continuous deployment configuration options https://docs.netlify.com/site-deploys/overview/[here].
+We use this to set up our development environment or dev stage (see diagram above).
+The dev stage will consist of the pull requests made against the staging branch.
+
+[WARNING]
+====
+Keep in mind that a pull request from staging to production will trigger a deploy preview using a development environment. 
+Unfortunately there is no other way to set this up as netlify only allows one set of variables for the deploy preview deployment context.
+====
+
+image:continuous_deployment.png[Recommended settings]
+
+== Environment Variables
+
+You can and should use different environment variables for different deployments. 
+To edit environment variables choose edit from the dropdown menu in the top right corner of a variable subsection.
+image:edit_environment_variables.png[Edit environment variables]
+
+Next you can choose from various configuration options.
+image:edit_environment_variables2.png[Environment variable configuration options]
+Keep in mind that if you want to map your FirstSpirit project stages to the different deployment 
+contexts of netlify you need to choose the option "Different value for each deploy context" for most of your environment variables.
+
+=== NITRO_PRESET
+
+You can use this variable to deploy the site using netlify edge functions.
+In order to do this, set this variable to `netlify-edge`.
+Edge functions are considerably faster than normal functions but have a tighter restriction on app performance.
+You can read all about these limits in the https://docs.netlify.com/edge-functions/limits/[netlify docs].
+
+=== NUXT_MODE
+
+When this variable is set to `preview`, the site will be deployed to pull data from the preview caas. 
+This is the site that contains and displays all of the preview data for editing.
+If set to `release`, the site will be deployed to pull data from the released content. 
+This variable should be set to the same value over all deployment contexts to avoid confusion.
+We recommend using sites to separate these two modes and name your sites accordingly.
+The main reason is that you cannot configure a site on netlify to generate two different deployments from the same branch.
+
+=== Other Variables
+
+Of the other environment variables the following are the ones that need to be set individually for each deployment context.
+To find out what each of these variables represents please refer to the xref:../Configuration.adoc[configuration chapter]
+
+- SNAP_URL
+- NAVIGATION_SERVICE
+- CAAS
+- PROJECT_ID
+- API_KEY
