@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/e-Spirit/crownpeak-pwa-template/compare/v1.0.3...v1.0.4) (2023-10-18)
+
+
+### Bug Fixes
+
+* **hydration:** fix warning hydration ([#125](https://github.com/e-Spirit/crownpeak-pwa-template/issues/125)) ([c454a18](https://github.com/e-Spirit/crownpeak-pwa-template/commit/c454a18282b78b546debe6a4273d5a24e1105d7f))
+
 ## [1.0.3](https://github.com/e-Spirit/crownpeak-pwa-template/compare/v1.0.2...v1.0.3) (2023-10-09)
 
 
