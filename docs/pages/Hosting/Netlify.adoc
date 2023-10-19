@@ -92,7 +92,7 @@ The next chapter will cover the last steps.
 . Your build is using no runtime configuration - You can change this in _Site configuration_ -> _Environment variables_ -> _Add a variable_ -> _Import from a .env file_.
 image:10-add-variable.png[Add environment variables]
 . Paste the content of the fork's .env file the matching input field and click `Import variables`.
-. To get the values for your .env file, you can follow xref:docs/pages/Configuration.adoc[Configuration] chapter.
+. To get the values for your .env file, you can follow the xref:../Configuration.adoc[Configuration] chapter.
 image:11-import-env.png[Import environment variables].
 . The changed configuration needs to be rolled out - Navigate to `Deploys`.
 . Click on `Trigger deploy`.
