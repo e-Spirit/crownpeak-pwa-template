@@ -3,6 +3,7 @@ name: End to End Tests
 on:
   pull_request:
     branches: [main, alpha]
+  workflow_dispatch:
 
 env:
   NUXT_PUBLIC_MODE: ${{ secrets.NUXT_PUBLIC_MODE }}
