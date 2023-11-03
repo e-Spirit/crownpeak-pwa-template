@@ -22,7 +22,7 @@ declare module 'nuxt/schema' {
 
 export default defineAppConfig({
   logLevel: LogLevel.WARNING,
-  devMode: false,
+  devMode: true,
   defaultLocale: 'de_DE',
   enableEventStream: false
 })
