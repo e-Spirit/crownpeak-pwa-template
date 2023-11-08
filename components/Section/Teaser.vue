@@ -12,7 +12,7 @@
         class="text-4xl font-black uppercase"
         data-preview-id="#st_headline"
       >
-        <ElementsRichText :richtext="data.st_headline" />
+        {{ data.st_headline }}
       </h2>
       <p v-if="data.st_text" class="text-gray-600" data-preview-id="#st_text">
         <ElementsRichText :richtext="data.st_text" />
