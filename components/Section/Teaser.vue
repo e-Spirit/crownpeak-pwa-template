@@ -3,52 +3,54 @@
     class="grid items-center gap-8 py-10 md:grid-cols-2"
     data-testid="teaserSection"
   >
-    <div class="flex flex-col space-y-3 p-4 md:p-0">
-      <h3 class="text-xl text-gray-600" data-preview-id="#st_kicker">
-        {{ data.st_kicker }}
-      </h3>
-      <h2
-        v-if="data.st_headline"
-        class="text-4xl font-black uppercase"
-        data-preview-id="#st_headline"
-      >
-        {{ data.st_headline }}
-      </h2>
-      <p v-if="data.st_text" class="text-gray-600" data-preview-id="#st_text">
-        <ElementsRichText :richtext="data.st_text" />
-      </p>
-    </div>
-
-    <div
-      v-if="data?.st_picture && typeof data.st_picture !== 'string'"
-      class="relative"
-    >
-      <div
-        class="absolute -top-10 -z-10 hidden h-3/4 w-1/2 border-[12px] border-gray-100 md:block"
-      />
-
-      <div class="md:pl-10">
-        <ElementsImage
-          v-if="data?.st_picture"
-          :data-preview-id="data.st_picture?.previewId"
-          :image="data.st_picture"
-          :alt="data.st_picture_alt"
-        />
-      </div>
-    </div>
+    <ElementsTeaserText
+      v-if="data.st_layout.key === 'text-image'"
+      :headline="data.st_headline"
+      :text="data.st_text"
+    />
+    <ElementsTeaserImage
+      v-if="data.st_layout.key === 'text-image'"
+      :image="data.st_image"
+      :alt-text="data.st_image_alt_text"
+    />
+    <ElementsTeaserImage
+      v-if="data.st_layout.key === 'image-text'"
+      :image="data.st_image"
+      :alt-text="data.st_image_alt_text"
+    />
+    <ElementsTeaserText
+      v-if="data.st_layout.key === 'image-text'"
+      :headline="data.st_headline"
+      :text="data.st_text"
+    />
   </div>
 </template>
 <script setup lang="ts">
 import { Image, RichTextElement } from 'fsxa-api'
 
 interface Teaser {
-  st_headline: RichTextElement[]
-  st_jumbo_headline: string
-  st_kicker: string
-  st_picture?: Image
-  st_picture_alt?: string
+  st_headline: string
+  st_image?: Image
+  st_image_alt_text?: string
   st_text: RichTextElement[]
-  st_button: {
+  st_design: {
+    // dark mode is not supported yet
+    type: string
+    key: string
+    value: string
+    fsType: string
+    label: string
+    identifier: string
+  }
+  st_layout: {
+    type: string
+    key: string
+    value: string
+    fsType: string
+    label: string
+    identifier: string
+  }
+  st_cta: {
     data: {
       lt_button_text: string
       lt_internal: {
