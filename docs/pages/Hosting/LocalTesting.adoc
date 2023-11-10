@@ -1,0 +1,47 @@
+= Testing netlify deployments locally
+
+. <<Introduction>>
+. <<The Netlify CLI>>
+.. <<Installation>>
+.. <<Further Reading>>
+
+== Introduction
+While you can test your Netlify deployments by pushing to a branch and then deploying that branch to a preview URL, it's often useful to test your builds locally before pushing to a remote branch. 
+This can save you the time needed for creating and pushing a commit since an update on a dev server gets deployed upon saving a file.
+This is especially true if you're working on a feature branch that you don't want to push to a remote branch until it's ready for review.
+You can use the nuxt dev command to test your changes locally, but the advantage of using the netlify-cli is that it allows you to use the environment configuration from your netlify site.
+
+== The Netlify CLI
+The netlify cli is a command line tool that offers a variety of netlify features. 
+However we will only be focussing on the steps required to run the PWA locally in a netlify environment.
+
+=== Installation
+To install the netlify cli, run the following command in your terminal:
+[source, bash]
+----
+npm install netlify-cli -g
+----
+Next you need to login to netlify using the cli.
+[source, bash]
+----
+netlify login
+----
+This will open a browser window where you can login to netlify.
+
+Next you will have to link your site to the netlify cli. 
+You can do that by running the following command:
+[source, bash]
+----
+netlify link
+----
+
+Finally to run your site locally in a netlify environment, run the following command:
+[source, bash]
+----
+netlify dev
+----
+This will run the PWA template locally using the environment variables from the linked netlify site.
+This will allow you to store and share your environment variables across your team using the netlify web interface and create consistent development environments.
+
+=== Further Reading
+You can find more information about the netlify cli here: https://docs.netlify.com/cli/get-started/
