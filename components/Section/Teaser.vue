@@ -27,29 +27,15 @@
 </template>
 <script setup lang="ts">
 import { Image, RichTextElement } from 'fsxa-api'
+import { OptionType } from 'types'
 
 interface Teaser {
   st_headline: string
   st_image?: Image
   st_image_alt_text?: string
   st_text: RichTextElement[]
-  st_design: {
-    // dark mode is not supported yet
-    type: string
-    key: string
-    value: string
-    fsType: string
-    label: string
-    identifier: string
-  }
-  st_layout: {
-    type: string
-    key: string
-    value: string
-    fsType: string
-    label: string
-    identifier: string
-  }
+  st_design: OptionType
+  st_layout: OptionType
   st_cta: {
     data: {
       lt_button_text: string
