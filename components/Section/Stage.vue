@@ -11,7 +11,7 @@
 import { Image } from 'fsxa-api'
 import { InternalLink } from 'types'
 
-interface Stage {
+interface StageData {
   st_headline: string
   st_subheadline: string
   st_image: Image
@@ -19,5 +19,5 @@ interface Stage {
   st_cta?: InternalLink
 }
 
-const props = defineProps<{ data: Stage }>()
+const props = defineProps<{ data: StageData }>()
 </script>
