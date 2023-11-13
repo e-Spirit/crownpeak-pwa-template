@@ -23,11 +23,16 @@
       :headline="data.st_headline"
       :text="data.st_text"
     />
+    <ElementsInternalLink v-if="data.st_cta" :link-data="data.st_cta">
+      <button class="btn btn-primary">
+        {{ data.st_cta.data.lt_text }}
+      </button>
+    </ElementsInternalLink>
   </div>
 </template>
 <script setup lang="ts">
 import { Image, RichTextElement } from 'fsxa-api'
-import { OptionType } from 'types'
+import { InternalLink, OptionType } from 'types'
 
 interface Teaser {
   st_headline: string
@@ -36,15 +41,7 @@ interface Teaser {
   st_text: RichTextElement[]
   st_design: OptionType
   st_layout: OptionType
-  st_cta: {
-    data: {
-      lt_button_text: string
-      lt_internal: {
-        referenceId: string
-        referenceType: string
-      }
-    }
-  } | null
+  st_cta?: InternalLink
 }
 
 defineProps<{ data: Teaser }>()
