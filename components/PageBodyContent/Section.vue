@@ -28,12 +28,8 @@ const sectionComponent = computed(() => {
       return resolveComponent('SectionNewsOverview')
     case 'text_image':
       return resolveComponent('SectionTextImage')
-    case 'google_maps':
-      return resolveComponent('SectionGoogleMaps')
     case 'product_category_teaser':
       return resolveComponent('SectionProductCategoryTeaser')
-    case 'table':
-      return resolveComponent('SectionTable')
     case 'steps':
       return resolveComponent('SectionSteps')
     case 'latest_news':

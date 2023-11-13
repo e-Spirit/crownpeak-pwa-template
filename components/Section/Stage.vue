@@ -2,8 +2,8 @@
   <h2>{{ props.data.st_headline }}</h2>
   <h3>{{ props.data.st_subheadline }}</h3>
   <ElementsImage :image="props.data.st_image" />
-  <ElementsInternalLink :link-data="props.data.st_cta">
-    <p>{{ props.data.st_cta.data.lt_text }}</p>
+  <ElementsInternalLink v-if="data.st_cta" :link-data="data.st_cta">
+    <p>{{ data.st_cta.data.lt_text }}</p>
     <!-- TODO: add arrow icon here -->
   </ElementsInternalLink>
 </template>
@@ -16,7 +16,7 @@ interface Stage {
   st_subheadline: string
   st_image: Image
   st_image_alt_text?: string
-  st_cta: InternalLink
+  st_cta?: InternalLink
 }
 
 const props = defineProps<{ data: Stage }>()
