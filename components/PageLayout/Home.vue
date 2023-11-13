@@ -4,15 +4,16 @@
       v-if="page.data && page.data['pt_slider']"
       :data="page.data['pt_slider']"
     />
-    <PageBody
-      v-for="pageBody in page.children"
-      :key="pageBody.previewId"
-      :page-body="pageBody"
-    />
+    <PageBody :page-body="top" />
+    <PageBody :page-body="content" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { Page } from 'fsxa-api'
-defineProps<{ page: Page }>()
+const props = defineProps<{ page: Page }>()
+const top = props.page.children.find((pagebody) => pagebody.name === 'top')!
+const content = props.page.children.find(
+  (pagebody) => pagebody.name === 'content'
+)!
 </script>
