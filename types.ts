@@ -1,4 +1,4 @@
-import { Image, DataEntry, RichTextElement, Section } from 'fsxa-api'
+import { Image, DataEntry, RichTextElement, Dataset } from 'fsxa-api'
 export enum ServerErrors {
   MISSING_LOCALE = 'Please specify a locale in the body through: e.g. "locale": "de_DE" ',
   UNKNOWN_ROUTE = 'Could not map given route and method.',
@@ -82,4 +82,14 @@ export interface StepsSectionData {
   ]
   st_subline: string
   st_text: RichTextElement[]
+}
+
+export interface ProductData {
+  tt_categories: Dataset[]
+  tt_description: RichTextElement[]
+  tt_image: Image
+  tt_image_alt_text: string
+  tt_name: string
+  tt_price: string
+  tt_teaserText: string
 }

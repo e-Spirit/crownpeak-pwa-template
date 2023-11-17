@@ -146,13 +146,16 @@ const activeItem = ref<'content' | 'dataset' | 'products' | 'currentPage'>(
 )
 
 const devContent = computed(() => {
-  if (activeItem.value === 'dataset') {
-    return currentDataset.value
-  } else if (activeItem.value === 'products') {
-    return products.value
-  } else if (activeItem.value === 'currentPage') {
-    return currentPage.value
-  } else return props.content
+  switch (activeItem.value) {
+    case 'content':
+      return props.content
+    case 'products':
+      return products.value
+    case 'currentPage':
+      return currentPage.value
+    case 'dataset':
+      return currentDataset.value
+  }
 })
 
 const highglightedDevContent = computed(() => {
