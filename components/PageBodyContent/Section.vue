@@ -24,8 +24,8 @@ const { $isPreviewMode } = useNuxtApp()
 
 const sectionComponent = computed(() => {
   switch (props.content.sectionType) {
-    case 'news_overview':
-      return resolveComponent('SectionNewsOverview')
+    case 'smartliving.product_overview':
+      return resolveComponent('SectionProductOverview')
     case 'text_image':
       return resolveComponent('SectionTextImage')
     case 'product_category_teaser':
