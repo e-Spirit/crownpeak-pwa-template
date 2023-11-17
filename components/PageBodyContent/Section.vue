@@ -44,7 +44,7 @@ const sectionComponent = computed(() => {
       return resolveComponent('SectionInterestingFacts')
     case 'products.category_products':
       return resolveComponent('SectionProductCategory')
-    case 'products.product':
+    case 'smartliving.product':
       return resolveComponent('SectionProduct')
     case 'teaser':
       return resolveComponent('SectionTeaser')

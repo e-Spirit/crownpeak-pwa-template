@@ -4,6 +4,7 @@
       v-for="product in products"
       :key="product.id"
       :data="(product.data as ProductData)"
+      :product-route="product.route"
     />
   </div>
 </template>
