@@ -55,27 +55,31 @@ interface StageData {
   st_cta?: InternalLink
 }
 
-function useBreakpoints() {
-  const windowWidth = ref(window.innerWidth)
-
-  const onWidthChange = () => (windowWidth.value = window.innerWidth)
-  onMounted(() => window.addEventListener('resize', onWidthChange))
-  onUnmounted(() => window.removeEventListener('resize', onWidthChange))
-
-  const res = computed(() => {
-    if (windowWidth.value < 550) return '9x16_M'
-    if (windowWidth.value >= 550 && windowWidth.value < 1200) return '16x6_L'
-    if (windowWidth.value >= 1200) return '16x6_XL'
-    return '16x9_L' // This is an unreachable line, simply to keep eslint happy.
-  })
-
-  return res
-}
-
 const props = defineProps<{ data: StageData }>()
-const sectionBackground = {
-  backgroundImage: `url(${
-    props.data.st_image.resolutions[useBreakpoints().value]?.url
-  })`
-}
+
+const viewport = useViewport()
+const sectionBackground = ref({
+  backgroundImage: `url(${props.data.st_image.resolutions['16x6_XL']?.url})`
+})
+watch(viewport.breakpoint, (newBreakpoint) => {
+  const res = computed(() => {
+    switch (newBreakpoint) {
+      case 'desktopWide':
+        return '16x6_XL'
+      case 'desktopMedium':
+        return '16x6_L'
+      case 'desktop':
+        return '16x6_L'
+      case 'tablet':
+        return '16x6_L'
+      case 'mobileWide':
+        return '9x16_M'
+      default:
+        return '16x6_L'
+    }
+  })
+  sectionBackground.value = {
+    backgroundImage: `url(${props.data.st_image.resolutions[res.value]?.url})`
+  }
+})
 </script>
