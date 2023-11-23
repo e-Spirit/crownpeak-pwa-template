@@ -1,10 +1,10 @@
 <template>
   <div>
-    <p class="tracking-px text-text mb-7 text-sm font-semibold uppercase">
+    <p class="tracking-px mb-7 text-sm font-semibold uppercase text-text">
       {{ data.st_subline }}
     </p>
     <h2
-      class="tracking-px-n font-heading text-primary mb-8 text-3xl font-bold leading-none md:text-4xl"
+      class="tracking-px-n mb-8 font-heading text-3xl font-bold leading-none text-primary md:text-4xl"
     >
       {{ data.st_headline }}
     </h2>

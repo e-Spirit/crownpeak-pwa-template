@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid items-center gap-8 py-10 md:grid-cols-2"
+    class="container mx-auto grid items-center gap-8 px-4 py-10 md:grid-cols-2"
     data-testid="teaserSection"
   >
     <ElementsTeaserText

@@ -1,6 +1,5 @@
 <template>
   <NuxtLink
-    class="underline"
     :to="internalLinkRoute"
     @click="setActiveNavigationItem(linkedNavItem!)"
   >

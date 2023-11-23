@@ -1,7 +1,7 @@
 <template>
   <div v-if="image && typeof image !== 'string'" class="relative">
     <div
-      class="absolute -top-10 -z-10 hidden h-3/4 w-1/2 border-[12px] border-gray-100 md:block"
+      class="h-3/4 absolute -top-10 -z-10 hidden w-1/2 border-[12px] border-gray-100 md:block"
     />
 
     <div class="md:pl-10">

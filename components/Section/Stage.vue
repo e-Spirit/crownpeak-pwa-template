@@ -8,7 +8,7 @@
         class="rounded-4xl bg-black bg-opacity-80 px-12 pb-9 pt-12 md:max-w-xl"
       >
         <h2
-          class="font-heading tracking-px-n mb-4 text-5xl font-bold leading-tight text-white md:text-6xl"
+          class="tracking-px-n mb-4 font-heading text-5xl font-bold leading-tight text-white md:text-6xl"
         >
           {{ props.data.st_headline }}
         </h2>
@@ -75,7 +75,7 @@ watch(viewport.breakpoint, (newBreakpoint) => {
       case 'mobileWide':
         return '9x16_M'
       default:
-        return '16x6_L'
+        return '16x6_XL'
     }
   })
   sectionBackground.value = {

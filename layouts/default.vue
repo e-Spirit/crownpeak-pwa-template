@@ -4,7 +4,7 @@
       <AppLayoutLoading v-if="pending" />
     </ClientOnly>
     <AppLayoutHeader />
-    <div class="container relative mx-auto flex-grow">
+    <div>
       <slot />
     </div>
     <ClientOnly>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2
-      class="tracking-px-n font-heading text-primary mb-8 text-3xl font-bold leading-none md:text-4xl"
+      class="tracking-px-n mb-8 font-heading text-3xl font-bold leading-none text-primary md:text-4xl"
     >
       {{ props.data.st_headline }}
     </h2>
