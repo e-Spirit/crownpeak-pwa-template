@@ -1,6 +1,7 @@
 <template>
   <section
     class="overflow-hidden bg-black bg-cover bg-fixed bg-center bg-no-repeat py-28"
+    data-testid="stageSection"
     :style="sectionBackground"
   >
     <div class="container mx-auto px-4">

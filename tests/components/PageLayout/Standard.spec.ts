@@ -14,7 +14,7 @@ describe('StandardPageLayout', () => {
   })
   it('render with pageBody => render pageBody and Header', () => {
     const page = createPage()
-    const pageBody = createPageBody()
+    const pageBody = createPageBody({ name: 'top' })
     page.children.push(pageBody)
     const { getByTestId } = render(Standard, {
       global: renderConfig.global,
@@ -22,6 +22,6 @@ describe('StandardPageLayout', () => {
     })
 
     expect(getByTestId('headerSection')).toBeTruthy()
-    expect(getByTestId('pageBody')).toBeTruthy()
+    expect(getByTestId('pageBody-top')).toBeTruthy()
   })
 })

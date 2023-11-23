@@ -12,7 +12,7 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_ELEMENT_ROUTE}`, () => {
     cy.visit(baseURL)
   })
   it(`body contains existing id => return 200 and queried element`, () => {
-    const id = 'ec121aab-e29a-4e35-b97a-3dc33bb50d25'
+    const id = 'b2b3af30-1c13-4da2-a675-508c7ffd93cd'
     cy.request({
       method: 'POST',
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_ELEMENT_ROUTE}`,
@@ -63,7 +63,7 @@ describe(`post to /api${FSXAProxyRoutes.FETCH_BY_FILTER_ROUTE}`, () => {
     cy.visit(baseURL)
   })
   it(`query existing elements => return 200 and filtered elements`, () => {
-    const id = 'ec121aab-e29a-4e35-b97a-3dc33bb50d25'
+    const id = 'b2b3af30-1c13-4da2-a675-508c7ffd93cd'
     cy.request({
       method: 'POST',
       url: `${baseURL}/api${FSXAProxyRoutes.FETCH_BY_FILTER_ROUTE}`,

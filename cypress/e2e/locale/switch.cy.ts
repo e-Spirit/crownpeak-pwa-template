@@ -5,25 +5,25 @@ describe(`locale switching`, () => {
     cy.visit(baseURL)
   })
 
-  it('change language on /Startseite/ => redirect /Home/', () => {
-    cy.visit(`${baseURL}/Startseite/`)
+  it('change language on /startseite/ => redirect /homepage/', () => {
+    cy.visit(`${baseURL}/startseite/`)
 
     cy.get("div[data-testid='languagesDropdown']").invoke('show')
     cy.get("button[data-testid='en_GB-switch']").click()
 
-    cy.url().should('eq', `${baseURL}/Home/`)
+    cy.url().should('eq', `${baseURL}/homepage/`)
   })
 
   it('change language, navigate back => change language back', () => {
-    cy.visit(`${baseURL}/Startseite/`)
+    cy.visit(`${baseURL}/startseite/`)
 
     cy.get("div[data-testid='languagesDropdown']").invoke('show')
     cy.get("button[data-testid='en_GB-switch']").click()
 
-    cy.url().should('eq', `${baseURL}/Home/`)
+    cy.url().should('eq', `${baseURL}/homepage/`)
     cy.go('back')
 
-    cy.url().should('eq', `${baseURL}/Startseite/`)
+    cy.url().should('eq', `${baseURL}/startseite/`)
 
     cy.get("div[data-testid='languagesDropdown']").invoke('show')
     cy.get("button[data-testid='de_DE-switch']")
@@ -32,18 +32,18 @@ describe(`locale switching`, () => {
   })
 
   it('change language => change content', () => {
-    cy.visit(`${baseURL}/Startseite/`)
+    cy.visit(`${baseURL}/startseite/`)
 
     cy.get("div[data-testid='languagesDropdown']").invoke('show')
     cy.get("button[data-testid='en_GB-switch']").click()
 
-    cy.url().should('eq', `${baseURL}/Home/`)
+    cy.url().should('eq', `${baseURL}/homepage/`)
 
     cy.get('body').should('contain', 'Welcome')
   })
 
   it('change language => highlight active language', () => {
-    cy.visit(`${baseURL}/Startseite/`)
+    cy.visit(`${baseURL}/startseite/`)
     cy.get("div[data-testid='languagesDropdown']").invoke('show')
     cy.get("button[data-testid='de_DE-switch']")
       .should('be.visible')
@@ -55,7 +55,7 @@ describe(`locale switching`, () => {
     cy.get("div[data-testid='languagesDropdown']").invoke('show')
     cy.get("button[data-testid='en_GB-switch']").click()
 
-    cy.url().should('eq', `${baseURL}/Home/`)
+    cy.url().should('eq', `${baseURL}/homepage/`)
 
     cy.get("div[data-testid='languagesDropdown']").invoke('show')
     cy.get("button[data-testid='en_GB-switch']")

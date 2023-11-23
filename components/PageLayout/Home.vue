@@ -1,9 +1,5 @@
 <template>
   <div data-testid="homePageLayout">
-    <SectionSlider
-      v-if="page.data && page.data['pt_slider']"
-      :data="page.data['pt_slider']"
-    />
     <PageBody :page-body="top" />
     <PageBody :page-body="content" />
   </div>

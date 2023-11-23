@@ -1,5 +1,10 @@
 <template>
-  <section v-if="currentDataset" class="overflow-x-hidden py-12 md:py-32">
+  <section
+    v-if="currentDataset"
+    class="overflow-x-hidden py-12 md:py-32"
+    data-testid="productSection"
+    :data-preview-id="data['previewId']"
+  >
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap lg:flex-nowrap">
         <div class="w-full lg:w-1/2">
@@ -29,7 +34,10 @@
               </p>
             </div>
             <div class="relative my-12 w-full lg:my-0 lg:w-1/2">
-              <ElementsImage :image="currentDataset.data['tt_image']" />
+              <ElementsImage
+                v-if="currentDataset.data['tt_image']"
+                :image="currentDataset.data['tt_image']"
+              />
             </div>
           </div>
         </div>

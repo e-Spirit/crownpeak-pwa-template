@@ -12,18 +12,19 @@ describe('HomePageLayout', () => {
   beforeEach(() => {
     cleanup()
   })
-  it('render with pageBody => render pageBody and Slider', () => {
+  it('render with pageBody => render 2 pageBodies', () => {
     const page = createPage()
-    const pageBody = createPageBody()
-    page.children.push(pageBody)
-    page.data['pt_slider'] = []
+    const pageBodyTop = createPageBody({ name: 'top' })
+    const pageBodyContent = createPageBody({ name: 'content' })
+    page.children.push(pageBodyTop)
+    page.children.push(pageBodyContent)
 
     const { getByTestId } = render(Home, {
       global: renderConfig.global,
       props: { page }
     })
 
-    expect(getByTestId('sliderSection')).toBeTruthy()
-    expect(getByTestId('pageBody')).toBeTruthy()
+    expect(getByTestId('pageBody-top')).toBeTruthy()
+    expect(getByTestId('pageBody-content')).toBeTruthy()
   })
 })

@@ -1,5 +1,5 @@
 <template>
-  <div data-testid="pageBody">
+  <div :data-testid="'pageBody-' + pageBody.name">
     <div
       v-for="(pageBodyContent, index) in pageBody.children"
       :key="pageBodyContent.type + index"
