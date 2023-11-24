@@ -1,7 +1,7 @@
 <template>
   <div class="my-10 flex flex-col items-center">
     <button
-      class="flex w-fit items-center space-x-2 border border-black px-4 py-2 font-medium hover:bg-gray-50"
+      class="w-fit flex items-center space-x-2 border border-black px-4 py-2 font-medium hover:bg-gray-50"
       :onclick="() => $createSection(bodyName)"
     >
       <svg

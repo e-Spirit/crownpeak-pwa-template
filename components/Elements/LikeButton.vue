@@ -1,7 +1,7 @@
 <template>
   <button
-    @click="toggleState"
     class="ml-auto mr-4 inline-flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-md border hover:border-gray-500 sm:ml-0"
+    @click="toggleState"
   >
     <svg
       id="heart25"

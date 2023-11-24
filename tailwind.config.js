@@ -45,12 +45,12 @@ module.exports = {
       black: '#000',
       white: '#fff',
 
-      primary: '$CMS_VALUE(ps_primaryColor, default: "")$',
-      secondary: '$CMS_VALUE(ps_secondaryColor, default: "")$',
+      primary: 'rgb(181 31 125)',
+      secondary: 'rgb(0 57 90)',
       text: '#4b5563',
       link: {
-        text: '$CMS_VALUE(ps_linkColor, default: "")$',
-        hover: '$CMS_VALUE(ps_linkHoverColor, default: "")$'
+        text: 'rgb(0 68 204)',
+        hover: 'rgb(47, 109, 235)'
       },
       'fs-hover-bg': {
         200: '#f3f3f3'

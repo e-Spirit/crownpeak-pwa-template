@@ -1,15 +1,12 @@
 <template>
-  <div v-if="image && typeof image !== 'string'" class="relative">
-    <div
-      class="h-3/4 absolute -top-10 -z-10 hidden w-1/2 border-[12px] border-gray-100 md:block"
-    />
-
-    <div class="md:pl-10">
+  <div v-if="image" class="relative mx-auto max-w-max md:mr-0">
+    <div class="relative overflow-hidden rounded-7xl">
       <ElementsImage
         v-if="image"
         :data-preview-id="image.previewId"
         :image="image"
         :alt="altText"
+        ratio="4x3"
       />
     </div>
   </div>
