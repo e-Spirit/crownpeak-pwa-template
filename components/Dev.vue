@@ -25,7 +25,7 @@
 
     <div
       v-if="devComponentVisible"
-      class="h-4/5 fixed left-1/2 top-1/2 z-20 flex w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 transform flex-col rounded-lg border bg-white shadow"
+      class="fixed left-1/2 top-1/2 z-20 flex h-screen w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 transform flex-col rounded-lg border bg-white shadow"
     >
       <div class="flex p-4 text-gray-800">
         <div>

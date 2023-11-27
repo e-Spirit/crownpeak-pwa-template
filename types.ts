@@ -25,6 +25,7 @@ export interface Accordion {
   ]
   st_headline: string
   st_subline: string
+  st_info: RichTextElement[]
 }
 export interface InternalLink {
   type: 'Link'

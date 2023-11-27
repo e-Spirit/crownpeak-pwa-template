@@ -4,6 +4,7 @@
       v-for="(pageBodyContent, index) in pageBody.children"
       :key="pageBodyContent.type + index"
       data-testid="pageBodyChild"
+      class="group relative"
     >
       <Dev
         v-if="showDev && $isPreviewMode"

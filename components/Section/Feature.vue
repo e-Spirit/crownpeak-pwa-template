@@ -1,6 +1,6 @@
 <template>
   <div class="w-full p-8 md:w-1/3">
-    <ElementsInternalLink :link-data="props.data.st_link" class="group">
+    <ElementsInternalLink :link-data="props.data.st_link" class="group/feature">
       <div class="mb-9 overflow-hidden rounded-2xl">
         <ElementsImage
           :image="props.data.st_image"
@@ -9,7 +9,7 @@
         />
       </div>
       <h3
-        class="mb-4 text-xl font-semibold text-text group-hover:underline md:text-2xl"
+        class="mb-4 text-xl font-semibold text-text group-hover/feature:underline md:text-2xl"
       >
         {{ props.data.st_title }}
       </h3>

@@ -32,8 +32,6 @@ const sectionComponent = computed(() => {
       return resolveComponent('SectionProductCategoryTeaser')
     case 'steps':
       return resolveComponent('SectionSteps')
-    case 'latest_news':
-      return resolveComponent('SectionLatestNews')
     case 'accordion':
       return resolveComponent('SectionAccordion')
     case 'stage':
