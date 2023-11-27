@@ -1,24 +1,37 @@
 <template>
-  <div data-testid="navigation ">
-    <ul class="flex items-center space-x-4 py-6 text-gray-800">
+  <div data-testid="navigation">
+    <ul
+      class="relative hidden w-full items-end font-semibold lg:flex"
+      data-testid="navigation"
+    >
       <li
         v-for="navItem of topNavigation"
         :key="navItem?.id"
-        class="group relative"
+        class="group/navItem static"
       >
-        <InternalLink :nav-item="navItem" />
-        <ul
-          v-if="getSubNavigation(navItem).length > 0"
-          class="absolute right-0 top-6 hidden divide-y bg-white shadow-lg group-hover:block"
-        >
-          <li
-            v-for="subNavItem of getSubNavigation(navItem)"
-            :key="subNavItem?.id"
-            class="w-full px-4 py-3"
+        <InternalLink
+          :nav-item="navItem"
+          class="block px-3 py-2 hover:opacity-50"
+        />
+        <div v-if="getSubNavigation(navItem).length > 0" class="subnavigation">
+          <div
+            class="relative top-6 z-10 w-full rounded-xl border border-gray-500 bg-white p-6 shadow-xl"
           >
-            <InternalLink :nav-item="subNavItem" />
-          </li>
-        </ul>
+            <div class="grid grid-cols-1 gap-6">
+              <ul class="text-[15px]">
+                <li
+                  v-for="subNavItem of getSubNavigation(navItem)"
+                  :key="subNavItem?.id"
+                >
+                  <InternalLink
+                    :nav-item="subNavItem"
+                    class="block py-1 font-normal text-gray-600 hover:text-gray-800"
+                  />
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </li>
     </ul>
   </div>
@@ -42,3 +55,11 @@ function getSubNavigation(navItem: NavigationItem) {
     .filter((e) => e !== undefined) as NavigationItem[]
 }
 </script>
+<style scoped>
+.subnavigation {
+  @apply invisible absolute left-0 top-6 z-50 min-w-full translate-y-0 transform;
+  @apply opacity-0 transition duration-500 ease-in-out;
+  @apply group-hover/navItem:visible group-hover/navItem:translate-y-5 group-hover/navItem:transform group-hover/navItem:opacity-100;
+  @apply xl:w-10/12 xl:min-w-0 2xl:w-8/12;
+}
+</style>

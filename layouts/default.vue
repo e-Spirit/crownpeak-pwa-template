@@ -1,5 +1,5 @@
 <template>
-  <div class="flex min-h-screen flex-col">
+  <div>
     <ClientOnly>
       <AppLayoutLoading v-if="pending" />
     </ClientOnly>
