@@ -6,7 +6,7 @@
   >
     {{ headline }}
   </h2>
-  <p v-if="text" class="text-gray-600" data-preview-id="#st_text">
+  <p v-if="text" class="mb-5 text-gray-600" data-preview-id="#st_text">
     <ElementsRichText :richtext="text" />
   </p>
 </template>

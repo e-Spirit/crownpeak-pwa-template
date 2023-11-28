@@ -1,49 +1,63 @@
 <template>
-  <div class="group relative h-64" data-testid="headerSection">
+  <section class="group relative h-64" data-testid="headerSection">
     <Dev
       v-if="showDev && $isPreviewMode"
       :content="data"
       class="hidden group-hover:block"
       component-name="Page Header"
     />
-    <div
-      class="absolute inset-0 flex flex-col justify-center bg-black bg-opacity-80 p-6 text-white md:p-12"
-    >
-      <div class="max-w-xl md:border-l-8 md:p-8">
-        <h1 class="text-3xl font-black uppercase">{{ data['pt_title'] }}</h1>
-        <!-- <p class="text-sm text-gray-300">{{ data.pt_text }}</p> -->
-        <span
-          v-for="(breadcrumb, index) in breadcrumbs"
-          :key="'breadcrumb-' + index"
-          class="mr-2 text-sm text-gray-300"
-          >>
-          <NuxtLink
-            class="hover:underline"
-            :to="'/' + breadcrumbs.slice(0, index + 1).join('/')"
-            >{{ breadcrumb }}</NuxtLink
-          ></span
+
+    <div class="absolute inset-0 flex flex-col justify-center text-white">
+      <div class="relative h-full w-full">
+        <ElementsImage
+          v-if="data['pt_image']"
+          class="absolute h-full w-full object-cover"
+          :image="data['pt_image']"
+          ratio="16x4"
+        />
+        <div
+          class="relative h-full w-full p-6 md:p-12"
+          :class="opacity && `bg-black ${opacity}`"
         >
+          <div class="container mx-auto px-4">
+            <h1
+              class="font-heading text-4xl font-bold leading-none text-white md:text-5xl"
+            >
+              {{ data['pt_headline'] }}
+            </h1>
+            <p
+              class="sm:text-l mt-12 font-heading leading-tight text-white md:text-xl"
+            >
+              {{ data['pt_subheadline'] }}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-    <ElementsImage
-      v-if="data['pt_picture']"
-      class="h-full w-full object-cover"
-      :image="data['pt_picture']"
-    />
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
 import { DataEntries } from 'fsxa-api'
 
-defineProps<{ data: DataEntries }>()
+const props = defineProps<{ data: DataEntries }>()
 
 const { $isPreviewMode } = useNuxtApp()
 
 const { showDev } = useDev()
-
-const breadcrumbs = computed(() => {
-  const { slug } = useRoute().params
-  return Array.isArray(slug) ? slug.filter((el) => el) : [slug]
+const opacity = computed(() => {
+  const bgOpacity: string = props.data['pt_bgOpacity']['key']
+  switch (bgOpacity) {
+    case '20':
+      return 'bg-opacity-20'
+    case '40':
+      return 'bg-opacity-40'
+    case '60':
+      return 'bg-opacity-60'
+    case '80':
+      return 'bg-opacity-80'
+    default:
+      return null
+  }
 })
 </script>
