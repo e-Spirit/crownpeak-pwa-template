@@ -15,7 +15,7 @@
           fill="none"
           viewBox="0 0 24 24"
           class="h-6 w-6 stroke-text stroke-2 duration-200"
-          :class="state.open && 'rotate-180'"
+          :class="open && 'rotate-180'"
           @click="toggle"
         >
           <path
@@ -27,7 +27,7 @@
       </div>
       <div
         class="max-h-0 w-auto overflow-hidden px-2 transition-[max-height] duration-200 ease-in-out"
-        :style="state.style"
+        :style="style"
       >
         <ElementsRichText :richtext="props.data.st_content" />
       </div>
@@ -36,20 +36,17 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
 import { AccordionItem } from 'types'
 
 const props = defineProps<{ data: AccordionItem }>()
 
-const state = reactive({
-  open: false,
-  style: computed(() => {
-    return state.open ? { maxHeight: '364px' } : {}
-  })
+const open = ref(false)
+const style = computed(() => {
+  return open.value ? { maxHeight: '364px' } : {}
 })
 
 const toggle = () => {
-  state.open = !state.open
+  open.value = !open.value
 }
 </script>
 

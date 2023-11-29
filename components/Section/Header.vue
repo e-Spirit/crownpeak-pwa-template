@@ -1,39 +1,44 @@
 <template>
-  <section class="group relative h-64" data-testid="headerSection">
+  <section
+    class="group"
+    data-testid="headerSection"
+    :class="showDev && $isPreviewMode && devStyle"
+  >
+    <div v-if="data['pt_headline']" class="h-64">
+      <div class="absolute inset-0 flex flex-col justify-center text-white">
+        <div class="relative h-full w-full">
+          <ElementsImage
+            v-if="data['pt_image']"
+            class="absolute h-full w-full object-cover"
+            :image="data['pt_image']"
+            ratio="16x4"
+          />
+          <div
+            class="relative h-full w-full p-6 md:p-12"
+            :class="opacity && `bg-black ${opacity}`"
+          >
+            <div class="container mx-auto px-4">
+              <h1
+                class="font-heading text-4xl font-bold leading-none text-white md:text-5xl"
+              >
+                {{ data['pt_headline'] }}
+              </h1>
+              <p
+                class="sm:text-l mt-12 font-heading leading-tight text-white md:text-xl"
+              >
+                {{ data['pt_subheadline'] }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <Dev
       v-if="showDev && $isPreviewMode"
       :content="data"
       class="hidden group-hover:block"
       component-name="Page Header"
     />
-
-    <div class="absolute inset-0 flex flex-col justify-center text-white">
-      <div class="relative h-full w-full">
-        <ElementsImage
-          v-if="data['pt_image']"
-          class="absolute h-full w-full object-cover"
-          :image="data['pt_image']"
-          ratio="16x4"
-        />
-        <div
-          class="relative h-full w-full p-6 md:p-12"
-          :class="opacity && `bg-black ${opacity}`"
-        >
-          <div class="container mx-auto px-4">
-            <h1
-              class="font-heading text-4xl font-bold leading-none text-white md:text-5xl"
-            >
-              {{ data['pt_headline'] }}
-            </h1>
-            <p
-              class="sm:text-l mt-12 font-heading leading-tight text-white md:text-xl"
-            >
-              {{ data['pt_subheadline'] }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
 </template>
 
@@ -45,6 +50,7 @@ const props = defineProps<{ data: DataEntries }>()
 const { $isPreviewMode } = useNuxtApp()
 
 const { showDev } = useDev()
+const devStyle = 'h-8 border-b relative'
 const opacity = computed(() => {
   const bgOpacity: string = props.data['pt_bgOpacity']['key']
   switch (bgOpacity) {
