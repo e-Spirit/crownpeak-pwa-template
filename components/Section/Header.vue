@@ -1,8 +1,8 @@
 <template>
   <section
-    class="group"
+    class="group relative"
     data-testid="headerSection"
-    :class="showDev && $isPreviewMode && devStyle"
+    :class="!data['pt_image'] && showDev && $isPreviewMode && devStyle"
   >
     <div v-if="data['pt_headline']" class="h-64">
       <div class="absolute inset-0 flex flex-col justify-center text-white">
@@ -50,7 +50,7 @@ const props = defineProps<{ data: DataEntries }>()
 const { $isPreviewMode } = useNuxtApp()
 
 const { showDev } = useDev()
-const devStyle = 'h-8 border-b relative'
+const devStyle = 'h-8 border-b'
 const opacity = computed(() => {
   const bgOpacity: string = props.data['pt_bgOpacity']['key']
   switch (bgOpacity) {
