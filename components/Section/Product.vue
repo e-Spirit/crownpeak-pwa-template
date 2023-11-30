@@ -24,7 +24,11 @@
               />
             </div>
             <div class="w-full px-4">
-              <ElementsLikeButton />
+              <ElementsLikeButton
+                class="ml-auto mr-4 inline-flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-md sm:ml-0"
+                :show-border="true"
+                heart-style="w-6 h-6"
+              />
             </div>
             <div
               class="mt-10 flex items-start border-t border-gray-200 py-4 pt-10"
