@@ -13,15 +13,19 @@
               <span
                 v-for="category in categoryNames"
                 :key="category"
-                class="rounded-xl bg-gray-900 px-3 py-1 text-xs font-semibold text-white"
+                class="mr-1 rounded-xl bg-gray-900 px-3 py-1 text-xs font-semibold text-white"
                 >{{ category }}</span
               >
-              <h1>{{ currentDataset.data['tt_name'] }}</h1>
+              <h1 class="mt-3 font-heading text-4xl font-bold">
+                {{ currentDataset.data['tt_name'] }}
+              </h1>
             </div>
             <div class="flex items-start py-4">
-              <ElementsRichText
-                :richtext="currentDataset.data['tt_description']"
-              />
+              <p class="mb-5 font-medium text-coolGray-500">
+                <ElementsRichText
+                  :richtext="currentDataset.data['tt_description']"
+                />
+              </p>
             </div>
             <div class="w-full px-4">
               <ElementsLikeButton
@@ -37,13 +41,15 @@
                 {{ currentDataset.data['tt_price'] }}
               </p>
             </div>
-            <div class="relative my-12 w-full lg:my-0 lg:w-1/2">
-              <ElementsImage
-                v-if="currentDataset.data['tt_image']"
-                :image="currentDataset.data['tt_image']"
-              />
-            </div>
           </div>
+        </div>
+        <div class="relative my-12 w-full lg:my-0 lg:w-1/2">
+          <ElementsImage
+            v-if="currentDataset.data['tt_image']"
+            :image="currentDataset.data['tt_image']"
+            ratio="4x3"
+            class="relative z-10 mx-auto w-full rounded-xl"
+          />
         </div>
       </div>
     </div>
