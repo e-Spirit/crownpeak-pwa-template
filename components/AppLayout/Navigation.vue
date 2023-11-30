@@ -1,9 +1,6 @@
 <template>
   <div data-testid="navigation">
-    <ul
-      class="relative hidden w-full items-end font-semibold lg:flex"
-      data-testid="navigation"
-    >
+    <ul class="relative hidden w-full items-end font-semibold lg:flex">
       <li
         v-for="navItem of topNavigation"
         :key="navItem?.id"

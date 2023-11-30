@@ -6,8 +6,9 @@
           to="/"
           class="flex-none"
           @click="mobileNavigationVisible = false"
-          ><AppLayoutLogo
-        /></NuxtLink>
+        >
+          <AppLayoutLogo />
+        </NuxtLink>
         <AppLayoutNavigation class="flex" />
 
         <div class="relative flex grow items-center justify-end">
