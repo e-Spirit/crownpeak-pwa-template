@@ -3,7 +3,7 @@
     <button
       class="relative inline-block text-gray-400 group-hover:text-gray-500"
     >
-      <ElementsNotificationNumber :amount="0" />
+      <ElementsNotificationNumber :amount="favouriteProducts.length" />
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -19,9 +19,36 @@
         ></path>
       </svg>
     </button>
+    <div
+      class="invisible absolute right-10 z-10 translate-y-0 transform rounded-xl border border-gray-500 bg-white opacity-0 shadow-xl duration-500 ease-in-out group-hover:visible group-hover:translate-y-5 group-hover:transform group-hover:opacity-100"
+    >
+      <div
+        v-if="favouriteProducts.length > 0"
+        class="relative right-0 w-full rounded-xl bg-white p-6 shadow-xl md:w-96"
+      >
+        <AppLayoutFavouriteProduct
+          v-for="product in favouriteProducts"
+          :key="product.name"
+          :image="product.image"
+          :route="product.route"
+          :name="product.name"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Favourite } from 'composables/favourites'
+
+const favourites = useState<Favourite[]>('favourites')
+const favouriteProducts = computed(() =>
+  favourites.value.map((fav) => ({
+    name: fav.product.tt_name,
+    route: fav.route,
+    image: fav.product.tt_image
+  }))
+)
+</script>
 
 <style scoped></style>

@@ -10,7 +10,7 @@
       width="27"
       height="27"
       viewBox="0 0 27 27"
-      :fill="fill"
+      :fill="active ? 'currentColor' : 'none'"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -25,14 +25,11 @@
 </template>
 
 <script setup lang="ts">
-const active = ref(false)
-const toggleState = () => {
-  active.value = !active.value
-}
-const fill = computed(() => {
-  return active.value ? 'currentColor' : 'none'
-})
-defineProps<{ showBorder?: boolean; heartStyle?: string }>()
+defineProps<{
+  showBorder?: boolean
+  heartStyle?: string
+  active: boolean
+}>()
 </script>
 
 <style scoped></style>

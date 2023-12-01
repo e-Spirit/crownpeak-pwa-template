@@ -35,10 +35,13 @@
       </p>
       <div class="flex flex-wrap items-center">
         <div class="w-1/2 xl:w-2/12">
-          <ElementsLikeButton
-            :show-border="false"
-            heart-style="ml-auto cursor-pointer text-gray-400 hover:text-gray-500 xl:mx-auto 2xl:mr-0"
-          />
+          <ClientOnly>
+            <ElementsLikeButton
+              :show-border="false"
+              heart-style="ml-auto cursor-pointer text-gray-400 hover:text-gray-500 xl:mx-auto 2xl:mr-0"
+              :handler="likeButtonHandler"
+            />
+          </ClientOnly>
         </div>
         <div class="mt-2 w-1/2 xl:mt-0 xl:w-9/12">
           <div class="lg:mx-auto lg:max-w-max xl:mr-0">
@@ -59,6 +62,7 @@ const props = defineProps<{ data: ProductData; route: string }>()
 const categories = computed(() =>
   props.data.tt_categories.map((category) => category.data['tt_name'])
 )
+const likeButtonHandler = () => {}
 </script>
 
 <style scoped></style>
