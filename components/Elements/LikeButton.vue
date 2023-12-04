@@ -25,11 +25,33 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import { ProductData } from 'types'
+
+const props = defineProps<{
   showBorder?: boolean
   heartStyle?: string
-  active: boolean
+  product: ProductData
+  route: string
 }>()
+
+const { addFavourite, removeFavourite, favourites } = useFavourites()
+const currentRoute = decodeURIComponent(useRoute().path)
+const isInFavourites = () =>
+  favourites.value.findIndex((fav) => fav.route === currentRoute) !== -1
+
+const active = ref(isInFavourites())
+
+watch(active, (newValue) => {
+  if (newValue) {
+    addFavourite(props.product, props.route)
+  } else {
+    removeFavourite(props.product.tt_name)
+  }
+})
+
+const toggleState = () => {
+  active.value = !active.value
+}
 </script>
 
 <style scoped></style>

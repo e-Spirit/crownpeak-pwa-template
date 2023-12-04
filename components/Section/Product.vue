@@ -33,8 +33,8 @@
                   class="ml-auto mr-4 inline-flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-md sm:ml-0"
                   :show-border="true"
                   heart-style="w-6 h-6"
-                  :active="liked"
-                  @click="clickHandler"
+                  :product="(currentDataset.data as ProductData)"
+                  :route="currentDataset.route"
                 />
               </ClientOnly>
             </div>
@@ -63,35 +63,14 @@
 <script setup lang="ts">
 import { DataEntries, Dataset } from 'fsxa-api'
 import { ProductData } from 'types'
-import { Favourite } from 'composables/favourites'
 
 defineProps<{ data: DataEntries }>()
 
 const { currentDataset } = useContent()
-const currentRoute = decodeURIComponent(useRoute().path)
-
-const favourites = useState<Favourite[]>('favourites', () => [])
-const { addFavourite, removeFavourite } = useFavourites()
-const isInFavourites = () =>
-  favourites.value.findIndex((fav) => fav.route === currentRoute) !== -1
 
 const categoryNames = computed(() => {
   return currentDataset.value?.data['tt_categories'].flatMap(
     (category: Dataset) => category.data['tt_name']
   )
 })
-
-const liked = ref(isInFavourites())
-watch(liked, (newValue) => {
-  const product = currentDataset.value?.data as ProductData
-  const route = currentDataset.value?.route
-  if (newValue) {
-    favourites.value = addFavourite(favourites.value, product, route)
-  } else {
-    favourites.value = removeFavourite(favourites.value, product.tt_name)
-  }
-})
-const clickHandler = () => {
-  liked.value = !liked.value
-}
 </script>

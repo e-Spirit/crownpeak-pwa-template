@@ -40,6 +40,8 @@
               :show-border="false"
               heart-style="ml-auto cursor-pointer text-gray-400 hover:text-gray-500 xl:mx-auto 2xl:mr-0"
               :handler="likeButtonHandler"
+              :product="props.data"
+              :route="props.route"
             />
           </ClientOnly>
         </div>

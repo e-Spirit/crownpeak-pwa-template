@@ -20,7 +20,7 @@
       </svg>
     </button>
     <div
-      class="invisible absolute right-10 z-10 translate-y-0 transform rounded-xl border border-gray-500 bg-white opacity-0 shadow-xl duration-500 ease-in-out group-hover:visible group-hover:translate-y-5 group-hover:transform group-hover:opacity-100"
+      class="invisible absolute right-10 z-20 translate-y-0 transform rounded-xl border border-gray-500 bg-white opacity-0 shadow-xl duration-500 ease-in-out group-hover:visible group-hover:translate-y-5 group-hover:transform group-hover:opacity-100"
     >
       <div
         v-if="favouriteProducts.length > 0"
@@ -39,9 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { Favourite } from 'composables/favourites'
-
-const favourites = useState<Favourite[]>('favourites')
+const { favourites } = useFavourites()
 const favouriteProducts = computed(() =>
   favourites.value.map((fav) => ({
     name: fav.product.tt_name,

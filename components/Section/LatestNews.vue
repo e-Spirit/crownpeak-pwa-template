@@ -14,7 +14,6 @@ interface LatestNews {
   }
 }
 const props = defineProps<{ data: LatestNews }>()
-// TODO: resolve the news item in the data and render it
 </script>
 
 <style scoped></style>

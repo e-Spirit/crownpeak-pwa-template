@@ -5,28 +5,31 @@ export interface Favourite {
 }
 
 export function useFavourites() {
-  function addFavourite(
-    favourites: Favourite[],
-    product?: ProductData,
-    route?: string
-  ) {
-    if (product && route) {
-      const newFav = { product, route }
-      const newState = favourites.concat(newFav)
-      return newState
-    }
-    return favourites
+  const favourites = useState<Favourite[]>('favourites', () => [])
+
+  /**
+   * Adds a product to the list of favourite products
+   * @param product
+   * @param route
+   */
+  function addFavourite(product: ProductData, route: string) {
+    const newFav = { product, route }
+    favourites.value.push(newFav)
   }
-  function removeFavourite(favourites: Favourite[], name?: string) {
+  /**
+   * Removes the product from the list of favourite products
+   * @param name
+   */
+  function removeFavourite(name?: string) {
     if (name) {
-      favourites = favourites.filter(
+      favourites.value = favourites.value.filter(
         (item: Favourite) => item.product.tt_name !== name
       )
     }
-    return favourites
   }
   return {
     addFavourite,
-    removeFavourite
+    removeFavourite,
+    favourites
   }
 }
