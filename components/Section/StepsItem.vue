@@ -9,7 +9,7 @@
         <div
           class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-secondary text-xl font-semibold text-white"
         >
-          {{ index }}
+          {{ index + 1 }}
         </div>
       </div>
       <h3 class="mb-4 text-xl font-semibold text-primary md:text-2xl">
