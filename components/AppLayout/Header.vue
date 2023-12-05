@@ -22,7 +22,7 @@
 
           <div class="flex">
             <button
-              class="lg:hidden"
+              class="md:hidden"
               data-testid="mobileMenuButton"
               @click="mobileNavigationVisible = !mobileNavigationVisible"
             >

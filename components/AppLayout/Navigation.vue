@@ -1,6 +1,6 @@
 <template>
   <div data-testid="navigation">
-    <ul class="relative hidden w-full items-end font-semibold lg:flex">
+    <ul class="relative hidden w-full items-end font-semibold md:flex">
       <li
         v-for="navItem of topNavigation"
         :key="navItem?.id"
@@ -12,7 +12,7 @@
         />
         <div v-if="getSubNavigation(navItem).length > 0" class="subnavigation">
           <div
-            class="relative top-6 z-10 w-full rounded-xl border border-gray-500 bg-white p-6 shadow-xl"
+            class="relative z-10 w-full rounded-xl border border-gray-500 bg-white p-6 shadow-xl"
           >
             <div class="grid grid-cols-1 gap-6">
               <ul class="text-[15px]">
@@ -54,9 +54,9 @@ function getSubNavigation(navItem: NavigationItem) {
 </script>
 <style scoped>
 .subnavigation {
-  @apply invisible absolute left-0 top-6 z-50 min-w-full translate-y-0 transform;
+  @apply invisible absolute left-10 top-6 z-50 min-w-full translate-y-0 transform;
   @apply opacity-0 transition duration-500 ease-in-out;
   @apply group-hover/navItem:visible group-hover/navItem:translate-y-5 group-hover/navItem:transform group-hover/navItem:opacity-100;
-  @apply xl:w-10/12 xl:min-w-0 2xl:w-8/12;
+  @apply xl:w-full xl:min-w-0 2xl:w-11/12;
 }
 </style>
