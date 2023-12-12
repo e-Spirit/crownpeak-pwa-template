@@ -1,7 +1,7 @@
 <template>
   <div class="group static px-3 py-2 md:relative" data-testid="languageSwitch">
     <button
-      class="group relative inline-block text-gray-400 hover:text-gray-500"
+      class="relative inline-block text-gray-400 hover:text-gray-500"
       title="Language switch"
     >
       <svg
@@ -21,10 +21,10 @@
     </button>
 
     <div
-      class="invisible absolute right-0 top-6 z-50 w-full translate-y-0 transform opacity-0 transition duration-500 ease-in-out group-hover:visible group-hover:translate-y-5 group-hover:transform group-hover:opacity-100 md:w-auto"
+      class="absolute right-0 top-6 z-50 hidden w-full translate-y-0 transform opacity-0 transition duration-500 ease-in-out group-hover:block group-hover:translate-y-5 group-hover:transform group-hover:opacity-100 md:w-auto"
+      data-testid="languagesDropdown"
     >
       <div
-        data-testid="languagesDropdown"
         class="relative top-6 z-10 rounded-xl border border-gray-500 bg-white p-6 shadow-xl"
       >
         <ul>
