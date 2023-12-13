@@ -76,7 +76,8 @@ describe(`slug page`, () => {
       .should('equal', 404)
   })
 
-  it('fail to fetch navigation => display error', () => {
+  it.skip('fail to fetch navigation => display error', () => {
+    // this test doesn't work with the new first spirit project because there is no request to /api/navigation to intercept
     cy.intercept('POST', '/api/navigation', {
       statusCode: 500
     }).as('fetchNavigation')
