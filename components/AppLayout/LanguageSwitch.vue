@@ -27,7 +27,7 @@
       <div
         class="relative top-6 z-10 rounded-xl border border-gray-500 bg-white p-6 shadow-xl"
       >
-        <ul>
+        <ul data-testid="languagesUL">
           <li v-for="locale of allLocales" :key="locale.identifier">
             <button
               :disabled="loading"
