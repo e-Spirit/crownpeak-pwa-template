@@ -1,3 +1,14 @@
+# [2.0.0](https://github.com/e-Spirit/crownpeak-pwa-template/compare/v1.0.4...v2.0.0) (2023-12-14)
+
+
+* Issue/tng 1345 project reskinning (#129) ([b3adc16](https://github.com/e-Spirit/crownpeak-pwa-template/commit/b3adc16472088c82a5af8f058f2ea2e91027a17d)), closes [#129](https://github.com/e-Spirit/crownpeak-pwa-template/issues/129)
+
+
+### BREAKING CHANGES
+
+* The pwa-template is no longer compatible with the old FirstSpirit project. The new
+compatible project is linked in the documentation under getting started -> requirements
+
 ## [1.0.4](https://github.com/e-Spirit/crownpeak-pwa-template/compare/v1.0.3...v1.0.4) (2023-10-18)
 
 ### Bug Fixes
