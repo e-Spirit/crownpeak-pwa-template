@@ -2,7 +2,7 @@ const baseURL = Cypress.env('cyBaseURL')
 
 describe(`slug page`, () => {
   it('navigate to page => render content', () => {
-    cy.visit(`${baseURL}/Unsere-Lösungen`)
+    cy.visit(`${baseURL}/unsere-loesungen/`)
     cy.get('body').should('contain', 'Unsere Lösungen')
   })
 
@@ -28,9 +28,9 @@ describe(`slug page`, () => {
     }).as('fetchProperties')
 
     cy.visit(`${baseURL}`)
-    cy.get('[href="/Unsere-Lösungen/"]').click()
-    cy.get('[href="/Startseite/"]').click()
-    cy.get('[href="/Unsere-Lösungen/"]').click()
+    cy.get('[href="/standorte/"]').click()
+    cy.get('[href="/unsere-loesungen/"]').click()
+    cy.get('[href="/standorte/"]').click()
     cy.wait(3000)
 
     // newtwork calls happen once on the server
@@ -41,47 +41,48 @@ describe(`slug page`, () => {
   })
 
   it('navigate to content projection => display content', () => {
-    cy.visit(`${baseURL}/Products/Goomazon-Oklexa-SP93.html`)
+    cy.visit(`${baseURL}/products/goomazon-oklexa-sp93.html`)
     cy.get('[data-testid=productSection]').should('contain', 'The Oklexa SP93')
   })
 
   it('click back button to content projection => display same content', () => {
-    cy.visit(`${baseURL}/Products/Goomazon-Oklexa-SP93.html`)
+    cy.visit(`${baseURL}/products/goomazon-oklexa-sp93.html`)
     cy.get('[data-testid=productSection]').should('contain', 'The Oklexa SP93')
-    cy.contains('Home').click()
-    cy.url().should('eq', `${baseURL}/Home/`)
+    cy.get('[href="/our-solutions/"]').click()
+    cy.url().should('eq', `${baseURL}/our-solutions/`)
 
     // wait until content is displayed
-    cy.contains('Life made easier')
+    cy.contains('Smart Solutions')
 
     cy.go('back')
-    cy.url().should('eq', `${baseURL}/Products/Goomazon-Oklexa-SP93.html`)
+    cy.url().should('eq', `${baseURL}/products/goomazon-oklexa-sp93.html`)
     cy.get('[data-testid=productSection]').should('contain', 'The Oklexa SP93')
   })
 
   it('refresh content projection page => display same content', () => {
-    cy.visit(`${baseURL}/Products/Goomazon-Oklexa-SP93.html`)
+    cy.visit(`${baseURL}/products/goomazon-oklexa-sp93.html`)
     cy.get('[data-testid=productSection]').should('contain', 'The Oklexa SP93')
     cy.reload()
-    cy.url().should('eq', `${baseURL}/Products/Goomazon-Oklexa-SP93.html`)
+    cy.url().should('eq', `${baseURL}/products/goomazon-oklexa-sp93.html`)
     cy.get('[data-testid=productSection]').should('contain', 'The Oklexa SP93')
   })
 
   it('navigate to non-existing content projection => display 404', () => {
     cy.request({
-      url: `${baseURL}/Products/Goomazon-Oklexa.html`,
+      url: `${baseURL}/products/goomazon-oklexa.html`,
       failOnStatusCode: false
     })
       .its('status')
       .should('equal', 404)
   })
 
-  it('fail to fetch navigation => display error', () => {
+  it.skip('fail to fetch navigation => display error', () => {
+    // this test doesn't work with the new first spirit project because there is no request to /api/navigation to intercept
     cy.intercept('POST', '/api/navigation', {
       statusCode: 500
     }).as('fetchNavigation')
 
-    cy.visit(`${baseURL}/Unsere-Lösungen`)
+    cy.visit(`${baseURL}/unsere-loesungen/`)
 
     cy.get('body').should('contain', 'Error')
   })

@@ -171,7 +171,27 @@ export const fetchTopLevelNavigation = (fsxaApi: FSXAApi, locale: string) => {
     locale
   })
 }
-
+export const fetchProductsByCategoryId = async (
+  fsxaApi: FSXAApi,
+  locale: string,
+  categoryId: string
+) => {
+  const { $logger } = useNuxtApp()
+  $logger.debug('fetching category: ', categoryId)
+  const filters: QueryBuilderQuery[] = [
+    {
+      field: 'category_gid',
+      operator: ComparisonQueryOperatorEnum.EQUALS,
+      value: categoryId
+    }
+  ]
+  const { items } = await fsxaApi.fetchByFilter({
+    filters,
+    locale
+  })
+  $logger.debug(items)
+  return items as Dataset[]
+}
 /**
  * Fetch products data from CAAS
  * @param fsxaApi Instance of the FSXA Api
@@ -194,18 +214,17 @@ export const fetchProducts = async (
     {
       field: 'schema',
       operator: ComparisonQueryOperatorEnum.EQUALS,
-      value: 'products'
+      value: 'smartliving'
     }
   ]
 
   if (category) {
     filters.push({
-      field: 'formData.tt_categories.value.identifier',
+      field: 'formData.tt_categories.value.value.target.identifier',
       operator: ComparisonQueryOperatorEnum.EQUALS,
       value: category
     })
   }
-
   const { items } = await fsxaApi.fetchByFilter({
     filters,
     locale

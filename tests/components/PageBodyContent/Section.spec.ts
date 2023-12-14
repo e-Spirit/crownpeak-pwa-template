@@ -57,9 +57,9 @@ describe('Section', () => {
     ).toStrictEqual(section.previewId)
   })
 
-  it('render with section type products.product=> render Product component with preview id attribute', () => {
+  it('render with section type smartliving.product=> render Product component with preview id attribute', () => {
     const section = createSection({
-      sectionType: 'products.product'
+      sectionType: 'smartliving.product'
     })
 
     vi.spyOn(content, 'useContent').mockReturnValue({
@@ -77,9 +77,9 @@ describe('Section', () => {
     ).toStrictEqual(section.previewId)
   })
 
-  it('render with unknwon section type products.product=> render Unknown component', () => {
+  it('render with unknown section type products.product=> render Unknown component', () => {
     const section = createSection({
-      sectionType: 'unknwon'
+      sectionType: 'unknown'
     })
     const { getByTestId } = render(Section, {
       global: renderConfig.global,

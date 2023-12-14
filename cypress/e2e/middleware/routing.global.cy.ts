@@ -20,14 +20,14 @@ describe(`routing.global.ts`, () => {
   })
 
   it('navigate to normal page with query+hash => do not redirect to index page and keep params', () => {
-    cy.visit(`${baseURL}/Unsere-Lösungen/?foo=bar#baz`)
+    cy.visit(`${baseURL}/unsere-loesungen/?foo=bar#baz`)
     cy.url().should('not.eq', `${baseURL}/`)
     cy.url().should('contain', '?foo=bar')
     cy.url().should('contain', '#baz')
   })
 
   it('navigate to normal page => render content', () => {
-    cy.visit(`${baseURL}/Unsere-Lösungen`)
+    cy.visit(`${baseURL}/unsere-loesungen/`)
     cy.get('body').should('contain', 'Sicherheit für Ihr zu Hause')
   })
 
@@ -35,7 +35,7 @@ describe(`routing.global.ts`, () => {
     cy.visit(`${baseURL}/`)
     cy.get('body').should(
       'contain',
-      'Das vernetzte, „intelligente“ Heim sorgt für mehr Sicherheit, spart wertvolle Zeit und senkt Energiekosten.'
+      'Unsere innvotiven Lösungen geben Ihnen Sicherheit für das ganze Haus.'
     )
   })
 
@@ -56,13 +56,12 @@ describe(`routing.global.ts`, () => {
   // This covers a previous bug where the route would not match the seoRoute of the activeNavigationItem,
   // and therefore the user would be redirected to the seoRoute of the activeNavigationItem.
   it('navigate to content-projection page through deep link => should not redirect', () => {
-    cy.visit(`${baseURL}/Produkte/Kabellose-Smart-Steckdose-NX-17.html`)
+    cy.visit(`${baseURL}/produkte/kabellose-smart-steckdose-nx17.html`)
     cy.url().should(
       'eq',
-      `${baseURL}/Produkte/Kabellose-Smart-Steckdose-NX-17.html`
+      `${baseURL}/produkte/kabellose-smart-steckdose-nx17.html`
     )
 
-    // checks the breadcrumbs because product detail is not implemented yet.
-    cy.get('body').should('contain', 'Kabellose-Smart-Steckdose-NX-17.html')
+    cy.get('body').should('contain', 'Kabellose Smart Steckdose NX-17')
   })
 })

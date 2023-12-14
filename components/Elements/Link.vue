@@ -2,7 +2,7 @@
   <span>
     <NuxtLink
       v-if="richTextElement.data.template === 'internal_link' && linkedNavItem"
-      class="underline"
+      class="text-link-text underline hover:text-link-hover"
       :to="internalLinkRoute"
       @click="setActiveNavigationItem(linkedNavItem!)"
     >
@@ -12,7 +12,7 @@
       v-else
       :href="richTextElement.data.data['lt_url']"
       :target="richTextElement.data.data['lt_link_behavior']?.identifier"
-      class="underline"
+      class="text-link-text underline hover:text-link-hover"
     >
       <ElementsRichText :richtext="richTextElement.content"
     /></a>

@@ -16,6 +16,7 @@ This chapter describes how to set up the project and complete the first steps.
 * A text editor - like https://code.visualstudio.com/[VS Code] with the https://marketplace.visualstudio.com/items?itemName=Vue.volar[Vue language Features] plugin. Make sure you disable any other Vue related plugins, because they might interfer with each other.
 * A terminal - like VS Code’s integrated https://code.visualstudio.com/docs/editor/integrated-terminal[terminal]
 * https://git-scm.com/[Git] - latest major version: > 2.
+* A FirstSpirit Server with the following project imported https://github.com/e-Spirit/smartliving-website
 
 == Setting up the Project
 
