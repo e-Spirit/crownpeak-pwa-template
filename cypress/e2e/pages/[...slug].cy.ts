@@ -29,7 +29,7 @@ describe(`slug page`, () => {
 
     cy.visit(`${baseURL}`)
     cy.get('[href="/standorte/"]').click()
-    cy.get('[href="/"]').click()
+    cy.get('[href="/unsere-loesungen/"]').click()
     cy.get('[href="/standorte/"]').click()
     cy.wait(3000)
 
