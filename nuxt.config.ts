@@ -26,6 +26,7 @@ export default defineNuxtConfig({
       }
     }
   },
+  modules: ['nuxt-viewport'],
   typescript: {
     typeCheck: true
   },

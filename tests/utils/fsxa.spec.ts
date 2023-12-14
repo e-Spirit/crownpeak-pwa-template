@@ -168,10 +168,10 @@ describe('fsxa utils', () => {
             {
               field: 'schema',
               operator: ComparisonQueryOperatorEnum.EQUALS,
-              value: 'products'
+              value: 'smartliving'
             },
             {
-              field: 'formData.tt_categories.value.identifier',
+              field: 'formData.tt_categories.value.value.target.identifier',
               operator: ComparisonQueryOperatorEnum.EQUALS,
               value: 'categoryId'
             }

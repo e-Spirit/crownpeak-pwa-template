@@ -27,12 +27,10 @@ describe('header', () => {
     const allLocales = availableLocales.value
 
     const languageSwitch = getByTestId('languageSwitch')
-    const languagesDropdown = getByTestId('languagesDropdown')
-
-    const languagesUL = languagesDropdown.children[0]
+    const languagesUL = getByTestId('languagesUL')
 
     expect(languageSwitch).not.toBe(null)
-    expect(languagesUL?.children.length).toBe(allLocales.length)
+    expect(languagesUL.children.length).toBe(allLocales.length)
 
     for (let i = 0; i < languagesUL!.children.length; i++) {
       const child = languagesUL?.children[i]

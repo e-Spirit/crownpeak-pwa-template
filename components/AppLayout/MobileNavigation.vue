@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed inset-0 left-0 top-0 -z-10 w-full border bg-white pt-16 text-gray-800"
+    class="navbar-menu fixed bottom-0 left-0 top-0 z-50 w-full max-w-max sm:w-5/6 md:hidden"
     data-testid="mobileNavigation"
   >
     <div class="container mx-auto h-screen w-full bg-white p-2">

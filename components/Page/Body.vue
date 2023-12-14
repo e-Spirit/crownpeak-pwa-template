@@ -1,10 +1,10 @@
 <template>
-  <div data-testid="pageBody">
+  <div :data-testid="'pageBody-' + pageBody.name">
     <div
       v-for="(pageBodyContent, index) in pageBody.children"
       :key="pageBodyContent.type + index"
-      class="group relative my-10"
       data-testid="pageBodyChild"
+      class="group relative"
     >
       <Dev
         v-if="showDev && $isPreviewMode"

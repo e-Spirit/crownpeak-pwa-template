@@ -1,62 +1,77 @@
 <template>
-  <div
-    class="grid items-center gap-8 py-10 md:grid-cols-2"
-    data-testid="teaserSection"
-  >
-    <div class="flex flex-col space-y-3 p-4 md:p-0">
-      <h3 class="text-xl text-gray-600" data-preview-id="#st_kicker">
-        {{ data.st_kicker }}
-      </h3>
-      <h2
-        v-if="data.st_headline"
-        class="text-4xl font-black uppercase"
-        data-preview-id="#st_headline"
-      >
-        <ElementsRichText :richtext="data.st_headline" />
-      </h2>
-      <p v-if="data.st_text" class="text-gray-600" data-preview-id="#st_text">
-        <ElementsRichText :richtext="data.st_text" />
-      </p>
-    </div>
-
-    <div
-      v-if="data?.st_picture && typeof data.st_picture !== 'string'"
-      class="relative"
-    >
+  <section class="bg-white py-14">
+    <div class="container mx-auto px-4" data-testid="teaserSection">
       <div
-        class="absolute -top-10 -z-10 hidden h-3/4 w-1/2 border-[12px] border-gray-100 md:block"
-      />
-
-      <div class="md:pl-10">
-        <ElementsImage
-          v-if="data?.st_picture"
-          :data-preview-id="data.st_picture?.previewId"
-          :image="data.st_picture"
-          :alt="data.st_picture_alt"
-        />
+        v-if="data.st_layout.key === 'text-image'"
+        class="-mx-4 flex flex-wrap items-center"
+      >
+        <div class="mt-8 px-4 text-left sm:w-full md:w-1/2">
+          <ElementsTeaserText
+            :headline="data.st_headline"
+            :text="data.st_text"
+          />
+          <div class="flex flex-wrap">
+            <ElementsInternalLink v-if="data.st_cta" :link-data="data.st_cta">
+              <div class="w-full py-1 md:mr-4 md:w-auto md:py-0">
+                <span
+                  class="inline-block w-full rounded-md bg-secondary px-7 py-5 text-center text-base font-medium leading-4 text-white hover:brightness-90 md:text-lg"
+                >
+                  {{ data.st_cta.data.lt_text }}
+                </span>
+              </div>
+            </ElementsInternalLink>
+          </div>
+        </div>
+        <div class="px-4 sm:w-full md:w-1/2">
+          <ElementsTeaserImage
+            :image="data.st_image"
+            :alt-text="data.st_image_alt_text"
+          />
+        </div>
+      </div>
+      <div
+        v-if="data.st_layout.key === 'image-text'"
+        class="-mx-4 flex flex-wrap items-center"
+      >
+        <div class="px-4 sm:w-full md:w-1/2">
+          <ElementsTeaserImage
+            :image="data.st_image"
+            :alt-text="data.st_image_alt_text"
+          />
+        </div>
+        <div class="mt-8 px-4 text-left sm:w-full md:w-1/2">
+          <ElementsTeaserText
+            :headline="data.st_headline"
+            :text="data.st_text"
+          />
+          <div class="flex flex-wrap">
+            <ElementsInternalLink v-if="data.st_cta" :link-data="data.st_cta">
+              <div class="w-full py-1 md:mr-4 md:w-auto md:py-0">
+                <span
+                  class="inline-block w-full rounded-md bg-secondary px-7 py-5 text-center text-base font-medium leading-4 text-white hover:brightness-90 md:text-lg"
+                >
+                  {{ data.st_cta.data.lt_text }}
+                </span>
+              </div>
+            </ElementsInternalLink>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script setup lang="ts">
 import { Image, RichTextElement } from 'fsxa-api'
+import { InternalLink, OptionType } from 'types'
 
 interface Teaser {
-  st_headline: RichTextElement[]
-  st_jumbo_headline: string
-  st_kicker: string
-  st_picture?: Image
-  st_picture_alt?: string
+  st_headline: string
+  st_image?: Image
+  st_image_alt_text?: string
   st_text: RichTextElement[]
-  st_button: {
-    data: {
-      lt_button_text: string
-      lt_internal: {
-        referenceId: string
-        referenceType: string
-      }
-    }
-  } | null
+  st_design: OptionType
+  st_layout: OptionType
+  st_cta?: InternalLink
 }
 
 defineProps<{ data: Teaser }>()

@@ -25,7 +25,7 @@
 
     <div
       v-if="devComponentVisible"
-      class="fixed left-1/2 top-1/2 z-20 flex h-4/5 w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 transform flex-col rounded-lg border bg-white shadow"
+      class="fixed left-1/2 top-1/2 z-20 flex h-screen w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 transform flex-col rounded-lg border bg-white shadow"
     >
       <div class="flex p-4 text-gray-800">
         <div>
@@ -146,13 +146,16 @@ const activeItem = ref<'content' | 'dataset' | 'products' | 'currentPage'>(
 )
 
 const devContent = computed(() => {
-  if (activeItem.value === 'dataset') {
-    return currentDataset.value
-  } else if (activeItem.value === 'products') {
-    return products.value
-  } else if (activeItem.value === 'currentPage') {
-    return currentPage.value
-  } else return props.content
+  switch (activeItem.value) {
+    case 'content':
+      return props.content
+    case 'products':
+      return products.value
+    case 'currentPage':
+      return currentPage.value
+    case 'dataset':
+      return currentDataset.value
+  }
 })
 
 const highglightedDevContent = computed(() => {

@@ -1,6 +1,12 @@
 <template>
   <div data-testid="logo">
-    <img v-if="logoSrc" :src="logoSrc" />
+    <img
+      v-if="logoSrc"
+      :src="logoSrc"
+      width="96"
+      height="326"
+      class="mr-4 h-10 w-auto"
+    />
   </div>
 </template>
 

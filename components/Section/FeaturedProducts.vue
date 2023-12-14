@@ -19,7 +19,7 @@
       </h3>
     </div>
     <div
-      class="grid h-4/5 gap-2 sm:grid-cols-2 lg:grid-cols-3 lg:pl-8 2xl:grid-cols-4"
+      class="h-4/5 grid gap-2 sm:grid-cols-2 lg:grid-cols-3 lg:pl-8 2xl:grid-cols-4"
     >
       <div
         v-for="(product, index) in data.st_featured_products_picture"

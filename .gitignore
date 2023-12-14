@@ -119,3 +119,5 @@ dist
 
 # netlify
 /.netlify
+
+*.dev.json
