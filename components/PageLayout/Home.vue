@@ -1,10 +1,7 @@
 <template>
   <div data-testid="homePageLayout">
-    <PageBody
-      v-for="pageBody in page.children.slice().reverse()"
-      :key="pageBody.previewId"
-      :page-body="pageBody"
-    />
+    <PageBody :page-body="top" />
+    <PageBody :page-body="content" />
   </div>
 </template>
 
