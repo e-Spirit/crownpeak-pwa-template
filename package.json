@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.0.1",
   "name": "fsxa-nuxt3-pwa",
   "private": true,
   "description": "Demo PWA built with Nuxt 3 and FSXA",

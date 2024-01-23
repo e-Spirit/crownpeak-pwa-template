@@ -1,3 +1,11 @@
+## [2.0.1](https://github.com/e-Spirit/crownpeak-pwa-template/compare/v2.0.0...v2.0.1) (2024-01-23)
+
+
+### Bug Fixes
+
+* **Home:** add declarative order for PageBodies ([#134](https://github.com/e-Spirit/crownpeak-pwa-template/issues/134)) ([8166e26](https://github.com/e-Spirit/crownpeak-pwa-template/commit/8166e2628a8d91b8ff1099d6025bcabda3aa922c))
+* **PageLayout:** Home layout shows content changes ([#132](https://github.com/e-Spirit/crownpeak-pwa-template/issues/132)) ([5eba51f](https://github.com/e-Spirit/crownpeak-pwa-template/commit/5eba51fd7790119391b54c599f2ebc6b29c9a779))
+
 # [2.0.0](https://github.com/e-Spirit/crownpeak-pwa-template/compare/v1.0.4...v2.0.0) (2023-12-14)
 
 
