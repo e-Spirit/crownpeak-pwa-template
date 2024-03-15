@@ -1,6 +1,7 @@
 = Routing
 
 . <<FirstSpirit Navigation Service>>
+. <<Routing concept in frontend projects>>
 . <<Internal Linking>>
 . <<Trigger route changes programmatically>>
 . <<Middleware>>
@@ -36,6 +37,41 @@ The Crownpeak PWA Template directly maps the navigation structure of the underly
 ----
 
 It contains labels and contentReferences which you can use to fill a navigation menu or sitemap.
+
+== Routing concept in frontend projects
+
+When implementing a frontend application, such as an SPA or PWA, there are various ways to implement routing.
+This chapter describes a possible routing flow that is based on the NavigationService and addresses the usual use cases:
+
+____
+. Routing after opening a link
+. Routing within the application
+____
+
+=== Routing after opening a link
+This use case is relevant as soon as an user is directed to the application via a link outside the application, e.g. via a search result.
+
+In this scenario, the developer has the seoRoute of the requested object available by using the called URL.
+____
+Called URL: `https://my-examplepage.com/products/products.html`
+seoRoute: `/products/`
+____
+
+In this case, the "by-seo-route" endpoint of the navigation service can be used.
+The result contains the navigation data for the corresponding node in the navigation tree.
+With the navigation data and the locale, which can also be taken from the seoRoute, the further procedure is analogous to the "Routing within the application" use case.
+
+===  Routing within the application
+In this use case, the developer already knows the language and navigation data resulting from the state of the application.
+The state is application-specific data, but in most applications there is a possibility to access navigation data and content that has already been queried.
+
+The content to be rendered comes either from a content projection or from a pageRef and can be requested at CaaS.
+The application can use the navigation data via the "seo-route-regex" attribute to decide whether it needs to retrieve a dataset or a pageRef.
+In the case of a content projection, the developer filters the CaaS for datasets that have a matching route (https://docs.e-spirit.com/module/caas-connect/CaaS_Connect_FSM_Documentation_EN.html#caas-json-format[compare section Dataset routes]) in their data.
+The associated pageRef can also be resolved so that all data for rendering the requested page is available.
+The navigation data contains a contentReference, which is represented by the direct CaaS url to the pageRef.
+
+The Crownpeak PWA template contains a https://github.com/e-Spirit/crownpeak-pwa-template/blob/8870a68877e1df3a25ab936387682ed8420decde/pages/%5B...slug%5D.vue[sample implementation] for the routing concept.
 
 == Internal Linking
 
