@@ -43,15 +43,19 @@ It contains labels and contentReferences which you can use to fill a navigation 
 When implementing a frontend application, such as an SPA or PWA, there are various ways to implement routing.
 This chapter describes a possible routing flow that is based on the NavigationService and addresses the usual use cases:
 
-# Routing after opening a link
-# Routing within the application
+____
+. Routing after opening a link
+. Routing within the application
+____
 
 === Routing after opening a link
 This use case is relevant as soon as an user is directed to the application via a link outside the application, e.g. via a search result.
 
 In this scenario, the developer has the seoRoute of the requested object available by using the called URL.
-Called URL: https://my-examplepage.com/products/products.html
-seoRoute: /products/
+____
+Called URL: `https://my-examplepage.com/products/products.html`
+seoRoute: `/products/`
+____
 
 In this case, the "by-seo-route" endpoint of the navigation service can be used.
 The result contains the navigation data for the corresponding node in the navigation tree.
