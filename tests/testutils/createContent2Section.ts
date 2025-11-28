@@ -1,4 +1,4 @@
-import { Content2Section } from 'fsxa-api'
+import type { Content2Section } from 'fsxa-api'
 import { faker } from '@faker-js/faker'
 
 export function createContent2Section(
@@ -6,13 +6,13 @@ export function createContent2Section(
 ): Content2Section {
   const content2section: Content2Section = {
     type: 'Content2Section',
-    sectionType: faker.name.firstName(),
+    sectionType: faker.person.firstName(),
     data: {
-      schema: faker.name.firstName(),
-      entityType: faker.name.firstName(),
-      query: faker.name.firstName(),
-      recordCountPerPage: faker.datatype.number(),
-      maxPageCount: faker.datatype.number(),
+      schema: faker.person.firstName(),
+      entityType: faker.person.firstName(),
+      query: faker.person.firstName(),
+      recordCountPerPage: faker.number.int(),
+      maxPageCount: faker.number.int(),
       filterParams: {},
       ordering: []
     },

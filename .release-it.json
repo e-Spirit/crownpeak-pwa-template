@@ -1,0 +1,43 @@
+{
+  "git": {
+    "commitMessage": "chore(release): ${version} [skip ci]",
+    "tagName": "v${version}",
+    "requireCleanWorkingDir": true,
+    "requireUpstream": true,
+    "requireCommits": false,
+    "addUntrackedFiles": false,
+    "commit": true,
+    "tag": true,
+    "push": true
+  },
+  "github": {
+    "release": true,
+    "releaseName": "v${version}",
+    "releaseNotes": null,
+    "autoGenerate": true,
+    "draft": false,
+    "preRelease": false,
+    "tokenRef": "GITHUB_TOKEN"
+  },
+  "npm": {
+    "publish": false,
+    "ignoreVersion": false
+  },
+  "hooks": {
+    "before:init": [],
+    "after:bump": "npm run build",
+    "after:release": "echo Successfully released ${version}"
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": {
+        "name": "conventionalcommits"
+      },
+      "infile": "CHANGELOG.md",
+      "header": "# Changelog",
+      "ignoreRecommendedBump": false,
+      "strictSemVer": false,
+      "whatBump": null
+    }
+  }
+}

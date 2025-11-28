@@ -59,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import { Image, RichTextElement } from 'fsxa-api'
+import type { Image, RichTextElement } from 'fsxa-api'
 
 interface InterestingFacts {
   st_background_image: Image

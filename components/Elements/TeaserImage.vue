@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { Image } from 'fsxa-api'
+import type { Image } from 'fsxa-api'
 defineProps<{ image?: Image; altText?: string }>()
 </script>
 

@@ -1,5 +1,6 @@
-import { FetchByFilterParams, FetchElementParams, HttpError } from 'fsxa-api'
-import { RuntimeConfig } from 'nuxt/schema'
+import type { FetchByFilterParams, FetchElementParams } from 'fsxa-api'
+import { HttpError } from 'fsxa-api'
+import type { RuntimeConfig } from 'nuxt/schema'
 import appConfig from '../fixtures/appConfig.json'
 import runtimeConfig from '../fixtures/runtimeConfig.json'
 import toplevelDE from '../fixtures/toplevelNavigation_de_DE.json'

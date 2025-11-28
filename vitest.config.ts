@@ -1,6 +1,7 @@
 /// <reference types="vitest" />
 import AutoImport from 'unplugin-auto-import/vite'
 import { defineConfig } from 'vitest/config'
+// @ts-ignore
 import Vue from '@vitejs/plugin-vue'
 import { configure } from '@testing-library/vue'
 
@@ -55,7 +56,7 @@ export default defineConfig({
     Vue({
       template: {
         compilerOptions: {
-          isCustomElement: (tag) => {
+          isCustomElement: (tag: string) => {
             return ['DevOnly', 'ClientOnly', 'NuxtLink'].includes(tag)
           }
         }

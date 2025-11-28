@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Image } from 'fsxa-api'
+import type { Image } from 'fsxa-api'
 const props = defineProps<{ image: Image; alt?: string; ratio?: string }>()
 
 const srcSet = computed(() => {

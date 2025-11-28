@@ -1,4 +1,4 @@
-import { FSXAApi } from 'fsxa-api'
+import type { FSXAApi } from 'fsxa-api'
 
 export default defineNuxtPlugin(() => {
   const { $logger } = useNuxtApp()

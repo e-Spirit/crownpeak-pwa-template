@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { AccordionItem } from 'types'
+import type { AccordionItem } from '../../types'
 
 const props = defineProps<{ data: AccordionItem }>()
 

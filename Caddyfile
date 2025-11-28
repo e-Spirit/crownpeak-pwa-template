@@ -1,0 +1,15 @@
+{
+    auto_https off
+}
+
+storefront.e-spirit.live:4200 {
+    reverse_proxy http://localhost:3000
+    log {
+        format console
+        level INFO
+    }
+
+    tls docker-apache-proxy/src/main/resources/ssl/e-spirit.live.pem docker-apache-proxy/src/main/resources/ssl/e-spirit.live.key {
+        protocols tls1.2 tls1.3
+    }
+}

@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { Dataset } from 'fsxa-api'
+import type { Dataset } from 'fsxa-api'
 const props = defineProps<{ content: Dataset }>()
 
 const { $isPreviewMode } = useNuxtApp()

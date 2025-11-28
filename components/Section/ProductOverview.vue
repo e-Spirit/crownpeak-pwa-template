@@ -14,11 +14,11 @@
             <h2
               class="xl:text-10xl mb-5 text-center font-heading text-5xl font-medium leading-normal text-gray-900 md:mb-0"
             >
-              {{ products[0]?.data['tt_categories'][0].data['tt_name'] }}
+              {{ products?.[0]?.data['tt_categories']?.[0]?.data?.['tt_name'] || '' }}
             </h2>
             <span
               class="text-sm font-medium text-gray-400 md:absolute md:bottom-3 md:right-0"
-              >{{ products.length + ' ' + productsFound }}</span
+              >{{ (products?.length || 0) + ' ' + productsFound }}</span
             >
           </div>
         </div>
@@ -36,8 +36,8 @@
 </template>
 
 <script setup lang="ts">
-import { DataEntries, Dataset } from 'fsxa-api'
-import { ProductData } from 'types'
+import type { DataEntries, Dataset } from 'fsxa-api'
+import type { ProductData } from '../../types'
 
 const props = defineProps<{ data: DataEntries }>()
 const { $createContentApi } = useNuxtApp()

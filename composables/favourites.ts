@@ -1,4 +1,4 @@
-import { ProductData } from 'types'
+import type { ProductData } from '~~/types'
 export interface Favourite {
   product: ProductData
   route: string

@@ -34,7 +34,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { DataEntry, Image } from 'fsxa-api'
+import type { DataEntry, Image } from 'fsxa-api'
 interface FeaturedProducts {
   st_featured_products_header: null | string
   st_featured_products_picture: DataEntry[]

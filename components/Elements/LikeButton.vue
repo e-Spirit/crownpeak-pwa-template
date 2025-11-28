@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { ProductData } from 'types'
+import type { ProductData } from '../../types'
 
 const props = defineProps<{
   showBorder?: boolean

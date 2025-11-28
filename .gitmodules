@@ -1,0 +1,3 @@
+[submodule "docker-apache-proxy"]
+	path = docker-apache-proxy
+	url = ssh://git@git.e-spirit.de:7999/ecom/docker-apache-proxy.git

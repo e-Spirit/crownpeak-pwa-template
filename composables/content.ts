@@ -1,4 +1,4 @@
-import { Page, Dataset } from 'fsxa-api'
+import type { Page, Dataset } from 'fsxa-api'
 
 export function useContent() {
   const currentDataset = useState<Dataset | null>('currentDataset')

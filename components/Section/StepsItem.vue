@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { StepsItem } from 'types'
+import type { StepsItem } from '~~/types'
 defineProps<{ data: StepsItem; index: number }>()
 </script>
 

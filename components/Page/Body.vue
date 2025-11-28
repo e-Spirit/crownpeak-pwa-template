@@ -24,7 +24,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { PageBody, PageBodyContent } from 'fsxa-api'
+import type { PageBody, PageBodyContent } from 'fsxa-api'
 
 defineProps<{ pageBody: PageBody }>()
 

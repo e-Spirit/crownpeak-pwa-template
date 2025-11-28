@@ -1,4 +1,4 @@
-import { NavigationData, NavigationItem } from 'fsxa-api'
+import type { NavigationData, NavigationItem } from 'fsxa-api'
 
 export function useNavigationData() {
   const navigationData = useState<NavigationData | null>('navigationData')

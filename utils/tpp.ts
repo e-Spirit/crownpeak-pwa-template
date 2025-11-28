@@ -1,7 +1,12 @@
-import TPP_SNAP from 'fs-tpp-api'
 import { FSXAProxyApi } from 'fsxa-api'
 
 export type CaaSEventType = 'insert' | 'replace' | 'delete'
+
+declare global {
+  interface Window {
+    TPP_SNAP: any
+  }
+}
 
 export type CaaSEvent = {
   operationType: CaaSEventType
@@ -14,7 +19,7 @@ export type CaaSEvent = {
  */
 export const onInit = () =>
   new Promise((resolve) => {
-    TPP_SNAP.onInit((success: boolean) => {
+    window.TPP_SNAP.onInit((success: boolean) => {
       resolve(success)
     })
   })
@@ -84,12 +89,12 @@ export const navigateToPageId = async (pageId: string) => {
  * @param previewId requested previewId
  * @returns Promise
  */
-export const onRequestPreviewElementHandler: OnRequestPreviewElementHandler =
+export const onRequestPreviewElementHandler: any =
   async (previewId: string) => {
     const pageId = previewId.split('.')[0]
     if (!pageId) return
 
-    TPP_SNAP.setPreviewElement(previewId)
+    window.TPP_SNAP.setPreviewElement(previewId)
 
     await navigateToPageId(pageId)
   }
@@ -100,8 +105,8 @@ export const onRequestPreviewElementHandler: OnRequestPreviewElementHandler =
  * https://docs.e-spirit.com/tpp/snap/#onrerenderviewhandler
  * @returns Promise
  */
-export const onRerenderViewHandler: OnRerenderViewHandler = async () => {
-  const previewId: string | undefined = await TPP_SNAP.getPreviewElement()
+export const onRerenderViewHandler: any = async () => {
+  const previewId: string | undefined = await window.TPP_SNAP.getPreviewElement()
   if (!previewId) return
 
   const [pageId, locale] = previewId.split('.')
@@ -129,7 +134,7 @@ export const onRerenderViewHandler: OnRerenderViewHandler = async () => {
  * @param newPagePreviewId  previewId of the new page or null if no new page was created
  * @returns Promise
  */
-export const onNavigationChangeHandler: OnNavigationChangeHandler = (
+export const onNavigationChangeHandler: any = (
   newPagePreviewId: string | null
 ) => {
   // If a new page is created, onRequestPreviewElement is also triggered and will handle the navigation

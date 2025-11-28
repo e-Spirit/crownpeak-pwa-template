@@ -9,6 +9,6 @@
 </template>
 
 <script lang="ts" setup>
-import { RichTextElement } from 'fsxa-api'
+import type { RichTextElement } from 'fsxa-api'
 defineProps<{ richtext: RichTextElement[] }>()
 </script>

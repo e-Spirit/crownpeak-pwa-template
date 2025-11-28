@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { DataEntries, Dataset } from 'fsxa-api'
+import type { DataEntries, Dataset } from 'fsxa-api'
 const props = defineProps<{ data: DataEntries }>()
 const { $createContentApi } = useNuxtApp()
 const fsxaApi = $createContentApi()

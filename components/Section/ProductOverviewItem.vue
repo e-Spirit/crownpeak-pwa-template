@@ -58,11 +58,12 @@
 </template>
 
 <script setup lang="ts">
-import { ProductData } from 'types'
+import type { ProductData } from '../../types'
+import type { Dataset } from 'fsxa-api'
 
 const props = defineProps<{ data: ProductData; route: string }>()
 const categories = computed(() =>
-  props.data.tt_categories.map((category) => category.data['tt_name'])
+  props.data.tt_categories.map((category: Dataset) => category.data['tt_name'])
 )
 const likeButtonHandler = () => {}
 </script>

@@ -18,8 +18,8 @@
 </template>
 
 <script setup lang="ts">
-import { RichTextElement } from 'fsxa-api'
-import { InternalLink, OptionType } from 'types'
+import type { RichTextElement } from 'fsxa-api'
+import type { InternalLink, OptionType } from '../../types'
 
 interface ProductCategoryTeaser {
   st_category: {

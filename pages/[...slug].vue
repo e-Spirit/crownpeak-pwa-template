@@ -33,7 +33,7 @@ const previewId = computed(() => {
 })
 
 // fetch page and dataset
-const { pending } = useAsyncData(async () => {
+const { pending } = useAsyncData(currentRoute, async () => {
   // This state should not be possible.
   // The middleware should have figured out both the locale and our current navigation item
   if (!activeNavigationItem.value || !activeLocale.value) {

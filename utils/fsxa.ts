@@ -1,22 +1,25 @@
 import {
-  CaaSApi_Dataset as CaasDataset,
   ComparisonQueryOperatorEnum,
-  Dataset,
-  FSXAApi,
   FSXAContentMode,
-  FSXAProxyApi,
-  FSXARemoteApi,
-  FSXARemoteApiConfig,
   LogicalQueryOperatorEnum,
   LogLevel,
+  HttpError
+} from 'fsxa-api'
+// Note: FSXAProxyApi and FSXARemoteApi are not properly exported in local fsxa-api
+// We'll use dynamic imports as a workaround
+import * as fsxaApi from 'fsxa-api'
+import type {
+  CaaSApi_Dataset as CaasDataset,
+  Dataset,
+  FSXAApi,
+  FSXARemoteApiConfig,
   NavigationItem,
   Page,
   ProjectProperties,
-  QueryBuilderQuery,
-  HttpError
+  QueryBuilderQuery
 } from 'fsxa-api'
-import { AppConfig, RuntimeConfig } from 'nuxt/schema'
-import { LegalLink } from '~~/types'
+import type { AppConfig, RuntimeConfig } from 'nuxt/schema'
+import type { LegalLink } from '~~/types'
 
 /**
  * Fetch dataset through the FSXA Api by route
@@ -278,7 +281,8 @@ export const createProxyApi = () => {
       'createProxyApi() is forbiddenOn server side. Please use createRemoteApi() instead.'
     )
   }
-  return new FSXAProxyApi('/api', logLevel)
+  // @ts-ignore - FSXAProxyApi not properly exported in local fsxa-api
+  return new fsxaApi.FSXAProxyApi('/api', logLevel)
 }
 export const createRemoteApi = (
   runtimeConfig: RuntimeConfig,
@@ -322,7 +326,8 @@ export const createRemoteApi = (
       appConfig.enableEventStream ||
       false
   }
-  return new FSXARemoteApi(remoteApiConfig)
+  // @ts-ignore - FSXARemoteApi not properly exported in local fsxa-api
+  return new fsxaApi.FSXARemoteApi(remoteApiConfig)
 }
 export const isHttpError = (err: Error | HttpError): err is HttpError => {
   return (err as HttpError).statusCode !== undefined

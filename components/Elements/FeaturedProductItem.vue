@@ -23,7 +23,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { DataEntry } from 'fsxa-api/dist/types'
+import type { DataEntry } from 'fsxa-api/dist/types'
 import { ref } from 'vue'
 defineProps<{ product: DataEntry; imageSource?: string }>()
 const hover = ref(false)

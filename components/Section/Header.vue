@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import { DataEntries } from 'fsxa-api'
+import type { DataEntries } from 'fsxa-api'
 
 const props = defineProps<{ data: DataEntries }>()
 

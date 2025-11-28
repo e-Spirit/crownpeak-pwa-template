@@ -13,7 +13,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { Section, Dataset, Content2Section, Page } from 'fsxa-api'
+import type { Section, Dataset, Content2Section, Page } from 'fsxa-api'
 const props = defineProps<{
   content?: Section | Dataset | Content2Section | Page
 }>()

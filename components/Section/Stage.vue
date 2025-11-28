@@ -31,8 +31,8 @@
   </section>
 </template>
 <script setup lang="ts">
-import { Image } from 'fsxa-api'
-import { InternalLink } from 'types'
+import type { Image } from 'fsxa-api'
+import type { InternalLink } from '~~/types'
 
 interface StageData {
   st_headline: string

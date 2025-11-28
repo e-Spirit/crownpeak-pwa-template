@@ -9,6 +9,5 @@
     "caas": "http://testcaas.de",
     "projectId": "testprojectid",
     "tenantId": "testtenantid",
-    "snapUrl": "http://testsnapurl.de"
   }
 }
