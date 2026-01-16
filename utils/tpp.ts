@@ -1,4 +1,4 @@
-import { FSXAProxyApi } from 'fsxa-api'
+import { FSXAProxyApi } from 'fsxa-proxy-api'
 
 export type CaaSEventType = 'insert' | 'replace' | 'delete'
 

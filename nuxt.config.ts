@@ -14,8 +14,8 @@ export default defineNuxtConfig({
     resolve: {
       alias: {
         util: 'rollup-plugin-node-polyfills/polyfills/util',
-        'better-sse': '/Volumes/repositories/e-Spirit/caas/crownpeak-pwa-template/utils/better-sse-stub.ts',
-        'node:crypto': '/Volumes/repositories/e-Spirit/caas/crownpeak-pwa-template/utils/crypto-stub.ts'
+        'better-sse': './utils/better-sse-stub.ts',
+        'node:crypto': './utils/crypto-stub.ts'
       }
     },
     optimizeDeps: {
@@ -26,12 +26,9 @@ export default defineNuxtConfig({
         }
       }
     },
-    ssr: {
-      noExternal: ['fsxa-api']
-    },
     server: {
       allowedHosts: [
-        'storefront.e-spirit.live'
+        '*'
       ]
     }
   },
