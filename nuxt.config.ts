@@ -1,3 +1,5 @@
+import { fileURLToPath, URL } from 'node:url'
+
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   compatibilityDate: '2025-11-25',
@@ -14,8 +16,9 @@ export default defineNuxtConfig({
     resolve: {
       alias: {
         util: 'rollup-plugin-node-polyfills/polyfills/util',
-        'better-sse': './utils/better-sse-stub.ts',
-        'node:crypto': './utils/crypto-stub.ts'
+        'node:crypto': fileURLToPath(new URL('./utils/crypto-stub.ts', import.meta.url)),
+        // better-sse is server-only, stub it for client builds
+        'better-sse': fileURLToPath(new URL('./utils/better-sse-stub.ts', import.meta.url))
       }
     },
     optimizeDeps: {
@@ -27,9 +30,7 @@ export default defineNuxtConfig({
       }
     },
     server: {
-      allowedHosts: [
-        '*'
-      ]
+      allowedHosts: process.env['NUXT_ALLOWED_HOSTS']?.split(',') || ['localhost']
     }
   },
   modules: ['nuxt-viewport'],

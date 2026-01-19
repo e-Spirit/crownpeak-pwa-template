@@ -66,7 +66,7 @@ export default defineNuxtPlugin(() => {
   if (typeof window !== 'undefined') {
     if (!!window.location.ancestorOrigins[0]) {
       loadScript(
-        window.location.ancestorOrigins[0] + '/fs5webedit/s=rWbb/live/live.js'
+        window.location.ancestorOrigins[0] + '/fs5webedit/live/live.js'
       )
         .then(() => {
           console.log('OCM loaded successfully')

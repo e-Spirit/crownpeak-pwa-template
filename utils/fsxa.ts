@@ -1,13 +1,5 @@
-import {
-  ComparisonQueryOperatorEnum,
-  FSXAContentMode,
-  LogicalQueryOperatorEnum,
-  LogLevel,
-  HttpError
-} from 'fsxa-api'
-// Note: FSXAProxyApi and FSXARemoteApi are not properly exported in local fsxa-api
-// We'll use dynamic imports as a workaround
-import * as fsxaApi from 'fsxa-api'
+import { FSXAProxyApi } from 'fsxa-proxy-api'
+
 import type {
   CaaSApi_Dataset as CaasDataset,
   Dataset,
@@ -17,6 +9,14 @@ import type {
   Page,
   ProjectProperties,
   QueryBuilderQuery
+} from 'fsxa-api'
+import {
+  ComparisonQueryOperatorEnum,
+  FSXAContentMode,
+  FSXARemoteApi,
+  HttpError,
+  LogicalQueryOperatorEnum,
+  LogLevel
 } from 'fsxa-api'
 import type { AppConfig, RuntimeConfig } from 'nuxt/schema'
 import type { LegalLink } from '~~/types'
@@ -276,19 +276,19 @@ export const getLegalLinks = (
 export const createProxyApi = () => {
   const { $logger } = useNuxtApp()
   const logLevel = $logger.logLevel
-  if (!process.client) {
+  if (!import.meta.client) {
     throw new Error(
       'createProxyApi() is forbiddenOn server side. Please use createRemoteApi() instead.'
     )
   }
   // @ts-ignore - FSXAProxyApi not properly exported in local fsxa-api
-  return new fsxaApi.FSXAProxyApi('/api', logLevel)
+  return new FSXAProxyApi('/api', logLevel)
 }
 export const createRemoteApi = (
   runtimeConfig: RuntimeConfig,
   appConfig: AppConfig
 ) => {
-  if (process.client) {
+  if (import.meta.client) {
     throw new Error(
       'FSXARemoteApi may leak secrets when created on client side'
     )
@@ -304,6 +304,7 @@ export const createRemoteApi = (
     }
     return LogLevel.NONE
   }
+
   const logLevel = determineLogLevel()
   const remoteApiConfig: FSXARemoteApiConfig = {
     apikey: runtimeConfig.private.apiKey,
@@ -327,7 +328,7 @@ export const createRemoteApi = (
       false
   }
   // @ts-ignore - FSXARemoteApi not properly exported in local fsxa-api
-  return new fsxaApi.FSXARemoteApi(remoteApiConfig)
+  return new FSXARemoteApi(remoteApiConfig)
 }
 export const isHttpError = (err: Error | HttpError): err is HttpError => {
   return (err as HttpError).statusCode !== undefined

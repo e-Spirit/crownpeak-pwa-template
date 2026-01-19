@@ -16,7 +16,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '~': __dirname
+      '~': __dirname,
+      'better-sse': `${__dirname}/utils/better-sse-stub.ts`
     }
   },
   plugins: [
