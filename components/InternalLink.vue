@@ -23,7 +23,11 @@ function handleClick() {
   // Set navigation state immediately before middleware runs
   setActiveNavigationItem(props.navItem)
   // Extract and set locale from navigation item
-  const locale = getLocaleFromNavigationItem(props.navItem)
-  setActiveLocale(locale)
+  try {
+    const locale = getLocaleFromNavigationItem(props.navItem)
+    setActiveLocale(locale)
+  } catch (e) {
+    console.warn('[InternalLink] Could not determine locale from nav item:', e)
+  }
 }
 </script>

@@ -71,7 +71,7 @@ export default defineNuxtPlugin(() => {
         .then(() => {
           console.log('OCM loaded successfully')
 
-          window.TPP_SNAP.isConnected.then(async (_isConnected: boolean) => {
+          return window.TPP_SNAP.isConnected.then(async (_isConnected: boolean) => {
             const initialized = await onInit()
 
             console.log('[TPP_SNAP] Initialized:', initialized)
@@ -110,6 +110,7 @@ export default defineNuxtPlugin(() => {
        * @param previewId preview id of the current dataset or page
        */
       setPreviewId: async (previewId: string | undefined) => {
+        if (!window.TPP_SNAP) return
         if (await window.TPP_SNAP.isConnected)
           window.TPP_SNAP.setPreviewElement(previewId)
       },
@@ -119,6 +120,7 @@ export default defineNuxtPlugin(() => {
        * @param bodyName name attribute of the pageBody
        */
       createSection: async (bodyName: string) => {
+        if (!window.TPP_SNAP) return
         const previewId: string | undefined =
           await window.TPP_SNAP.getPreviewElement()
         if (!previewId) return
