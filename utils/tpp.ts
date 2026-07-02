@@ -2,6 +2,10 @@ import { FSXAProxyApi } from 'fsxa-proxy-api'
 
 export type CaaSEventType = 'insert' | 'replace' | 'delete'
 
+type OnRequestPreviewElementHandler = (previewId: string) => Promise<void>
+type OnRerenderViewHandler = () => Promise<void>
+type OnNavigationChangeHandler = (newPagePreviewId: string | null) => void
+
 declare global {
   interface Window {
     TPP_SNAP: any
@@ -89,7 +93,7 @@ export const navigateToPageId = async (pageId: string) => {
  * @param previewId requested previewId
  * @returns Promise
  */
-export const onRequestPreviewElementHandler: any =
+export const onRequestPreviewElementHandler: OnRequestPreviewElementHandler =
   async (previewId: string) => {
     const pageId = previewId.split('.')[0]
     if (!pageId) return
@@ -105,7 +109,7 @@ export const onRequestPreviewElementHandler: any =
  * https://docs.e-spirit.com/tpp/snap/#onrerenderviewhandler
  * @returns Promise
  */
-export const onRerenderViewHandler: any = async () => {
+export const onRerenderViewHandler: OnRerenderViewHandler = async () => {
   const previewId: string | undefined = await window.TPP_SNAP.getPreviewElement()
   if (!previewId) return
 
@@ -134,7 +138,7 @@ export const onRerenderViewHandler: any = async () => {
  * @param newPagePreviewId  previewId of the new page or null if no new page was created
  * @returns Promise
  */
-export const onNavigationChangeHandler: any = (
+export const onNavigationChangeHandler: OnNavigationChangeHandler = (
   newPagePreviewId: string | null
 ) => {
   // If a new page is created, onRequestPreviewElement is also triggered and will handle the navigation
