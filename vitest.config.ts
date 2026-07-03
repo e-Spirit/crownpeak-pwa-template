@@ -17,10 +17,24 @@ export default defineConfig({
   resolve: {
     alias: {
       '~': __dirname,
+      'tests': `${__dirname}/tests`,
       'better-sse': `${__dirname}/utils/better-sse-stub.ts`
     }
   },
   plugins: [
+    {
+      name: 'import-meta-client',
+      transform(code: string, id: string) {
+        if (id.includes('node_modules')) return null
+        if (!code.includes('import.meta.client') && !code.includes('import.meta.server')) return null
+        return {
+          code: code
+            .replace(/import\.meta\.client/g, 'globalThis.__importMetaClient__')
+            .replace(/import\.meta\.server/g, '!globalThis.__importMetaClient__'),
+          map: null
+        }
+      }
+    },
     AutoImport({
       imports: [
         'vue',

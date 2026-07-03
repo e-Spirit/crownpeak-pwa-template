@@ -29,7 +29,7 @@ const currentRoute = decodeURIComponent(useRoute().path)
 const previewId = computed(() => {
   return activeNavigationItem.value?.seoRouteRegex !== null
     ? currentDataset.value?.previewId
-    : currentPage.value?.previewId
+    : currentPage.value?.id
 })
 
 // fetch page and dataset
@@ -112,7 +112,7 @@ const { pending } = useAsyncData(currentRoute, async () => {
   // This enables the synchronization of the editor with the actual page
   if ($setPreviewId)
     $setPreviewId(
-      currentDataset.value?.previewId ?? currentPage.value?.previewId
+      currentDataset.value?.previewId ?? currentPage.value?.id
     )
 })
 

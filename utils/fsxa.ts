@@ -127,7 +127,7 @@ export const fetchNavigationItemFromRoute = async (
   route: string
 ) => {
   // This could also be cached
-  let data = null
+  let data: null
 
   data = await fsxaApi.fetchNavigation({
     initialPath: route,
@@ -259,9 +259,7 @@ export const fetchPageRoute = async (
     Pick<CaasDataset, 'routes' | 'route'>
   >
 
-  const route = item?.route ?? item?.routes?.[0]?.route ?? null
-
-  return route
+  return item?.route ?? item?.routes?.[0]?.route ?? null
 }
 
 export const getLegalLinks = (
@@ -281,7 +279,6 @@ export const createProxyApi = () => {
       'createProxyApi() is forbiddenOn server side. Please use createRemoteApi() instead.'
     )
   }
-  // @ts-ignore - FSXAProxyApi not properly exported in local fsxa-api
   return new FSXAProxyApi('/api', logLevel)
 }
 export const createRemoteApi = (
@@ -316,9 +313,7 @@ export const createRemoteApi = (
       (appConfig?.['maxReferenceDepth'] as number | undefined),
     projectID: runtimeConfig.private.projectId,
     remotes: runtimeConfig.private.remotes
-      ? typeof runtimeConfig.private.remotes === 'string'
-        ? JSON.parse(runtimeConfig.private.remotes)
-        : runtimeConfig.private.remotes
+      ? JSON.parse(runtimeConfig.private.remotes)
       : {},
     contentMode: runtimeConfig.public.mode as FSXAContentMode,
     logLevel,
@@ -327,7 +322,6 @@ export const createRemoteApi = (
       appConfig.enableEventStream ||
       false
   }
-  // @ts-ignore - FSXARemoteApi not properly exported in local fsxa-api
   return new FSXARemoteApi(remoteApiConfig)
 }
 export const isHttpError = (err: Error | HttpError): err is HttpError => {

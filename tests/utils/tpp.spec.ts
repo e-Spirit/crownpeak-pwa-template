@@ -1,138 +1,118 @@
-// import { it, describe, vitest, expect, beforeEach, afterEach } from 'vitest'
-// import TPP_SNAP from 'fs-tpp-api'
-// import {
-//   onNavigationChangeHandler,
-//   onRequestPreviewElementHandler,
-//   onRerenderViewHandler
-// } from '../../utils/tpp'
-// import * as FSXA_UTILS from '../../utils/fsxa'
-// import * as NAVIGATION from '../../composables/navigation'
-//
-// const oldWindowLocation = window.location
-//
-// beforeEach(() => {
-//   // @ts-ignore
-//   delete window.location
-//
-//   // @ts-ignore
-//   window.location = Object.defineProperties(
-//     {},
-//     {
-//       ...Object.getOwnPropertyDescriptors(oldWindowLocation),
-//       reload: {
-//         configurable: true,
-//         value: vitest.fn()
-//       }
-//     }
-//   )
-// })
-//
-// afterEach(() => {
-//   window.location = oldWindowLocation
-// })
-//
-// describe('tpp utils', () => {
-//   describe('onNavigationChangeHandler', () => {
-//     it('call with no newPagePreviewId => dont do anything', () => {
-//       onNavigationChangeHandler('foo')
-//
-//       expect(window.location.reload).not.toHaveBeenCalled()
-//     })
-//
-//     it('call with newPagePreviewId => call location.reload()', () => {
-//       onNavigationChangeHandler(null)
-//
-//       expect(window.location.reload).toHaveBeenCalled()
-//     })
-//   })
-//
-//   describe('onRequestPreviewElementHandler', () => {
-//     it('onRequestPreviewElementHandler with valid preview id => should call setPreviewElement and navigate', async () => {
-//       TPP_SNAP.setPreviewElement = vitest.fn()
-//
-//       await onRequestPreviewElementHandler(
-//         '9266a682-aa19-4723-8761-1c9136945dd4.de_DE'
-//       )
-//
-//       expect(TPP_SNAP.setPreviewElement).toHaveBeenCalled()
-//     })
-//
-//     it('onRequestPreviewElementHandler with invalid preview id => do nothing', () => {
-//       TPP_SNAP.setPreviewElement = vitest.fn()
-//
-//       onRequestPreviewElementHandler('')
-//
-//       expect(TPP_SNAP.setPreviewElement).not.toHaveBeenCalled()
-//     })
-//   })
-//
-//   describe('onRerenderViewHandler', () => {
-//     it('onRerenderViewHandler with valid page preview id and active nav item is page => should call fetchPageById', async () => {
-//       TPP_SNAP.getPreviewElement = vitest
-//         .fn()
-//         .mockReturnValue('9266a682-aa19-4723-8761-1c9136945dd4.de_DE')
-//
-//       // @ts-ignore
-//       vitest.spyOn(NAVIGATION, 'useNavigationData').mockReturnValue({
-//         activeNavigationItem: {
-//           value: {
-//             seoRouteRegex: null
-//           }
-//         }
-//       })
-//
-//       vitest.spyOn(FSXA_UTILS, 'fetchPageById')
-//
-//       await onRerenderViewHandler()
-//
-//       expect(FSXA_UTILS.fetchPageById).toHaveBeenCalled()
-//     })
-//
-//     it('onRerenderViewHandler with valid preview id and active nav item is dataset => should call fetchDatasetById', async () => {
-//       TPP_SNAP.getPreviewElement = vitest
-//         .fn()
-//         .mockReturnValue('9266a682-aa19-4723-8761-1c9136945dd4.de_DE')
-//
-//       // @ts-ignore
-//       vitest.spyOn(NAVIGATION, 'useNavigationData').mockReturnValue({
-//         activeNavigationItem: {
-//           value: {
-//             seoRouteRegex: 'seoroute/regex'
-//           }
-//         }
-//       })
-//
-//       vitest.spyOn(FSXA_UTILS, 'fetchDatasetById')
-//
-//       await onRerenderViewHandler()
-//
-//       expect(FSXA_UTILS.fetchDatasetById).toHaveBeenCalled()
-//     })
-//
-//     it('onRerenderViewHandler with invalid preview id (missing locale) => do nothing', async () => {
-//       TPP_SNAP.getPreviewElement = vitest
-//         .fn()
-//         .mockReturnValue('9266a682-aa19-4723-8761-1c9136945dd4')
-//
-//       vitest.spyOn(FSXA_UTILS, 'fetchDatasetById')
-//       vitest.spyOn(FSXA_UTILS, 'fetchPageById')
-//
-//       await onRerenderViewHandler()
-//
-//       expect(FSXA_UTILS.fetchDatasetById).not.toHaveBeenCalled()
-//       expect(FSXA_UTILS.fetchPageById).not.toHaveBeenCalled()
-//     })
-//
-//     it('onRerenderViewHandler with invalid preview id => do nothing', async () => {
-//       TPP_SNAP.getPreviewElement = vitest.fn().mockReturnValue('')
-//
-//       vitest.spyOn(FSXA_UTILS, 'fetchDatasetById')
-//       vitest.spyOn(FSXA_UTILS, 'fetchPageById')
-//
-//       await onRerenderViewHandler()
-//
-//       expect(FSXA_UTILS.fetchDatasetById).not.toHaveBeenCalled()
-//       expect(FSXA_UTILS.fetchPageById).not.toHaveBeenCalled()
-//     })
-//   })
-// })
+import { it, describe, vi, expect, beforeEach, afterEach } from 'vitest'
+import {
+  onNavigationChangeHandler,
+  onRequestPreviewElementHandler,
+  onRerenderViewHandler
+} from '~/utils/tpp'
+import * as FSXA_UTILS from '../../utils/fsxa'
+
+beforeEach(() => {
+  vi.stubGlobal('location', { reload: vi.fn() })
+  window.TPP_SNAP = {
+    setPreviewElement: vi.fn(),
+    getPreviewElement: vi.fn(),
+    isConnected: Promise.resolve(true)
+  }
+})
+
+afterEach(() => {
+  vi.unstubAllGlobals()
+  vi.restoreAllMocks()
+  vi.useRealTimers()
+})
+
+describe('tpp utils', () => {
+  describe('onNavigationChangeHandler', () => {
+    it('call with newPagePreviewId => do nothing', () => {
+      onNavigationChangeHandler('foo')
+
+      expect(window.location.reload).not.toHaveBeenCalled()
+    })
+
+    it('call with null => call location.reload()', () => {
+      onNavigationChangeHandler(null)
+
+      expect(window.location.reload).toHaveBeenCalled()
+    })
+  })
+
+  describe('onRequestPreviewElementHandler', () => {
+    it('with valid preview id => call setPreviewElement', async () => {
+      vi.useFakeTimers()
+      const promise = onRequestPreviewElementHandler(
+        '9266a682-aa19-4723-8761-1c9136945dd4.de_DE'
+      )
+
+      expect(window.TPP_SNAP.setPreviewElement).toHaveBeenCalled()
+
+      await vi.runAllTimersAsync()
+      await promise
+    })
+
+    it('with empty preview id => do nothing', async () => {
+      await onRequestPreviewElementHandler('')
+
+      expect(window.TPP_SNAP.setPreviewElement).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('onRerenderViewHandler', () => {
+    it('with valid page preview id and active nav item is page => call fetchPageById', async () => {
+      window.TPP_SNAP.getPreviewElement = vi
+        .fn()
+        .mockResolvedValue('9266a682-aa19-4723-8761-1c9136945dd4.de_DE')
+
+      useState('activeNavigationItem').value = { seoRouteRegex: null }
+      vi.spyOn(FSXA_UTILS, 'fetchPageById')
+
+      vi.useFakeTimers()
+      const promise = onRerenderViewHandler()
+      await vi.runAllTimersAsync()
+      await promise
+
+      expect(FSXA_UTILS.fetchPageById).toHaveBeenCalled()
+    })
+
+    it('with valid preview id and active nav item is dataset => call fetchDatasetById', async () => {
+      window.TPP_SNAP.getPreviewElement = vi
+        .fn()
+        .mockResolvedValue('9266a682-aa19-4723-8761-1c9136945dd4.de_DE')
+
+      useState('activeNavigationItem').value = { seoRouteRegex: 'some/regex' }
+      vi.spyOn(FSXA_UTILS, 'fetchDatasetById')
+
+      vi.useFakeTimers()
+      const promise = onRerenderViewHandler()
+      await vi.runAllTimersAsync()
+      await promise
+
+      expect(FSXA_UTILS.fetchDatasetById).toHaveBeenCalled()
+    })
+
+    it('with preview id missing locale => do nothing', async () => {
+      window.TPP_SNAP.getPreviewElement = vi
+        .fn()
+        .mockResolvedValue('9266a682-aa19-4723-8761-1c9136945dd4')
+
+      vi.spyOn(FSXA_UTILS, 'fetchDatasetById')
+      vi.spyOn(FSXA_UTILS, 'fetchPageById')
+
+      await onRerenderViewHandler()
+
+      expect(FSXA_UTILS.fetchDatasetById).not.toHaveBeenCalled()
+      expect(FSXA_UTILS.fetchPageById).not.toHaveBeenCalled()
+    })
+
+    it('with empty preview id => do nothing', async () => {
+      window.TPP_SNAP.getPreviewElement = vi.fn().mockResolvedValue('')
+
+      vi.spyOn(FSXA_UTILS, 'fetchDatasetById')
+      vi.spyOn(FSXA_UTILS, 'fetchPageById')
+
+      await onRerenderViewHandler()
+
+      expect(FSXA_UTILS.fetchDatasetById).not.toHaveBeenCalled()
+      expect(FSXA_UTILS.fetchPageById).not.toHaveBeenCalled()
+    })
+  })
+})

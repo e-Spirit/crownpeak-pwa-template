@@ -1,9 +1,6 @@
-import { it, expect, describe, vi } from 'vitest'
-import {
-  ComparisonQueryOperatorEnum,
-  FSXAProxyApi,
-  FSXARemoteApi
-} from 'fsxa-api'
+import { it, expect, describe, vi, afterEach } from 'vitest'
+import { ComparisonQueryOperatorEnum, FSXARemoteApi } from 'fsxa-api'
+import { FSXAProxyApi } from 'fsxa-proxy-api'
 import createContentApi from '../../plugins/5.createContentApi'
 import {
   fetchTopLevelNavigation,
@@ -15,7 +12,7 @@ import {
   fetchProducts,
   createProxyApi,
   createRemoteApi
-} from '../../utils/fsxa'
+} from '~/utils/fsxa'
 import navigationData from '../fixtures/navigationDataSeoRoute.json'
 import navigationItem from '../fixtures/navigationItem.json'
 import datasetsFilter from '../fixtures/datasetsFilter.json'
@@ -181,26 +178,29 @@ describe('fsxa utils', () => {
     })
   })
   describe('createContentApi', () => {
+    afterEach(() => {
+      delete (globalThis as any).__importMetaClient__
+    })
+
     describe('createProxyApi', () => {
-      // fails because it's not run on the client, maybe we can mock the response to process.client
       it('call from client without params => return FSXAProxyApi', () => {
-        process.client = true
+        ;(globalThis as any).__importMetaClient__ = true
         expect(createProxyApi()).toBeInstanceOf(FSXAProxyApi)
       })
       it('call from server without params => throw error', () => {
-        process.client = false
+        ;(globalThis as any).__importMetaClient__ = false
         expect(() => createProxyApi()).toThrow()
       })
     })
     describe('createRemoteApi', () => {
       it('call from server with correct params => return FSXARemoteApi', () => {
-        process.client = false
+        ;(globalThis as any).__importMetaClient__ = false
         expect(
           createRemoteApi(useRuntimeConfig(), useAppConfig())
         ).toBeInstanceOf(FSXARemoteApi)
       })
       it('call from client with correct params => throw error', () => {
-        process.client = true
+        ;(globalThis as any).__importMetaClient__ = true
         expect(() =>
           createRemoteApi(useRuntimeConfig(), useAppConfig())
         ).toThrow()

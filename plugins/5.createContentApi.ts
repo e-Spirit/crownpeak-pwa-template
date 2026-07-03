@@ -7,7 +7,7 @@ export default defineNuxtPlugin(() => {
 
   const createContentApi: () => FSXAApi = () => {
     $logger.debug('Creating content-api instance')
-    if (process.client) {
+    if (import.meta.client) {
       return createProxyApi()
     } else {
       return createRemoteApi(runtimeConfig, appConfig)
