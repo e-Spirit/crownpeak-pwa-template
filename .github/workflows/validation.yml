@@ -9,16 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
 
-      - name: use cache if package-lock has not changed
-        uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: |
             node_modules
@@ -35,6 +35,7 @@ jobs:
         run: npm run test
 
       - name: Release Dry Run
-        run: npm run semantic-release:dry-run
+        run: npm run release:ci:dry-run
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

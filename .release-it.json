@@ -1,11 +1,9 @@
 {
   "git": {
-    "commitMessage": "chore(release): ${version} [skip ci]",
+    "commitMessage": "chore(release): ${version} [skip ci]\n\n${changelog}",
     "tagName": "v${version}",
-    "requireCleanWorkingDir": true,
-    "requireUpstream": true,
-    "requireCommits": false,
-    "addUntrackedFiles": false,
+    "requireCleanWorkingDir": false,
+    "requireBranch": false,
     "commit": true,
     "tag": true,
     "push": true
@@ -13,31 +11,22 @@
   "github": {
     "release": true,
     "releaseName": "v${version}",
-    "releaseNotes": null,
-    "autoGenerate": true,
+    "autoGenerate": false,
     "draft": false,
-    "preRelease": false,
-    "tokenRef": "GITHUB_TOKEN"
+    "preRelease": false
   },
   "npm": {
-    "publish": false,
-    "ignoreVersion": false
+    "publish": false
   },
   "hooks": {
-    "before:init": [],
-    "after:bump": "npm run build",
-    "after:release": "echo Successfully released ${version}"
+    "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
   },
   "plugins": {
     "@release-it/conventional-changelog": {
-      "preset": {
-        "name": "conventionalcommits"
-      },
+      "preset": "conventionalcommits",
       "infile": "CHANGELOG.md",
-      "header": "# Changelog",
-      "ignoreRecommendedBump": false,
-      "strictSemVer": false,
-      "whatBump": null
+      "header": "# Changelog\n\nAll notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.",
+      "ignoreRecommendedBump": false
     }
   }
 }

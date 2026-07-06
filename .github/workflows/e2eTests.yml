@@ -17,16 +17,13 @@ jobs:
   e2etests:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
 
-      - name: use cache if package-lock has not changed
-        uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: |
             node_modules
@@ -37,7 +34,7 @@ jobs:
         run: npm ci
 
       - name: Cypress run
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
           build: npm run build
           start: npm run start

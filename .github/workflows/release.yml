@@ -4,8 +4,10 @@ on:
   push:
     branches: [main, alpha]
 
+permissions:
+  contents: write
+
 env:
-  CI: ${{ secrets.CI }}
   NUXT_PUBLIC_MODE: ${{ secrets.NUXT_PUBLIC_MODE }}
   NUXT_PRIVATE_API_KEY: ${{ secrets.NUXT_PRIVATE_API_KEY }}
   NUXT_PRIVATE_NAVIGATION_SERVICE: ${{ secrets.NUXT_PRIVATE_NAVIGATION_SERVICE }}
@@ -17,11 +19,18 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
 
@@ -31,18 +40,18 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Run tests
+      - name: Run unit tests
         run: npm run test
 
       - name: Cypress run
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
-          build: npm run build
           start: npm run start
         env:
           CYPRESS_cyBaseURL: ${{ secrets.CY_BASE_URL }}
 
       - name: Release
-        run: npm run semantic-release
+        run: npm run release:ci
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
