@@ -78,6 +78,12 @@ export function useAsyncData(_keyOrFun: string | Function, fun?: Function) {
 
 export function definePageMeta() {}
 
+export function useRequestEvent() {
+  return undefined
+}
+
+export function setResponseStatus(_event: unknown, _statusCode: number) {}
+
 export function useHead() {}
 
 export function navigateTo(_args: unknown) {}

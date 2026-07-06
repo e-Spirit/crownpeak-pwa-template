@@ -57,6 +57,8 @@ export default defineConfig({
             'definePageMeta',
             'useLocale',
             'useAsyncData',
+            'useRequestEvent',
+            'setResponseStatus',
             'fetchTopLevelNavigation',
             'fetchPageRoute',
             'fetchDatasetById',
