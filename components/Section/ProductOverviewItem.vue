@@ -58,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ProductData } from '../../types'
+import type { ProductData } from '~/types'
 import type { Dataset } from 'fsxa-api'
 
 const props = defineProps<{ data: ProductData; route: string }>()

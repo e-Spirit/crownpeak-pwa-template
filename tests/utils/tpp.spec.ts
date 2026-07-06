@@ -1,4 +1,5 @@
 import { it, describe, vi, expect, beforeEach, afterEach } from 'vitest'
+import { useState } from '../testutils/nuxtMocks'
 import {
   onNavigationChangeHandler,
   onRequestPreviewElementHandler,

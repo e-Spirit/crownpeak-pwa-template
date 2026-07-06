@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ProductData } from '../../types'
+import type { ProductData } from '~/types'
 
 defineProps<{ data: ProductData; productRoute: string }>()
 </script>

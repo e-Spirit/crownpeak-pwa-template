@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Accordion } from '../../types'
+import type { Accordion } from '~/types'
 
 defineProps<{ data: Accordion }>()
 </script>

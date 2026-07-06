@@ -62,7 +62,7 @@
 
 <script setup lang="ts">
 import type { DataEntries, Dataset } from 'fsxa-api'
-import type { ProductData } from '../../types'
+import type { ProductData } from '~/types'
 
 defineProps<{ data: DataEntries }>()
 

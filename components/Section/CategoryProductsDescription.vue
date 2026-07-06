@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import type { RichTextElement } from 'fsxa-api'
-import type { InternalLink } from '../../types'
+import type { InternalLink } from '~/types'
 
 defineProps<{
   headline: string

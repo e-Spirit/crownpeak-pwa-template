@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import type { RichTextElement } from 'fsxa-api'
-import type { InternalLink, OptionType } from '../../types'
+import type { InternalLink, OptionType } from '~/types'
 
 interface ProductCategoryTeaser {
   st_category: {

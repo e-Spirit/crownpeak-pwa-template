@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Features } from '../../types'
+import type { Features } from '~/types'
 
 const props = defineProps<{ data: Features }>()
 </script>

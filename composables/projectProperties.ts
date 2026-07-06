@@ -64,11 +64,8 @@ export function useProjectProperties() {
       const projectPropertiesResponse = await fsxaApi.fetchProjectProperties({
         locale
       })
-      let projectProperties = null
+      let projectProperties: ProjectProperties
       if (isNormalizedProjectPropertyResponse(projectPropertiesResponse)) {
-        projectProperties = (
-          projectPropertiesResponse as NormalizedProjectPropertyResponse
-        ).projectProperties
       }
       projectProperties = projectPropertiesResponse as ProjectProperties
       return projectProperties

@@ -2,7 +2,7 @@ import {
   onNavigationChangeHandler,
   onRequestPreviewElementHandler,
   onRerenderViewHandler
-} from '../utils/tpp'
+} from '~/utils/tpp'
 
 const loadScript = (
   FILE_URL: string,
@@ -46,7 +46,14 @@ declare global {
 export default defineNuxtPlugin(() => {
   const { $isPreviewMode } = useNuxtApp()
 
-  if (!$isPreviewMode) return
+  const noopProvide = {
+    provide: {
+      setPreviewId: async (_previewId: string | undefined) => {},
+      createSection: async (_bodyName: string) => {}
+    }
+  }
+
+  if (!$isPreviewMode) return noopProvide
 
   console.log(
     '[TPP_SNAP] Initializing TPP Snap plugin, preview mode:',
@@ -60,7 +67,7 @@ export default defineNuxtPlugin(() => {
     console.warn(
       'You are running your application outside of the ContentCreator. InEdit will not be available.'
     )
-    return
+    return noopProvide
   }
 
   if (typeof window !== 'undefined') {

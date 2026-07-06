@@ -5,6 +5,7 @@ import type {
   Dataset,
   FSXAApi,
   FSXARemoteApiConfig,
+  NavigationData,
   NavigationItem,
   Page,
   ProjectProperties,
@@ -127,7 +128,7 @@ export const fetchNavigationItemFromRoute = async (
   route: string
 ) => {
   // This could also be cached
-  let data: null
+  let data: NavigationData | null
 
   data = await fsxaApi.fetchNavigation({
     initialPath: route,
@@ -313,7 +314,9 @@ export const createRemoteApi = (
       (appConfig?.['maxReferenceDepth'] as number | undefined),
     projectID: runtimeConfig.private.projectId,
     remotes: runtimeConfig.private.remotes
-      ? JSON.parse(runtimeConfig.private.remotes)
+      ? typeof runtimeConfig.private.remotes === 'string'
+        ? JSON.parse(runtimeConfig.private.remotes)
+        : runtimeConfig.private.remotes
       : {},
     contentMode: runtimeConfig.public.mode as FSXAContentMode,
     logLevel,

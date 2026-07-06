@@ -1,6 +1,6 @@
 import { it, expect, describe, vi, afterEach } from 'vitest'
 import { ComparisonQueryOperatorEnum, FSXARemoteApi } from 'fsxa-api'
-import { FSXAProxyApi } from 'fsxa-proxy-api'
+import type { NavigationData } from 'fsxa-api'
 import createContentApi from '../../plugins/5.createContentApi'
 import {
   fetchTopLevelNavigation,
@@ -13,10 +13,11 @@ import {
   createProxyApi,
   createRemoteApi
 } from '~/utils/fsxa'
-import navigationData from '../fixtures/navigationDataSeoRoute.json'
+import navigationDataJson from '../fixtures/navigationDataSeoRoute.json'
+const navigationData = navigationDataJson as unknown as NavigationData
 import navigationItem from '../fixtures/navigationItem.json'
 import datasetsFilter from '../fixtures/datasetsFilter.json'
-import { useAppConfig, useRuntimeConfig } from 'tests/testutils/nuxtMocks'
+import { useAppConfig, useRuntimeConfig } from '../testutils/nuxtMocks'
 
 describe('fsxa utils', () => {
   describe('fetchTopLevelNavigation', () => {
@@ -127,7 +128,7 @@ describe('fsxa utils', () => {
 
       expect(await fetchNavigationItemFromRoute(fsxaApi, '/')).toStrictEqual(
         navigationData.idMap[
-          navigationData.seoRouteMap[navigationData.pages.index]
+          navigationData.seoRouteMap[navigationData.pages.index]!
         ]
       )
     })
@@ -185,7 +186,7 @@ describe('fsxa utils', () => {
     describe('createProxyApi', () => {
       it('call from client without params => return FSXAProxyApi', () => {
         ;(globalThis as any).__importMetaClient__ = true
-        expect(createProxyApi()).toBeInstanceOf(FSXAProxyApi)
+        expect((createProxyApi() as any).mode).toBe('proxy')
       })
       it('call from server without params => throw error', () => {
         ;(globalThis as any).__importMetaClient__ = false

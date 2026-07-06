@@ -112,7 +112,7 @@ const { pending } = useAsyncData(currentRoute, async () => {
   // This enables the synchronization of the editor with the actual page
   if ($setPreviewId)
     $setPreviewId(
-      currentDataset.value?.previewId ?? currentPage.value?.id
+      currentDataset.value?.previewId ?? currentPage.value?.previewId
     )
 })
 

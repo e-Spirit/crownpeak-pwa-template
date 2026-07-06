@@ -13,7 +13,7 @@
   </span>
 </template>
 <script lang="ts" setup>
-import type { RichTextElement } from 'fsxa-api/dist/types'
+import type { RichTextElement } from 'fsxa-api'
 
 defineProps<{
   richTextElement?: RichTextElement
