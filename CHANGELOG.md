@@ -4,6 +4,38 @@ All notable changes to this project will be documented in this file. See [Conven
 
 ## [2.1.0](https://github.com/e-Spirit/crownpeak-pwa-template/compare/v2.0.1...v2.1.0) (2026-07-07)
 
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** Node.js versions below 24.12.0 are no longer supported
+
+
+### Features
+
+* **config:** make server `allowedHosts` configurable via `NUXT_ALLOWED_HOSTS` env var
+* **tpp:** support OCM3; client script is automatically loaded when opening app in ContentCreator
+
+
+### Bug Fixes
+
+* **tpp:** guard `window.TPP_SNAP` race condition in `setPreviewId` and `createSection`
+* **tpp:** propagate `isConnected` promise rejections to outer catch
+* **tpp:** restore typed handler interfaces, replacing `any`
+* **tpp:** wrap `getLocaleFromNavigationItem` in try/catch for folder/group nav items
+* **tpp:** reduce `MAX_REFERENCE_DEPTH` default from 20 to 2
+* **slug:** return HTTP 404 for non-existing content projections
+* **ci:** configure Cypress webpack preprocessor to handle `node:` URI scheme
+
+
+### Miscellaneous Chores
+
+* replace `process.client` with `import.meta.client` for Nuxt 4 compatibility
+* apply `import type` syntax for type-only imports throughout
+* **config:** update Vite/Nuxt alias resolution for `better-sse` and `node:crypto`
+* **ci:** replace semantic-release with release-it; add `release:ci` and dry-run scripts
+* **deps:** upgrade Content API to v11
+
+
 ## [2.0.1](https://github.com/e-Spirit/crownpeak-pwa-template/compare/v2.0.0...v2.0.1) (2024-01-23)
 
 
