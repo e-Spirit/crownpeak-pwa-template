@@ -1,12 +1,12 @@
 import { randomUUID } from 'crypto'
-import { FSXAProxyRoutes } from 'fsxa-api'
+import { ROUTES } from 'fsxa-api'
 import { CaasEventListenerSingleton } from '~~/server/CaasEventListenerSingleton'
 import { ServerErrors } from '~~/types'
 
 export default defineEventHandler(async (event) => {
   const endpoint = event.context['params']?.['endpoint']
 
-  if (`/${endpoint}` === FSXAProxyRoutes.STREAM_CHANGE_EVENTS_ROUTE) {
+  if (`/${endpoint}` === ROUTES.STREAM_CHANGE_EVENTS_ROUTE) {
     // caasEventListener is already set by middleware
     const caasEventListener = CaasEventListenerSingleton.instance
 

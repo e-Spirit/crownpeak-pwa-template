@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { Page } from 'fsxa-api'
+import type { Page } from 'fsxa-api'
 import { computed } from 'vue'
 
 const props = defineProps<{ page: Page }>()

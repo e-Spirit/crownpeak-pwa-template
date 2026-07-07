@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { RichTextElement, Link } from 'fsxa-api'
+import type { RichTextElement, Link } from 'fsxa-api'
 
 const { navigationData, setActiveNavigationItem } = useNavigationData()
 

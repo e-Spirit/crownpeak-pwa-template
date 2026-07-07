@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Image } from 'fsxa-api'
+import type { Image } from 'fsxa-api'
 
 const { projectProperties } = useProjectProperties()
 

@@ -23,8 +23,8 @@
 </template>
 
 <script setup lang="ts">
-import { RichTextElement } from 'fsxa-api'
-import { InternalLink } from 'types'
+import type { RichTextElement } from 'fsxa-api'
+import type { InternalLink } from '~/types'
 
 defineProps<{
   headline: string

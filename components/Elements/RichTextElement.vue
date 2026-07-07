@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import { RichTextElement } from 'fsxa-api'
+import type { RichTextElement } from 'fsxa-api'
 const props = defineProps<{ richTextElement: RichTextElement }>()
 
 const richTextElementComponent = computed(() => {

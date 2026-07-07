@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { InternalLink } from 'types'
+import type { InternalLink } from '~~/types'
 const { navigationData, setActiveNavigationItem } = useNavigationData()
 
 const props = defineProps<{ linkData: InternalLink }>()

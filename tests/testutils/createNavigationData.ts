@@ -1,4 +1,4 @@
-import { NavigationData } from 'fsxa-api'
+import type { NavigationData } from 'fsxa-api'
 import { faker } from '@faker-js/faker'
 
 export function createNavigationData(
@@ -9,13 +9,13 @@ export function createNavigationData(
     seoRouteMap: {},
     meta: {
       identifier: {
-        tenantId: faker.random.word(),
-        navigationId: faker.random.word(),
-        languageId: faker.random.locale()
+        tenantId: faker.word.sample(),
+        navigationId: faker.word.sample(),
+        languageId: faker.location.countryCode()
       }
     },
     pages: {
-      index: faker.random.word()
+      index: faker.word.sample()
     },
     structure: []
   }

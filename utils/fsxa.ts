@@ -1,22 +1,26 @@
-import {
+import { FSXAProxyApi } from 'fsxa-proxy-api'
+
+import type {
   CaaSApi_Dataset as CaasDataset,
-  ComparisonQueryOperatorEnum,
   Dataset,
   FSXAApi,
-  FSXAContentMode,
-  FSXAProxyApi,
-  FSXARemoteApi,
   FSXARemoteApiConfig,
-  LogicalQueryOperatorEnum,
-  LogLevel,
+  NavigationData,
   NavigationItem,
   Page,
   ProjectProperties,
-  QueryBuilderQuery,
-  HttpError
+  QueryBuilderQuery
 } from 'fsxa-api'
-import { AppConfig, RuntimeConfig } from 'nuxt/schema'
-import { LegalLink } from '~~/types'
+import {
+  ComparisonQueryOperatorEnum,
+  FSXAContentMode,
+  FSXARemoteApi,
+  HttpError,
+  LogicalQueryOperatorEnum,
+  LogLevel
+} from 'fsxa-api'
+import type { AppConfig, RuntimeConfig } from 'nuxt/schema'
+import type { LegalLink } from '~~/types'
 
 /**
  * Fetch dataset through the FSXA Api by route
@@ -124,7 +128,7 @@ export const fetchNavigationItemFromRoute = async (
   route: string
 ) => {
   // This could also be cached
-  let data = null
+  let data: NavigationData | null
 
   data = await fsxaApi.fetchNavigation({
     initialPath: route,
@@ -256,9 +260,7 @@ export const fetchPageRoute = async (
     Pick<CaasDataset, 'routes' | 'route'>
   >
 
-  const route = item?.route ?? item?.routes?.[0]?.route ?? null
-
-  return route
+  return item?.route ?? item?.routes?.[0]?.route ?? null
 }
 
 export const getLegalLinks = (
@@ -273,7 +275,7 @@ export const getLegalLinks = (
 export const createProxyApi = () => {
   const { $logger } = useNuxtApp()
   const logLevel = $logger.logLevel
-  if (!process.client) {
+  if (!import.meta.client) {
     throw new Error(
       'createProxyApi() is forbiddenOn server side. Please use createRemoteApi() instead.'
     )
@@ -284,7 +286,7 @@ export const createRemoteApi = (
   runtimeConfig: RuntimeConfig,
   appConfig: AppConfig
 ) => {
-  if (process.client) {
+  if (import.meta.client) {
     throw new Error(
       'FSXARemoteApi may leak secrets when created on client side'
     )
@@ -300,6 +302,7 @@ export const createRemoteApi = (
     }
     return LogLevel.NONE
   }
+
   const logLevel = determineLogLevel()
   const remoteApiConfig: FSXARemoteApiConfig = {
     apikey: runtimeConfig.private.apiKey,

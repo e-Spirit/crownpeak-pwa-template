@@ -1,6 +1,7 @@
 /// <reference types="vitest" />
 import AutoImport from 'unplugin-auto-import/vite'
 import { defineConfig } from 'vitest/config'
+// @ts-ignore
 import Vue from '@vitejs/plugin-vue'
 import { configure } from '@testing-library/vue'
 
@@ -15,10 +16,25 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '~': __dirname
+      '~': __dirname,
+      'tests': `${__dirname}/tests`,
+      'better-sse': `${__dirname}/utils/better-sse-stub.ts`
     }
   },
   plugins: [
+    {
+      name: 'import-meta-client',
+      transform(code: string, id: string) {
+        if (id.includes('node_modules')) return null
+        if (!code.includes('import.meta.client') && !code.includes('import.meta.server')) return null
+        return {
+          code: code
+            .replace(/import\.meta\.client/g, 'globalThis.__importMetaClient__')
+            .replace(/import\.meta\.server/g, '!globalThis.__importMetaClient__'),
+          map: null
+        }
+      }
+    },
     AutoImport({
       imports: [
         'vue',
@@ -41,6 +57,8 @@ export default defineConfig({
             'definePageMeta',
             'useLocale',
             'useAsyncData',
+            'useRequestEvent',
+            'setResponseStatus',
             'fetchTopLevelNavigation',
             'fetchPageRoute',
             'fetchDatasetById',
@@ -55,7 +73,7 @@ export default defineConfig({
     Vue({
       template: {
         compilerOptions: {
-          isCustomElement: (tag) => {
+          isCustomElement: (tag: string) => {
             return ['DevOnly', 'ClientOnly', 'NuxtLink'].includes(tag)
           }
         }

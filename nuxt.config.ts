@@ -1,7 +1,8 @@
-import eslintPlugin from 'vite-plugin-eslint'
+import { fileURLToPath, URL } from 'node:url'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  compatibilityDate: '2025-11-25',
   css: ['@/assets/css/main.css', '@/assets/css/transitions.css'],
   postcss: {
     plugins: {
@@ -12,23 +13,29 @@ export default defineNuxtConfig({
     }
   },
   vite: {
-    plugins: [eslintPlugin()],
     resolve: {
       alias: {
-        util: 'rollup-plugin-node-polyfills/polyfills/util'
+        util: 'rollup-plugin-node-polyfills/polyfills/util',
+        'node:crypto': fileURLToPath(new URL('./utils/crypto-stub.ts', import.meta.url)),
+        // better-sse is server-only, stub it for client builds
+        'better-sse': fileURLToPath(new URL('./utils/better-sse-stub.ts', import.meta.url))
       }
     },
     optimizeDeps: {
+      include: ['fsxa-api'],
       esbuildOptions: {
         define: {
           global: 'globalThis'
         }
       }
+    },
+    server: {
+      allowedHosts: process.env['NUXT_ALLOWED_HOSTS']?.split(',') || ['localhost']
     }
   },
   modules: ['nuxt-viewport'],
   typescript: {
-    typeCheck: true
+    typeCheck: 'build' // Only type-check during build, not in dev mode
   },
   runtimeConfig: {
     // the environment variables follow a strict naming convention, enforced by nuxt.
@@ -38,7 +45,6 @@ export default defineNuxtConfig({
     public: {
       logLevel: process.env['NUXT_PUBLIC_LOG_LEVEL'],
       mode: process.env['NUXT_PUBLIC_MODE'],
-      snapUrl: process.env['NUXT_PUBLIC_SNAP_URL'],
       enableEventStream: process.env['NUXT_PUBLIC_ENABLE_EVENT_STREAM'],
       defaultLocale: process.env['NUXT_PUBLIC_DEFAULT_LOCALE']
     },

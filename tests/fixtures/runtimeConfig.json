@@ -8,7 +8,6 @@
     "navigationService": "http://testnavservice.de",
     "caas": "http://testcaas.de",
     "projectId": "testprojectid",
-    "tenantId": "testtenantid",
-    "snapUrl": "http://testsnapurl.de"
+    "tenantId": "testtenantid"
   }
 }

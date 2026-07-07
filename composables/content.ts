@@ -1,4 +1,4 @@
-import { Page, Dataset } from 'fsxa-api'
+import type { Page, Dataset } from 'fsxa-api'
 
 export function useContent() {
   const currentDataset = useState<Dataset | null>('currentDataset')
@@ -38,7 +38,7 @@ export function useContent() {
   /**
    * Add page to cache for given route if it has not been cached yet
    * @param route Route
-   * @param page Page
+   * @param data
    * @returns
    */
   function addToCachedPages(route: string, data: Page) {

@@ -67,7 +67,7 @@
 </template>
 
 <script setup lang="ts">
-import { Image, RichTextElement, Section } from 'fsxa-api'
+import type { Image, RichTextElement, Section } from 'fsxa-api'
 
 const { showDev } = useDev()
 

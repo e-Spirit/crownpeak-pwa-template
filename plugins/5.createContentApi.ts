@@ -1,4 +1,4 @@
-import { FSXAApi } from 'fsxa-api'
+import type { FSXAApi } from 'fsxa-api'
 
 export default defineNuxtPlugin(() => {
   const { $logger } = useNuxtApp()
@@ -7,7 +7,7 @@ export default defineNuxtPlugin(() => {
 
   const createContentApi: () => FSXAApi = () => {
     $logger.debug('Creating content-api instance')
-    if (process.client) {
+    if (import.meta.client) {
       return createProxyApi()
     } else {
       return createRemoteApi(runtimeConfig, appConfig)

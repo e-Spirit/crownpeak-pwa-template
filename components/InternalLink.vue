@@ -2,18 +2,32 @@
   <NuxtLink
     :to="`${navItem.seoRoute}` || '/'"
     class="hover:underline"
-    @click="setActiveNavigationItem(navItem)"
+    @click="handleClick"
   >
     {{ navItem.label || '??' }}
   </NuxtLink>
 </template>
 
 <script setup lang="ts">
-import { NavigationItem } from 'fsxa-api'
+import type { NavigationItem } from 'fsxa-api'
+import { getLocaleFromNavigationItem } from '~/utils/fsxa'
 
-const { setActiveNavigationItem } = useNavigationData()
-
-defineProps<{
+const props = defineProps<{
   navItem: NavigationItem
 }>()
+
+const { setActiveNavigationItem } = useNavigationData()
+const { setActiveLocale } = useLocale()
+
+function handleClick() {
+  // Set navigation state immediately before middleware runs
+  setActiveNavigationItem(props.navItem)
+  // Extract and set locale from navigation item
+  try {
+    const locale = getLocaleFromNavigationItem(props.navItem)
+    setActiveLocale(locale)
+  } catch (e) {
+    console.warn('[InternalLink] Could not determine locale from nav item:', e)
+  }
+}
 </script>

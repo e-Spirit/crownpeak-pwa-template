@@ -1,45 +1,36 @@
-import { it, describe, vitest, expect, beforeEach, afterEach } from 'vitest'
-import TPP_SNAP from 'fs-tpp-api'
+import { it, describe, vi, expect, beforeEach, afterEach } from 'vitest'
+import { useState } from '../testutils/nuxtMocks'
 import {
   onNavigationChangeHandler,
   onRequestPreviewElementHandler,
   onRerenderViewHandler
-} from '../../utils/tpp'
+} from '~/utils/tpp'
 import * as FSXA_UTILS from '../../utils/fsxa'
-import * as NAVIGATION from '../../composables/navigation'
-
-const oldWindowLocation = window.location
 
 beforeEach(() => {
-  // @ts-ignore
-  delete window.location
-
-  // @ts-ignore
-  window.location = Object.defineProperties(
-    {},
-    {
-      ...Object.getOwnPropertyDescriptors(oldWindowLocation),
-      reload: {
-        configurable: true,
-        value: vitest.fn()
-      }
-    }
-  )
+  vi.stubGlobal('location', { reload: vi.fn() })
+  window.TPP_SNAP = {
+    setPreviewElement: vi.fn(),
+    getPreviewElement: vi.fn(),
+    isConnected: Promise.resolve(true)
+  }
 })
 
 afterEach(() => {
-  window.location = oldWindowLocation
+  vi.unstubAllGlobals()
+  vi.restoreAllMocks()
+  vi.useRealTimers()
 })
 
 describe('tpp utils', () => {
   describe('onNavigationChangeHandler', () => {
-    it('call with no newPagePreviewId => dont do anything', () => {
+    it('call with newPagePreviewId => do nothing', () => {
       onNavigationChangeHandler('foo')
 
       expect(window.location.reload).not.toHaveBeenCalled()
     })
 
-    it('call with newPagePreviewId => call location.reload()', () => {
+    it('call with null => call location.reload()', () => {
       onNavigationChangeHandler(null)
 
       expect(window.location.reload).toHaveBeenCalled()
@@ -47,75 +38,65 @@ describe('tpp utils', () => {
   })
 
   describe('onRequestPreviewElementHandler', () => {
-    it('onRequestPreviewElementHandler with valid preview id => should call setPreviewElement and navigate', async () => {
-      TPP_SNAP.setPreviewElement = vitest.fn()
-
-      await onRequestPreviewElementHandler(
+    it('with valid preview id => call setPreviewElement', async () => {
+      vi.useFakeTimers()
+      const promise = onRequestPreviewElementHandler(
         '9266a682-aa19-4723-8761-1c9136945dd4.de_DE'
       )
 
-      expect(TPP_SNAP.setPreviewElement).toHaveBeenCalled()
+      expect(window.TPP_SNAP.setPreviewElement).toHaveBeenCalled()
+
+      await vi.runAllTimersAsync()
+      await promise
     })
 
-    it('onRequestPreviewElementHandler with invalid preview id => do nothing', () => {
-      TPP_SNAP.setPreviewElement = vitest.fn()
+    it('with empty preview id => do nothing', async () => {
+      await onRequestPreviewElementHandler('')
 
-      onRequestPreviewElementHandler('')
-
-      expect(TPP_SNAP.setPreviewElement).not.toHaveBeenCalled()
+      expect(window.TPP_SNAP.setPreviewElement).not.toHaveBeenCalled()
     })
   })
 
   describe('onRerenderViewHandler', () => {
-    it('onRerenderViewHandler with valid page preview id and active nav item is page => should call fetchPageById', async () => {
-      TPP_SNAP.getPreviewElement = vitest
+    it('with valid page preview id and active nav item is page => call fetchPageById', async () => {
+      window.TPP_SNAP.getPreviewElement = vi
         .fn()
-        .mockReturnValue('9266a682-aa19-4723-8761-1c9136945dd4.de_DE')
+        .mockResolvedValue('9266a682-aa19-4723-8761-1c9136945dd4.de_DE')
 
-      // @ts-ignore
-      vitest.spyOn(NAVIGATION, 'useNavigationData').mockReturnValue({
-        activeNavigationItem: {
-          value: {
-            seoRouteRegex: null
-          }
-        }
-      })
+      useState('activeNavigationItem').value = { seoRouteRegex: null }
+      vi.spyOn(FSXA_UTILS, 'fetchPageById')
 
-      vitest.spyOn(FSXA_UTILS, 'fetchPageById')
-
-      await onRerenderViewHandler()
+      vi.useFakeTimers()
+      const promise = onRerenderViewHandler()
+      await vi.runAllTimersAsync()
+      await promise
 
       expect(FSXA_UTILS.fetchPageById).toHaveBeenCalled()
     })
 
-    it('onRerenderViewHandler with valid preview id and active nav item is dataset => should call fetchDatasetById', async () => {
-      TPP_SNAP.getPreviewElement = vitest
+    it('with valid preview id and active nav item is dataset => call fetchDatasetById', async () => {
+      window.TPP_SNAP.getPreviewElement = vi
         .fn()
-        .mockReturnValue('9266a682-aa19-4723-8761-1c9136945dd4.de_DE')
+        .mockResolvedValue('9266a682-aa19-4723-8761-1c9136945dd4.de_DE')
 
-      // @ts-ignore
-      vitest.spyOn(NAVIGATION, 'useNavigationData').mockReturnValue({
-        activeNavigationItem: {
-          value: {
-            seoRouteRegex: 'seoroute/regex'
-          }
-        }
-      })
+      useState('activeNavigationItem').value = { seoRouteRegex: 'some/regex' }
+      vi.spyOn(FSXA_UTILS, 'fetchDatasetById')
 
-      vitest.spyOn(FSXA_UTILS, 'fetchDatasetById')
-
-      await onRerenderViewHandler()
+      vi.useFakeTimers()
+      const promise = onRerenderViewHandler()
+      await vi.runAllTimersAsync()
+      await promise
 
       expect(FSXA_UTILS.fetchDatasetById).toHaveBeenCalled()
     })
 
-    it('onRerenderViewHandler with invalid preview id (missing locale) => do nothing', async () => {
-      TPP_SNAP.getPreviewElement = vitest
+    it('with preview id missing locale => do nothing', async () => {
+      window.TPP_SNAP.getPreviewElement = vi
         .fn()
-        .mockReturnValue('9266a682-aa19-4723-8761-1c9136945dd4')
+        .mockResolvedValue('9266a682-aa19-4723-8761-1c9136945dd4')
 
-      vitest.spyOn(FSXA_UTILS, 'fetchDatasetById')
-      vitest.spyOn(FSXA_UTILS, 'fetchPageById')
+      vi.spyOn(FSXA_UTILS, 'fetchDatasetById')
+      vi.spyOn(FSXA_UTILS, 'fetchPageById')
 
       await onRerenderViewHandler()
 
@@ -123,11 +104,11 @@ describe('tpp utils', () => {
       expect(FSXA_UTILS.fetchPageById).not.toHaveBeenCalled()
     })
 
-    it('onRerenderViewHandler with invalid preview id => do nothing', async () => {
-      TPP_SNAP.getPreviewElement = vitest.fn().mockReturnValue('')
+    it('with empty preview id => do nothing', async () => {
+      window.TPP_SNAP.getPreviewElement = vi.fn().mockResolvedValue('')
 
-      vitest.spyOn(FSXA_UTILS, 'fetchDatasetById')
-      vitest.spyOn(FSXA_UTILS, 'fetchPageById')
+      vi.spyOn(FSXA_UTILS, 'fetchDatasetById')
+      vi.spyOn(FSXA_UTILS, 'fetchPageById')
 
       await onRerenderViewHandler()
 

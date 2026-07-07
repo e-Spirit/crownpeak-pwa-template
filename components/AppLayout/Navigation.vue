@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { NavigationItem } from 'fsxa-api'
+import type { NavigationItem } from 'fsxa-api'
 
 const { navigationData } = useNavigationData()
 

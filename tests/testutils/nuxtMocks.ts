@@ -1,16 +1,17 @@
-import { FetchByFilterParams, FetchElementParams, HttpError } from 'fsxa-api'
-import { RuntimeConfig } from 'nuxt/schema'
+import type { FetchByFilterParams, FetchElementParams } from 'fsxa-api'
+import { HttpError } from 'fsxa-api'
+import type { RuntimeConfig } from 'nuxt/schema'
 import appConfig from '../fixtures/appConfig.json'
 import runtimeConfig from '../fixtures/runtimeConfig.json'
 import toplevelDE from '../fixtures/toplevelNavigation_de_DE.json'
 import toplevelEN from '../fixtures/toplevelNavigation_en_GB.json'
 import page from '../fixtures/page.json'
 import projectProperties from '../fixtures/projectProperties.json'
-import { useDev } from '../../composables/showDev'
-import { useLocale } from '../../composables/locale'
-import { useContent } from '../../composables/content'
-import { useNavigationData } from '../../composables/navigation'
-import { useProjectProperties } from '../../composables/projectProperties'
+import { useDev } from '~/composables/showDev'
+import { useLocale } from '~/composables/locale'
+import { useContent } from '~/composables/content'
+import { useNavigationData } from '~/composables/navigation'
+import { useProjectProperties } from '~/composables/projectProperties'
 import {
   fetchPageRoute,
   fetchTopLevelNavigation,
@@ -19,7 +20,7 @@ import {
   getLocaleFromNavigationItem,
   fetchDatasetById,
   fetchPageById
-} from '../../utils/fsxa'
+} from '~/utils/fsxa'
 
 let mockedState: any = {}
 
@@ -69,12 +70,19 @@ export function useNuxtApp() {
   }
 }
 
-export function useAsyncData(fun: Function, _options: { watch: any[] }) {
-  fun()
+export function useAsyncData(_keyOrFun: string | Function, fun?: Function) {
+  const handler = typeof _keyOrFun === 'function' ? _keyOrFun : fun
+  if (handler) handler()
   return { pending: false }
 }
 
 export function definePageMeta() {}
+
+export function useRequestEvent() {
+  return undefined
+}
+
+export function setResponseStatus(_event: unknown, _statusCode: number) {}
 
 export function useHead() {}
 

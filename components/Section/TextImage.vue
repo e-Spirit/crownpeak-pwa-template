@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { RichTextElement, Image, Option } from 'fsxa-api'
+import type { RichTextElement, Image, Option } from 'fsxa-api'
 
 interface TextImage {
   st_columns: Option

@@ -1,7 +1,16 @@
-import TPP_SNAP from 'fs-tpp-api'
-import { FSXAProxyApi } from 'fsxa-api'
+import { FSXAProxyApi } from 'fsxa-proxy-api'
 
 export type CaaSEventType = 'insert' | 'replace' | 'delete'
+
+type OnRequestPreviewElementHandler = (previewId: string) => Promise<void>
+type OnRerenderViewHandler = () => Promise<void>
+type OnNavigationChangeHandler = (newPagePreviewId: string | null) => void
+
+declare global {
+  interface Window {
+    TPP_SNAP: any
+  }
+}
 
 export type CaaSEvent = {
   operationType: CaaSEventType
@@ -14,7 +23,7 @@ export type CaaSEvent = {
  */
 export const onInit = () =>
   new Promise((resolve) => {
-    TPP_SNAP.onInit((success: boolean) => {
+    window.TPP_SNAP.onInit((success: boolean) => {
       resolve(success)
     })
   })
@@ -89,7 +98,7 @@ export const onRequestPreviewElementHandler: OnRequestPreviewElementHandler =
     const pageId = previewId.split('.')[0]
     if (!pageId) return
 
-    TPP_SNAP.setPreviewElement(previewId)
+    window.TPP_SNAP.setPreviewElement(previewId)
 
     await navigateToPageId(pageId)
   }
@@ -101,7 +110,7 @@ export const onRequestPreviewElementHandler: OnRequestPreviewElementHandler =
  * @returns Promise
  */
 export const onRerenderViewHandler: OnRerenderViewHandler = async () => {
-  const previewId: string | undefined = await TPP_SNAP.getPreviewElement()
+  const previewId: string | undefined = await window.TPP_SNAP.getPreviewElement()
   if (!previewId) return
 
   const [pageId, locale] = previewId.split('.')

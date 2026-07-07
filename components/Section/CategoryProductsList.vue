@@ -20,8 +20,8 @@
 </template>
 
 <script setup lang="ts">
-import { Dataset } from 'fsxa-api'
-import { ProductData } from 'types'
+import type { Dataset } from 'fsxa-api'
+import type { ProductData } from '~/types'
 
 const props = defineProps<{ categoryId: string }>()
 

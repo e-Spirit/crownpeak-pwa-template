@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { Content2Section } from 'fsxa-api'
+import type { Content2Section } from 'fsxa-api'
 
 const props = defineProps<{ content: Content2Section }>()
 const { $isPreviewMode } = useNuxtApp()

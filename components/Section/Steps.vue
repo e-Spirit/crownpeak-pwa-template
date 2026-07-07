@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { StepsSectionData } from 'types'
+import type { StepsSectionData } from '~~/types'
 defineProps<{ data: StepsSectionData }>()
 </script>
 

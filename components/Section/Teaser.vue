@@ -61,8 +61,8 @@
   </section>
 </template>
 <script setup lang="ts">
-import { Image, RichTextElement } from 'fsxa-api'
-import { InternalLink, OptionType } from 'types'
+import type { Image, RichTextElement } from 'fsxa-api'
+import type { InternalLink, OptionType } from '~~/types'
 
 interface Teaser {
   st_headline: string

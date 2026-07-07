@@ -25,15 +25,19 @@ const fsxaApi = $createContentApi()
 const { activeLocale, fetchAvailableLocales } = useLocale()
 const { activeNavigationItem } = useNavigationData()
 const currentRoute = decodeURIComponent(useRoute().path)
+// Capture the H3 event here in script setup where Nuxt context is synchronously available.
+// useRequestEvent() inside useAsyncData async callbacks loses context after the first await
+// when experimental.asyncContext is not enabled.
+const ssrEvent = import.meta.server ? useRequestEvent() : undefined
 
 const previewId = computed(() => {
   return activeNavigationItem.value?.seoRouteRegex !== null
     ? currentDataset.value?.previewId
-    : currentPage.value?.previewId
+    : currentPage.value?.id
 })
 
 // fetch page and dataset
-const { pending } = useAsyncData(async () => {
+const { pending } = useAsyncData(currentRoute, async () => {
   // This state should not be possible.
   // The middleware should have figured out both the locale and our current navigation item
   if (!activeNavigationItem.value || !activeLocale.value) {
@@ -69,11 +73,11 @@ const { pending } = useAsyncData(async () => {
 
       if (!currentDataset.value) {
         $logger.error('Dataset could not be fetched!')
-        // Although it is recommended to use createError instead, there is a bug that prevents createError from triggering the error page
-        // https://github.com/nuxt/nuxt/issues/15432
-        throw showError({
+        if (ssrEvent) setResponseStatus(ssrEvent, 404)
+        throw createError({
           statusMessage: 'Dataset not found',
-          statusCode: 404
+          statusCode: 404,
+          fatal: true
         })
       }
       addToCachedDatasets(currentRoute, currentDataset.value)
@@ -84,9 +88,11 @@ const { pending } = useAsyncData(async () => {
 
     if (!firstRoute) {
       $logger.error('Dataset has no matching route')
-      throw showError({
+      if (ssrEvent) setResponseStatus(ssrEvent, 404)
+      throw createError({
         statusMessage: 'Dataset has no matching route',
-        statusCode: 404
+        statusCode: 404,
+        fatal: true
       })
     }
     pageId = firstRoute.pageRef
@@ -101,9 +107,11 @@ const { pending } = useAsyncData(async () => {
       addToCachedPages(currentRoute, currentPage.value)
     } else {
       $logger.error('Page could not be fetched!')
-      throw showError({
+      if (ssrEvent) setResponseStatus(ssrEvent, 404)
+      throw createError({
         statusMessage: 'Page not found',
-        statusCode: 404
+        statusCode: 404,
+        fatal: true
       })
     }
   }

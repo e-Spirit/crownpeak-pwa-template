@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { Image } from 'fsxa-api'
+import type { Image } from 'fsxa-api'
 
 defineProps<{ name: string; image: Image; route: string }>()
 </script>

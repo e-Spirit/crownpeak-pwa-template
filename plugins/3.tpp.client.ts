@@ -1,9 +1,44 @@
-import TPP_SNAP from 'fs-tpp-api'
 import {
   onNavigationChangeHandler,
   onRequestPreviewElementHandler,
   onRerenderViewHandler
-} from '~~/utils/tpp'
+} from '~/utils/tpp'
+
+const loadScript = (
+  FILE_URL: string,
+  async = true,
+  type = 'text/javascript'
+) => {
+  return new Promise((resolve, reject) => {
+    try {
+      const scriptElement = document.createElement('script')
+      scriptElement.type = type
+      scriptElement.async = async
+      scriptElement.src = FILE_URL
+
+      scriptElement.addEventListener('load', (_) => {
+        resolve({ status: true })
+      })
+
+      scriptElement.addEventListener('error', (_: ErrorEvent) => {
+        reject({
+          status: false,
+          message: `Failed to load the script ${FILE_URL}`
+        })
+      })
+
+      document.body.appendChild(scriptElement)
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+
+declare global {
+  interface Window {
+    TPP_SNAP: any
+  }
+}
 
 /**
  * Nuxt plugin that initializes the TPP Snap, only works if you are in the FirstSpirit editor and if the environment variable FSXA_MODE is set to "preview"
@@ -11,26 +46,68 @@ import {
 export default defineNuxtPlugin(() => {
   const { $isPreviewMode } = useNuxtApp()
 
-  if (!$isPreviewMode) return
+  const noopProvide = {
+    provide: {
+      setPreviewId: async (_previewId: string | undefined) => {},
+      createSection: async (_bodyName: string) => {}
+    }
+  }
 
-  TPP_SNAP.isConnected.then(async (_isConnected: boolean) => {
-    const initialized = await onInit()
+  if (!$isPreviewMode) return noopProvide
 
-    if (!initialized) return
+  console.log(
+    '[TPP_SNAP] Initializing TPP Snap plugin, preview mode:',
+    $isPreviewMode
+  )
 
-    // onRequestPreviewElement is called if you e.g. click on a result in the search results
-    // https://docs.e-spirit.com/tpp/snap/#onrequestpreviewelementhandler
-    TPP_SNAP.onRequestPreviewElement(onRequestPreviewElementHandler)
+  // To prevent console errors during local development,
+  // never resolve the promise, if the PWA is `window.top`,
+  // No content can be changed outside the ContentCreator!
+  if (window.top === window.self) {
+    console.warn(
+      'You are running your application outside of the ContentCreator. InEdit will not be available.'
+    )
+    return noopProvide
+  }
 
-    // onRerenderView is called if content changed and you do not have the onContentChange event handler implemented
-    // The previewId can be for a dataset or a page.
-    // https://docs.e-spirit.com/tpp/snap/#onrerenderviewhandler
-    TPP_SNAP.onRerenderView(onRerenderViewHandler)
+  if (typeof window !== 'undefined') {
+    if (!!window.location.ancestorOrigins[0]) {
+      loadScript(
+        window.location.ancestorOrigins[0] + '/fs5webedit/live/live.js'
+      )
+        .then(() => {
+          console.log('OCM loaded successfully')
 
-    // onNavigationChange is called if anything in the navigation structure changed, e.g. a page was created or deleted
-    // https://docs.e-spirit.com/tpp/snap/#onnavigationchangehandler
-    TPP_SNAP.onNavigationChange(onNavigationChangeHandler)
-  })
+          return window.TPP_SNAP.isConnected.then(async (_isConnected: boolean) => {
+            const initialized = await onInit()
+
+            console.log('[TPP_SNAP] Initialized:', initialized)
+
+            if (!initialized) return
+
+            // onRequestPreviewElement is called if you e.g. click on a result in the search results
+            // https://docs.e-spirit.com/tpp/snap/#onrequestpreviewelementhandler
+            window.TPP_SNAP.onRequestPreviewElement(
+              onRequestPreviewElementHandler
+            )
+
+            // onRerenderView is called if content changed and you do not have the onContentChange event handler implemented
+            // The previewId can be for a dataset or a page.
+            // https://docs.e-spirit.com/tpp/snap/#onrerenderviewhandler
+            window.TPP_SNAP.onRerenderView(onRerenderViewHandler)
+
+            // onNavigationChange is called if anything in the navigation structure changed, e.g. a page was created or deleted
+            // https://docs.e-spirit.com/tpp/snap/#onnavigationchangehandler
+            window.TPP_SNAP.onNavigationChange(onNavigationChangeHandler)
+          })
+        })
+        .catch((err) => {
+          console.log('Cannot activate OCM mode: ' + err)
+        })
+    } else {
+      console.log('No referrer found, cannot load OCM mode.')
+    }
+  }
 
   return {
     provide: {
@@ -40,7 +117,9 @@ export default defineNuxtPlugin(() => {
        * @param previewId preview id of the current dataset or page
        */
       setPreviewId: async (previewId: string | undefined) => {
-        if (await TPP_SNAP.isConnected) TPP_SNAP.setPreviewElement(previewId)
+        if (!window.TPP_SNAP) return
+        if (await window.TPP_SNAP.isConnected)
+          window.TPP_SNAP.setPreviewElement(previewId)
       },
       /**
        *  Used by the add section component to create a new section
@@ -48,10 +127,12 @@ export default defineNuxtPlugin(() => {
        * @param bodyName name attribute of the pageBody
        */
       createSection: async (bodyName: string) => {
-        const previewId: string | undefined = await TPP_SNAP.getPreviewElement()
+        if (!window.TPP_SNAP) return
+        const previewId: string | undefined =
+          await window.TPP_SNAP.getPreviewElement()
         if (!previewId) return
 
-        return TPP_SNAP.createSection(previewId, { body: bodyName })
+        return window.TPP_SNAP.createSection(previewId, { body: bodyName })
       }
     }
   }

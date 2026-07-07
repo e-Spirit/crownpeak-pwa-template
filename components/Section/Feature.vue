@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { Feature } from 'types'
+import type { Feature } from '~/types'
 const props = defineProps<{ data: Feature }>()
 const linkText = computed(() => props.data.st_link.data.lt_text)
 </script>

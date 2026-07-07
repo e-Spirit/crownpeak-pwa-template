@@ -5,7 +5,6 @@ declare module 'nuxt/schema' {
     logLevel?: LogLevel
     devMode?: boolean
     contentMode?: 'preview' | 'release'
-    snapUrl?: string
     maxReferenceDepth?: number
     remotes?: Record<
       string,

@@ -1,17 +1,18 @@
-import { Page } from 'fsxa-api'
+import type { Page } from 'fsxa-api'
 import { faker } from '@faker-js/faker'
 
 export function createPage(optionalPage?: Partial<Page>): Page {
-  const refId = faker.datatype.uuid()
+  const refId = faker.string.uuid()
   const page: Page = {
-    layout: faker.random.word(),
+    layout: faker.word.sample(),
     meta: {},
     type: 'Page',
     metaPageRef: {},
-    name: faker.random.word(),
+    name: faker.word.sample(),
     refId,
-    id: faker.datatype.uuid(),
-    previewId: refId + '.' + faker.random.locale(),
+    route: '/',
+    id: faker.string.uuid(),
+    previewId: refId + '.' + faker.location.countryCode(),
     data: {},
     children: []
   }

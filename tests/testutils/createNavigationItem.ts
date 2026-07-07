@@ -1,17 +1,17 @@
-import { NavigationItem } from 'fsxa-api'
+import type { NavigationItem } from 'fsxa-api'
 import { faker } from '@faker-js/faker'
 
 export function createNavigationItem(
   optionalNavigationItem?: Partial<NavigationItem>
 ): NavigationItem {
   const NavigationItem: NavigationItem = {
-    caasDocumentId: faker.datatype.uuid(),
-    id: faker.datatype.uuid(),
+    caasDocumentId: faker.string.uuid(),
+    id: faker.string.uuid(),
     contentReference: faker.internet.url(),
     customData: {},
-    seoRoute: faker.random.word(),
+    seoRoute: faker.word.sample(),
     seoRouteRegex: null,
-    label: faker.random.word(),
+    label: faker.word.sample(),
     permissions: {
       allowed: [],
       denied: []
