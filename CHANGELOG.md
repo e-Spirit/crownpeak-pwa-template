@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. See [Conven
 
 ## [3.0.0](https://github.com/e-Spirit/crownpeak-pwa-template/compare/v2.1.0...v3.0.0) (2026-07-07)
 
+### Bug Fixes
+* **changelog:** fix missing release notes
+
+### ⚠ BREAKING CHANGES
+* Major version bump should have happened with v2.1.0, see breaking changes below
+
 ## [2.1.0](https://github.com/e-Spirit/crownpeak-pwa-template/compare/v2.0.1...v2.1.0) (2026-07-07)
 
 
